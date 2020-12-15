@@ -1,13 +1,13 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
+  title: 'Completium',
+  tagline: 'From conception to completion',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/completium-landing/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'edukera', // Usually your GitHub org/user name.
+  projectName: 'completium-landing', // Usually your repo name.
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
