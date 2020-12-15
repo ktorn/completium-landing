@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{83:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/completium/blog/welcome"},{"title":"Hello","permalink":"/completium/blog/hello-world"},{"title":"Hola","permalink":"/completium/blog/hola"}]}')}}]);
