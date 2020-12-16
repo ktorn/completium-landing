@@ -235,15 +235,20 @@ function Service() {
 }
 
 function Scrollable() {
-  const thiselem = React.createRef();
-  console.log(`ref: ${thiselem}`);
+  const [loaded,setLoaded] = React.useState(false);
   const { height } = useWindowDimensions();
-  var node = (typeof document === 'undefined')?null:document.getElementById("scrollable");
+  var thisnode = null;
+  if (typeof document !== 'undefined') {
+    thisnode = document.getElementById("scrollable");
+  }
+  React.useEffect(() => (
+    setLoaded(true)
+  ),[]);
   return (
     <div id="scrollable" style={{ height: height, overflow: 'scroll' }} >
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={12}>
-          <Parallax bgImage={useBaseUrl('img/banner2.svg')} strength={500} parent={node}>
+          <Parallax bgImage={useBaseUrl('img/banner2.svg')} strength={500} parent={thisnode}>
             <Banner />
           </Parallax>
         </Grid>
