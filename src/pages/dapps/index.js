@@ -39,8 +39,8 @@ function Dapps() {
           <Grid item>
             <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to developp Dapps</Typography>
           </Grid>
-          <Grid item>
-            <Typography variant='h6' style={{ paddingTop: 0 }}>with examples</Typography>
+          <Grid item style={{ paddingTop: 0 }}>
+            <Typography variant='h5'>with examples</Typography>
           </Grid>
           <Grid item>
             <img src={useBaseUrl('/img/undraw_code_review.svg')} style={{ width: '300px' }}></img>
