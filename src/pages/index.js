@@ -273,7 +273,6 @@ function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
   var prefersDarkMode = true;
-  console.log(`from index: ${useBaseUrl('docs/')}`);
   const theme = React.useMemo(
     () =>
       createMuiTheme({
