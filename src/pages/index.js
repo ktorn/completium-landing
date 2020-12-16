@@ -238,11 +238,12 @@ function Scrollable() {
   const thiselem = React.createRef();
   console.log(`ref: ${thiselem}`);
   const { height } = useWindowDimensions();
+  var node = (typeof document === 'undefined')?null:document.getElementById("scrollable");
   return (
     <div id="scrollable" style={{ height: height, overflow: 'scroll' }} >
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={12}>
-          <Parallax bgImage={useBaseUrl('img/banner2.svg')} strength={500} parent={document.getElementById("scrollable")}>
+          <Parallax bgImage={useBaseUrl('img/banner2.svg')} strength={500} parent={node}>
             <Banner />
           </Parallax>
         </Grid>
