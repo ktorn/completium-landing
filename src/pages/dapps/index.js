@@ -59,7 +59,7 @@ function Dapp(props) {
       <CardActionArea component={Link} to={useBaseUrl('docs/dapp-'+ props.name +'/')} style={{ textDecoration: 'none' }}>
         <CardMedia
           className={classes.media}
-          image={'/static/img/'+props.img}
+          image={useBaseUrl('img/'+props.img)}
           title={props.title}
         />
         <CardContent>
