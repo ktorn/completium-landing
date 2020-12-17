@@ -12,6 +12,14 @@ module.exports = {
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
   themeConfig: {
+    colorMode: {
+      // "light" | "dark"
+      defaultMode: 'dark',
+
+      // Hides the switch in the navbar
+      // Useful if you want to support a single color mode
+      disableSwitch: true,
+    },
     navbar: {
       logo: {
         alt: 'My Site Logo',
