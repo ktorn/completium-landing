@@ -14,39 +14,31 @@ import useWindowDimensions from '../utils/WindowDimension';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { Parallax } from "react-parallax";
+import { Parallax, Background } from "react-parallax";
+import Container from '@material-ui/core/Container';
 
 function Banner() {
   const { width: width } = useWindowDimensions();
   return (
-    <Grid container direction='column' justify="center" alignItems="center" style={{
+    <Grid container direction='row' justify="center" alignItems="center" style={{
       height: '380px',
+      width: '100%',
       backgroundImage: "linear-gradient(rgba(0 0 78 / 34%), rgba(178 189 77 / 41%))",
 /*       backgroundImage: "linear-gradient(rgba(0 0 78 / 34%), rgba(178 189 77 / 41%)), url("+useBaseUrl('img/banner2.svg')+")",
  */
-      backgroundSize: width+'px',
       backgroundRepeat: 'repeat-x'
       }}>
-      <Grid item style={{ position: 'relative', top: '-10px' }}>
-        <Grid container direction='row' justify="flex-start" alignItems="center" spacing={6} style={{ width: width }}>
-          <Grid item>
-              <Typography component={Link} to={useBaseUrl('docs/')}>Docs</Typography>
-          </Grid>
-          <Grid item>
-            <Link to={useBaseUrl('blog/')}>
-              <Typography>Blog</Typography>
-            </Link>
-          </Grid>
-        </Grid>
+      <Grid item xs={0} style={{ height: '30px' }}/>
+      <Grid item xs={1}> <Typography component={Link} to={useBaseUrl('docs/')}>Docs</Typography> </Grid>
+      <Grid item xs={11}> <Typography component={Link} to={useBaseUrl('blog/')}>Blog</Typography> </Grid>
+      <Grid item xs={12}><Divider color='textSecondary'></Divider></Grid>
+      <Grid item xs={12} style={{ textAlign: 'center' }}>
+        <Typography variant='h2' style={{ fontFamily : 'Alegreya Sans SC, sans-serif', marginTop: '40px' }}>Completium</Typography>
       </Grid>
-      <Grid item><Divider color='textSecondary' style={{ width: width+'px' }}></Divider></Grid>
-      <Grid item>
-        <Typography variant='h2' style={{ fontFamily : 'Alegreya Sans SC, sans-serif', marginTop: '60px' }}>Completium</Typography>
-      </Grid>
-      <Grid item>
+      <Grid item xs={12} style={{ textAlign: 'center' }}>
         <Typography variant='h5' style={{ fontFamily : 'Alegreya Sans SC, sans-serif' }}>From conception to completion</Typography>
       </Grid>
-      <Grid item style={{textAlign: 'center', marginTop: '100px'}}>
+      <Grid item style={{textAlign: 'center', marginTop: '80px'}}>
         <Typography>We create <span style={{ fontWeight: 'bold'}}>Dapps</span> from off-chain application (front&back-ends)<br/> to verified smart contracts</Typography>
       </Grid>
     </Grid>
@@ -55,11 +47,11 @@ function Banner() {
 
 function Illustration(props) {
   return (
-    <div style={{ width: props.size, height: props.size, position: 'relative', textAlign: 'center' }}>
+    <div style={{ width: props.size, height: props.size, position: 'relative', justifySelf: 'center', }}>
         <div style={{
           width: '90%',
           height: '90%',
-          backgroundColor: '#212121',
+          backgroundColor: 'black',
           borderRadius: '100%',
           position: 'absolute',
           bottom: '5%',
@@ -76,14 +68,14 @@ function Illustration(props) {
 
 function Feature(props) {
   return (
-    <Grid container direciton='column' justify="center" alignItems="center">
-      <Grid item>
+    <Grid container direciton='row' justify="center" alignItems="center" style={{ marginBottom: '40px' }}>
+      <Grid item xs={12} style={{ display: 'grid' }}>
         <Illustration size='250px' name={props.name}/>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <Typography variant='h6' style={{ fontWeight: 'bold' }}>{props.title}</Typography>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <Typography variant="body1">{props.text}</Typography>
       </Grid>
     </Grid>
@@ -92,9 +84,9 @@ function Feature(props) {
 
 function LearnDapps() {
   return (
-    <Grid container direction='row' justify="center" alignItems="center" style={{ padding: '50px' }} spacing={3}>
-      <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Typography variant='h4' style={{ fontWeight: 'bold' }}>
+    <Grid container direction='row' justify="center" alignItems="center" style={{ padding: '50px' }}>
+      <Grid item xs={12} style={{ textAlign: 'center'}}>
+        <Typography variant='h4' style={{ fontWeight: 'bold', marginBottom: '12px' }}>
           Want to know everything about Dapps?
         </Typography>
       </Grid>
@@ -104,16 +96,16 @@ function LearnDapps() {
         </Typography>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Grid container direction='row' justify="center" alignItems="center" style={{ width: '100%' }}>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={2}>
+        <Grid container direction='row' justify="center" alignItems="center" style={{ width: '100%',  paddingTop: '60px' }}>
+          <Grid item md={1} sm={0} xs={0}></Grid>
+          <Grid item md={2} sm={12} xs={12}>
             <Feature name='undraw_annotation' title='Documented Use Cases' text='Read and learn about Dapps business logic and how it impacts technical architecture.'/>
           </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={2} style={{ textAlign: 'center' }}>
+          <Grid item md={1} sm={0} xs={0}></Grid>
+          <Grid item md={2} sm={12} xs={12} style={{ textAlign: 'center' }}>
             <Feature name='undraw_setup_wizard' title='Step by Step Tutorials' text='Follow step by step instructions to implement, deploy and interact with smart contracts, connect the Dapp to a wallet, ...'/>
           </Grid>
-          <Grid item xs={1}></Grid>
+          <Grid item md={1} sm={0} xs={0}></Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
@@ -128,26 +120,27 @@ function Archetype() {
   return (
     <Grid container direction='row' justify="center" alignItems="center" style={{ padding: '50px',
       backgroundImage: "linear-gradient(rgb(15 39 89 / 1), rgba(178 189 77 / 0%))",
-      backgroundRepeat: 'repeat-x' }} spacing={3}>
-      <Grid item xs={12} style={{ display: 'contents' }}>
-      <img src={useBaseUrl('img/archetype.svg')} style={{ width: '300px', marginRight: '60px' }}></img><Typography variant='h5' style={{ fontWeight: 'bold' }}>
-          The easiest way to write safe <span style={{ color: '#21C6BE' }}>smart contracts</span>
+      backgroundRepeat: 'repeat-x' }}>
+      <Grid item xs={12} style={{ display: 'contents', textAlign: 'center' }}>
+        <img src={useBaseUrl('img/archetype.svg')} style={{ width: '300px', marginRight: '60px', marginBottom: '20px' }}></img>
+        <Typography variant='h5' style={{ fontWeight: 'bold', marginBottom: '20px' }}>
+            The easiest way to write safe <span style={{ color: '#21C6BE' }}>smart contracts</span>
         </Typography>
       </Grid>
       <Grid item>
 
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Grid container direction='row' justify="center" alignItems="center" style={{ width: '100%' }}>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={2}>
+        <Grid container direction='row' justify="center" alignItems="center" style={{ width: '100%', paddingTop: '40px' }}>
+          <Grid item md={1} sm={0} xs={0}></Grid>
+          <Grid item md={2} sm={12} xs={12}>
             <Feature name='undraw_code_thinking' title='High-Level DSL' text='Implement blockchain logic with easy to write and read high-level programming concepts.'/>
           </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={2}>
+          <Grid item md={1} sm={0} xs={0}></Grid>
+          <Grid item md={2} sm={12} xs={12}>
             <Feature name='undraw_Security_on' title='Formal Verification' text='Write formal specification and let Archetype check whether the contract verifies it.'/>
           </Grid>
-          <Grid item xs={1}></Grid>
+          <Grid item md={1} sm={0} xs={0}></Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center', marginTop: '40px' }}>
@@ -178,30 +171,30 @@ function Avatar(props) {
 
 function Service() {
   return (
-    <Grid container direction='column' justify="center" alignItems="center" style={{ padding: '50px' }} spacing={4}>
+    <Grid container direction='column' justify="center" alignItems="center" style={{ padding: '50px' }}>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
         <Typography variant='h4' style={{ fontWeight: 'bold' }}>
           Nice to meet you! <EmojiEmotionsIcon fontSize="large" style={{  verticalAlign: 'bottom' }}/>
         </Typography>
       </Grid>
       <Grid item>
-        <Grid container direction='row' justify="center" alignItems="center" style={{ paddingTop: '50px', paddingBottom: '50px' }}>
-          <Grid item xs={2}>
+        <Grid container direction='row' justify="center" alignItems="center" style={{ paddingTop: '80px', paddingBottom: '50px' }} spacing={4}>
+          <Grid item md={2} sm={12} xs={12}>
             <Typography align='justify'>Benoit and Guillaume created edukera  in 2013 for the passion of sharing and teaching science and technology. In 2017 they became enthousiastic for the blockchain technology and in 2018 started to develop the Archetype language with the support of the Tezos Foundation. </Typography>
           </Grid>
-          <Grid item xs={2} >
+          <Grid item md={2} sm={12} xs={12}>
             <Avatar portrait='br' name='Benoît Rognier' title='CEO edukera' url="benoitrognier"/>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item md={2} sm={12} xs={12}>
             <Avatar portrait='gd' name='Guillaule Duhamel' title='CTO edukera' url="guillaumeduhamel"/>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid item style={{ textAlign: 'center' }}>
         <Typography variant='h6' style={{ fontWeight: 'bold' }}>Can we help you achieve your objective?</Typography>
       </Grid>
       <Grid item style={{ width: '70%' }}>
-        <Grid container direction='row' justify="center" alignItems="center">
+        <Grid container direction='row' justify="center" alignItems="center" style={{  padding: '20px' }}>
           <Grid item>
             <EmailIcon style={{ marginRight: '20px', verticalAlign: 'bottom' }}/>
           </Grid>
@@ -221,7 +214,7 @@ function Service() {
         <Typography variant='h4' style={{ fontWeight: 'bold', marginTop: '70px' }}>Advisory board</Typography>
       </Grid>
       <Grid item>
-        <Grid container direction='row' justify="center" alignItems="center" spacing={6} style={{ marginTop: '10px' }}>
+        <Grid container direction='row' justify="center" alignItems="center" spacing={6} style={{ marginTop: '10px', padding: '40px' }}>
           <Grid item>
             <Avatar portrait='dofp' name='Diego Olivier Fernandez Pons' title='Business Advisor' url="diego-olivier-fernandez-pons"/>
           </Grid>
@@ -235,20 +228,19 @@ function Service() {
 }
 
 function Scrollable() {
-  const [loaded,setLoaded] = React.useState(false);
-  const { height } = useWindowDimensions();
-  var thisnode = null;
-  if (typeof document !== 'undefined') {
-    thisnode = document.getElementById("scrollable");
+  const { width } = useWindowDimensions();
+  var scalef = 2;
+  if (width <= 1000) {
+    scalef = 5;
   }
-  React.useEffect(() => (
-    setLoaded(true)
-  ),[]);
   return (
-    <div id="scrollable" style={{ height: height, overflow: 'scroll' }} >
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Container style={{ paddingLeft: 0, paddingRight: 0, maxWidth: '100%' }}>
+      <Grid container direction="row" justify="center" alignItems="center" style={{ width: '100%' }}>
         <Grid item xs={12}>
-          <Parallax bgImage={useBaseUrl('img/banner2.svg')} strength={500} parent={thisnode}>
+          <Parallax strength={400}>
+            <Background>
+              <img src={useBaseUrl('img/banner2.svg')} style={{ transform: 'scale('+scalef+')'}}/>
+            </Background>
             <Banner />
           </Parallax>
         </Grid>
@@ -265,7 +257,7 @@ function Scrollable() {
           <Service />
         </Grid>
       </Grid>
-      </div>
+      </Container>
   )
 }
 
@@ -284,7 +276,6 @@ function Home() {
   );
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <Scrollable />
     </ThemeProvider>
   );

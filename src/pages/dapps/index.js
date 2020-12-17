@@ -23,9 +23,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import useWindowDimensions from '../../utils/WindowDimension';
-
-
 const dapps = [
   { name: 'miles', title: 'Fidelity program', img:'streamline-icon-takeoff-ticket.svg', chips:['Marketing'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'iot', title: 'Connected bulb', img:'streamline-icon-phone-app-idea.svg', chips:['IoT'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
@@ -77,6 +74,16 @@ function Dapp(props) {
   )
 }
 
+function getxspan(width) {
+  if (width <= 650) {
+    return 12;
+  } else if (width <= 950) {
+    return 6;
+  } else {
+    return 4;
+  }
+}
+
 function Dapps() {
   var prefersDarkMode = true;
   const theme = React.useMemo(
@@ -88,16 +95,6 @@ function Dapps() {
       }),
     [prefersDarkMode],
   );
-  const { width: width } = useWindowDimensions();
-  var xspan = 4;
-  if (width <= 650) {
-    xspan = 12;
-  } else if (width <= 950) {
-    xspan = 6;
-  } else {
-    xspan = 4;
-  }
-  console.log(xspan);
   return(
     <Layout>
       <ThemeProvider theme={theme}>
@@ -124,7 +121,7 @@ function Dapps() {
           </Grid>
           <Grid item>
             <Grid container direction='row' spacing={4} justify="center" alignItems="center">
-              { dapps.map(dapp => <Grid item xs={xspan}>
+              { dapps.map(dapp => <Grid item md={4} sm={6} xs={12}>
                   <Dapp name={dapp.name} img={dapp.img} title={dapp.title} text={dapp.text} chips={dapp.chips}></Dapp>
                 </Grid>) }
             </Grid>
