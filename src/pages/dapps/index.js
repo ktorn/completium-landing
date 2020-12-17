@@ -34,7 +34,7 @@ const dapps = [
   { name: 'escrow', title: 'Online purchase', img:'streamline-icon-customize-shirt-browser.svg', chips:['Escrow','Payment','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'nonfungible', title: 'Collectible cards', img:'streamline-icon-card-poker.svg', chips:['Token','DeFi','Gaming'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'dex', title: 'Dex', img:'streamline-icon-currencies-exchange.svg', chips:['Token','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'zerocoupon', title: 'Zero coupon bond', img:'streamline-icon-contract-handshake.svg', chips:['Legal','Payment','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
+  { name: 'zcb', title: 'Zero coupon bond', img:'streamline-icon-contract-handshake.svg', chips:['Legal','Payment','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'bid', title: 'Bids', img:'streamline-icon-gavel.svg', chips:['Governance'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
 ]
 
