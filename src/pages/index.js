@@ -39,7 +39,7 @@ function Banner() {
         <Typography variant='h5' style={{ fontFamily : 'Alegreya Sans SC, sans-serif' }}>From conception to completion</Typography>
       </Grid>
       <Grid item style={{textAlign: 'center', marginTop: '80px'}}>
-        <Typography>We create <span style={{ fontWeight: 'bold'}}>Dapps</span> from off-chain application (front&back-ends)<br/> to verified smart contracts</Typography>
+        <Typography variant='h6'>Dapp design and implementation, smart contract verification</Typography>
       </Grid>
     </Grid>
   )
@@ -228,11 +228,15 @@ function Service() {
 }
 
 function Scrollable() {
+  const [loaded, setLoaded] = React.useState(false);
   const { width } = useWindowDimensions();
   var scalef = 2;
   if (width <= 1000) {
     scalef = 5;
   }
+  React.useEffect(() =>
+    setLoaded(true)
+  ,[])
   return (
       <Container style={{ paddingLeft: 0, paddingRight: 0, maxWidth: '100%' }}>
       <Grid container direction="row" justify="center" alignItems="center" style={{ width: '100%' }}>

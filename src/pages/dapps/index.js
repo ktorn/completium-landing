@@ -25,9 +25,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const dapps = [
   { name: 'miles', title: 'Fidelity program', img:'streamline-icon-takeoff-ticket.svg', chips:['Marketing'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'iot', title: 'Connected bulb', img:'streamline-icon-phone-app-idea.svg', chips:['IoT'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
+  { name: 'iot', title: 'Connected object', img:'streamline-icon-phone-app-idea.svg', chips:['IoT'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'ideabox', title: 'Idea box', img:'streamline-icon-idea-box.svg', chips:['Governance'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'game', title: '2048 competition', img:'streamline-icon-programming-module.svg', chips:['Gaming','Governance'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
+  { name: 'game', title: '2048 competition', img:'streamline-icon-programming-module.svg', chips:['Gaming','Oracle'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'escrow', title: 'Online purchase', img:'streamline-icon-customize-shirt-browser.svg', chips:['Escrow','Payment','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'nonfungible', title: 'Collectible cards', img:'streamline-icon-card-poker.svg', chips:['Token','DeFi','Gaming'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
   { name: 'dex', title: 'Dex', img:'streamline-icon-currencies-exchange.svg', chips:['Token','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: '100%',
     minWidth: '300px',
-    backgroundColor: '#262626',
+    backgroundColor: '#101010',
     border: '2px solid #3e3e3e',
   },
   media: {
