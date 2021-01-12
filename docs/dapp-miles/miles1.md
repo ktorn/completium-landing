@@ -1,203 +1,50 @@
 ---
 id: miles1
-title: Miles Dapp
-sidebar_label: Miles Dapp
+title: Fidelity program
+sidebar_label: Fidelity program
 slug: /dapp-miles
 ---
 
-You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
+import DappIcon from '../DappIcon';
+import DappFigure from '../DappFigure';
 
-## Miles Dapp
+<DappIcon img='streamline-icon-takeoff-ticket' />
 
-To serve as an example page when styling markdown based Docusaurus sites.
+## Introduction
 
-## Headers
+Customers of a service (transport, gaming, grocery, ...) receive miles in reward for their activity with the service: miles are received for examples, for each travel in proportion of the distance traveled; or when completing an achievement in a game; or when achieving a certain amount of purchase; and so on. Miles may then for example be traded in for gifts or cash-back, or any kind of reward.
 
-# H1 - Create the best documentation
+Such miles rewarding program are put in place by Marketing departments to retain customers.
 
-## H2 - Create the best documentation
+## Architecture
 
-### H3 - Create the best documentation
+A smart contract on the Tezos blockchain is used to store and manage customers' miles lifecycle, namely creation and consumption operations.
 
-#### H4 - Create the best documentation
+The Dapp architecture is 3-tier:
+* Tezos' smart contract (to store and manage miles' lifecycle)
+* User web interface for customer to exchange miles (consume) for rewards
+* Standard application server to create miles according to customer activity
 
-##### H5 - Create the best documentation
+Interactions between these three elements are illustrated in the schema below:
 
-###### H6 - Create the best documentation
+<DappFigure img='miles-dapp-architecture' width='60%'/>
 
----
+The User Interface straightforwardly interacts with the smart contract to consume miles. The resulting blockchain's hash operation is sent to the App Server with other operation informations (selected product(s) id(s)).
 
-## Emphasis
+It uses a wallet technology (hardware or sofware) to forge, sign and send the operations to the blockchain.
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+The Application Server interacts with the blockchain through a dedicated library that provides a high level API.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+## Dapp example
 
-Combined emphasis with **asterisks and _underscores_**.
+This Dapp example provides the Tezos's smart contract for miles management, and a web interface to interact with the contract. It does not provide the App Server.
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+In this example, each mile has an *expiration date* beyond which it cannot be consumed.
 
----
+## Benefits
 
-## Lists
+The benefits of the on-chain miles' lifecycle management are:
+* reliability of miles' management: the consumption rule is publically available to the customer in the smart contract code
+* the quantity of miles a customer has acquired may be used to prove activity to any other third party
 
-1. First ordered list item
-1. Another item
-   - Unordered sub-list.
-1. Actual numbers don't matter, just that it's a number
-   1. Ordered sub-list
-1. And another item.
-
-* Unordered list can use asterisks
-
-- Or minuses
-
-+ Or pluses
-
----
-
-## Links
-
-[I'm an inline-style link](https://www.google.com/)
-
-[I'm an inline-style link with title](https://www.google.com/ "Google's Homepage")
-
-[I'm a reference-style link][arbitrary case-insensitive reference text]
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com/ or <http://www.example.com/> and sometimes example.com (but not on GitHub, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org/
-[1]: http://slashdot.org/
-[link text itself]: http://www.reddit.com/
-
----
-
-## Images
-
-Here's our logo (hover to see the title text):
-
-Inline-style: ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 1')
-
-Reference-style: ![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 2'
-
-Images from any folder can be used by providing path to file. Path should be relative to markdown file.
-
-![img](../../static/img/logo.svg)
-
----
-
-## Code
-
-```javascript
-var s = 'JavaScript syntax highlighting';
-alert(s);
-```
-
-```python
-s = "Python syntax highlighting"
-print(s)
-```
-
-```
-No language indicated, so no syntax highlighting.
-But let's throw in a <b>tag</b>.
-```
-
-```js {2}
-function highlightMe() {
-  console.log('This line can be highlighted!');
-}
-```
-
----
-
-## Tables
-
-Colons can be used to align columns.
-
-| Tables        |      Are      |   Cool |
-| ------------- | :-----------: | -----: |
-| col 3 is      | right-aligned | \$1600 |
-| col 2 is      |   centered    |   \$12 |
-| zebra stripes |   are neat    |    \$1 |
-
-There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
-
-| Markdown | Less      | Pretty     |
-| -------- | --------- | ---------- |
-| _Still_  | `renders` | **nicely** |
-| 1        | 2         | 3          |
-
----
-
-## Blockquotes
-
-> Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
-
----
-
-## Inline HTML
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-
----
-
-## Line Breaks
-
-Here's a line for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a _separate paragraph_.
-
-This line is also a separate paragraph, but... This line is only separated by a single newline, so it's a separate line in the _same paragraph_.
-
----
-
-## Admonitions
-
-:::note
-
-This is a note
-
-:::
-
-:::tip
-
-This is a tip
-
-:::
-
-:::important
-
-This is important
-
-:::
-
-:::caution
-
-This is a caution
-
-:::
-
-:::warning
-
-This is a warning
-
-:::
+A blockchain based miles registry is especially suited for mutualising activity accross mulitple brands and services since it solves miles ownership and miles management issues.

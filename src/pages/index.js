@@ -18,7 +18,6 @@ import { Parallax, Background } from "react-parallax";
 import Container from '@material-ui/core/Container';
 
 function Banner() {
-  const { width: width } = useWindowDimensions();
   return (
     <Grid container direction='row' justify="center" alignItems="center" style={{
       height: '380px',
@@ -231,7 +230,7 @@ function Scrollable() {
   const [loaded, setLoaded] = React.useState(false);
   const { width } = useWindowDimensions();
   var scalef = 2;
-  if (width <= 1000) {
+  if (loaded && width <= 1000) {
     scalef = 5;
   }
   React.useEffect(() =>
