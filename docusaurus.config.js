@@ -26,13 +26,19 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
+        { to: 'dapps', label: 'Dapps', position: 'left'},
+        {
+          to: 'docs/dapp-tools/',
+          activeBasePath: 'dapp-tools',
+          label: 'Tools',
+          position: 'left'
+        },
         {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
-        {to: 'dapps', label: 'Dapps', position: 'left'},
         {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/edukera/completium-landing',

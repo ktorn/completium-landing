@@ -8,7 +8,7 @@ function DappFigure(props) {
           width: props.width,
           paddingTop: '40px',
           paddingBottom: '40px',
-        }} src={useBaseUrl('img/'+props.img+'.svg')} />
+        }} src={useBaseUrl('img/'+props.img)} />
     </div>
   )
 }
