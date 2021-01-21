@@ -26,6 +26,25 @@ It uses a wallet technology (hardware or sofware) to forge, sign and send the op
 
 The Application Server interacts with the blockchain through a dedicated library that provides a high level API. It is <u>not provided</u> in this example Dapp though.
 
+## User Interface
+
+Below is a screenshot of the user interface once the wallet's account connected:
+
+<DappFigure img='miles_screenshot_help.png' width='80%'/>
+
+① User's Miles information:
+ * Total number of owned miles
+ * Time left til next miles' expiration
+
+② Button to see the list of miles and their expiration date
+
+③ Reward item data:
+* overview photo
+* cost in miles
+* title
+
+Click on "Get it!" button to order it. This is calling the smart contract's 'consume' entrypoint.
+
 ## Benefits
 
 The benefits of the on-chain miles' lifecycle management are:

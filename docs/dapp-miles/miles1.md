@@ -22,8 +22,6 @@ Such miles rewarding program are put in place by Marketing departments to retain
 
 This Dapp example provides the Tezos's smart contract for miles management, and a web interface to interact with the contract.
 
-In this example, each mile has an *expiration date* beyond which it cannot be consumed.
-
-Follow these instructions to know how to interact with the Dapp.
+In this example, each mile has an *expiration date* beyond which it cannot be consumed. The smart contract guarantees that only valid miles can be consumed.
 
 

@@ -12,6 +12,9 @@ module.exports = {
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
   themeConfig: {
+    prism: {
+      theme: require('./src/theme/prism-archetype-theme'),
+    },
     colorMode: {
       // "light" | "dark"
       defaultMode: 'dark',

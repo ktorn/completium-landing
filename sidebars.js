@@ -14,7 +14,7 @@ module.exports = {
       type: 'category',
       label: 'Use Case',
       items: [
-        'dapp-miles/miles2', 'dapp-miles/miles3'
+        'dapp-miles/miles2', 'dapp-miles/miles3', 'dapp-miles/miles5'
       ],
     }
   ],

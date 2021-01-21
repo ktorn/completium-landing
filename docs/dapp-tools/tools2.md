@@ -64,6 +64,7 @@ Then click on the "DApps" menus (in purple):
 
 <DappFigure img='thanos-switch2.png' width='60%'/>
 
-Then select the Dapp you want to remove the connection to:
+This panel presents the list of connected/authorised Dapps and the account address it is connected to.
+Click the cross on the right hand side of the authorisation you want to remove:
 
 <DappFigure img='thanos-switch3.png' width='60%'/>

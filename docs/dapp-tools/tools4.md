@@ -8,6 +8,7 @@ slug: /dapp-tools/accounts
 import DappIcon from '../DappIcon';
 import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
+import Link from '@docusaurus/Link';
 
 The Dapps require an admin account and one (or several) user accounts to be tested. This page explains how to retrieve the admin faucet file, and how to create a new user test account.
 
@@ -54,6 +55,8 @@ Below is a copy of the admin faucet file:
 
 You may also copy-paste the json above in a "admin.json" file.
 
+Follow <u><Link to="/docs/dapp-tools/thanos">this link</Link></u> for instructions to import the admin account in the Thanos wallet.
+
 ## Create test account
 
 This section describes how to create a test account from a faucet file.
@@ -76,3 +79,5 @@ Click button below to open faucet:
 A screenshot of the faucet site is shown below:
 
 <DappFigure img='faucet.png' width='100%'/>
+
+Follow <u><Link to="/docs/dapp-tools/thanos">this link</Link></u> for instructions to import the account in the Thanos wallet.
