@@ -19,10 +19,10 @@ In this DApp example, the off-chain server is not provided and the creation oper
 
 The entry point to create miles and associate to a user address is presented below:
 
-``` archetype
-entry add (ow : address,
-           newmile_id : string,
-           newmile_amount : int,
+``` archetype {5}
+entry add (ow                 : address,
+           newmile_id         : string,
+           newmile_amount     : int,
            newmile_expiration : date) {
    called by admin
    require {
@@ -73,6 +73,50 @@ Below is an example screenshot (with USER_ADDRESS set to `tz1dZydwVDuz6SH5jCUfCQ
 Once settings are set, click on the "Execute" button and select "Thanos":
 
 <DappFigure img='bcd-miles-3.png' width='60%'/>
+
+You may check the transation parameters in the "Operations" section:
+
+```json
+[
+    {
+        "kind":"transaction",
+        "to":"KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86",
+        "amount":0,
+        "mutez":true,
+        "parameter":{
+            "entrypoint":"add",
+            "value":{
+                "args":[
+                {
+                    "string":"tz1dZydwVDuz6SH5jCUfCQjqV8YCQimL9GCp"
+                },
+                {
+                    "args":[
+                    {
+                        "string":"tz1dZydwVDuz6SH5jCUfCQjqV8YCQimL9GCp_0"
+                    },
+                    {
+                        "args":[
+                        {
+                            "int":"20"
+                        },
+                        {
+                            "int":"1611331473"
+                        }
+                        ],
+                        "prim":"Pair"
+                    }
+                    ],
+                    "prim":"Pair"
+                }
+                ],
+                "prim":"Pair"
+            }
+        }
+    }
+]
+
+```
 
 Once sent, the transaction should take a minute to be confirmed. When confirmed, you may click on the transaction to visualize the evolution of the contract storage. On the screenshot below, check create miles (highlighted in green):
 

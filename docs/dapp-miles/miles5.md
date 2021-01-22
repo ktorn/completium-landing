@@ -34,7 +34,7 @@ For example, clicking the "Get it!" button on the 'Tezos phone case' item genera
 
 <DappFigure img='miles-consume.png' width='70%'/>
 
-The popup displays the transaction information in the "Operations" section:
+You may check the transaction parameters in the "Operations" section:
 
 ```json
 [
