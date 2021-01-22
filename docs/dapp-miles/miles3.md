@@ -39,7 +39,7 @@ entry add (ow : address,
 
 The `called by admin` instruction line 5 specifies that only the admin address can call the entry point.
 
-Hence it is necessary to invoke this entry point <u>with the admin address</u>. If you have not registered the admin address in the wallet, go to the <u><Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link></u> page.
+Hence it is necessary to invoke this entry point <u>with the admin address</u>. If you have not registered the admin address in the wallet, go to the <Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link> page.
 
 ## Miles creation transaction
 
@@ -57,16 +57,16 @@ Click on the "Interact" tab and enter the parameters as presented below:
 
 | Parameter | Value | Description |
 | ------------- |: -------------: | ---------: |
-| ow | YOUR USER ADDRESS |  address of the created miles' owner |
-| newmile_id       | "USER_ADDRESS_0" | a unique for the created miles  |
+| ow | USER_ADDRESS |  address of the created miles' owner |
+| newmile_id       | USER_ADDRESS + "_0" | a unique for the created miles  |
 | newmile_amount   | 20 | number of miles to create  |
-| newmile_expiration | TOMORROW'S DATE | date beyond which miles are expired |
+| newmile_expiration | TOMORROW | date beyond which miles are expired |
 
 where:
-* "YOUR USER ADDRESS" is replaced by the DApp user account to receive the miles
-* TOMORROW'S DATE is replaced by a date in the future, for example tomorrow
+* USER_ADDRESS is replaced by the DApp user account to receive the miles
+* TOMORROW is replaced by a date in the future, for example tomorrow
 
-Below is an example screenshot (with USER ADDRESS set to 'tz1dZydwVDuz6SH5jCUfCQjqV8YCQimL9GCp') of the interact panel:
+Below is an example screenshot (with USER_ADDRESS set to `tz1dZydwVDuz6SH5jCUfCQjqV8YCQimL9GCp`) of the interact panel:
 
 <DappFigure img='bcd-miles-2.png' width='100%'/>
 

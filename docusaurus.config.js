@@ -32,15 +32,9 @@ module.exports = {
         { to: 'dapps', label: 'Dapps', position: 'left'},
         {
           to: 'docs/dapp-tools/',
-          activeBasePath: 'dapp-tools',
           label: 'Tools',
-          position: 'left'
-        },
-        {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
           position: 'left',
+          docId: 'tools1'
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {

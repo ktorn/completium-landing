@@ -10,7 +10,7 @@
 
 :root {
   --ifm-color-primary: #ffffff;
-  --ifm-color-primary-dark: rgb(73, 110, 212);
+  --ifm-color-primary-dark: #45b6fe;
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
   --ifm-color-primary-light: rgb(70, 203, 174);
@@ -24,4 +24,28 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+a {
+  color: var(--ifm-color-primary-dark);
+}
+
+a:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+.active {
+  color: var(--ifm-color-primary-dark);
+}
+
+.active:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary-dark);
+}
+
+.navbar__link--active:hover {
+  color: var(--ifm-color-primary-dark);
 }

@@ -21,7 +21,7 @@ The process is two-steps:
 * download the admin faucet file
 * import it in wallet
 
-Follow <u><Link to="/docs/dapp-tools/accounts">this link</Link></u> for instructions to download admin's faucet file and import it in the wallet.
+Follow <Link to="/docs/dapp-tools/accounts">this link</Link> for instructions to download admin's faucet file and import it in the wallet.
 
 It is suggested that you name that account "Admin" for ease of use.
 
@@ -33,6 +33,6 @@ The process to create a new user account is two-steps:
 * downlaod a new faucet file from faucet site
 * ipport it in wallet
 
-Follow <u><Link to="/docs/dapp-tools/accounts">this link</Link></u> for instructions to create a user address.
+Follow <Link to="/docs/dapp-tools/accounts">this link</Link> for instructions to create a user address.
 
 It is suggested that you name the account "Completium Dapp user" for example.
