@@ -143,7 +143,7 @@ function Archetype() {
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center', marginTop: '40px' }}>
-        <Button variant='outlined' size='large'>Discover Archetype</Button>
+        <Button component={Link} variant='outlined' size='large'>Discover Archetype</Button>
       </Grid>
     </Grid>
   )
@@ -273,6 +273,7 @@ function Home() {
       createMuiTheme({
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
+
         },
       }),
     [prefersDarkMode],
