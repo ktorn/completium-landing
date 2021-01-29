@@ -18,10 +18,8 @@ The Use Case scenario is two-steps:
 In order to create miles, it is required to register in the wallet and use the smart contract's admin.
 
 The process is two-steps:
-* download the admin faucet file
-* import it in wallet
-
-Follow <Link to="/docs/dapp-tools/accounts#admin-account">this link</Link> for instructions to download admin's faucet file and import it in the wallet.
+* download the admin faucet file (<Link to="/docs/dapp-tools/accounts#admin-account">instructions</Link>)
+* import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
 
 It is suggested that you name that account "Admin" for ease of use.
 
@@ -30,9 +28,7 @@ It is suggested that you name that account "Admin" for ease of use.
 In order to consume miles, it is suggested that you use a dedicated test user account.
 
 The process to create a new user account is two-steps:
-* downlaod a new faucet file from faucet site
-* ipport it in wallet
-
-Follow <Link to="/docs/dapp-tools/accounts#create-test-account">this link</Link> for instructions to create a user address.
+* download a new faucet file from faucet site (<Link to="/docs/dapp-tools/accounts#create-test-account">instructions</Link>)
+* import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
 
 It is suggested that you name the account "Completium Dapp user" for example.

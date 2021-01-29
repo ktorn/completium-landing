@@ -6,15 +6,43 @@ slug: /dapp-tools/gitpod
 ---
 
 import DappFigure from '../DappFigure';
-
-<DappFigure img='gitpod-ddd.svg' width='30%'/>
+import DappButton from '../DappButton';
+import Link from '@docusaurus/Link';
 
 [Gitpod](https://www.gitpod.io/docs/) is an open source platform for automated and ready-to-code development environments that blends into your existing workflow. It enables developers to describe their dev environment as code and start instant and fresh development environments for each new task directly from your browser.
 
 ## Create account
 
-You need to create a Gitpod accont.
+Opening DApp project in Gitpod requires to create a Gitpod account. Creating a Gitpod account requires an existing account on github, gitlab or bitbucket as illustrated below:
 
+<DappFigure img="gitpod-login.png" width='100%'/>
+
+<DappButton url="https://gitpod.io/workspaces/" txt="go to gitpod" />
+
+The free plan allows the use of 30 hours per month which largely covers the need for these DApp projects.
 
 ## User interface
 
+Below is a screenshot of the gitpod user interface (for the <Link to='/docs/dapp-miles/'>Fidelity Program</Link> DApp):
+
+<DappFigure img="gitpod-screen.png" width='100%'/>
+
+① Files tree (navigate down to a file and click on it to display)
+
+② Terminal
+
+③ File view
+
+④ Menu bar
+
+⑤ Project preview
+
+## Open terminal
+
+VS Code provides a full featured terminal. It is used in Dapps' technical guides to trigger completium-cli commands to deploy and interact with smart contracts.
+
+To open the terminal, click on the "New Terminal" in the "Terminal" menu, illustrated below:
+
+<DappFigure img="open-vscode-terminal.png" width='100%'/>
+
+The terminal is available

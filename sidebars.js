@@ -1,6 +1,13 @@
 module.exports = {
   docs:  ['doc1', 'doc2', 'doc3'],
-  tools:  ['dapp-tools/tools1', 'dapp-tools/tools4', 'dapp-tools/tools2', 'dapp-tools/tools3', 'dapp-tools/tools5'],
+  tools:  [
+      'dapp-tools/tools1',
+      'dapp-tools/tools4',
+      'dapp-tools/tools2',
+      'dapp-tools/tools3',
+      'dapp-tools/tools5',
+      'dapp-tools/tools6',
+      'dapp-tools/tools7'],
   miles : {
     type: 'category',
     label: 'Getting Started',
@@ -21,14 +28,16 @@ module.exports = {
       type: 'category',
       label: 'Technical Guide',
       items: [
-        'dapp-miles/miles6', 'dapp-miles/miles7'
+        'dapp-miles/miles6', 'dapp-miles/miles7', 'dapp-miles/miles8'
       ]
     },
     {
       type: 'category',
       label: 'Smart Contract',
       items: [
-        'dapp-miles/miles10'
+        'dapp-miles/miles10',
+        'dapp-miles/miles9',
+        'dapp-miles/miles11'
       ]
     }
   ],

@@ -1,11 +1,13 @@
 ---
 id: miles7
-title: Contract origination
-sidebar_label: Contract Origination
+title: Contract setup
+sidebar_label: Contract setup
 slug: /dapp-miles/miles-tg-contract
 ---
 
+import Link from '@docusaurus/Link';
 import DappFigure from '../DappFigure';
+import DappButton from '../DappButton';
 
 The smart contract is at this location:
 
@@ -13,13 +15,76 @@ The smart contract is at this location:
 
 The contract is written in Archetype language. Go to the Smart contract section for a detailed presentation.
 
-The command line to originate (deploy) the smart contract is:
+The setup consists in deploying the contract and adding mile to the user account.
+
+## Origination
+
+Open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and enter the following command line to originate (deploy) the smart contract is:
 
 ```bash
-$ completium-cli originate ./contract/miles_with_expiration.arl
+$ completium-cli originate --as admin --named miles ./contract/miles_with_expiration.arl
 ```
 
-This command triggers two operations:
+The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> triggers two operations:
 * the contract compilation to Michelson with archetype compiler
 * the Michelson contract origination with Tezos client
+
+The contract may then be referred to as `miles` in future interactions.
+
+If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/accounts#admin-account">admin</Link> account. See this section for more information.
+
+The address of the newly originated contract is visible in the command output:
+
+You may then got to Better call dev contract explorer to check it:
+
+<DappButton url="https://better-call.dev/" txt="go to better call dev"/>
+
+## Add miles
+
+In order to provide miles to a user, the amdin must call the 'add' entry point of the contract. Its signature is presented below:
+
+```archetype
+entry add (ow                 : address,
+           newmile_id         : string,
+           newmile_amount     : int,
+           newmile_expiration : date) {
+   called by admin
+   effect {
+     ...
+   }
+}
+```
+
+Parameters are presented below:
+
+| Parameter | Value | Description |
+| ------------- |: -------------: | ---------: |
+| ow | USER_ADDRESS |  address of the created miles' owner |
+| newmile_id       | USER_ADDRESS + "_0" | a unique for the created miles  |
+| newmile_amount   | 20 | number of miles to create  |
+| newmile_expiration | TOMORROW | date beyond which miles are expired |
+
+where:
+* USER_ADDRESS is replaced by the DApp user account to receive the miles
+* TOMORROW is replaced by a date in the future, for example tomorrow
+
+In the terminal enter the following command:
+
+```bash
+$ completium-cli call miles as admin
+        --entry '%add'
+        --with '(<USER_ADDRESS>, "mileid", 20, <TOMORROW>)'
+```
+
+## Skip this step?
+
+It is possible to skip this phase and use the contract already deployed for the demo, and available at the following address:
+
+```
+KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86
+```
+
+<DappButton url="https://better-call.dev/delphinet/KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86/operations" txt="open in better call dev"/>
+
+Go to the <Link to="/docs/dapp-miles/miles-use-case2#miles-creation-transaction">use case</Link> section to know how to add miles for your user account.
 

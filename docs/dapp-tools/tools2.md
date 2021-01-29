@@ -9,10 +9,7 @@ import DappIcon from '../DappIcon';
 import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 
-<DappFigure img='thanos-logo.png' width='20%'/>
-
-Thanos is a cryptocurrency wallet for Tezos blockchain; it comes as a web extension for the browser.
-
+<DappFigure img='thanos-site.png' width='100%'/>
 
 ## Install Thanos
 
@@ -22,7 +19,6 @@ Go the the thanos web page and follow the instructions by clicking on "Install T
 
 A screenshot of the Thanos site is presented below, showing the "Install Thanos" button in the upper right hand corner:
 
-<DappFigure img='thanos-site.png' width='100%'/>
 
 If you install Thanos for the first time, select the "Create a new wallet" option.
 
