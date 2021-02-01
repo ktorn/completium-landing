@@ -29,10 +29,10 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        { to: 'dapps', label: 'Dapps', position: 'left'},
+        { to: 'dapps', label: 'DApps', position: 'left'},
         {
           to: 'docs/dapp-tools/',
-          label: 'Tools',
+          label: 'Technical stack',
           position: 'left',
           docId: 'tools1'
         },

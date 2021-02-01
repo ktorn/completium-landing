@@ -9,7 +9,7 @@ import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
 
-The technologies below have been used to developp the Dapps.
+The section presents the technologies and tools used to developp the DApps.
 
 ## User Interface
 

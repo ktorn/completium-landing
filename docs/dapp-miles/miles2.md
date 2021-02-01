@@ -9,13 +9,13 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-The Use Case scenario is two-steps:
+The Use Case scenario if the 'Fidelity program' DApp is two-steps:
 
 * Create miles associated to a user account (as the smart contract's admin)
 * Consume Miles in the Dapp user interface (as a user)
 ## Smart contract's admin account
 
-In order to create miles, it is required to register in the wallet and use the smart contract's admin.
+In order to create miles, it is required to register the smart contract's admin account in the wallet.
 
 The process is two-steps:
 * download the admin faucet file (<Link to="/docs/dapp-tools/accounts#admin-account">instructions</Link>)

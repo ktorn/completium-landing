@@ -17,29 +17,22 @@ In this DApp example, the off-chain server is not provided and the creation oper
 
 ## `add` entry point
 
-The entry point to create miles and associate to a user address is presented below:
+The `add`entry point to create miles and associate to a user address is presented in <Link to="/docs/dapp-miles/miles-contract-interface#add">this section</Link>.
 
-``` archetype {5}
-entry add (ow                 : address,
-           newmile_id         : string,
-           newmile_amount     : int,
-           newmile_expiration : date) {
-   called by admin
-   require {
-     c1 : newmile_amount > 0;
-   }
-   failif {
-     c2 : mile.contains(newmile_id);
-   }
-   effect {
-     ...
-   }
-}
-```
+It takes 4 parameters:
 
-The `called by admin` instruction line 5 specifies that only the admin address can call the entry point.
+| Parameter | Value | Description |
+| ------------- |: -------------: | ---------: |
+| ow | USER_ADDRESS |  address of the created miles' owner |
+| newmile_id       | USER_ADDRESS + "_0" | a unique for the created miles  |
+| newmile_amount   | 20 | number of miles to create  |
+| newmile_expiration | TOMORROW | date beyond which miles are expired, for example '2021-06-28' |
 
-Hence it is necessary to invoke this entry point <u>with the admin address</u>. If you have not registered the admin address in the wallet, go to the <Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link> page.
+where:
+* USER_ADDRESS is replaced by the DApp user account to receive the miles
+* TOMORROW is replaced by a date in the future, for example tomorrow
+
+This entry point may only be called by <u>the contract's admin account</u>. If you have not registered the admin address in the wallet, go to the <Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link> page.
 
 ## Miles creation transaction
 
@@ -49,22 +42,11 @@ The smart contract is available at the following address:
 KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86
 ```
 
-This section presents how to invoke the `add` entry point with the smart contract indexer 'Better Call Dev'; click the button blow to open the smart contract:
+This section presents how to invoke the `add` entry point with the smart contract indexer <Link to="/docs/dapp-tools/bcd">Better Call Dev</Link>. Click the button blow to open the smart contract:
 
 <DappButton url="https://better-call.dev/delphinet/KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86/operations" txt="open smart contract"/>
 
-Click on the "Interact" tab and enter the parameters as presented below:
-
-| Parameter | Value | Description |
-| ------------- |: -------------: | ---------: |
-| ow | USER_ADDRESS |  address of the created miles' owner |
-| newmile_id       | USER_ADDRESS + "_0" | a unique for the created miles  |
-| newmile_amount   | 20 | number of miles to create  |
-| newmile_expiration | TOMORROW | date beyond which miles are expired |
-
-where:
-* USER_ADDRESS is replaced by the DApp user account to receive the miles
-* TOMORROW is replaced by a date in the future, for example tomorrow
+Click on the "Interact" tab and enter the parameters as presented above.
 
 Below is an example screenshot (with USER_ADDRESS set to `tz1dZydwVDuz6SH5jCUfCQjqV8YCQimL9GCp`) of the interact panel:
 
