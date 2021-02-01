@@ -56,3 +56,14 @@ entry consume (quantity : nat) {
 ```
 
 ### Clear expired
+
+```archetype
+entry clear_expired () {
+  called by admin
+  effect {
+    for : loop2 o in owner do
+      owner[o].miles.removeif(the.expiration < now)
+    done
+  }
+}
+```

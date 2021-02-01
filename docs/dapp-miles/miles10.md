@@ -1,8 +1,8 @@
 ---
 id: miles10
-title: Signature
-sidebar_label: Signature
-slug: /dapp-miles/miles-contract-signature
+title: Interface
+sidebar_label: Interface
+slug: /dapp-miles/miles-contract-interface
 ---
 
 ## Storage
@@ -35,16 +35,26 @@ entry add (
           ow                 : address,
           newmile_id         : string,
           newmile_amount     : nat,
-          newmile_expiration : date)
+          newmile_expiration : date) {
+  called by admin
+  effect { ... }
+}
 ```
 ### consume
 
 ```archetype
-entry consume (quantity : nat)
+entry consume (quantity : nat) {
+  ...
+}
 ```
 
 ### clear expired
 
 ```archetype
-entry clear_expired ()
+entry clear_expired () {
+  called by admin
+  effect {
+    ...
+  }
+}
 ```

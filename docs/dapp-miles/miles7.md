@@ -22,7 +22,7 @@ The setup consists in deploying the contract and adding mile to the user account
 Open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and enter the following command line to originate (deploy) the smart contract is:
 
 ```bash
-$ completium-cli originate --as admin --named miles ./contract/miles_with_expiration.arl
+completium-cli deploy ./contract/miles_with_expiration.arl as admin --named miles
 ```
 
 The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> triggers two operations:
@@ -41,7 +41,11 @@ You may then got to Better call dev contract explorer to check it:
 
 ## Add miles
 
-In order to provide miles to a user, the amdin must call the 'add' entry point of the contract. Its signature is presented below:
+In order to provide miles to a user, the amdin must call the 'add' entry point of the contract.
+
+If you don't have a user account, follow these <Link to="/docs/dapp-tools/accounts#create-test-account">instructions</Link> to get one.
+
+The entry point signature is presented below:
 
 ```archetype
 entry add (ow                 : address,
@@ -59,10 +63,10 @@ Parameters are presented below:
 
 | Parameter | Value | Description |
 | ------------- |: -------------: | ---------: |
-| ow | USER_ADDRESS |  address of the created miles' owner |
-| newmile_id       | USER_ADDRESS + "_0" | a unique for the created miles  |
+| ow | USER_ADDRESS |  address of the miles' owner, for example '@tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw' |
+| newmile_id       | USER_ADDRESS + "_0" | a unique identifier for the created miles, for example 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw_0'  |
 | newmile_amount   | 20 | number of miles to create  |
-| newmile_expiration | TOMORROW | date beyond which miles are expired |
+| newmile_expiration | TOMORROW | date beyond which miles are expired, for example '2021-06-28' |
 
 where:
 * USER_ADDRESS is replaced by the DApp user account to receive the miles
@@ -71,9 +75,9 @@ where:
 In the terminal enter the following command:
 
 ```bash
-$ completium-cli call miles as admin
+completium-cli call miles as admin
         --entry '%add'
-        --with '(<USER_ADDRESS>, "mileid", 20, <TOMORROW>)'
+        --with '(<USER_ADDRESS>, "mileid", 20, 2021-06-28)'
 ```
 
 ## Skip this step?
