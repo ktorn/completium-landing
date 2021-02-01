@@ -115,7 +115,7 @@ function Dapps() {
             </Typography>
           </Grid>
           <Grid item style={{ marginBottom: '60px' }}>
-            <Button variant='outlined' size='large'>
+            <Button component={Link} to={useBaseUrl('docs/dapp-tools/tezos/')} variant='outlined' size='large'>
               Learn about Tezos
             </Button>
           </Grid>

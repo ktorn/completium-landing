@@ -9,7 +9,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-The Use Case scenario if the 'Fidelity program' DApp is two-steps:
+The Use Case scenario of the 'Fidelity program' DApp is two-steps:
 
 * Create miles associated to a user account (as the smart contract's admin)
 * Consume Miles in the Dapp user interface (as a user)
