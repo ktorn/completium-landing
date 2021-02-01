@@ -5,3 +5,7 @@ sidebar_label: Archetype
 slug: /dapp-tools/archetype
 ---
 
+### Collection
+
+
+### Partitions
