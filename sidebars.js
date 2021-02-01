@@ -1,13 +1,17 @@
 module.exports = {
   docs:  ['doc1', 'doc2', 'doc3'],
   tools:  [
-      'dapp-tools/tools1',
+    'dapp-tools/tools1',
+    'dapp-tools/tools10',
+    'dapp-tools/tools9',
+    'dapp-tools/tools8',
+    'dapp-tools/tools7',
+    'dapp-tools/tools3',
+    'dapp-tools/tools2',
       'dapp-tools/tools4',
-      'dapp-tools/tools2',
-      'dapp-tools/tools3',
       'dapp-tools/tools5',
       'dapp-tools/tools6',
-      'dapp-tools/tools7'],
+    ],
   miles : {
     type: 'category',
     label: 'Getting Started',

@@ -9,7 +9,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-[Gitpod](https://www.gitpod.io/docs/) is an open source platform for automated and ready-to-code development environments that blends into your existing workflow. It enables developers to describe their dev environment as code and start instant and fresh development environments for each new task directly from your browser.
+[Gitpod](https://www.gitpod.io/docs/) is an open source platform for automated and ready-to-code development environments. It is bascially a <a href="https://code.visualstudio.com/" target="_blank">VS Code</a> development interface in a browser, connected to a Git (Github, Gitlab, Bitbucket) repository.
 
 ## Create account
 
@@ -19,7 +19,7 @@ Opening DApp project in Gitpod requires to create a Gitpod account. Creating a G
 
 <DappButton url="https://gitpod.io/workspaces/" txt="go to gitpod" />
 
-The free plan allows the use of 30 hours per month which largely covers the need for these DApp projects.
+The free plan allows the use of 30 hours per month, which largely covers the need for these DApps projects.
 
 ## User interface
 
