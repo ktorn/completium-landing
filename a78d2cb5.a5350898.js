@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[39],{106:function(a){a.exports=JSON.parse('{"allTagsPath":"/completium-landing/blog/tags","slug":"hola","name":"hola","count":1,"permalink":"/completium-landing/blog/tags/hola"}')}}]);
