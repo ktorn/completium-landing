@@ -12,12 +12,6 @@ module.exports = {
       'dapp-tools/tools5',
       'dapp-tools/tools6',
     ],
-  miles : {
-    type: 'category',
-    label: 'Getting Started',
-    collapsed: false,
-    items: ['installation', 'configuration', 'typescript-support'],
-  },
   miles: [
     'dapp-miles/miles1',
     'dapp-miles/miles4',
@@ -45,7 +39,32 @@ module.exports = {
       ]
     }
   ],
-  iot:   ['dapp-iot/iot1'],
+  iot: [
+    'dapp-iot/iot1',
+    'dapp-iot/iot2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-iot/iot3', 'dapp-iot/iot4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-iot/iot5', 'dapp-iot/iot6', 'dapp-iot/iot7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-iot/iot8',
+        'dapp-iot/iot9',
+      ]
+    }
+  ],
   game:  ['dapp-game/game1'],
   ideabox: ['dapp-ideabox/ideabox1'],
   escrow: ['dapp-escrow/escrow1'],
