@@ -65,11 +65,161 @@ module.exports = {
       ]
     }
   ],
-  game:  ['dapp-game/game1'],
-  ideabox: ['dapp-ideabox/ideabox1'],
-  escrow: ['dapp-escrow/escrow1'],
-  nonfungible: ['dapp-nonfungible/nonfungible1'],
-  dex: ['dapp-dex/dex1'],
-  zcb: ['dapp-zcb/zcb1'],
+  game: [
+    'dapp-game/game1',
+    'dapp-game/game2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-game/game3', 'dapp-game/game4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-game/game5', 'dapp-game/game6', 'dapp-game/game7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-game/game8',
+        'dapp-game/game9',
+      ]
+    }
+  ],
+  ideabox: [
+    'dapp-ideabox/ideabox1',
+    'dapp-ideabox/ideabox2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-ideabox/ideabox3', 'dapp-ideabox/ideabox4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-ideabox/ideabox5', 'dapp-ideabox/ideabox6', 'dapp-ideabox/ideabox7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-ideabox/ideabox8',
+        'dapp-ideabox/ideabox9',
+      ]
+    }
+  ],
+  escrow: [
+    'dapp-escrow/escrow1',
+    'dapp-escrow/escrow2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-escrow/escrow3', 'dapp-escrow/escrow4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-escrow/escrow5', 'dapp-escrow/escrow6', 'dapp-escrow/escrow7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-escrow/escrow8',
+        'dapp-escrow/escrow9',
+      ]
+    }
+  ],
+  nonfungible: [
+    'dapp-nonfungible/nonfungible1',
+    'dapp-nonfungible/nonfungible2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-nonfungible/nonfungible3', 'dapp-nonfungible/nonfungible4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-nonfungible/nonfungible5', 'dapp-nonfungible/nonfungible6', 'dapp-nonfungible/nonfungible7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-nonfungible/nonfungible8',
+        'dapp-nonfungible/nonfungible9',
+      ]
+    }
+  ],
+  dex: [
+    'dapp-dex/dex1',
+    'dapp-dex/dex2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-dex/dex3', 'dapp-dex/dex4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-dex/dex5', 'dapp-dex/dex6', 'dapp-dex/dex7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-dex/dex8',
+        'dapp-dex/dex9',
+      ]
+    }
+  ],
+  zcb: [
+    'dapp-zcb/zcb1',
+    'dapp-zcb/zcb2',
+    {
+      type: 'category',
+      label: 'Use Case',
+      items: [
+        'dapp-zcb/zcb3', 'dapp-zcb/zcb4'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Technical Guide',
+      items: [
+        'dapp-zcb/zcb5', 'dapp-zcb/zcb6', 'dapp-zcb/zcb7'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Smart Contract',
+      items: [
+        'dapp-zcb/zcb8',
+        'dapp-zcb/zcb9',
+      ]
+    }
+  ],
   bids: ['dapp-bids/bids1'],
 };
