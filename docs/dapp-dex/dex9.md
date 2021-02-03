@@ -1,8 +1,8 @@
 ---
-id: nonfungible1
-title: Collectible Cards
-sidebar_label: Collectible Cards
-slug: /dapp-nonfungible
+id: dex9
+title: Implementation
+sidebar_label: Implementation
+slug: /dapp-dex/implementation
 ---
 
 import DappIcon from '../DappIcon';

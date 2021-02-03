@@ -1,8 +1,8 @@
 ---
-id: nonfungible1
-title: Collectible Cards
-sidebar_label: Collectible Cards
-slug: /dapp-nonfungible
+id: ideabox6
+title: Contract Origination
+sidebar_label: Contract Origination
+slug: /dapp-ideabox/origination
 ---
 
 import DappIcon from '../DappIcon';

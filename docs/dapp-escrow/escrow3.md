@@ -1,8 +1,8 @@
 ---
-id: nonfungible1
-title: Collectible Cards
-sidebar_label: Collectible Cards
-slug: /dapp-nonfungible
+id: escrow3
+title: Prerequisites
+sidebar_label: Prerequisites
+slug: /dapp-escrow/prerequisites
 ---
 
 import DappIcon from '../DappIcon';

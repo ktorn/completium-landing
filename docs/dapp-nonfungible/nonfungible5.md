@@ -1,8 +1,8 @@
 ---
-id: nonfungible1
-title: Collectible Cards
-sidebar_label: Collectible Cards
-slug: /dapp-nonfungible
+id: nonfungible5
+title: Technical guide
+sidebar_label: Technical guide
+slug: /dapp-nonfungible/presentation
 ---
 
 import DappIcon from '../DappIcon';

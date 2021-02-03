@@ -1,8 +1,10 @@
 ---
 id: game1
-title: Game 2048
-sidebar_label: Game 2048
+title: 2048 Competition
+sidebar_label: 2048 Competition
 slug: /dapp-game
 ---
 
-## game
+import DappIcon from '../DappIcon';
+import DappFigure from '../DappFigure';
+import DappButton from '../DappButton';

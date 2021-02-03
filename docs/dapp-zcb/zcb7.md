@@ -1,8 +1,8 @@
 ---
-id: nonfungible1
-title: Collectible Cards
-sidebar_label: Collectible Cards
-slug: /dapp-nonfungible
+id: zcb7
+title: Interactions
+sidebar_label: Interactions
+slug: /dapp-zcb/interactions
 ---
 
 import DappIcon from '../DappIcon';
