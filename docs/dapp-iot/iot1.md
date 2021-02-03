@@ -16,3 +16,5 @@ import DappButton from '../DappButton';
 ## Introduction
 
 ## DApp
+
+<DappFigure img='bulb.jpg' width='30%'/>
