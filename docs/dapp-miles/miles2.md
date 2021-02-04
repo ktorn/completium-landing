@@ -9,7 +9,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-The Use Case scenario of the 'Fidelity program' DApp is two-steps:
+The Use Case scenario of the <Link to="/docs/dapp-miles">Fidelity program</Link> DApp is two-steps:
 
 1. <Link to="/docs/dapp-miles/create-miles">Create miles</Link> associated to a user account (as the smart contract's admin)
 2. <Link to="/docs/dapp-miles/consume-miles">Consume Miles</Link> in the Dapp <Link to="docs/dapp-miles/usecase-presentation#user-interface">user interface</Link> (as a user)
