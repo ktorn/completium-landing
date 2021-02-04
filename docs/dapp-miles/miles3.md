@@ -43,7 +43,7 @@ where:
 * USER_ADDRESS is replaced by the DApp user account to receive the miles
 * TOMORROW is replaced by a date in the future, for example tomorrow
 
-This entry point may only be called by <u>the contract's admin account</u>. If you have not registered the admin address in the wallet, go to the <Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link> page.
+This entry point may only be called by <u>the contract's admin account</u>. If you have not registered the admin address in the wallet, go to the section above.
 
 ### Miles creation transaction
 

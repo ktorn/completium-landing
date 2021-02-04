@@ -90,5 +90,5 @@ KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86
 
 <DappButton url="https://better-call.dev/delphinet/KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86/operations" txt="open in better call dev"/>
 
-Go to the <Link to="/docs/dapp-miles/miles-use-case2#miles-creation-transaction">use case</Link> section to know how to add miles for your user account.
+Go to the <Link to="/docs/dapp-miles/create-miles#miles-creation-transaction">use case</Link> section to know how to add miles for your user account.
 

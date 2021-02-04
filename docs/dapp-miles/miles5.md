@@ -18,7 +18,7 @@ Connect to the DApp by clicking the "Connect" button:
 
 <DappFigure img='miles-connect1.png' width='35%'/>
 
-Then select the user account. If you don't have a dedicated user account, go to the <Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link> page.
+Then select the user account. If you don't have a dedicated user account, go to the <Link to="/docs/dapp-miles/create-miles">Prerequisites</Link> page.
 
 Once connected, the number of valid miles (ie. with expiration date in the future) is displayed:
 
