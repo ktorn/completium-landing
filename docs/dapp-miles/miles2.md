@@ -1,8 +1,8 @@
 ---
 id: miles2
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-miles/miles-use-case1
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-miles/usecase-presentation
 ---
 
 import DappFigure from '../DappFigure';
@@ -11,24 +11,33 @@ import Link from '@docusaurus/Link';
 
 The Use Case scenario of the 'Fidelity program' DApp is two-steps:
 
-* Create miles associated to a user account (as the smart contract's admin)
-* Consume Miles in the Dapp user interface (as a user)
-## Smart contract's admin account
+1. <Link to="/docs/dapp-miles/create-miles">Create miles</Link> associated to a user account (as the smart contract's admin)
+2. <Link to="/docs/dapp-miles/consume-miles">Consume Miles</Link> in the Dapp <Link to="docs/dapp-miles/usecase-presentation#user-interface">user interface</Link> (as a user)
 
-In order to create miles, it is required to register the smart contract's admin account in the wallet.
+In order to consume miles, you need a *dedicated test user account*. Go to <Link to="/docs/dapp-miles/usecase-presentation#create-a-user-account">section below</Link> for instructions to create one.
+## User Interface
 
-The process is two-steps:
-* download the admin faucet file (<Link to="/docs/dapp-tools/accounts#admin-account">instructions</Link>)
-* import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
+Below is a screenshot of the user interface once the wallet's account connected:
 
-It is suggested that you name that account "Admin" for ease of use.
+<DappFigure img='miles_screenshot_help.png' width='80%'/>
 
-## User account
+① User's Miles information:
+ * Total number of owned miles
+ * Time left til next miles' expiration
 
-In order to consume miles, it is suggested that you use a dedicated test user account.
+② Button to see the list of miles and their expiration date
+
+③ Reward item data:
+* overview photo
+* cost in miles
+* title
+
+Click on "Get it!" button to order it. This is calling the smart contract's 'consume' entrypoint.
+
+## Create a user account
 
 The process to create a new user account is two-steps:
-* download a new faucet file from faucet site (<Link to="/docs/dapp-tools/accounts#create-test-account">instructions</Link>)
-* import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
+1. download a new faucet file from faucet site (<Link to="/docs/dapp-tools/accounts#create-test-account">instructions</Link>)
+2. import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
 
 It is suggested that you name the account "Completium Dapp user" for example.

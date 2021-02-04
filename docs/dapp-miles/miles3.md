@@ -2,20 +2,31 @@
 id: miles3
 title: Create Miles
 sidebar_label: Create Miles
-slug: /dapp-miles/miles-use-case2
+slug: /dapp-miles/create-miles
 ---
 
 import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-The first step is to provide the user account with some miles to spend on reward items in the user interface.
 
-To do so, invoke the `add` entry point of the smart contract. In a real life production situation, miles are created by the application off-chain server which creates miles according to user activity.
+In order to consume miles, it is first required that the contract's admin account provides your user account with some new miles. To do so, it is necessary to invoke the `add` entry point of the smart contract.
 
-In this DApp example, the off-chain server is not provided and the creation operation is done manually by invoking the smart contract's `add` entry point:
+In a real production situation, miles are created by the DApp's off-chain server which creates miles according to user activity.
 
-## `add` entry point
+In this DApp example, the off-chain server is not provided and the creation operation is done manually by invoking the smart contract's `add` entry point. To do so, it is necessary to import the contract's admin account in the Thanos wallet as explained below.
+
+## Import the smart contract's admin account
+
+The process to is two-steps:
+1. download the admin faucet file (<Link to="/docs/dapp-tools/accounts#admin-account">instructions</Link>)
+2. import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
+
+It is suggested that you name that account "Admin" for ease of use.
+
+## Provide you with new miles
+
+### `add` entry point
 
 The `add`entry point to create miles and associate to a user address is presented in <Link to="/docs/dapp-miles/miles-contract-interface#add">this section</Link>.
 
@@ -34,7 +45,7 @@ where:
 
 This entry point may only be called by <u>the contract's admin account</u>. If you have not registered the admin address in the wallet, go to the <Link to="/docs/dapp-miles/miles-use-case1">Prerequisites</Link> page.
 
-## Miles creation transaction
+### Miles creation transaction
 
 The smart contract is available at the following address:
 

@@ -14,7 +14,6 @@ module.exports = {
     ],
   miles: [
     'dapp-miles/miles1',
-    'dapp-miles/miles4',
     {
       type: 'category',
       label: 'Use Case',
@@ -98,7 +97,7 @@ module.exports = {
       type: 'category',
       label: 'Use Case',
       items: [
-        'dapp-ideabox/ideabox3', 'dapp-ideabox/ideabox4'
+        'dapp-ideabox/ideabox3', 'dapp-ideabox/ideabox4', 'dapp-ideabox/ideabox10'
       ],
     },
     {

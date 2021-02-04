@@ -2,7 +2,7 @@
 id: miles5
 title: Consume Miles
 sidebar_label: Consume Miles
-slug: /dapp-miles/miles-use-case3
+slug: /dapp-miles/consume-miles
 ---
 import DappButton from '../DappButton';
 import DappFigure from '../DappFigure';

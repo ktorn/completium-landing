@@ -1,8 +1,8 @@
 ---
 id: ideabox4
-title: Use case
-sidebar_label: Use case
-slug: /dapp-ideabox/usecase
+title: Register Voter
+sidebar_label: Register voter
+slug: /dapp-ideabox/registervoter
 ---
 
 import DappIcon from '../DappIcon';
