@@ -40,7 +40,6 @@ module.exports = {
   ],
   iot: [
     'dapp-iot/iot1',
-    'dapp-iot/iot2',
     {
       type: 'category',
       label: 'Use Case',
@@ -66,7 +65,6 @@ module.exports = {
   ],
   game: [
     'dapp-game/game1',
-    'dapp-game/game2',
     {
       type: 'category',
       label: 'Use Case',
@@ -92,7 +90,6 @@ module.exports = {
   ],
   ideabox: [
     'dapp-ideabox/ideabox1',
-    'dapp-ideabox/ideabox2',
     {
       type: 'category',
       label: 'Use Case',
@@ -118,7 +115,6 @@ module.exports = {
   ],
   escrow: [
     'dapp-escrow/escrow1',
-    'dapp-escrow/escrow2',
     {
       type: 'category',
       label: 'Use Case',
@@ -144,7 +140,6 @@ module.exports = {
   ],
   nonfungible: [
     'dapp-nonfungible/nonfungible1',
-    'dapp-nonfungible/nonfungible2',
     {
       type: 'category',
       label: 'Use Case',
@@ -170,7 +165,6 @@ module.exports = {
   ],
   dex: [
     'dapp-dex/dex1',
-    'dapp-dex/dex2',
     {
       type: 'category',
       label: 'Use Case',
@@ -196,7 +190,6 @@ module.exports = {
   ],
   zcb: [
     'dapp-zcb/zcb1',
-    'dapp-zcb/zcb2',
     {
       type: 'category',
       label: 'Use Case',

@@ -1,6 +1,6 @@
 ---
 id: iot3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-iot/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-iot/presentation
 ---
