@@ -2,7 +2,7 @@
 id: zcb5
 title: Technical guide
 sidebar_label: Technical guide
-slug: /dapp-zcb/presentation
+slug: /dapp-zcb/tg-presentation
 ---
 
 import DappIcon from '../DappIcon';

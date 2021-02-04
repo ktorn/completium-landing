@@ -1,8 +1,8 @@
 ---
 id: nonfungible3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-nonfungible/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-nonfungible/presentation
 ---
 
 import DappIcon from '../DappIcon';

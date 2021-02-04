@@ -2,7 +2,7 @@
 id: dex5
 title: Technical guide
 sidebar_label: Technical guide
-slug: /dapp-dex/presentation
+slug: /dapp-dex/tg-presentation
 ---
 
 import DappIcon from '../DappIcon';

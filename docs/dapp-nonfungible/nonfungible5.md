@@ -2,7 +2,7 @@
 id: nonfungible5
 title: Technical guide
 sidebar_label: Technical guide
-slug: /dapp-nonfungible/presentation
+slug: /dapp-nonfungible/tg-presentation
 ---
 
 import DappIcon from '../DappIcon';

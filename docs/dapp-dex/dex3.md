@@ -1,8 +1,8 @@
 ---
 id: dex3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-dex/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-dex/presentation
 ---
 
 import DappIcon from '../DappIcon';

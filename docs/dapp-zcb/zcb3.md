@@ -1,8 +1,8 @@
 ---
 id: zcb3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-zcb/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-zcb/Presentation
 ---
 
 import DappIcon from '../DappIcon';

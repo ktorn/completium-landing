@@ -1,8 +1,8 @@
 ---
 id: ideabox3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-ideabox/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-ideabox/presentation
 ---
 
 import DappIcon from '../DappIcon';

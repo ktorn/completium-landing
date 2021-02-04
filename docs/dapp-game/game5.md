@@ -2,7 +2,7 @@
 id: game5
 title: Technical guide
 sidebar_label: Technical guide
-slug: /dapp-game/presentation
+slug: /dapp-game/tg-presentation
 ---
 
 import DappIcon from '../DappIcon';

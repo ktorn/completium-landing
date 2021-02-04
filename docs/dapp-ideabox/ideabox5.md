@@ -2,7 +2,7 @@
 id: ideabox5
 title: Technical guide
 sidebar_label: Technical guide
-slug: /dapp-ideabox/presentation
+slug: /dapp-ideabox/tg-presentation
 ---
 
 import DappIcon from '../DappIcon';

@@ -1,8 +1,8 @@
 ---
 id: game3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-game/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-game/Presentation
 ---
 
 import DappIcon from '../DappIcon';

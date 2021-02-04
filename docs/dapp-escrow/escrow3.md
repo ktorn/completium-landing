@@ -1,8 +1,8 @@
 ---
 id: escrow3
-title: Prerequisites
-sidebar_label: Prerequisites
-slug: /dapp-escrow/prerequisites
+title: Use Case Presentation
+sidebar_label: Presentation
+slug: /dapp-escrow/Presentation
 ---
 
 import DappIcon from '../DappIcon';
