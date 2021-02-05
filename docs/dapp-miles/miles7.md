@@ -33,11 +33,26 @@ The contract may then be referred to as `miles` in future interactions.
 
 If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/accounts#admin-account">admin</Link> account. See this section for more information.
 
-The address of the newly originated contract is visible in the command output:
+The address of the newly originated contract is visible in the command output, as illustrated below:
 
-You may then got to Better call dev contract explorer to check it:
+<DappFigure img="miles-newcontract.png"/>
+
+A smart contract address starts with `KT1`. In the situation above, the new contract's address is `KT19TYkVxnUb1m9DoWbSASqY6XQdVLQFCK8F`.
+
+You may got to <Link to="/docs/dapp-tools/bcd">Better call dev</Link> contract explorer to check it:
 
 <DappButton url="https://better-call.dev/" txt="go to better call dev"/>
+
+The new contract address needs to be set in the DApp's `src/settings.js` file:
+
+```js
+/////////////////////////////////////////////////////////////////////////////
+// FIX ME
+// set new contract address
+/////////////////////////////////////////////////////////////////////////////
+export const  contractAddress = "KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86"
+```
+
 
 ## Add miles
 
@@ -72,7 +87,7 @@ where:
 * USER_ADDRESS is replaced by the DApp user account to receive the miles
 * TOMORROW is replaced by a date in the future, for example tomorrow
 
-In the terminal enter the following command:
+In the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> enter the following command:
 
 ```bash
 completium-cli call miles as admin

@@ -31,6 +31,6 @@ The screenshot below illustrates the gitpod interface:
 You may also clone the repository on your device with the following command:
 
 ```bash
-$ git clone --branch technical-guide https://github.com/edukera/completium-dapp-miles.git
+git clone --branch technical-guide https://github.com/edukera/completium-dapp-miles.git
 ```
 

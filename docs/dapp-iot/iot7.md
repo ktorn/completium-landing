@@ -5,7 +5,7 @@ sidebar_label: Contract Interactions
 slug: /dapp-iot/interactions
 ---
 
-## Connect to Thanos' utilities
+## Connect to Thanos Wallet
 
 ```js
 function App() {
@@ -25,7 +25,7 @@ function App() {
 ```js
 function App() {
     return (
-        <DAppProvider appName={appName}>
+    <DAppProvider appName={appName}>
       <React.Suspense fallback={null}>
         <PageRouter />
       </React.Suspense>
