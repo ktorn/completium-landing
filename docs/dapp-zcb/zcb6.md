@@ -1,8 +1,8 @@
 ---
 id: zcb6
 title: Contract Origination
-sidebar_label: Contract Origination
-slug: /dapp-zcb/origination
+sidebar_label: Contract compilation
+slug: /dapp-zcb/compilation
 ---
 
 import DappIcon from '../DappIcon';
