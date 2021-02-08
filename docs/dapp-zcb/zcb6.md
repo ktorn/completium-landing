@@ -1,6 +1,6 @@
 ---
 id: zcb6
-title: Contract Origination
+title: Contract Compilation
 sidebar_label: Contract compilation
 slug: /dapp-zcb/compilation
 ---
