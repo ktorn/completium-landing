@@ -1,8 +1,8 @@
 ---
 id: escrow6
-title: Contract Origination
-sidebar_label: Contract Origination
-slug: /dapp-escrow/origination
+title: Contract Compilation
+sidebar_label: Contract Compilation
+slug: /dapp-escrow/compilation
 ---
 
 import DappIcon from '../DappIcon';
