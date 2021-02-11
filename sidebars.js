@@ -44,7 +44,7 @@ module.exports = {
       type: 'category',
       label: 'Use Case',
       items: [
-        'dapp-iot/iot3', 'dapp-iot/iot4'
+        'dapp-iot/iot3', 'dapp-iot/iot4', 'dapp-iot/iot40'
       ],
     },
     {

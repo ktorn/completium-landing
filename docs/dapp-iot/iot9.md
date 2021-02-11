@@ -27,6 +27,13 @@ entry start () {
 ## Interrupt
 
 ```archetype
+function get_return_tz () : tez {
+    var res : int = 1 / get_rate_in_s_by_utz() * (dateofstop - now);
+    return (res * 1utz)
+}
+```
+
+```archetype
 entry interrupt () {
     require {
         r2: caller = opt_get(user) and now < dateofstop

@@ -13,7 +13,7 @@ The smart contract is at this location:
 
 `~/completium-dapp-miles/contract/miles_with_expiration.arl`
 
-The contract is written in Archetype language. Go to the Smart contract section for a detailed presentation.
+The contract is written in <Link to="/docs/dapp-tools/archetype">Archetype</Link> language. Go to the Smart contract section for a detailed presentation.
 
 The setup consists in deploying the contract and adding mile to the user account.
 

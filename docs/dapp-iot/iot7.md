@@ -5,7 +5,21 @@ sidebar_label: Contract Interactions
 slug: /dapp-iot/interactions
 ---
 
+import DappButton from '../DappButton';
+import DappFigure from '../DappFigure';
+import Link from '@docusaurus/Link';
+
 ## Connect to Thanos Wallet
+
+The `src/dapp.js` file defines the necessary utilities to connect the DApp to the blockchain via the Thanos wallet:
+
+* check whether wallet is connected
+* get the Taquito's object
+* ...
+
+In order to make it available accross the React project, these methods are managed with a Constate storage. Constate provides a local centralized storage for React project with minimum effort.
+
+`src/App.js` defines a node `DAppProvider` that needs to be wrap the App node. The FIX ME section is to be found line 18 in 'src/DApp.js' file:
 
 ```js
 function App() {
@@ -22,6 +36,8 @@ function App() {
 }
 ```
 
+The code below shows how to declare the `DAppProvider` so that it makes the Thanos utilities available to the DApp:
+
 ```js
 function App() {
     return (
@@ -35,6 +51,13 @@ function App() {
 ```
 
 ## Read Connected Object parameters
+
+The DApp needs to read the smart contract's storage to know about the connected object data:
+* price (nb. per minute)
+* date of stop service
+* ...
+
+The `loadSwitchContent` line 66 of `Dapp.js` file is called to read and store the connected object parameters:
 
 ```js
 async function loadSwitchContent () {
@@ -53,7 +76,9 @@ async function loadSwitchContent () {
   }
 ```
 
-```js
+The code blow reads the contract storage:
+
+```js {2,6}
     const Tezos = new TezosToolkit('https://delphinet-tezos.giganode.io');
     var contract  = await Tezos.contract.at(contractAddress);
     var cstorage   = await contract.storage();
@@ -69,7 +94,14 @@ async function loadSwitchContent () {
     });
 ```
 
+`rate` is of `rational` type in the contract. In <Link to="/docs/dapp-tools/archetype">Archetype</Link> language, rational are encoded as a pair of `int` and `nat`. That's why you need to retrieve numerator and denominator from Taquito's transcoded value (line 6).
+
+
 ## Read account
+
+Account balance is quite straightforward to retrieve.
+
+Implement the `loadBalance` function line 22 of `src/components/Account.js` file:
 
 ```js
 const loadBalance = React.useCallback(async () => {
@@ -81,6 +113,8 @@ const loadBalance = React.useCallback(async () => {
 }, [tezos, account, props.setBalance]);
 ```
 
+The code below retrieves the balance and converts it from mutez to tz:
+
 ```js
 const loadBalance = React.useCallback(async () => {
     const bal = await tezos.tz.getBalance(address);
@@ -89,6 +123,8 @@ const loadBalance = React.useCallback(async () => {
 ```
 
 ## Start service
+
+The <Link to="/docs/dapp-iot/implementation#start">start</Link> entry point needs to be called with the current amount of tez in the `handleStart` method line 30 in `src/components/Switch.js` file:
 
 ```js
 const handleStart = (event) => {
@@ -100,7 +136,9 @@ const handleStart = (event) => {
 }
 ```
 
-```js
+Copy-paste the code below to implement `handleStart`:
+
+```js {4}
 tezos.wallet.at(contractAddress).then(contract => {
     var price = (props.switch.rate * duration).toFixed(6);
     console.log(`calling start with ${price} XTZ`);
@@ -119,7 +157,25 @@ tezos.wallet.at(contractAddress).then(contract => {
 });
 ```
 
+The Taquito's contract object is retrieved with the following code:
+
+```js
+tezos.wallet.at(contractAddress).then(contract => {
+    ...
+});
+```
+
+The Taquito's contract's storage object is retrieved with the following code:
+
+```js
+contract.storage().then(storage => {
+    ...
+}
+```
+
 ## Interrupt service
+
+The <Link to="/docs/dapp-iot/implementation#interrupt">interrupt</Link> entry point needs to be called with the current amount of tez in the `handleInterrupt` method line 129 in `src/components/Switch.js` file:
 
 ```js
 const handleInterrupt = () => {
@@ -129,6 +185,8 @@ const handleInterrupt = () => {
     ///////////////////////////////////////////////////////////////////////////
 }
 ```
+
+Copy-paste the code below to implement `handleInterrupt`:
 
 ```js
 tezos.wallet.at(contractAddress).then(contract => {

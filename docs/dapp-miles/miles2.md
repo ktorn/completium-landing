@@ -32,7 +32,7 @@ Below is a screenshot of the user interface once the wallet's account connected:
 * cost in miles
 * title
 
-Click on "Get it!" button to order it. This is calling the smart contract's 'consume' entrypoint.
+Click on "Get it!" button to order it. This is calling the smart contract's <Link to="/docs/dapp-miles/miles-contract-interface#consume">consume</Link> entrypoint.
 
 ## Create a user account
 

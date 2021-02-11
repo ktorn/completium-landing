@@ -18,7 +18,7 @@ The `src/dapp.js` file defines the necessary utilities to connect the DApp to th
 
 In order to make it available accross the React project, these methods are managed with a <a href="https://www.npmjs.com/package/constate">Constate</a> storage. Constate provides a local centralized storage for React project with minimum effort.
 
-`dapp.js` defines a node `DAppProvider` that needs to be wrap the App node. The *FIX ME* section is to be found line 53 du fichier `src/DApp.js`:
+`dapp.js` defines a node `DAppProvider` that needs to be wrap the App node. The *FIX ME* section is to be found line 53 in   `src/DApp.js` file:
 
 ```js
 function App() {
@@ -34,7 +34,7 @@ function App() {
   );
 }
 ```
-The code blow shows how to declare the `DAppProvider` so that it makes the Thanos utilities available to the DApp:
+The code below shows how to declare the `DAppProvider` so that it makes the Thanos utilities available to the DApp:
 
 ```js
 function App() {
