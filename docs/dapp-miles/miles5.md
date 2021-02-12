@@ -8,7 +8,7 @@ import DappButton from '../DappButton';
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
-In this step, miles are consumed on the DApp user interface. Click the button below to open the DApp:
+Miles are consumed on the DApp user interface. Click the button below to open the DApp:
 
 <DappButton url="https://edukera.github.io/completium-dapp-miles/" txt="open dapp"/>
 
@@ -18,13 +18,13 @@ Connect to the DApp by clicking the "Connect" button:
 
 <DappFigure img='miles-connect1.png' width='35%'/>
 
-Then select the user account. If you don't have a dedicated user account, go to the <Link to="/docs/dapp-miles/create-miles">Prerequisites</Link> page.
+Then select the user account. If you don't have a dedicated user account, go to the <Link to="/docs/dapp-miles/usecase-presentation#create-a-user-account">Presentation</Link> page.
 
 Once connected, the number of valid miles (ie. with expiration date in the future) is displayed:
 
 <DappFigure img='miles-connect3.png' width='100%'/>
 
-If the Thanos wallet is not installed (as a browser extension), then the "Install Thanos" button is displayed..
+If the Thanos wallet is not installed (as a browser extension), then the "Install Thanos" button is displayed.
 
 ## Pick reward item
 
