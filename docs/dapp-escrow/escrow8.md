@@ -51,6 +51,8 @@ states =
 
 ## Entry points
 
+### Transitions
+
 ```archetype
 transition abortCreated () {
   called by buyer
@@ -74,6 +76,8 @@ transition abort () {
 }
 ```
 
+### Fund
+
 ```archetype
 transition fund () {
   called by buyer
@@ -81,6 +85,8 @@ transition fund () {
   to Funded when { transferred >= (100% + taxrate + securityrate) * price }
 }
 ```
+
+### Complete
 
 ```archetype
 transition complete () {
