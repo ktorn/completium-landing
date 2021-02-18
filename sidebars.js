@@ -169,7 +169,7 @@ module.exports = {
       type: 'category',
       label: 'Use Case',
       items: [
-        'dapp-dex/dex3', 'dapp-dex/dex4'
+        'dapp-dex/dex3', 'dapp-dex/dex4',  'dapp-dex/dex10'
       ],
     },
     {
