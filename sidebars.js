@@ -144,7 +144,7 @@ module.exports = {
       type: 'category',
       label: 'Use Case',
       items: [
-        'dapp-nonfungible/nonfungible3', 'dapp-nonfungible/nonfungible4'
+        'dapp-nonfungible/nonfungible3', 'dapp-nonfungible/nonfungible4', 'dapp-nonfungible/nonfungible10'
       ],
     },
     {
