@@ -8,6 +8,7 @@ slug: /dapp-miles
 import DappIcon from '../DappIcon';
 import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
+import Link from '@docusaurus/Link';
 
 <DappFigure img='miles_screenshot.png' width='100%'/>
 
@@ -20,7 +21,7 @@ Customers of a service (transport, gaming, grocery, ...) receive miles in reward
 Such miles rewarding program are put in place by Marketing departments to retain customers.
 ## DApp
 
-This Dapp example provides the Tezos's smart contract for miles management, and a web interface to interact with the contract.
+This Dapp example provides the Tezos's <Link to='/docs/dapp-tools/tezos#smart-contract'>smart contract</Link> for miles management, and a web interface to interact with the contract.
 
 In this example, each mile has an *expiration date* beyond which it cannot be consumed. The smart contract guarantees that only valid miles can be consumed.
 
