@@ -63,7 +63,7 @@ The Dapp architecture is 3-tier:
 
 Interactions between these three elements are illustrated in the schema below:
 
-<DappFigure img='game-archi.svg' width='100%'/>
+<DappFigure img='game-archi.svg' width='80%'/>
 
 The smart contract provides other entry points for administration purpose. The complete interface is presented <Link to='/docs/dapp-game/interface'>here</Link>.
 

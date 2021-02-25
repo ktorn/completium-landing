@@ -47,7 +47,7 @@ As a consequence, it is advised that the voter uses a *dedicated* address for th
 
 Note that all the information about the address is available though: when did it vote, for which idea and so on.
 
-The `register` entry point requires that the DApp chairman knows the identity that goes with the address in order to decide whether to register the address.
+The `register` entry point requires that the DApp chairman knows the identity that goes with the address in order to decide whether to register the address. The off-chain register process may consist for example in sending the chairmain an email with the address to register.
 
 :::info
 If voters use dedicated addresses, voters identity is only known by the DApp chairmain

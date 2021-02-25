@@ -9,6 +9,8 @@ slug: /dapp-tools/tezos
 
 ## Getting starting
 
+## Signing data
+
 ## Smart contract
 
 ### Micheslon
