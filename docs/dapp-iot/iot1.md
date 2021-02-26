@@ -16,10 +16,10 @@ import Link from '@docusaurus/Link';
 
 ## Introduction
 
- A public connected object is activated for a certain duration against payment. Such objects may be:
- * electric vehicle supply equipment
- * advertising display equipment (online or IRL)
- * jukeboxes in public places (cafés, urban equipments, ...)
+ A public connected object is activated for a certain duration against payment. Such an object can be:
+ * an electric vehicle supply equipment
+ * an advertising display equipment (online or IRL)
+ * a jukebox in a public place (café, street urban equipment, ...)
  * ...
 
 ## DApp
@@ -33,7 +33,7 @@ You may switch it on and off via the DApp's web interface by sending XTZ to the 
 
 The connected object is permanently reading its state and service information in its associated smart contract.
 
-<DappFigure img='iot-archi.svg' width='100%'/>
+<DappFigure img='iot-archi.svg' width='80%'/>
 
 0. The customer interacts with the smart contract through the DApp's <Link to="/docs/dapp-iot/presentation">web interface</Link>. The smart contract provides two entry points:
   * `start` to start the service

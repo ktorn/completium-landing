@@ -68,6 +68,17 @@ For simplicity purpose, the contract indexer and seller back office interface ar
 
 ### Benefits
 
+The main operational benefit is the cost reduction due to the absence of centralized process. Plus the orginiation (deployment) and operation costs of the smart contract are very low.
 
+Moreover the payment process is transparent since transfer rules are publically available as the smart contract execution code.
 
 ### Discussion
+
+The payment process presented here does not handle the failure of delivery: indeed if the item is not delivered, the buyer cannot transfer payment, nor abort it (because the seller has sent the item).
+
+In order to fix that, we need the <u>delivery thrid party</u> to ensure the payment process in case of failure: the delivery third party is given the authority to abort the payment and funds the contract with a *insurance deposit*; this deposit is transferred to the seller in case of delivery failure, and paid back to the delivery third party when the buyer finalizes the process, as illustrated below:
+
+<DappFigure img='escrow-schema2.svg' width='60%'/>
+
+1. the delivery third party (DTP) transfer the insurance deposit once the escrow is accepted by the seller
+2. 3 transfers when the delivery fails: buyer is paid back and insurance deposit is transferred to seller
