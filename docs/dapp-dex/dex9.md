@@ -35,7 +35,7 @@ function compute_exchanged(aA : nat, qA : nat, qB : nat) : rational {
 }
 ```
 
-```archetype
+```archetype {6,19,31}
 entry exchange(tA : string, aA: nat, tB : string, aB : nat) {
   require {
     r0 otherwise "SRC_EQ_DST" : tA <> tB;
@@ -48,7 +48,7 @@ entry exchange(tA : string, aA: nat, tB : string, aB : nat) {
       if (abs(expectedB - aB) > epsilon) then fail(("INVALID_B_AMOUNT",expectedB));
       var xtzin : nat = transferred;
       if aA <> xtzin then fail(("INVALID_A_AMOUNT",xtzin));
-      match_option entrypoint<(address * address * nat)>("%transfer",token[tB].addr) with
+      match entrypoint<(address * address * nat)>("%transfer",token[tB].addr) with
       | some(transferB) ->
         transfer 0tz to entry transferB((selfaddress, caller, aB))
       | none -> fail("INVALID_B_ENTRY")
@@ -59,7 +59,7 @@ entry exchange(tA : string, aA: nat, tB : string, aB : nat) {
       var qB = token[tA].poolvalue;
       var expectedB = compute_exchanged(aA,qA,qB);
       if (abs(expectedB - aB) > epsilon) then fail(("INVALID_B_AMOUNT",expectedB));
-      match_option entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
+      match entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
       | some(transferA) ->
         transfer 0tz to entry transferA((caller, selfaddress, aA))
       | none -> fail("INVALID_A_ENTRY")
@@ -74,12 +74,12 @@ entry exchange(tA : string, aA: nat, tB : string, aB : nat) {
       var qB  = token[tB].totalqty;
       var expectedB = compute_exchanged(aT,qTB,qB);
       if (abs(expectedB - aB) > epsilon) then fail(("INVALID_B_AMOUNT",expectedB));
-      match_option entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
+      match entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
       | some(transferA) ->
         transfer 0tz to entry transferA((caller, selfaddress, aA))
       | none -> fail("INVALID_A_ENTRY")
       end;
-      match_option entrypoint<(address * address * nat)>("%transfer",token[tB].addr) with
+      match entrypoint<(address * address * nat)>("%transfer",token[tB].addr) with
       | some(transferA) ->
         transfer 0tz to entry transferA((selfaddress, caller, aB))
       | none -> fail("INVALID_B_ENTRY")
@@ -95,7 +95,7 @@ entry exchange(tA : string, aA: nat, tB : string, aB : nat) {
 
 ```archetype
 entry addLiquidity(tL : string, qL : nat) {
-  match_option entrypoint<(address * address * nat)>("%transfer",token[tL].addr) with
+  match entrypoint<(address * address * nat)>("%transfer",token[tL].addr) with
    | some(transfer_src) ->
      transfer 0tz to entry transfer_src((caller, selfaddress, qL))
    | none -> fail("INVALID_DST_ENTRY")
@@ -121,7 +121,7 @@ entry removeLiquidity(qL : nat, tA : string) {
     var lqtratio = qL / token[tA].totallqt;
     var xtzout = abs(floor(lqtratio * token[tA].poolvalue));
     transfer (xtzout * 1utz) to caller;
-    match_option entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
+    match entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
     | some(transfer_src) ->
       var qty = abs(floor(lqtratio * token[tA].totalqty));
       transfer 0tz to entry transfer_src((selfaddress, caller, qty));

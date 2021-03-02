@@ -23,15 +23,15 @@ Below is a screenshot of the 'Exchange' tab once the wallet's account connected:
 
 <DappFigure img='dex-help1.png' width='100%'/>
 
-①
+① Select City Token or XTZ to exchange
 
-②
+② Enter quantity of City token or XTZ to exchange
 
-③
+③ Select City Token or XTZ to obtain
 
-④
+④ Exchanged quantity of City Token or XTZ to get
 
-⑤
+⑤ Click button to exchange
 
 ### Provide liquidity
 
@@ -39,15 +39,18 @@ Below is a screenshot of the 'Provide liquidity' tab once the wallet's account c
 
 <DappFigure img='dex-help2.png' width='100%'/>
 
-①
+① Select City Token to provide liquidity to; basic liquidity pool data are displayed:
+  * Pool Token balance: quantity of token in Token pool
+  * Pool XTZ balance: quantity of XTZ in Token's XTZ pool
+  * Total liquidity balance: quantity of liquidity tokens
 
-②
+② Enter quantity of City token to provide
 
-③
+③ Enter quantity of XTZ to provide
 
-④
+④ Quantity of liquidity token to get
 
-⑤
+⑤ Click button to provide liquidity
 
 ### Redeem liquidiy
 
@@ -55,15 +58,18 @@ Below is a screenshot of the 'Redeem liquidity' tab once the wallet's account co
 
 <DappFigure img='dex-help3.png' width='100%'/>
 
-①
+① Select City Token to redeem liquidity from; basic liquidity pool data are displayed:
+  * Pool Token balance: quantity of token in Token pool
+  * Pool XTZ balance: quantity of XTZ in Token's XTZ pool
+  * Total liquidity balance: quantity of liquidity tokens
 
-②
+② Enter quantity of liquidity token to exchange
 
-③
+③ Quantity of City token to get
 
-④
+④ Quantity of XTZ to get
 
-⑤
+⑤ Click button to redeem
 
 ## Create a user account
 
