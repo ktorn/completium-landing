@@ -1,7 +1,7 @@
 ---
 id: tools2
-title: Thanos Wallet
-sidebar_label: Thanos Wallet
+title: Temple Wallet
+sidebar_label: Temple Wallet
 slug: /dapp-tools/thanos
 ---
 
@@ -11,20 +11,21 @@ import DappButton from '../DappButton';
 
 <DappFigure img='thanos-site.png' width='100%'/>
 
-## Install Thanos
+:::info
+Former name of the Temple wallet is <b>Thanos</b>; it may then sometimes be referred to as 'Thanos' in some screenshots
+:::
 
-Go the the thanos web page and follow the instructions by clicking on "Install Thanos" button.
+## Install Temple
 
-<DappButton url="https://thanoswallet.com/" txt="go to thanos page"/>
+Go the the Temple web page and follow the instructions by clicking on "Install Thanos" button.
 
-A screenshot of the Thanos site is presented below, showing the "Install Thanos" button in the upper right hand corner:
+<DappButton url="https://templewallet.com/" txt="go to Temple page"/>
 
-
-If you install Thanos for the first time, select the "Create a new wallet" option.
+If you install Temple for the first time, select the "Create a new wallet" option.
 
 ## Import faucet file
 
-In the Thanos user interface, open the menu by clicking the avatar image in the upper right hand corner, and click on the "Import Account" option, as illustrated below:
+In the Temple user interface, open the menu by clicking the avatar image in the upper right hand corner, and click on the "Import Account" option, as illustrated below:
 
 <DappFigure img='thanos-import1.png' width='80%'/>
 

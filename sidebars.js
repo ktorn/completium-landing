@@ -2,15 +2,33 @@ module.exports = {
   docs:  ['doc1', 'doc2', 'doc3'],
   tools:  [
     'dapp-tools/tools1',
-    'dapp-tools/tools10',
-    'dapp-tools/tools9',
-    'dapp-tools/tools8',
-    'dapp-tools/tools7',
-    'dapp-tools/tools3',
-    'dapp-tools/tools2',
-      'dapp-tools/tools4',
-      'dapp-tools/tools5',
-      'dapp-tools/tools6',
+    {
+      type: 'category',
+      label: 'Blockchain',
+      items: [
+        'dapp-tools/tools8',
+        'dapp-tools/tools7',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'User Interface',
+      items: [
+        'dapp-tools/tools10',
+        'dapp-tools/tools9',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Tools',
+      items: [
+        'dapp-tools/tools3',
+        'dapp-tools/tools2',
+        'dapp-tools/tools4',
+        'dapp-tools/tools5',
+        'dapp-tools/tools6',
+      ]
+    },
     ],
   miles: [
     'dapp-miles/miles1',
