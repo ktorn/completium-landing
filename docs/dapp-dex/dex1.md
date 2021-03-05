@@ -33,7 +33,7 @@ Buy and sell City Tokens with the DEX!
 
 A <a href='https://en.wikipedia.org/wiki/Decentralized_exchange' target='_blank'>Decentralized Exchange</a> (DEX) is a business that allows customers to trade cryptocurrencies or digital currencies for other assets in a decentralized way, that is without the need for an intermediary.
 
-The automated market maker's (AMM) principle of the DEX presented in this example DApp is the one of the Uniswap exchange on another blockchain technoloy, as presented in <a href='https://web.stanford.edu/~guillean/papers/uniswap_analysis.pdf' target='_blank'>this paper</a>.
+The automated market maker's (AMM) principle of the DEX presented in this example DApp is the one of the Uniswap exchange on another blockchain technology, as presented in <a href='https://web.stanford.edu/~guillean/papers/uniswap_analysis.pdf' target='_blank'>this paper</a>.
 
 There is a *pool* for each each token from which tokens are withdrawn from and credited to. The quantity of tokens in the pool is noted p.
 

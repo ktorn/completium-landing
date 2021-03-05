@@ -22,11 +22,11 @@ Below is a screenshot of the interface once the wallet's account connected:
 
 <DappFigure img='zcb-help.png' width='100%'/>
 
-①
+① Contract edition area; parameters are highlighted
 
-②
+② Parameters edition area
 
-③
+③ Timeline tab (click to display timeline)
 
 ## Create a user account
 
