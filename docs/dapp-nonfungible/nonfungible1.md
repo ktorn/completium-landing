@@ -16,7 +16,7 @@ import Link from '@docusaurus/Link';
 
 ## Introduction
 
-The *cryptobot* company is issuing a hundred collectibe robot cards. Build your optimal card deck by buying and selling them online!
+The *cryptobot* company is issuing a hundred collectible robot cards. Build your optimal card deck by buying and selling them online!
 
 ## DApp
 

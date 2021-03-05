@@ -24,15 +24,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 
 const dapps = [
-  { name: 'miles', title: 'Fidelity program', img:'streamline-icon-takeoff-ticket.svg', chips:['Marketing'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'iot', title: 'Connected object', img:'streamline-icon-phone-app-idea.svg', chips:['IoT'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'ideabox', title: 'Idea box', img:'streamline-icon-idea-box.svg', chips:['Governance'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'game', title: '2048 competition', img:'streamline-icon-programming-module.svg', chips:['Gaming','Oracle'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'escrow', title: 'Online purchase', img:'streamline-icon-customize-shirt-browser.svg', chips:['Escrow','Payment','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'nonfungible', title: 'Collectible cards', img:'streamline-icon-card-poker.svg', chips:['Token','DeFi','Gaming'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'dex', title: 'Dex', img:'streamline-icon-currencies-exchange.svg', chips:['Token','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'zcb', title: 'Zero coupon bond', img:'streamline-icon-contract-handshake.svg', chips:['Legal','Payment','DeFi'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
-  { name: 'bids', title: 'Bids', img:'streamline-icon-gavel.svg', chips:['Governance'], text:'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica' },
+  { name: 'miles', title: 'Fidelity program', img:'streamline-icon-takeoff-ticket.svg', chips:['Marketing'], text:'Customers of a service (transport, gaming, grocery, ...) receive miles and trade them in for gifts, cash-back, or any kind of reward.' },
+  { name: 'iot', title: 'Connected object', img:'streamline-icon-phone-app-idea.svg', chips:['IoT'], text:'Switch on for a certain duration or interrupt an online bulb connected to a Tezos smart contract, by transferring fund to this smart contract.' },
+  { name: 'ideabox', title: 'Idea box', img:'streamline-icon-idea-box.svg', chips:['Governance'], text:'An online retail company provides an ideabox for customers and/or employees to post ideas to improve customer experience.' },
+  { name: 'game', title: '2048 competition', img:'streamline-icon-programming-module.svg', chips:['Gaming','Oracle'], text:'Win the competition of the famous 2048 game by sliding numbered tiles that pops up at random position on the grid and obtain the highest score.' },
+  { name: 'escrow', title: 'Online purchase', img:'streamline-icon-customize-shirt-browser.svg', chips:['Escrow','Payment','DeFi'], text:'An online retailer provides a decentralized process to transfer payment from buyer to seller without the need for a third party.' },
+  { name: 'nonfungible', title: 'Collectible cards', img:'streamline-icon-card-poker.svg', chips:['Token','DeFi','Gaming'], text:'The cryptobot company is issuing a hundred collectible robot cards. Build your optimal card deck by buying and selling them online!' },
+  { name: 'dex', title: 'Dex', img:'streamline-icon-currencies-exchange.svg', chips:['Token','DeFi'], text:'A Decentralized Exchange (DEX) enbable customers to trade cryptocurrencies without the need for an intermediary.' },
+  { name: 'zcb', title: 'Zero coupon bond', img:'streamline-icon-contract-handshake.svg', chips:['Legal','Payment','DeFi'], text:'Use your company’s online DeFi solution to deploy a templated Zero Coupon bond contract on the Tezos blockchain for your customers.' },
+  { name: 'bids', title: 'Auction', img:'streamline-icon-gavel.svg', chips:['Governance'], text:'Participate in an blockchain-powered online auction of exceptional rare paintings and don’t forget to overbid! (coming soon ...)' },
 ]
 
 const useStyles = makeStyles({
@@ -111,12 +111,12 @@ function Dapps() {
           </Grid> */}
           <Grid item>
             <Typography>
-              Dapps presented below are potential real-life applications that illustrate how to leverage the Tezos blockchain technology to create a new generation of game-changing applications. Tezos is a powerfull self-amending blockchain that comes with a rich technical ecosystem.
+              Dapps presented below are potential real-life applications that illustrate how to leverage the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain technology to create a new generation of game-changing applications. Tezos is a powerfull self-amending blockchain that comes with a rich technical ecosystem. Click button below to discover the technical stack used to developp these DApps.
             </Typography>
           </Grid>
           <Grid item style={{ marginBottom: '60px' }}>
             <Button component={Link} to={useBaseUrl('docs/dapp-tools/tezos/')} variant='outlined' size='large'>
-              Learn about Tezos
+              Technical Stack
             </Button>
           </Grid>
           <Grid item>
