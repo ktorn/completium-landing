@@ -10,8 +10,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-
-import { MathComponent } from 'mathjax-react'
+import MathJax from 'react-mathjax';
 
 <DappFigure img='dex-screen.png' width='100%'/>
 
@@ -43,19 +42,27 @@ Say we want to exchange a quantity qB of Token B against a quantity (qA) of toke
 
 The exchange principle is to consider that the product of *pA* and *pB* is constant, named *constant product markets*. Formally there exists a constant value *k* such that:
 
-<MathComponent tex={String.raw`pB*pA=k`} />
+<MathJax.Provider>
+<MathJax.Node formula={`pB*pA=k`} />
+</MathJax.Provider>
 
 The exchange of *qB* tokens B for *qA* tokens A is designed to respect this constant, which writes:
 
-<MathComponent tex={String.raw`(pB - qB)*(pA + qA)=k`} />
+<MathJax.Provider>
+<MathJax.Node formula={`(pB - qB)*(pA + qA)=k`} />
+</MathJax.Provider>
 
 Each exchange transaction is subject to a fee. Let *f* be the percentage of *qA* that are subject to a fee, so that <MathComponent tex={String.raw`(1-f)*qA`} /> is the quantity left to increment the pool. The constant product market equation then writes:
 
-<MathComponent tex={String.raw`(pB - qB)*(pA + (1-f)*qA)=k`} />
+<MathJax.Provider>
+<MathJax.Node formula={`(pB - qB)*(pA + (1-f)*qA)=k`} />
+</MathJax.Provider>
 
 Which simplifies to:
 
-<MathComponent tex={String.raw`qA = pA * \frac{qB}{(1-f)*(pB-qB)}`} />
+<MathJax.Provider>
+<MathJax.Node formula={`qA = pA * \\frac{qB}{(1-f)*(pB-qB)}`} />
+</MathJax.Provider>
 
 At the beginning, pools A and B are empty and must then be initialized by providing liquidity to both of them, thus setting the initial exchange rate.
 

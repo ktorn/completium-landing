@@ -39,9 +39,9 @@ Transition to *Terminated* is validated if transferred amount and date are valid
 transition terminate () {
   called by issuer
   from Signed to Terminated when {
-    match_option signaturedate with
-    | some(d) ->
-      d + maturityduration <=  now <= d + maturityduration + paybackduration and
+    match signaturedate with
+    | some(s) ->
+      s + maturityduration <= now <= s + maturityduration + paybackduration and
       transferred >= facevalue
     | none -> false
     end
@@ -59,7 +59,7 @@ Transition to 'Disputed' is possible if in *Signed* state after payback period:
 transition dispute () {
   called by subscriber
   from Signed to Disputed when {
-    match_option signaturedate with
+    match signaturedate with
     | some(d) ->
       d + maturityduration + paybackduration <=  now
     | none -> false

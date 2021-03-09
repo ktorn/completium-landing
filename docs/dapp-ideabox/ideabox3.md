@@ -11,7 +11,7 @@ import Link from '@docusaurus/Link';
 
 The Use Case scenario of the <Link to="/docs/dapp-ideabox">Idea box</Link> DApp is two-steps:
 
-1. <Link to="/docs/dapp-ideabox/register">Register</Link> your user account (as the smart contract's admin) to be able to vote for or add a new idea
+1. <Link to="/docs/dapp-ideabox#register">Register</Link> your user account (as the smart contract's admin) to be able to vote for or add a new idea
 2. <Link to="/docs/dapp-ideabox/addidea">Vote</Link> for an idea or <Link to="/docs/dapp-ideabox/addidea">add</Link> a new one
 
 In order to interact with the contract, you need a *user account*. Go to <Link to="/docs/dapp-ideabox/presentation#create-a-user-account">section below</Link> for instructions to create one.

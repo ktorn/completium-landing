@@ -111,7 +111,7 @@ When the transit is complete, you may click on the 'Transfer fund' button in ord
 
 <DappFigure img='escrow-transfer2.png' width='100%'/>
 
-The <Link to='docs/dapp-escrow/interface#complete'>complete</Link> entry point of the escrow contract is called. Below is an example of the 3 generated internal transactions as shown in <Link to='docs/dapp-tools/bcd'>Better call Dev</Link> indexer:
+The <Link to='/docs/dapp-escrow/interface#complete'>complete</Link> entry point of the escrow contract is called. Below is an example of the 3 generated internal transactions as shown in <Link to='docs/dapp-tools/bcd'>Better call Dev</Link> indexer:
 
 <DappFigure img='escrow-transfer3.png' width='100%'/>
 

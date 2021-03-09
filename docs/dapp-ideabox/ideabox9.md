@@ -30,12 +30,12 @@ entry add_idea(ititle : bytes, description : bytes) {
   }
   effect {
     idea.add({
-			id = idea.count();
+      id = idea.count();
       title = ititle;
-			desc = description;
-			creation = now;
-			author = caller
-		})
+      desc = description;
+      creation = now;
+      author = caller
+    })
   }
 }
 ```

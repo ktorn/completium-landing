@@ -10,7 +10,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-import { MathComponent } from 'mathjax-react'
+import MathJax from 'react-mathjax';
 
 ## Set contract parameters
 
@@ -54,7 +54,9 @@ Now the contract is issued, issuer and holder must sign it; go to <Link to='/doc
 
 If signing with the holder address, you need to tranfer the present value (pv):
 
-<MathComponent tex={String.raw`pv = (1 - dr) * fv`} />
+<MathJax.Provider>
+<MathJax.Node formula={`pv = (1 - dr) * fv`} />
+</MathJax.Provider>
 
 where:
 * fv: face value
