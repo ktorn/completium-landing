@@ -36,7 +36,7 @@ module.exports = {
           position: 'left',
           docId: 'tools1'
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        // {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/edukera/completium-landing',
           label: 'GitHub',

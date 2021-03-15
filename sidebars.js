@@ -174,7 +174,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Smart Contract',
+      label: 'FA 2 Smart Contract',
       items: [
         'dapp-nonfungible/nonfungible8',
         'dapp-nonfungible/nonfungible9',
@@ -199,10 +199,24 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Smart Contract',
+      label: 'Smart Contracts',
       items: [
-        'dapp-dex/dex8',
-        'dapp-dex/dex9',
+        {
+          type: 'category',
+          label: 'DEX',
+          items: [ 'dapp-dex/dex8',
+                   'dapp-dex/dex9', ]
+        },
+        {
+          type: 'category',
+          label: 'FA 1.2',
+          items: [
+            'dapp-dex/dex11',
+            'dapp-dex/dex12',
+            'dapp-dex/dex13',
+          ]
+        },
+
       ]
     }
   ],
