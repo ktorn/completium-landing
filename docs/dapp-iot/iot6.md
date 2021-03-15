@@ -35,14 +35,10 @@ A smart contract address starts with `KT1`. In the situation above, the new cont
 
 You may got to <Link to="/docs/dapp-tools/bcd">Better call dev</Link> contract explorer to check it:
 
-<DappButton url="https://better-call.dev/KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU/operations" txt="go to better call dev"/>
+<DappButton url="https://better-call.dev/" txt="go to better call dev"/>
 
 The new contract address needs to be set in the DApp's `src/settings.js` file, like for example:
 
 ```js
-/////////////////////////////////////////////////////////////////////////////
-// FIX ME
-// set new contract address
-/////////////////////////////////////////////////////////////////////////////
 export const contractAddress = "KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU"
 ```
