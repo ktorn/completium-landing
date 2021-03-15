@@ -14,7 +14,7 @@ The smart contract is written in <Link to="/docs/dapp-tools/archetype">Archetype
 In VSCode, open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and enter the following command line to originate (deploy) the smart contract is:
 
 ```bash
-completium-cli deploy ./contract/switch.arl as admin --named iot
+completium-cli deploy ./contract/switch.arl --as admin --named iot
 ```
 
 The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> triggers two operations:
@@ -25,15 +25,17 @@ The contract may then be referred to as `iot` in future interactions.
 
 If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/accounts#admin-account">admin</Link> account. See this section for more information.
 
-The address of the newly originated contract is visible in the command output, as illustrated below:
+The address of the newly originated contract is visible with this command:
 
-<DappFigure img="miles-newcontract.png"/>
+```bash
+completium-cli show contract iot
+```
 
-A smart contract address starts with `KT1`. In the situation above, the new contract's address is `KT19TYkVxnUb1m9DoWbSASqY6XQdVLQFCK8F`.
+A smart contract address starts with `KT1`. In the situation above, the new contract's address is `KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU`.
 
 You may got to <Link to="/docs/dapp-tools/bcd">Better call dev</Link> contract explorer to check it:
 
-<DappButton url="https://better-call.dev/" txt="go to better call dev"/>
+<DappButton url="https://better-call.dev/KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU/operations" txt="go to better call dev"/>
 
 The new contract address needs to be set in the DApp's `src/settings.js` file, like for example:
 
@@ -42,5 +44,5 @@ The new contract address needs to be set in the DApp's `src/settings.js` file, l
 // FIX ME
 // set new contract address
 /////////////////////////////////////////////////////////////////////////////
-export const  contractAddress = "KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86"
+export const contractAddress = "KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU"
 ```
