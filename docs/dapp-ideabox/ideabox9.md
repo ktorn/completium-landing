@@ -61,8 +61,7 @@ entry vote(n : nat, weight : nat) {
 ```archetype
 transition terminate () {
   called by chairman
-  from Activated
-  to Terminated
+  from Activated to Terminated
   with effect {
     for i in idea.select(the.nbvotes >= 5).sort(desc(nbvotes)).head(3) do
         selected.add({i})
