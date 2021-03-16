@@ -15,7 +15,7 @@ import Link from '@docusaurus/Link';
 The fee rate is set to 0.3%:
 
 ```archetype
-constant gamma         : rational = 1 - 0.003
+constant gamma         : rational = 1 - 0.3%
 ```
 
 The difference between the expected exchanged quantitiy and the actual quantitiy must be less than espsilon (in XTZ, see <Link  to='/docs/dapp-dex/implementation#exchange'>exchange</Link> entry point implementation):
