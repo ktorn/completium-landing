@@ -5,6 +5,37 @@ sidebar_label: Contract compilation
 slug: /dapp-zcb/compilation
 ---
 
-import DappIcon from '../DappIcon';
-import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
+import DappFigure from '../DappFigure';
+import Link from '@docusaurus/Link';
+
+The smart contract is written in <Link to="/docs/dapp-tools/archetype">Archetype</Link> language. Go to the <Link to="">Smart contract</Link> section for a detailed presentation.
+
+
+In order to generate the javascript, used in the dapp, here is the command:
+
+```bash
+archetype -t javascript ./contract/zero_coupon_bond.arl > ./src/contract.js
+```
+
+you can now use contract as below:
+
+```js
+import { code, getStorage } from '../contract';
+...
+tezos.wallet.originate({
+      code: code,
+      init: getStorage(
+        zcbState.contractInfo.issueraccount,                         // issuer           : role,
+        zcbState.contractInfo.subscriberaccount,                     // subscriber       : role,
+        zcbState.contractInfo.faceprice * 1000000,                   // facevalue        : tez,
+        mk_rational (parseInt(zcbState.contractInfo.discount), 100), // discount         : rational,
+        zcbState.contractInfo.duration * 60,                         // maturityduration : duration,
+        zcbState.contractInfo.period * 60,                           // paybackduration  : duration,
+        false,                                                       // issuersigned     : bool,
+        false                                                        // subscribersigned : bool
+        )},
+        ).send().then(op => {
+...
+
+```
