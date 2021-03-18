@@ -2,7 +2,7 @@ module.exports = {
   title: 'Completium',
   tagline: 'From conception to completion',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/completium-landing/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
