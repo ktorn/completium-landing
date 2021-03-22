@@ -30,13 +30,17 @@ archetype contract_called
 
 variable n : nat = 42
 
+entry set_n(p : nat) {
+  n := p
+}
+
 getter get_n () { return n }
 
 ```
 
 The smart contract uses a variation of the `transfer` instruction to call the `get_n` entry point. The address of the called contract is passed as parameter:
 
-```archetype
+```archetype {10}
 archetype contract_caller
 
 variable r : nat = 0
@@ -46,7 +50,7 @@ entry set_n(p : nat) {
 }
 
 entry inspect(addr : address) {
-  transfer 0tz to addr call get_n<contract<nat>>(self.set_n)
+  transfer 0tz to addr call get_n<unit * contract<nat>>((Unit, self.set_n))
 }
 ```
 
