@@ -5,6 +5,8 @@ sidebar_label: 7. Assets
 slug: /dapp-tools/tutorials/archetype-assets
 ---
 
+import Link from '@docusaurus/Link';
+
 A collection of assets is a convenient way to store indexed records of data; it comes with a rich API to read and write data to:
 * add, remove, update, addupdate
 * head, tail, sort, select
