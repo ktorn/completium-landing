@@ -1,17 +1,20 @@
 ---
 id: tools7
-title: Archetype
-sidebar_label: Archetype
+title: Presentation
+sidebar_label: Presentation
 slug: /dapp-tools/archetype
 ---
 
+import DappFigure from '../DappFigure';
+import DappButton from '../DappButton';
+import Link from '@docusaurus/Link';
+
+<DappFigure img='archetype.svg' width='50%'/>
+
 ## Language
-
-### Collection
-
-### Partitions
 
 ## Command line
 
-
 ### Micheline generation
+
+## Try Archetype

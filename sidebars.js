@@ -7,7 +7,23 @@ module.exports = {
       label: 'Blockchain',
       items: [
         'dapp-tools/tools8',
-        'dapp-tools/tools7',
+        { type: 'category',
+          label: 'Archetype',
+          items: [
+            'dapp-tools/tools7',
+            { type: 'category',
+              label: 'Tutorial',
+              items: [
+                'dapp-tools/tutorials/tuto1',
+                'dapp-tools/tutorials/tuto2',
+                'dapp-tools/tutorials/tuto3',
+                'dapp-tools/tutorials/tuto4',
+                'dapp-tools/tutorials/tuto5',
+                'dapp-tools/tutorials/tuto6',
+                'dapp-tools/tutorials/tuto7',
+                'dapp-tools/tutorials/tuto8',
+              ] }
+          ] }
       ]
     },
     {
