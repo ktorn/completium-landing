@@ -14,6 +14,7 @@ module.exports = {
             { type: 'category',
               label: 'Tutorial',
               items: [
+                'dapp-tools/tutorials/tuto0',
                 'dapp-tools/tutorials/tuto1',
                 'dapp-tools/tutorials/tuto2',
                 'dapp-tools/tutorials/tuto3',
