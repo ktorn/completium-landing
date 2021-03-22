@@ -39,7 +39,7 @@ var v : rational = 4.2%;
 The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
-completium-cli deploy 3-rat_tranfer.arl
+completium-cli deploy 3-rat_transfer.arl
 ```
 
 ## Call entry point
@@ -47,5 +47,5 @@ completium-cli deploy 3-rat_tranfer.arl
 The following command calls the unique entry point:
 
 ```
-completium call 3-rat_transfer --with '14'
+completium call 3-rat_transfer.arl as admin --amount 10
 ```

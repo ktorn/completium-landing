@@ -37,18 +37,19 @@ entry inc_value () {
 
 transition init () {
   from Created to InProgress
-  when { balance > 3tz }
+  when { transferred > 3tz }
+  with effect { () /* nothing */}
 }
 
-transition complete {
+transition complete () {
   from InProgress to Completed
   when { value > 1 }
-  effect { transfer balance to caller }
+  with effect { transfer balance to caller }
 }
 
-transition interrupt {
+transition interrupt () {
   from InProgress to Interrupted
-  effect { transfer (50% * balance) to caller }
+  with effect { transfer (50% * balance) to caller }
 }
 ```
 

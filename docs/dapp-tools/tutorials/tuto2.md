@@ -29,7 +29,7 @@ entry main(v : nat) {
   called by admin
   require {
       r1: 10 <= v < 20;
-      r2 otherwise "EXPECTED EVEN VALUE": v%2 = 0
+      r2 otherwise "EXPECTED EVEN VALUE": value % 2 = 0
   }
   effect {
      value := v;
@@ -53,6 +53,6 @@ completium-cli deploy 2-exec_condition.arl
 The following command calls the unique entry point:
 
 ```
-completium call 2-exec-condition --with '14'
+completium call 2-exec-condition as admin --with '14'
 ```
 

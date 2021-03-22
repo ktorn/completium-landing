@@ -37,5 +37,5 @@ completium-cli deploy 1-hello.arl
 The following command calls the unique entry point:
 
 ```
-completium call 1-hello
+completium call 1-hello.arl
 ```
