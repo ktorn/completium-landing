@@ -43,10 +43,10 @@ asset vehicle {
   {"vin0002"; White;  0; 2020-01-01};
   {"vin0003"; Red;    0; 2020-01-01};
   {"vin0004"; Red;    0; 2020-01-01};
-  {"vin0005"; Blue;   0; 2020-01-01};
+  {"vin0005"; Yellow; 0; 2020-01-01};
   {"vin0006"; White;  0; 2020-01-01};
-  {"vin0007"; Blue;   0; 2020-01-01};
-  {"vin0008"; Blue;   1; 2019-01-01};
+  {"vin0007"; Yellow; 0; 2020-01-01};
+  {"vin0008"; Yellow; 1; 2019-01-01};
   {"vin0009"; Red;    3; 2019-04-01};
   {"vin0010"; White;  2; 2019-03-01};
   {"vin0011"; Yellow; 2; 2019-02-01}
@@ -124,7 +124,7 @@ completium-cli call 7-assets.arl --entry repair_oldest
 Finally, repaint repaired vehicles in blue:
 
 ```
-completium-cli call 7-assets.arl --entry repaint_repaired --with 'Blue'
+completium-cli call 7-assets.arl --entry repaint_repaired --with '3'
 ```
 
-
+Enums are implemented with integer values starting from 0.

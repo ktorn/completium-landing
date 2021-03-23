@@ -23,6 +23,7 @@ module.exports = {
                 'dapp-tools/tutorials/tuto6',
                 'dapp-tools/tutorials/tuto7',
                 'dapp-tools/tutorials/tuto8',
+                'dapp-tools/tutorials/tuto9',
               ] }
           ] }
       ]

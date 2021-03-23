@@ -1,7 +1,7 @@
 ---
 id: tuto8
-title: Calling another Contract
-sidebar_label: 8. Calling contract
+title: Call another Contract
+sidebar_label: 8. Call a contract
 slug: /dapp-tools/tutorials/archetype-callcontr
 ---
 
@@ -73,7 +73,7 @@ completium-cli deploy 8-2-contract_caller.arl
 The following command calls the unique entry point:
 
 ```
-completium-cli call 8-2-contract_caller as admin --entry '%inspect' --with '@YOUR_KT1_ADDRESS'
+completium-cli call 8-2-contract_caller.arl --entry inspect --with @`completium-cli show contract 8-1-contract_called.arl`
 ```
 
 You can retrieve the address of the called contract with this command:
