@@ -67,5 +67,5 @@ completium-cli call 5-weekday.arl --with 'now'
 or this:
 
 ```
-completium-cli call 5-weekday.arl --with '2020-01-01'
+completium-cli call 5-weekday.arl --with '2008-11-28'
 ```
