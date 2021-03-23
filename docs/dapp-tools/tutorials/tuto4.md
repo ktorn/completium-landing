@@ -51,6 +51,8 @@ The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> c
 completium-cli deploy 4-time_window.arl --amount 50
 ```
 
+Note here that the contract's balance is intialized to 50tz.
+
 ## Call entry point
 
 The following command calls the unique entry point:
