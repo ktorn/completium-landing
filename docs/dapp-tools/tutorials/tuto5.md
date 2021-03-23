@@ -44,7 +44,7 @@ archetype weekday
 variable n : int = 0
 
 entry weekday (d : date) {
-    n := (((d0 - 1970-01-01) + 4d) % 1w) div 1d
+    n := (((d - 1970-01-01) + 4d) % 1w) div 1d
 }
 ```
 
