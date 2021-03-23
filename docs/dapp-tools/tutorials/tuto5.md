@@ -26,17 +26,17 @@ In this example, convert a date to a day of week, so that:
 The formula to implement is:
 
 <MathJax.Provider>
-<MathJax.Node formula={`n = \\lfloor\\frac{(d + 4d) \\mod 7d}{1d}\\rfloor`} />
+<MathJax.Node formula={`n = \\lfloor\\frac{(d + 4d) \\mod 1w}{1d}\\rfloor`} />
 </MathJax.Provider>
 
 where:
 * *d* is the date to compute the day of
 * *4d* is the duration of four days
+* *1w* is the duration of one week
 * *mod* is the modulo operator: it translates to `%` operator
 * ⌊ X ⌋ is the floor function
 
 The euclidean division `div` will efficiently implement the floor and division operations.
-The `date_of_timestamp` function returns a date from a timestamp. The convertion from date to timestamp is done manually by subtracting two dates.
 
 ```archetype {6}
 archetype weekday
@@ -44,7 +44,7 @@ archetype weekday
 variable n : int = 0
 
 entry weekday (d : date) {
-    n := (((d0 - date_from_timestamp(0)) + 4d) % 7d) div 1d
+    n := (((d0 - 1970-01-01) + 4d) % 1w) div 1d
 }
 ```
 
