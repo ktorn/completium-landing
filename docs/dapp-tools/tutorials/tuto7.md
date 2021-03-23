@@ -113,7 +113,7 @@ The following repairs the 3 oldest vehicles:
 completium-cli call 7-assets.arl --entry repair_oldest
 ```
 
-Finally, repaint repaired vehicles:
+Finally, repaint repaired vehicles in blue:
 
 ```
 completium-cli call 7-assets.arl --entry repaint_repaired --with 'Blue'
