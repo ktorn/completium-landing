@@ -44,10 +44,10 @@ completium-cli deploy 3-rat_transfer.arl
 
 ## Call entry point
 
-The following command calls the unique entry point and sends 10tz to the contract with the `--amount` option:
+The following command calls the unique entry point and sends *10tz* to the contract with the `--amount` option:
 
 ```
-completium-cli call 3-rat_transfer.arl as admin --amount 10
+completium-cli call 3-rat_transfer.arl --amount 10
 ```
 
 ## View contract

@@ -68,15 +68,15 @@ completium-cli deploy 6-state_machine.arl
 The goal here is to set the state machines to `Completed` state. The following commands are necessary:
 
 ```
-completium call 6-state_machine
+completium-cli call 6-state_machine.arl
 ```
 
 
 ```
-completium call 6-state_machine
+completium-cli call 6-state_machine.arl
 ```
 
 
 ```
-completium call 6-state_machine
+completium-cli call 6-state_machine.arl
 ```

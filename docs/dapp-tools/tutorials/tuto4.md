@@ -58,3 +58,4 @@ The following command calls the unique entry point:
 ```
 completium call 4-time_window.arl as admin --amount 50
 ```
+

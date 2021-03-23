@@ -31,5 +31,16 @@ To add a new account from a <a href='https://faucet.tzalpha.net/'>faucet</a> fil
 completium-cli generate account <ACCOUNT_NAME> --from-faucet <FAUCET_FILE>
 ```
 
+By default, completium-cli uses the testnet. The following command displays the endpoint's URL:
+
+```
+completium-cli show endpoint
+```
+
+Use the following command to switch to another endpoint:
+
+```
+completium-cli switch endpoint
+```
 
 
