@@ -1,7 +1,7 @@
 ---
 id: tuto9
 title: Testing a contract
-sidebar_label: 8. Testing a contract
+sidebar_label: 9. Testing a contract
 slug: /dapp-tools/tutorials/archetype-test
 ---
 
