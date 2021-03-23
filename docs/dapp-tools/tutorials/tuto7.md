@@ -90,13 +90,33 @@ vehicle.update(v, { color := newc })
 The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
-completium-cli deploy 1-hello.arl
+completium-cli deploy 7-assets.arl
 ```
 
 ## Call entry point
 
-The following command calls the unique entry point:
+The following command adds a vehicle:
 
 ```
-completium call 1-hello
+completium-cli call 7-assets.arl --entry addvehicle --with '"vin0012"'
 ```
+
+The following command repairs vehicle with vin `vin0005`:
+
+```
+completium-cli call 7-assets.arl --entry repair --with '"vin0005"'
+```
+
+The following repairs the 3 oldest vehicles:
+
+```
+completium-cli call 7-assets.arl --entry repair_oldest
+```
+
+Finally, repaint repaired vehicles:
+
+```
+completium-cli call 7-assets.arl --entry repaint_repaired --with 'Blue'
+```
+
+

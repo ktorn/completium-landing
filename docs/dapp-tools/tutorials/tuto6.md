@@ -90,3 +90,10 @@ At this stage, `value` is `2`, which allows transiting to `Completed`.
 ```
 completium-cli call 6-state_machine.arl --entry complete
 ```
+
+This last call may be replaced by the following command to go to `Interrupted` state:
+
+```
+completium-cli call 6-state_machine.arl --entry interrupt
+```
+
