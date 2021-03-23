@@ -33,10 +33,10 @@ enum color =
 | Blue
 
 asset vehicle {
-   vin : string;
-   c : color = Yellow;
-   nbrepairs : nat = 0;
-   lastrepair : date = 2020-01-01;
+   vin        : string;
+   c          : color = Yellow;
+   nbrepairs  : nat   = 0;
+   lastrepair : date  = now;
 } initialized by {
   {"vin0000"; White;  0; 2020-01-01};
   {"vin0001"; Yellow; 0; 2020-01-01};
@@ -61,7 +61,7 @@ entry repair (k : string) {
 }
 
 entry repair_oldest() {
-  for v in vehicle.sort(desc(lastrepair)).head(3) do
+  for v in vehicle.sort(lastrepair).head(3) do
     vehicle.update(v, { nbrepairs += 1; lastrepair = now })
   done
 }
@@ -83,6 +83,14 @@ In the `repaint_repaired` entry point, this update syntax is adapted when a sing
 
 ```
 vehicle.update(v, { color := newc })
+```
+
+At last, note that the `sort` funtion sorts in ascending order. Another way to implement that would be:
+
+```archetype {1}
+  for v in vehicle.sort(desc(lastrepair)).tail(3) do
+    vehicle.update(v, { nbrepairs += 1; lastrepair = now })
+  done
 ```
 
 ## Deploy
