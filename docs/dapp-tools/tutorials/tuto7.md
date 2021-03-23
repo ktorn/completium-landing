@@ -53,22 +53,22 @@ asset vehicle {
 }
 
 entry addvehicle (pvin : string) {
-  vehicle.add({ pvin })
+  vehicle.add({ vin = pvin })
 }
 
 entry repair (k : string) {
-  vehicle.update(k, { nbrepairs += 1; lastrepair := now})
+  vehicle.update(k, { nbrepairs += 1; lastrepair = now})
 }
 
 entry repair_oldest() {
   for v in vehicle.sort(desc(lastrepair)).head(3) do
-    vehicle.update(v, { nbrepairs += 1; lastrepair := now })
+    vehicle.update(v, { nbrepairs += 1; lastrepair = now })
   done
 }
 
 entry repaint_repaired (newc : color) {
   for v in vehicle.select(the.nbrepairs >= 1) do
-    vehicle[v].color := newc
+    vehicle[v].c := newc
   done
 }
 ```

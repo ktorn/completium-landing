@@ -38,7 +38,7 @@ where:
 The euclidean division `div` will efficiently implement the floor and division operations.
 The `date_of_timestamp` function returns a date from a timestamp. The convertion from date to timestamp is done manually by subtracting two dates.
 
-```archetype
+```archetype {6}
 archetype weekday
 
 variable n : int = 0
@@ -53,7 +53,7 @@ entry weekday (d : date) {
 The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
-completium-cli deploy 1-hello.arl
+completium-cli deploy 5-weekday.arl
 ```
 
 ## Call entry point
@@ -61,5 +61,11 @@ completium-cli deploy 1-hello.arl
 The following command calls the unique entry point:
 
 ```
-completium call 1-hello
+completium call 5-weekday.arl as admin --with 'now'
+```
+
+or this:
+
+```
+completium call 5-weekday.arl as admin --with '2020-01-01'
 ```

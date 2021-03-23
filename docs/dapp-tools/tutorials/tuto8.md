@@ -34,7 +34,7 @@ entry set_n(p : nat) {
   n := p
 }
 
-getter get_n () { return n }
+getter get_n () : nat { return n }
 
 ```
 
@@ -45,12 +45,12 @@ archetype contract_caller
 
 variable r : nat = 0
 
-entry set_n(p : nat) {
+entry set_r(p : nat) {
   r := p
 }
 
 entry inspect(addr : address) {
-  transfer 0tz to addr call get_n<unit * contract<nat>>((Unit, self.set_n))
+  transfer 0tz to addr call get_n<unit * contract<nat>>((Unit, self.set_r))
 }
 ```
 
@@ -58,10 +58,14 @@ A detailed presentation of the `getter` keyword may be found <a href='https://do
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> commands deploy the contract on the Tezos network:
 
 ```
-completium-cli deploy 1-hello.arl
+completium-cli deploy 8-1-contract_called.arl
+```
+
+```
+completium-cli deploy 8-2-contract_caller.arl
 ```
 
 ## Call entry point
@@ -69,5 +73,11 @@ completium-cli deploy 1-hello.arl
 The following command calls the unique entry point:
 
 ```
-completium call 1-hello
+completium-cli call 8-2-contract_caller as admin --entry '%inspect' --with '@YOUR_KT1_ADDRESS'
+```
+
+You can retrieve the address of the called contract with this command:
+
+```
+completium-cli show contract 8-1-contract_called.arl
 ```
