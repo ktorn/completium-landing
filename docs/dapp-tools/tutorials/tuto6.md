@@ -65,16 +65,28 @@ completium-cli deploy 6-state_machine.arl
 
 ## Call entry points
 
+In this example it is necessary to call specific entry points. A contract's entrypoints may be listed with:
+
+```
+completium-cli show entries of 6-state_machine.arl
+```
+
 The goal here is to set the state machine to `Completed` state. Use the following commands to transit the machine:
 
 ```
-completium-cli call 6-state_machine.arl
+completium-cli call 6-state_machine.arl --entry init --amount 5tz
 ```
 
 ```
-completium-cli call 6-state_machine.arl
+completium-cli call 6-state_machine.arl --entry inc_value
 ```
 
 ```
-completium-cli call 6-state_machine.arl
+completium-cli call 6-state_machine.arl --entry inc_value
+```
+
+At this stage, `value` is `2`, which allows transiting to `Completed`.
+
+```
+completium-cli call 6-state_machine.arl --entry complete
 ```
