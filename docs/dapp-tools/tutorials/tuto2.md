@@ -56,3 +56,12 @@ The following command calls the unique entry point:
 completium call 2-exec-condition as admin --with '14'
 ```
 
+
+## View contract
+
+The following command generates the URL to view the contract in Better call Dev:
+
+```
+completium-cli show url
+```
+

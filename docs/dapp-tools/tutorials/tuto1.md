@@ -37,5 +37,13 @@ completium-cli deploy 1-hello.arl
 The following command calls the unique entry point:
 
 ```
-completium call 1-hello.arl
+completium-cli call 1-hello.arl
+```
+
+## View contract
+
+The following command generates the URL to view the contract in Better call Dev:
+
+```
+completium-cli show url
 ```
