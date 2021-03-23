@@ -56,5 +56,5 @@ completium-cli deploy 4-time_window.arl
 The following command calls the unique entry point:
 
 ```
-completium call 4-time_window.arl as admin --with '14'
+completium call 4-time_window.arl as admin --amount 50
 ```

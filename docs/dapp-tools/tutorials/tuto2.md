@@ -50,10 +50,10 @@ completium-cli deploy 2-exec_condition.arl
 
 ## Call entry point
 
-The following command calls the unique entry point:
+The following command calls the unique entry point with the argument `14` using the `--with` option:
 
 ```
-completium call 2-exec-condition as admin --with '14'
+completium-cli call 2-exec-condition.arl --with '14'
 ```
 
 
@@ -64,4 +64,5 @@ The following command generates the URL to view the contract in Better call Dev:
 ```
 completium-cli show url
 ```
+
 
