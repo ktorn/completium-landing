@@ -61,11 +61,11 @@ completium-cli deploy 5-weekday.arl
 The following command calls the unique entry point:
 
 ```
-completium call 5-weekday.arl as admin --with 'now'
+completium-cli call 5-weekday.arl --with 'now'
 ```
 
 or this:
 
 ```
-completium call 5-weekday.arl as admin --with '2020-01-01'
+completium call 5-weekday.arl --with '2020-01-01'
 ```
