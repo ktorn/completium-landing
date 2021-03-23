@@ -65,7 +65,7 @@ completium-cli deploy 6-state_machine.arl
 
 ## Call entry points
 
-The goal here is to set the state machines to `Completed` state. The following commands are necessary:
+The goal here is to set the state machines to `Completed` state. Use the following commands to transit the machine:
 
 ```
 completium-cli call 6-state_machine.arl

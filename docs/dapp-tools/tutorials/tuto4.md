@@ -48,7 +48,7 @@ var date4 : date = 2019-01-01T00:00:00-05:30; (* iso 8601 *)
 The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
-completium-cli deploy 4-time_window.arl
+completium-cli deploy 4-time_window.arl --amount 50
 ```
 
 ## Call entry point
@@ -56,6 +56,6 @@ completium-cli deploy 4-time_window.arl
 The following command calls the unique entry point:
 
 ```
-completium call 4-time_window.arl as admin --amount 50
+completium-cli call 4-time_window.arl as admin
 ```
 
