@@ -85,7 +85,7 @@ In the `repaint_repaired` entry point, this update syntax is adapted when a sing
 vehicle.update(v, { color := newc })
 ```
 
-At last, note that the `sort` funtion sorts in ascending order. Another way to implement that would be:
+At last, note that the `sort` function sorts in ascending order. Another way to implement that is:
 
 ```archetype {1}
   for v in vehicle.sort(desc(lastrepair)).tail(3) do
