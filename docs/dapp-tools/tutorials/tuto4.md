@@ -58,6 +58,6 @@ Note here that the contract's balance is intialized to 5tz.
 The following command calls the unique entry point:
 
 ```
-completium-cli call 4-time_window.arl as admin
+completium-cli call 4-time_window.arl
 ```
 
