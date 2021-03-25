@@ -125,7 +125,7 @@ $ archetype contract.arl
 for contract origination (deployment) from a js DApp:
 
 ```
-$ archeype contract.arl
+$ archeype -t javascript contract.arl
 ```
 
 ### Generate Why3 language
@@ -133,5 +133,5 @@ $ archeype contract.arl
 In order to verify the contract with <a href='http://why3.lri.fr/' target='_blank'>Why3</a>:
 
 ```
-$ archetype
+$ archetype -t whyml contract.arl
 ```
