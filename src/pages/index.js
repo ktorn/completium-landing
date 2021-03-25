@@ -143,7 +143,7 @@ function Archetype() {
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center', marginTop: '40px' }}>
-        <Button component={Link} variant='outlined' size='large'>Discover Archetype</Button>
+        <Button component={Link} to='https://archetype-lang.org/' variant='outlined' size='large'>Discover Archetype</Button>
       </Grid>
     </Grid>
   )
