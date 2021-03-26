@@ -111,14 +111,14 @@ When working with the test network, you need *fake* currencies to interact and t
 
 Once the faucet file (a `.json` file) downloaded, the following command generates the account from it:
 
-```
+```bash
 completium-cli import faucet <FAUCET_FILE> as <ACCOUNT_ALIAS>
 ```
 
 #### Private key
 
 ```bash
-completium-cli import privatekey <PRIVATEKEY> as <ACCOUNT_ALIAS>
+completium-cli import privatekey <PRIVATE_KEY> as <ACCOUNT_ALIAS>
 ```
 
 #### Mnemonic
