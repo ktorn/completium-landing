@@ -128,17 +128,13 @@ Note that this account does not come with any tez and is not suitable for testin
 The following command displays the account `$completium-cli` is currently using:
 
 ```
-$ completium-cli show account <ACCOUNT_NAME>
+$ completium-cli show account
 ```
 
-For example:
-```
-$ completium-cli show account <ACCOUNT_NAME>
-```
 ### Switch accounts
 
 ```
-$ completium-cli list accounts
+$ completium-cli switch account
 ```
 
 ### Transfer
@@ -146,13 +142,13 @@ $ completium-cli list accounts
 The following command transfers tez from one account to another:
 
 ```
-$ completium-cli transfer <AMOUNT> from <ACCOUNT_NAME> to <ACCOUNT_NAME|CONTRACT_NAME>
+$ completium-cli transfer <AMOUNT> from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 ```
 
 ### Remove account
 
 ```
-$ completium-cli remove <ACCOUNT_NAME|CONTRACT_NAME>
+$ completium-cli remove <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 ```
 
 ## Contract
@@ -161,8 +157,8 @@ $ completium-cli remove <ACCOUNT_NAME|CONTRACT_NAME>
 
 ```
 $ completium-cli deploy <FILE.arl> \
-    [--as <ACCOUNT_NAME>] \
-    [--named <CONTRACT_NAME>] \
+    [--as <ACCOUNT_ALIAS>] \
+    [--named <CONTRACT_ALIAS>] \
     [--amount <AMOUNT>] \
     [--burn-cap <BURN_CAP>] \
     [--force]
@@ -174,8 +170,8 @@ desc
 ### Call
 
 ```
-$ completium-cli call <CONTRACT_NAME> as <ACCOUNT_NAME> \
-  [--entry <ENTRYNAME>] \
+$ completium-cli call <CONTRACT_ALIAS> as <ACCOUNT_ALIAS> \
+  [--entry <ENTRYALIAS>] \
   [--with <ARG>] \
   [--amount <AMOUNT>] \
   [--dry]
