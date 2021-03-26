@@ -26,15 +26,13 @@ $ completium-cli init
 
 This will download and install (or update) the Archetype binary.
 
-## Commands
-
-This section presents the available commands. The list of commands is displayed with:
+The list of available commands is displayed with:
 
 ```bash
 $ archetype-cli help
 ```
 
-### Network
+## Network
 
 The Tezos blockchain provides serveral networks:
 * a main network which is the real operating network where *real* cryptocurrency are exchanged
@@ -49,7 +47,7 @@ An endpoint is an entry node to the network. You interact with the blockchain th
 
 `$completium-cli` offers a convenient network management system to register, show and switch networks.
 
-#### Show current endpoint
+### Show current endpoint
 
 Display the endpoint completium is currently using:
 
@@ -64,7 +62,7 @@ $ completium-cli show endpoint
 Current network: edo
 Current endpoint: https://edonet-tezos.giganode.io:443
 ```
-#### Switch endpoint
+### Switch endpoint
 
 Select the current endpoint with the following command:
 
@@ -85,26 +83,26 @@ Current endpoint: https://edonet-tezos.giganode.io:443
 
 ```
 
-#### Add endpoint
+### Add endpoint
 
 ```bash
 $ completium add endpoint [main|edo|florence] <ENDPOINT_URL>
 ```
 
-#### Remove endpoint
+### Remove endpoint
 
 ```bash
 $ completium-cli remove endpoint <ENDPOINT_URL>
 ```
 
-### Account
+## Account
 
 Interacting with a contract requires a Tezos account to sign the transactions. An account is identified by an account address starting by `tz1`, like for example `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw`.
 
 `$completium-cli` provides a convenient account management system to register, list and switch accounts. Each account is associated with an alias.
 
 
-#### Import a faucet account
+### Import a faucet account
 
 When working with the test network, you need *fake* currencies to interact and test the contracts. There exists a faucet from which you can <Link to='/docs/dapp-tools/accounts#create-test-account'>download</Link> a faucet file to generate a test account from.
 
@@ -115,7 +113,7 @@ Once the faucet file (a `.json` file) downloaded, the following command generate
 ```
 $ completium-cli generate account <ACCOUNT_ALIAS> --with-faucet <FAUCET_FILE>
 ```
-#### Create account
+### Create account
 
 The following command generates a *new* account:
 
@@ -125,7 +123,7 @@ $ completium-cli generate account <ACCOUNT_ALIAS>
 
 Note that this account does not come with any tez and is not suitable for testing, but rather is intended to be used on the mainnet.
 
-#### Show current account
+### Show current account
 
 The following command displays the account `$completium-cli` is currently using:
 
@@ -137,13 +135,13 @@ For example:
 ```
 $ completium-cli show account <ACCOUNT_NAME>
 ```
-#### Switch accounts
+### Switch accounts
 
 ```
 $ completium-cli list accounts
 ```
 
-#### Transfer
+### Transfer
 
 The following command transfers tez from one account to another:
 
@@ -151,15 +149,15 @@ The following command transfers tez from one account to another:
 $ completium-cli transfer <AMOUNT> from <ACCOUNT_NAME> to <ACCOUNT_NAME|CONTRACT_NAME>
 ```
 
-#### Remove account
+### Remove account
 
 ```
 $ completium-cli remove <ACCOUNT_NAME|CONTRACT_NAME>
 ```
 
-### Contract
+## Contract
 
-#### Deploy / originate
+### Deploy / originate
 
 ```
 $ completium-cli deploy <FILE.arl> \
@@ -173,7 +171,7 @@ $ completium-cli deploy <FILE.arl> \
 desc
 
 
-#### Call
+### Call
 
 ```
 $ completium-cli call <CONTRACT_NAME> as <ACCOUNT_NAME> \
@@ -186,7 +184,7 @@ $ completium-cli call <CONTRACT_NAME> as <ACCOUNT_NAME> \
 desc
 
 
-#### Generate json
+### Generate json
 
 ```
 $ completium-cli generate json <FILE.arl>
@@ -194,7 +192,7 @@ $ completium-cli generate json <FILE.arl>
 
 desc
 
-#### Show entries
+### Show entries
 
 ```
 $ completium-cli show entries of <CONTRACT_ID|CONTRACT_ALIAS>
