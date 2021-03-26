@@ -8,13 +8,14 @@ slug: /dapp-tools/tezos
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
-<DappFigure img="tezos-logo.svg" width='50%'/>
 
 Tezos is an open-source platform for assets and applications backed by a global community of validators, researchers, and builders.
 
-This page provides links to the main ressources.
+<DappFigure img="tezos-logo.svg" width='50%'/>
+
 
 ## Resources
+This section provides links to the main ressources.
 
 | Site | Description |
 | -- | :-- |
@@ -75,13 +76,13 @@ code { { UNPAIR ;
 
 The contract is available at the address [KT1Gbu1Gm2U47Pmq9VP7ZMy3ZLKecodquAh4](https://better-call.dev/mainnet/KT1Gbu1Gm2U47Pmq9VP7ZMy3ZLKecodquAh4/code)
 
-### High-level languages
+### Register languages
 
- A smart contract is a public object, thus it is usually required to be easy to understand in order to convey confidence in the overall process.
+A smart contract is a public object, and as such is required to convey confidence in the business process it implements. It is then suggested to use register languages which make the code easy to read and write.
 
-That's why it is suggested to use a higher level language. Several are available and listed <a href='https://tezos.com/developer-portal/#2-write-a-smart-contract'>here</a>.
+Several register languages are available and listed <a href='https://tezos.com/developer-portal/#2-write-a-smart-contract'>here</a>.
 
-In the DApps presented here we are naturally using <Link to='/docs/dapp-tools/archetype'>Archetype</Link> as the creators of the language. We believe it provides key features that reduce the development cost and provide easy-to-read high-level contracts.
+In the DApps presented here we are naturally using <Link to='/docs/dapp-tools/archetype'>Archetype</Link> as the creators of the language. We believe it provides key high-level features that reduce the development cost and provide easy-to-read high-level contracts.
 
 For example, below is the Archtype version of the above contract:
 

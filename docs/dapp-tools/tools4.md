@@ -1,7 +1,7 @@
 ---
 id: tools4
-title: Faucet accounts
-sidebar_label: Faucet accounts
+title: Faucet
+sidebar_label: Faucet
 slug: /dapp-tools/accounts
 ---
 
@@ -10,7 +10,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-The Dapps require an admin account and one (or several) user accounts to be tested. This page explains how to retrieve the admin faucet file, and how to create a new user test account.
+The Dapps require an admin account and one (or several) user accounts to be tested. This page explains how to retrieve the admin faucet file, and how to download a faucet account for test.
 
 ## Admin account
 
