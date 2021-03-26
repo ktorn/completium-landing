@@ -158,7 +158,7 @@ completium-cli set account <ACCOUNT_ALIAS>
 The following command transfers tez from one account to another:
 
 ```
-completium-cli transfer <AMOUNT> (tez|mtz|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
+completium-cli transfer <AMOUNT> (tez|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 ```
 
 ### Remove account
@@ -175,7 +175,7 @@ completium-cli remove <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 $ completium-cli deploy <FILE.arl> \
     [--as <ACCOUNT_ALIAS>] \
     [--named <CONTRACT_ALIAS>] \
-    [--amount <AMOUNT>] \
+    [--amount <AMOUNT> (tez|utz)] \
     [--burn-cap <BURN_CAP>] \
     [--force]
 ```
@@ -189,7 +189,7 @@ desc
 $ completium-cli call <CONTRACT_ALIAS> as <ACCOUNT_ALIAS> \
   [--entry <ENTRYALIAS>] \
   [--with <ARG>] \
-  [--amount <AMOUNT>] \
+  [--amount <AMOUNT> (tez|utz)] \
   [--dry]
 ```
 
