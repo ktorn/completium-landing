@@ -85,10 +85,10 @@ Current endpoint: https://edonet-tezos.giganode.io:443
 
 ```
 
-#### Register endpoint
+#### Add endpoint
 
 ```bash
-$ completium register endpoint [main|edo|florence] <ENDPOINT_URL>
+$ completium add endpoint [main|edo|florence] <ENDPOINT_URL>
 ```
 
 #### Remove endpoint
@@ -104,7 +104,7 @@ Interacting with a contract requires a Tezos account to sign the transactions. A
 `$completium-cli` provides a convenient account management system to register, list and switch accounts. Each account is associated with an alias.
 
 
-#### Register a faucet account
+#### Import a faucet account
 
 When working with the test network, you need *fake* currencies to interact and test the contracts. There exists a faucet from which you can <Link to='/docs/dapp-tools/accounts#create-test-account'>download</Link> a faucet file to generate a test account from.
 
@@ -115,7 +115,7 @@ Once the faucet file (a `.json` file) downloaded, the following command generate
 ```
 $ completium-cli generate account <ACCOUNT_ALIAS> --with-faucet <FAUCET_FILE>
 ```
-#### Generate account
+#### Create account
 
 The following command generates a *new* account:
 
@@ -145,11 +145,10 @@ $ completium-cli list accounts
 
 #### Transfer
 
-The following command transfer tez from account to another:
+The following command transfers tez from one account to another:
 
 ```
-$ completium-cli transfer <AMOUNT> from <ACCOUNT_NAME> \
-  to <ACCOUNT_NAME|CONTRACT_NAME>
+$ completium-cli transfer <AMOUNT> from <ACCOUNT_NAME> to <ACCOUNT_NAME|CONTRACT_NAME>
 ```
 
 #### Remove account
@@ -163,8 +162,12 @@ $ completium-cli remove <ACCOUNT_NAME|CONTRACT_NAME>
 #### Deploy / originate
 
 ```
-$ completium-cli deploy <FILE.arl> [--as <ACCOUNT_NAME>] \
-  [--named <CONTRACT_NAME>] [--amount <AMOUNT>] [--burn-cap <BURN_CAP>] [--force]
+$ completium-cli deploy <FILE.arl> \
+    [--as <ACCOUNT_NAME>] \
+    [--named <CONTRACT_NAME>] \
+    [--amount <AMOUNT>] \
+    [--burn-cap <BURN_CAP>] \
+    [--force]
 ```
 
 desc
@@ -173,8 +176,11 @@ desc
 #### Call
 
 ```
-$ completium-cli call <CONTRACT_NAME> as <ACCOUNT_NAME> [--entry <ENTRYNAME>] \
-  [--with <ARG>] [--amount <AMOUNT>] [--dry]
+$ completium-cli call <CONTRACT_NAME> as <ACCOUNT_NAME> \
+  [--entry <ENTRYNAME>] \
+  [--with <ARG>] \
+  [--amount <AMOUNT>] \
+  [--dry]
 ```
 
 desc
