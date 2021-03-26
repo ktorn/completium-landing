@@ -147,6 +147,12 @@ completium-cli show account
 completium-cli switch account
 ```
 
+### Set account
+
+```
+completium-cli set account <ACCOUNT_ALIAS>
+```
+
 ### Transfer
 
 The following command transfers tez from one account to another:
