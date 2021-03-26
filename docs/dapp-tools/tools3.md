@@ -99,7 +99,7 @@ $ completium-cli remove endpoint <ENDPOINT_URL>
 
 Interacting with a contract requires a Tezos account to sign the transactions. An account is identified by an account address starting by `tz1`, like for example `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw`.
 
-`$completium-cli` provides a convenient account management system to register, list and switch accounts. Each account is associated with an alias.
+`$completium-cli` provides a convenient account management system to register, list and switch account. Each account is associated with an alias.
 
 
 ### Import a faucet account
@@ -131,7 +131,7 @@ The following command displays the account `$completium-cli` is currently using:
 $ completium-cli show account
 ```
 
-### Switch accounts
+### Switch account
 
 ```
 $ completium-cli switch account
