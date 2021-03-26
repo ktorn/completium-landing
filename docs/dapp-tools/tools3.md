@@ -158,7 +158,7 @@ completium-cli set account <ACCOUNT_ALIAS>
 The following command transfers tez from one account to another:
 
 ```
-completium-cli transfer <AMOUNT> from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
+completium-cli transfer <AMOUNT> (tez|mtz|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 ```
 
 ### Remove account
