@@ -25,8 +25,9 @@ module.exports = {
                 'dapp-tools/tutorials/tuto8',
                 'dapp-tools/tutorials/tuto9',
               ] }
-          ] }
-      ]
+            ] },
+            'dapp-tools/tools3',
+          ]
     },
     {
       type: 'category',
@@ -34,17 +35,16 @@ module.exports = {
       items: [
         'dapp-tools/tools10',
         'dapp-tools/tools9',
+        'dapp-tools/tools2',
       ]
     },
     {
       type: 'category',
       label: 'Tools',
       items: [
-        'dapp-tools/tools3',
-        'dapp-tools/tools2',
+        'dapp-tools/tools6',
         'dapp-tools/tools4',
         'dapp-tools/tools5',
-        'dapp-tools/tools6',
       ]
     },
     ],
