@@ -28,13 +28,13 @@ This section provides links to the main ressources.
 ## Smart contract
 
 A smart contract is a program that is executed by the blockchain. It possesses:
-* an address you can send currency to and you can program the contract to generate transactions (send currency or call another contract)
+* an address you can send currency to; the contract can be programmed to send currency to an account or to another contract
 * a balance of currency
-* a storage: you can program it to store any type of data; note however that it is limited in size
-* entry points you can call to execute some operation
+* a storage to store any type of data; note that the size of the storage is limited
+* entry points you can call to execute a programmed operation; note that complexity is limited by a *gas limit*
 
-Interacting with the blockchain has an exectution cost which depends on:
-* the complexity of the procedure
+Interacting with a smart contract has an exectution cost which depends on:
+* the complexity of the contract's procedure
 * the size of data it creates
 * a baker fee
 
@@ -78,13 +78,13 @@ The contract is available at the address [KT1Gbu1Gm2U47Pmq9VP7ZMy3ZLKecodquAh4](
 
 ### Register languages
 
-A smart contract is a public object, and as such is required to convey confidence in the business process it implements. It is then suggested to use register languages which make the code easy to read and write.
+A smart contract is a public object, and as such is required to convey confidence in the business process it implements. It is then suggested to use register languages which make the code easier to read, write and <Link to='/docs/dapp-tools/tezos#formal-verification'>verify</Link>.
 
-Several register languages are available and listed <a href='https://tezos.com/developer-portal/#2-write-a-smart-contract'>here</a>.
+Several register languages are available and listed <a href='https://tezos.com/developer-portal/#2-write-a-smart-contract'>here</a>. They compile contracts to Michelson.
 
-In the DApps presented here we are naturally using <Link to='/docs/dapp-tools/archetype'>Archetype</Link> as the creators of the language. We believe it provides key high-level features that reduce the development cost and provide easy-to-read high-level contracts.
+In the DApps presented here we are naturally using <Link to='/docs/dapp-tools/archetype'>Archetype</Link> as the creators of the language. We believe it provides the key high-level programming concepts to reduce the development cost and provide easy-to-read high-level contracts.
 
-For example, below is the Archtype version of the above contract:
+For example, below is the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> version of the above contract:
 
 ```archetype
 archetype c3n(admins : list<address>, hash : bytes)
