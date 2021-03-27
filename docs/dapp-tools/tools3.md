@@ -121,18 +121,6 @@ completium-cli import faucet <FAUCET_FILE> as <ACCOUNT_ALIAS>
 completium-cli import privatekey <PRIVATE_KEY> as <ACCOUNT_ALIAS>
 ```
 
-#### Mnemonic
-
-```bash
-completium-cli import mnemonic <MNEMONIC> as <ACCOUNT_ALIAS>
-```
-
-The mnemonic is a string where words are separated by a space. For example:
-
-```bash
-$ completium-cli import mnemonic 'opinion predict army liquid then search shift manual slender bronze patrol cool garlic grape merry' as admin
-```
-
 ### Show current account
 
 The following command displays the account `$completium-cli` is currently using:
