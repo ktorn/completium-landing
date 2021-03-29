@@ -252,7 +252,7 @@ For example:
 $ completium-cli generate javascript mycontract.arl > mycontract.js
 ```
 
-The generated contract.js file exports:
+The generated `mycontract.js` file exports:
 * the Micheline/Json `code` of the contract
 * the `getStorage` methode to build the initial storage
 
