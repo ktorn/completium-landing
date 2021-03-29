@@ -192,15 +192,34 @@ For example:
 $ completium-cli deploy mycontract.arl --as admin --amount 15.5tz
 ```
 
+This creates a contract alias `mycontract`
+
+
+### Show
+
+It is possible to show data related to a contract alias:
+
+```
+$ completium-cli show contract <CONTRACT_ALIAS>
+```
+
+For example:
+
+```bash
+$ completium-cli show contract demo
+Name:    demo
+Network: edo
+Address: KT1DYXUVknWdHnMdGYWyNPJwsvSZwnjdXt8J
+Url:     https://better-call.dev/edo2net/KT1DYXUVknWdHnMdGYWyNPJwsvSZwnjdXt8J
+```
 
 ### Call
 
 ```
 $ completium-cli call <CONTRACT_ALIAS> as <ACCOUNT_ALIAS> \
-  [--entry <ENTRYALIAS>] \
+  [--entry <ENTRYPOINT>] \
   [--with <ARG>] \
-  [--amount <AMOUNT>(tz|utz)] \
-  [--dry]
+  [--amount <AMOUNT>(tz|utz)]
 ```
 
 For example, if `mycontract.arl` defines an entry point `payback`:
@@ -217,26 +236,38 @@ The command to call the entry is:
 $ completium-cli call mycontract as admin --entry payback --with 5
 ```
 
+### Generate javascript
 
-### Generate json
+The javascript verion of the contract is required when a DApp is originating the contract using <Link to='/docs/dapp-tools/taquito'>Taquito</Link>.
+
+The command to generate the javascript version is:
 
 ```
-completium-cli generate json <FILE.arl>
+completium-cli generate javascript <FILE.arl|CONTRACT_ALIAS>
 ```
 
-desc
+For example:
+
+```
+$ completium-cli generate javascript mycontract.arl > mycontract.js
+```
+
+The generated contract.js file exports:
+* the Micheline/Json `code` of the contract
+* the `getStorage` methode to build the initial storage
+
+See <Link to='/docs/dapp-tools/taquito#contract-origination'>here</Link> an example of how to use in a DApp.
 
 ### Show entries
 
 ```
-completium-cli show entries of <CONTRACT_ID|CONTRACT_ALIAS>
+completium-cli show entries <CONTRACT_ID|CONTRACT_ALIAS>
 ```
 
-Show entries from contract adress
-
+The command also works with a remote contract address:
 
 ```
-$ completium-cli show entries of KT1KyjCqnPEqdEZcRzTsmECpoBM9ndv1rBBk
+$ completium-cli show entries KT1KyjCqnPEqdEZcRzTsmECpoBM9ndv1rBBk
 %confirm (_ : unit)
 %submit (%packed_score : bytes, %signed_score : signature)
 %decide (_ : unit)

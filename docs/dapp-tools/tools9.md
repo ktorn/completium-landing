@@ -48,10 +48,10 @@ Note that the user account is managed by the <Link to='/docs/dapp-tools/thanos'>
 
 Taquito originates contracts provided in the Micheline format, a json version of <Link to='/docs/dapp-tools/tezos#micheslon'>Michelson</Link>.
 
-The <Link to='/docs/dapp-tools/archetype'>Archetype</Link> command to generate Micheline from `contract.arl`:
+The <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command to generate Micheline from `contract.arl`:
 
 ```bash
-$ archeype -t javascript contract.arl > contract.js
+$ completium-cli generate javascript contract.arl > contract.js
 ```
 
 The generated `contract.js` file exports:
