@@ -24,12 +24,24 @@ Once installed, run the `init` command:
 completium-cli init
 ```
 
-This will download and install (or update) the Archetype binary.
-
 The list of available commands is displayed with:
 
 ```bash
-archetype-cli help
+completium-cli help
+```
+
+## Archetype
+
+`$completium-cli` can install (or update) archetype with the following command:
+
+```
+completium-cli install archetype
+```
+
+If <Link to='/docs/dapp-tools/archetype'>Archetype</Link> binary is already installed, you can just set the path with:
+
+```
+completium-cli set archetype <PATH_TO_ARCHETYPE_BIN>
 ```
 
 ## Network
