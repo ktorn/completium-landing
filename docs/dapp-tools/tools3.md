@@ -32,7 +32,7 @@ completium-cli help
 
 ## Archetype
 
-`$completium-cli` can install (or update) the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> compiler with the following command:
+`$completium-cli` can install (or update) <Link to='/docs/dapp-tools/archetype'>Archetype</Link> compiler with the following command:
 
 ```
 completium-cli install archetype
@@ -72,7 +72,7 @@ For example:
 ```bash
 $ completium-cli show endpoint
 Current network: edo
-Current endpoint: https://edonet-tezos.giganode.io:443
+Current endpoint: https://edonet-tezos.giganode.io
 ```
 ### Switch endpoint
 
@@ -87,24 +87,24 @@ completium-cli switch endpoint
 ```bash
 $ completium-cli switch endpoint
 Current network: edo
-Current endpoint: https://edonet-tezos.giganode.io:443
+Current endpoint: https://edonet-tezos.giganode.io
 ? Switch endpoint …
-❯ main       https://mainnet-tezos.giganode.io:443
-  edo        https://edonet-tezos.giganode.io:443
-  florence   https://florence-tezos.giganode.io:443
+❯ main       https://mainnet-tezos.giganode.io
+  edo        https://edonet-tezos.giganode.io
+  florence   https://florence-tezos.giganode.io
 
 ```
 
 ### Add endpoint
 
 ```bash
-completium add endpoint (main|edo|florence) <ENDPOINT_URL>
+completium-cli add endpoint (main|edo|florence) <ENDPOINT_URL>
 ```
 
 ### Remove endpoint
 
 ```bash
-completium-cli remove endpoint [<ENDPOINT_URL>]
+completium-cli remove endpoint <ENDPOINT_URL>
 ```
 
 ## Account
@@ -158,7 +158,13 @@ completium-cli set account <ACCOUNT_ALIAS>
 The following command transfers tez from one account to another:
 
 ```
-completium-cli transfer <AMOUNT> (tez|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
+completium-cli transfer <AMOUNT>(tez|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
+```
+
+For example:
+
+```bash
+$ completium-cli transfer 5.2tz from bob to alice
 ```
 
 ### Remove account
@@ -175,12 +181,16 @@ completium-cli remove <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 $ completium-cli deploy <FILE.arl> \
     [--as <ACCOUNT_ALIAS>] \
     [--named <CONTRACT_ALIAS>] \
-    [--amount <AMOUNT> (tez|utz)] \
+    [--amount <AMOUNT>(tez|utz)] \
     [--burn-cap <BURN_CAP>] \
     [--force]
 ```
 
-desc
+For example:
+
+```
+$ completium-cli deploy mycontract.arl --as admin --amount 15.5tez
+```
 
 
 ### Call
