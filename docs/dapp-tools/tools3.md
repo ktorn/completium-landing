@@ -254,7 +254,7 @@ $ completium-cli generate javascript mycontract.arl > mycontract.js
 
 The generated `mycontract.js` file exports:
 * the Micheline/Json `code` of the contract
-* the `getStorage` methode to build the initial storage
+* the `getStorage` method to build the initial storage
 
 See <Link to='/docs/dapp-tools/taquito#contract-origination'>here</Link> an example of how to use in a DApp.
 
