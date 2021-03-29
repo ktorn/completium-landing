@@ -152,7 +152,7 @@ The default amount unit is Tez. It is possible to pass Mutez (1 Tez = 10^6 Mutez
 
 It is possible to execute several transactions in one operation.
 
-For example in the <Link to='/docs/dex/'>DEX</Link> DApp, the exchange process requires calling two contracts: the *FA 1.2* and the *DEX*. The following code illustrate how to execute that:
+For example in the <Link to='/docs/dapp-dex/'>DEX</Link> DApp, the exchange process requires calling two contracts: the *FA 1.2* and the *DEX*. The following code illustrates how to execute that:
 
 ```js
 // FA 1.2 transaction definition
@@ -174,7 +174,7 @@ op.receipt().then(() => {
 })
 ```
 
-The `approve` and `exchange` pararameters have been simplified to `UnitValue` for demo purpose.
+The parameters of `approve` and `exchange` have been simplified to `UnitValue` for demo purpose.
 
 ## Read contract storage
 

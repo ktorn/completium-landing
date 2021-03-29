@@ -8,7 +8,7 @@ slug: /dapp-tools/completium-cli
 import Link from '@docusaurus/Link';
 import DappButton from '../DappButton';
 
-`$completium-cli` is a command line interface to interact (orginate, call, ...) with Archetype smart contracts on the Tezos blockchain.
+`$completium-cli` is a command line interface to interact (orginate, call, ...) with <Link to='/docs/dapp-tools/archetype'>Archetype</Link> smart contracts on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain.
 
 ## Getting started
 

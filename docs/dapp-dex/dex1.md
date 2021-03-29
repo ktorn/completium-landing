@@ -18,7 +18,7 @@ import MathJax from 'react-mathjax';
 
 ## Introduction
 
-Year 2038. FIAT currencies have collapsed under nations' huge public debts, and a great reset in the economy has favorited the raise of City Coins: each main city is now emitting its own token for citizens and tourists to pay for public services (transport, museums, ...) and some affiliated retail shops.
+Year 2038. FIAT currencies have collapsed under nations' huge public debts, and a great reset in the economy has favorised the raise of City Coins: each main city is now emitting its own token for citizens and tourists to pay for public services (transport, museums, ...) and some affiliated retail shops.
 
 When moving or traveling from one city to another, you need to exchange from one City Token to another.
 
