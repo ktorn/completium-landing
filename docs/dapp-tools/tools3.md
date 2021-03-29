@@ -32,7 +32,7 @@ completium-cli help
 
 ## Archetype
 
-`$completium-cli` can install (or update) archetype with the following command:
+`$completium-cli` can install (or update) the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> compiler with the following command:
 
 ```
 completium-cli install archetype
