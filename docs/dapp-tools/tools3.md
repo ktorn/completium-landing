@@ -158,7 +158,7 @@ completium-cli set account <ACCOUNT_ALIAS>
 The following command transfers tez from one account to another:
 
 ```
-completium-cli transfer <AMOUNT>(tez|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|CONTRACT_ALIAS>
+completium-cli transfer <AMOUNT>(tz|utz) from <ACCOUNT_ALIAS> to <ACCOUNT_ALIAS|ACCOUNT_ADDRESS>
 ```
 
 For example:
@@ -170,7 +170,7 @@ $ completium-cli transfer 5.2tz from bob to alice
 ### Remove account
 
 ```
-completium-cli remove <ACCOUNT_ALIAS|CONTRACT_ALIAS>
+completium-cli remove account <ACCOUNT_ALIAS>
 ```
 
 ## Contract
@@ -181,7 +181,7 @@ completium-cli remove <ACCOUNT_ALIAS|CONTRACT_ALIAS>
 $ completium-cli deploy <FILE.arl> \
     [--as <ACCOUNT_ALIAS>] \
     [--named <CONTRACT_ALIAS>] \
-    [--amount <AMOUNT>(tez|utz)] \
+    [--amount <AMOUNT>(tz|utz)] \
     [--burn-cap <BURN_CAP>] \
     [--force]
 ```
@@ -189,7 +189,7 @@ $ completium-cli deploy <FILE.arl> \
 For example:
 
 ```
-$ completium-cli deploy mycontract.arl --as admin --amount 15.5tez
+$ completium-cli deploy mycontract.arl --as admin --amount 15.5tz
 ```
 
 
@@ -199,11 +199,23 @@ $ completium-cli deploy mycontract.arl --as admin --amount 15.5tez
 $ completium-cli call <CONTRACT_ALIAS> as <ACCOUNT_ALIAS> \
   [--entry <ENTRYALIAS>] \
   [--with <ARG>] \
-  [--amount <AMOUNT> (tez|utz)] \
+  [--amount <AMOUNT>(tz|utz)] \
   [--dry]
 ```
 
-desc
+For example, if `mycontract.arl` defines an entry point `payback`:
+
+```archetype
+entry payback (n : int) {
+  // ...
+}
+```
+
+The command to call the entry is:
+
+```
+$ completium-cli call mycontract as admin --entry payback --with 5
+```
 
 
 ### Generate json
