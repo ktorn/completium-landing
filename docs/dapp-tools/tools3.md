@@ -35,13 +35,13 @@ completium-cli help
 `$completium-cli` can install (or update) <Link to='/docs/dapp-tools/archetype'>Archetype</Link> compiler with the following command:
 
 ```
-completium-cli install archetype
+completium-cli install bin archetype
 ```
 
 If <Link to='/docs/dapp-tools/archetype'>Archetype</Link> binary is already installed, you can just set the path with:
 
 ```
-completium-cli set archetype <PATH_TO_ARCHETYPE_BIN>
+completium-cli set bin archetype <PATH_TO_ARCHETYPE_BIN>
 ```
 
 ## Network
@@ -216,7 +216,8 @@ Url:     https://better-call.dev/edo2net/KT1DYXUVknWdHnMdGYWyNPJwsvSZwnjdXt8J
 ### Call
 
 ```
-$ completium-cli call <CONTRACT_ALIAS> as <ACCOUNT_ALIAS> \
+$ completium-cli call <CONTRACT_ALIAS> \
+  [--as <ACCOUNT_ALIAS>] \
   [--entry <ENTRYPOINT>] \
   [--with <ARG>] \
   [--amount <AMOUNT>(tz|utz)]
@@ -233,7 +234,7 @@ entry payback (n : int) {
 The command to call the entry is:
 
 ```
-$ completium-cli call mycontract as admin --entry payback --with 5
+$ completium-cli call mycontract --entry payback --with 5
 ```
 
 ### Generate javascript
