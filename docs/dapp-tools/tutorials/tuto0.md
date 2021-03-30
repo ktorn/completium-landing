@@ -37,7 +37,7 @@ Right click on the `tutorial` directory in the left-hand panel to create a new f
 
 <DappFigure img="new_file.png" with='70%'/>
 
-Create a new file `account.js` and copy-paste the content of the faucet in it. Save it with ctrl+s (or cmd+s).
+Create a new file `account.json` and copy-paste the content of the faucet in it. Save it with ctrl+s (or cmd+s).
 
 In the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Gitpod Terminal</Link>, change directory to the tutorial directory:
 ```
@@ -47,7 +47,7 @@ cd /workspace/try-archetype/tutorial
 Import the faucet file with the following command:
 
 ```
-completium-cli import faucet account.js as admin
+completium-cli import faucet account.json as admin
 ```
 
 A prompt asks if you want to overwrite the current amount. Answer 'Yes'.
