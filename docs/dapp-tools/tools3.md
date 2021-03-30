@@ -189,13 +189,14 @@ $ completium-cli deploy <FILE.arl> \
 For example:
 
 ```
-$ completium-cli deploy mycontract.arl --as admin --amount 15.5tz
+$ completium-cli deploy mycontract.arl --amount 15.5tz
 ```
 
-This creates a contract alias `mycontract`
-
+This creates a contract alias `mycontract`.
 
 ### Show
+
+#### Info
 
 It is possible to show data related to a contract alias:
 
@@ -207,10 +208,43 @@ For example:
 
 ```bash
 $ completium-cli show contract demo
-Name:    demo
-Network: edo
-Address: KT1DYXUVknWdHnMdGYWyNPJwsvSZwnjdXt8J
-Url:     https://better-call.dev/edo2net/KT1DYXUVknWdHnMdGYWyNPJwsvSZwnjdXt8J
+Name:     demo
+Network:  edo
+Address:  KT1CQmaCLLdEQ3X9PmxoqEAy3Xusvs1J5wW1
+Source:   /home/dev/.completium/sources/demo.arl
+Language: archetype
+Version:  1.2.2
+Url:      https://better-call.dev/edo2net/KT1CQmaCLLdEQ3X9PmxoqEAy3Xusvs1J5wW1
+```
+
+#### All contracts
+
+The following command lists all contracts managed by `$completium-cli`:
+
+```
+completium-cli show contracts
+```
+
+#### Source
+
+It is possible to show the contract source with:
+
+```
+$ completium-cli show source <CONTRACT_ALIAS>
+```
+### Entries
+
+```
+completium-cli show entries <CONTRACT_ID|CONTRACT_ALIAS>
+```
+
+The command also works with a remote contract address:
+
+```
+completium-cli show entries KT1EFgRdrT4r6QLx2riZiPNHjo7gcQM8n7f7
+%confirm (_ : unit)
+%submit (%ckey : address, %pscore : int)
+%decide (_ : unit)
 ```
 
 ### Call
@@ -259,17 +293,3 @@ The generated `mycontract.js` file exports:
 
 See <Link to='/docs/dapp-tools/taquito#contract-origination'>here</Link> an example of how to use in a DApp.
 
-### Show entries
-
-```
-completium-cli show entries <CONTRACT_ID|CONTRACT_ALIAS>
-```
-
-The command also works with a remote contract address:
-
-```
-$ completium-cli show entries KT1KyjCqnPEqdEZcRzTsmECpoBM9ndv1rBBk
-%confirm (_ : unit)
-%submit (%packed_score : bytes, %signed_score : signature)
-%decide (_ : unit)
-```
