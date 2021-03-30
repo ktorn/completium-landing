@@ -110,7 +110,7 @@ function Dapps() {
             <Typography><Link to='/docs/dapp-tools/tezos'>Tezos</Link> is a powerfull self-amending blockchain that comes with a rich technical ecosystem.</Typography>
           </Grid>
           <Grid item style={{ marginBottom: '40px' }}>
-            <Button component={Link} to={useBaseUrl('docs/dapp-tools/')} variant='outlined' size='large'>
+            <Button component={Link} to={useBaseUrl('docs/dapp-first/')} variant='outlined' size='large'>
               build first dapp
             </Button>
           </Grid>
