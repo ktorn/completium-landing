@@ -235,7 +235,7 @@ $ completium-cli show source <CONTRACT_ALIAS>
 #### Entries
 
 ```
-completium-cli show entries <CONTRACT_ID|CONTRACT_ALIAS>
+completium-cli show entries <CONTRACT_ADDRESS|CONTRACT_ALIAS>
 ```
 
 The command also works with a remote contract address:
@@ -250,7 +250,7 @@ completium-cli show entries KT1EFgRdrT4r6QLx2riZiPNHjo7gcQM8n7f7
 ### Call
 
 ```
-$ completium-cli call <CONTRACT_ALIAS> \
+$ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
   [--as <ACCOUNT_ALIAS>] \
   [--entry <ENTRYPOINT>] \
   [--with <ARG>] \
