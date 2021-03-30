@@ -74,26 +74,26 @@ completium-cli show entries of 6-state_machine.arl
 The goal here is to set the state machine to `Completed` state. Use the following commands to transit the machine:
 
 ```
-completium-cli call 6-state_machine.arl --entry init --amount 5tz
+completium-cli call 6-state_machine --entry init --amount 5tz
 ```
 
 ```
-completium-cli call 6-state_machine.arl --entry inc_value
+completium-cli call 6-state_machine --entry inc_value
 ```
 
 ```
-completium-cli call 6-state_machine.arl --entry inc_value
+completium-cli call 6-state_machine --entry inc_value
 ```
 
 At this stage, `value` is `2`, which allows transiting to `Completed`.
 
 ```
-completium-cli call 6-state_machine.arl --entry complete
+completium-cli call 6-state_machine --entry complete
 ```
 
 This last call may be replaced by the following command to go to `Interrupted` state:
 
 ```
-completium-cli call 6-state_machine.arl --entry interrupt
+completium-cli call 6-state_machine --entry interrupt
 ```
 

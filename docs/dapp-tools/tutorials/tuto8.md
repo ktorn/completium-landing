@@ -73,11 +73,11 @@ completium-cli deploy 8-2-contract_caller.arl
 The following command calls the unique entry point:
 
 ```
-completium-cli call 8-2-contract_caller.arl --entry inspect --with @`completium-cli show contract 8-1-contract_called.arl`
+completium-cli call 8-2-contract_caller --entry inspect --with @`completium-cli show contract 8-1-contract_called.arl`
 ```
 
 You can retrieve the address of the called contract with this command:
 
 ```
-completium-cli show contract 8-1-contract_called.arl
+completium-cli show contract 8-1-contract_called
 ```

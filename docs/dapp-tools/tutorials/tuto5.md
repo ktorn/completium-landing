@@ -61,5 +61,5 @@ completium-cli deploy 5-weekday.arl
 The following command calls the unique entry point:
 
 ```
-completium-cli call 5-weekday.arl --with '2008-11-28'
+completium-cli call 5-weekday --with '2008-11-28'
 ```
