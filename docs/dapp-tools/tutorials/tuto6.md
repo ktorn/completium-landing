@@ -68,7 +68,7 @@ completium-cli deploy 6-state_machine.arl
 In this example it is necessary to call specific entry points. A contract's entrypoints may be listed with:
 
 ```
-completium-cli show entries of 6-state_machine.arl
+completium-cli show entries 6-state_machine
 ```
 
 The goal here is to set the state machine to `Completed` state. Use the following commands to transit the machine:
