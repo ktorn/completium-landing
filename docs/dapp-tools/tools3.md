@@ -232,7 +232,7 @@ It is possible to show the contract source with:
 ```
 $ completium-cli show source <CONTRACT_ALIAS>
 ```
-### Entries
+#### Entries
 
 ```
 completium-cli show entries <CONTRACT_ID|CONTRACT_ALIAS>
