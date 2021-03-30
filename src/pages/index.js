@@ -105,7 +105,7 @@ function LearnDapps() {
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Button component={Link} to={useBaseUrl('dapps')} variant='outlined' size='large'>dapp examples</Button>
+        <Button component={Link} to={useBaseUrl('dapps')} variant='outlined' size='large'>learn dapps</Button>
       </Grid>
     </Grid>
   )
