@@ -23,7 +23,7 @@ The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> t
 
 The contract may then be referred to as `competition` in future interactions.
 
-If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/accounts#admin-account">admin</Link> account. See this section for more information.
+If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/faucet#admin-account">admin</Link> account. See this section for more information.
 
 The address of the newly originated contract is visible with this command:
 

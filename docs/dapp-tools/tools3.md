@@ -117,7 +117,7 @@ Interacting with a contract requires a Tezos account to sign the transactions. A
 
 #### Faucet
 
-When working with the test network, you need *fake* currencies to interact and test the contracts. There exists a faucet from which you can <Link to='/docs/dapp-tools/accounts#create-test-account'>download</Link> a faucet file to generate a test account from.
+When working with the test network, you need *fake* currencies to interact and test the contracts. There exists a faucet from which you can <Link to='/docs/dapp-tools/faucet#create-test-account'>download</Link> a faucet file to generate a test account from.
 
 <DappButton url="https://faucet.tzalpha.net/" txt="open faucet"/>
 

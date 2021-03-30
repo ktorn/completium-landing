@@ -31,7 +31,7 @@ The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> t
 
 The contract may then be referred to as `miles` in future interactions.
 
-If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/accounts#admin-account">admin</Link> account. See this section for more information.
+If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/faucet#admin-account">admin</Link> account. See this section for more information.
 
 The address of the newly originated contract is visible in the command output, as illustrated below:
 
@@ -58,7 +58,7 @@ export const  contractAddress = "KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86"
 
 In order to provide miles to a user, the amdin must call the 'add' entry point of the contract.
 
-If you don't have a user account, follow these <Link to="/docs/dapp-tools/accounts#create-test-account">instructions</Link> to get one.
+If you don't have a user account, follow these <Link to="/docs/dapp-tools/faucet#create-test-account">instructions</Link> to get one.
 
 The entry point signature is presented below:
 

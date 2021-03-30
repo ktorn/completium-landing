@@ -19,7 +19,7 @@ In this DApp example, the off-chain server is not provided and the creation oper
 ## Import the smart contract's admin account
 
 The process to is two-steps:
-1. download the admin faucet file (<Link to="/docs/dapp-tools/accounts#admin-account">instructions</Link>)
+1. download the admin faucet file (<Link to="/docs/dapp-tools/faucet#admin-account">instructions</Link>)
 2. import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
 
 It is suggested that you name that account "Admin" for ease of use.

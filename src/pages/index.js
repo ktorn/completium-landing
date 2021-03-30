@@ -17,29 +17,26 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import { Parallax, Background } from "react-parallax";
 import Container from '@material-ui/core/Container';
 
+import Layout from '@theme/Layout';
+
+
 function Banner() {
   return (
     <Grid container direction='row' justify="center" alignItems="center" style={{
-      height: '380px',
+      height: '340px',
       width: '100%',
       backgroundImage: "linear-gradient(rgba(0 0 78 / 34%), rgba(178 189 77 / 41%))",
 /*       backgroundImage: "linear-gradient(rgba(0 0 78 / 34%), rgba(178 189 77 / 41%)), url("+useBaseUrl('img/banner2.svg')+")",
  */
       backgroundRepeat: 'repeat-x'
       }}>
-      <Grid item xs={0} style={{ height: '30px' }}/>
-      <Grid item xs={1}> <Typography component={Link} to={useBaseUrl('docs/')}>Docs</Typography> </Grid>
-      <Grid item xs={11}> <Typography component={Link} to={useBaseUrl('blog/')}>Blog</Typography> </Grid>
-      <Grid item xs={12}><Divider color='textSecondary'></Divider></Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Typography variant='h2' style={{ fontFamily : 'Alegreya Sans SC, sans-serif', marginTop: '40px' }}>Completium</Typography>
+        <Typography variant='h3' style={{ fontFamily : 'Alegreya Sans SC, sans-serif' }}>From Conception to Completion</Typography>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Typography variant='h5' style={{ fontFamily : 'Alegreya Sans SC, sans-serif' }}>From conception to completion</Typography>
+        <Typography variant='h5' style={{ fontFamily : 'Alegreya Sans SC, sans-serif' }}>DApp Design, Implementation, Verification</Typography>
       </Grid>
-      <Grid item style={{textAlign: 'center', marginTop: '80px'}}>
-        <Typography variant='h6'>Dapp design and implementation, smart contract verification</Typography>
-      </Grid>
+
     </Grid>
   )
 }
@@ -86,12 +83,12 @@ function LearnDapps() {
     <Grid container direction='row' justify="center" alignItems="center" style={{ padding: '50px' }}>
       <Grid item xs={12} style={{ textAlign: 'center'}}>
         <Typography variant='h4' style={{ fontWeight: 'bold', marginBottom: '12px' }}>
-          Want to know everything about Dapps?
+          Want to know everything about DApps?
         </Typography>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
         <Typography>
-          Discover how Dapps work through examples covering real life domains: Defi, Governance, Gaming, ...
+          Discover how Decentralized Applications work through examples covering real life domains: DeFi, Governance, Gaming, ...
         </Typography>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
@@ -108,7 +105,7 @@ function LearnDapps() {
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Button component={Link} to={useBaseUrl('dapps')} variant='outlined' size='large'>Learn Dapps</Button>
+        <Button component={Link} to={useBaseUrl('dapps')} variant='outlined' size='large'>dapp examples</Button>
       </Grid>
     </Grid>
   )
@@ -179,7 +176,7 @@ function Service() {
       <Grid item>
         <Grid container direction='row' justify="center" alignItems="center" style={{ paddingTop: '80px', paddingBottom: '50px' }} spacing={4}>
           <Grid item md={2} sm={12} xs={12}>
-            <Typography align='justify'>Benoit and Guillaume created edukera  in 2013 for the passion of sharing and teaching science and technology. In 2017 they became enthousiastic for the blockchain technology and in 2018 started to develop the Archetype language with the support of the Tezos Foundation. </Typography>
+            <Typography align='justify'>Benoit and Guillaume created <a href='https://www.edukera.com/' target='_blank'>edukera</a>  in 2013 for the passion of sharing and teaching science and technology. In 2017 they became enthousiastic for the blockchain technology and in 2018 started to develop the Archetype language with the support of the Tezos Foundation. </Typography>
           </Grid>
           <Grid item md={2} sm={12} xs={12}>
             <Avatar portrait='br' name='Benoît Rognier' title='CEO edukera' url="benoitrognier"/>
@@ -279,9 +276,11 @@ function Home() {
     [prefersDarkMode],
   );
   return (
+    <Layout>
     <ThemeProvider theme={theme}>
       <Scrollable />
     </ThemeProvider>
+    </Layout>
   );
 }
 

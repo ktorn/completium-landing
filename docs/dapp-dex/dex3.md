@@ -74,7 +74,7 @@ Below is a screenshot of the 'Redeem liquidity' tab once the wallet's account co
 ## Create a user account
 
 The process to create a new user account is two-steps:
-1. download a new faucet file from faucet site (<Link to="/docs/dapp-tools/accounts#create-test-account">instructions</Link>)
+1. download a new faucet file from faucet site (<Link to="/docs/dapp-tools/faucet#create-test-account">instructions</Link>)
 2. import it in wallet (<Link to="/docs/dapp-tools/thanos#import-faucet-file">instructions</Link>)
 
 It is suggested that you name the account "Completium Dapp user" for example.

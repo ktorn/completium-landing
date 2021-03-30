@@ -2,7 +2,7 @@
 id: tools4
 title: Faucet
 sidebar_label: Faucet
-slug: /dapp-tools/accounts
+slug: /dapp-tools/faucet
 ---
 
 import DappIcon from '../DappIcon';

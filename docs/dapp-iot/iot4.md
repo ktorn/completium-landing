@@ -15,7 +15,7 @@ import Link from '@docusaurus/Link';
 
 <DappFigure img='iot-connect.png' width='40%'/>
 
-Then select the user account. If you don't have a dedicated user account, go to the <Link to="/docs/dapp-tools/accounts#create-test-account">help</Link> page.
+Then select the user account. If you don't have a dedicated user account, go to the <Link to="/docs/dapp-tools/faucet#create-test-account">help</Link> page.
 
 Once connected, the address and balance of the connected account is displayed:
 

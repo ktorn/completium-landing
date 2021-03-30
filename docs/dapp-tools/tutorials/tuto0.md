@@ -31,7 +31,7 @@ Balance on edo: 10644.084359 ꜩ
 
 If the balance is below 50 ꜩ, it is not enough to do the tutorial and you need to import a new faucet account.
 
-Follow these <Link to='/docs/dapp-tools/accounts#downlaod-test-account'>instructions</Link> to download a faucet file.
+Follow these <Link to='/docs/dapp-tools/faucet#downlaod-test-account'>instructions</Link> to download a faucet file.
 
 Right click on the `tutorial` directory in the left-hand panel to create a new file as illustrated below:
 
