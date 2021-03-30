@@ -14,7 +14,7 @@ The smart contract is written in <Link to="/docs/dapp-tools/archetype">Archetype
 In VSCode, open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and enter the following command line to originate (deploy) the smart contract is:
 
 ```bash
-completium-cli deploy ./contract/nonfungible.arl --as admin --named nonfungible
+completium-cli deploy ./contract/nonfungible.arl --named nonfungible
 ```
 
 The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> triggers two operations:

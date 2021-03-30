@@ -12,10 +12,10 @@ import Link from '@docusaurus/Link';
 The smart contract is written in <Link to="/docs/dapp-tools/archetype">Archetype</Link> language. Go to the <Link to="">Smart contract</Link> section for a detailed presentation.
 
 
-In order to generate the javascript, used in the dapp, here is the command:
+In order to generate the javascript, used in the dapp, here is the <Link to='/docs/dapp-tools/completium-cli#generate-javascript'>command</Link>:
 
 ```bash
-archetype -t javascript ./contract/escrow.arl > ./src/contract.js
+completium-cli generate javascript ./contract/escrow.arl > ./src/contract.js
 ```
 
 you can now use contract as below:

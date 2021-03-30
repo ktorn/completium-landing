@@ -22,7 +22,7 @@ The setup consists in deploying the contract and adding mile to the user account
 Open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and enter the following command line to originate (deploy) the smart contract is:
 
 ```bash
-completium-cli deploy ./contract/miles_with_expiration.arl as admin --named miles
+completium-cli deploy ./contract/miles_with_expiration.arl --named miles
 ```
 
 The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> triggers two operations:
@@ -90,8 +90,7 @@ where:
 In the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> enter the following command:
 
 ```bash
-completium-cli call miles as admin
-        --entry '%add'
+completium-cli call miles --entry add
         --with '(<USER_ADDRESS>, "mileid", 20, 2021-06-28)'
 ```
 
