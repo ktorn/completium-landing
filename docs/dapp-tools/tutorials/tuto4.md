@@ -14,7 +14,7 @@ The `date` and `duration` types are convenient to establish time related busines
 
 In the following example, the call to the entry point succeeds if the contract was created more than 5 minutes and 10 seconds ago; the contract balance must be transferred to caller:
 
-```archetype {7}
+```archetype {6-11}
 archetype time_window
 
 variable creation : date = now
@@ -61,3 +61,17 @@ The following command calls the unique entry point:
 completium-cli call 4-time_window
 ```
 
+If you try this command before valid timelapse of 5 minutes and 10 seconds, it returns an error displayed below:
+
+```
+ completium-cli call 4-time_window
+? Confirm call to entrypoint default of contract 4-time_window by 'admin' with 0 ꜩ and argument {"prim":"Unit"} on edo? Yes
+Account 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw' is calling default of KT1GKryAWodQmVPQV4fMsW9FHBmWNgpEu7fF with 0 ꜩ...
+{
+  errors: '...',
+  name: 'TezosOperationError',
+  id: 'proto.008-PtEdo2Zk.michelson_v1.script_rejected',
+  kind: 'temporary',
+  message: 'InvalidCondition: r1'
+}
+```
