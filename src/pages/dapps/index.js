@@ -103,21 +103,28 @@ function Dapps() {
           <Grid item style={{ textAlign: 'center' }}>
             <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to developp Dapps</Typography>
           </Grid>
+          <Grid item style={{ textAlign: 'center' }}>
+            <Typography variant='h4' style={{ marginTop: '40px' }}>Ten minutes to build a first DApp on Tezos</Typography>
+          </Grid>
           <Grid item style={{ paddingTop: 0 }}>
-            <Typography variant='h5'>with examples</Typography>
+            <Typography><Link to='/docs/dapp-tools/tezos'>Tezos</Link> is a powerfull self-amending blockchain that comes with a rich technical ecosystem.</Typography>
+          </Grid>
+          <Grid item style={{ marginBottom: '40px' }}>
+            <Button component={Link} to={useBaseUrl('docs/dapp-tools/')} variant='outlined' size='large'>
+              build first dapp
+            </Button>
+          </Grid>
+          <Grid item style={{ textAlign: 'center' }}>
+            <Typography variant='h4' style={{ marginTop: '0px' }}>Learn with examples</Typography>
           </Grid>
           {/* <Grid item>
             <img src={useBaseUrl('/img/undraw_code_review.svg')} style={{ width: '300px' }}></img>
           </Grid> */}
           <Grid item>
             <Typography>
-              Dapps presented below are potential real-life applications that illustrate how to leverage the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain technology to create a new generation of game-changing applications. Tezos is a powerfull self-amending blockchain that comes with a rich technical ecosystem. Click button below to discover the technical stack used to developp these DApps.
+              Dapps presented below are potential real-life applications that illustrate how to leverage the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain technology to create a new generation of game-changing applications.
+              Tezos is a powerfull self-amending blockchain that comes with a rich technical ecosystem. Discover the <Link to='/docs/dapp-tools/'>technical stack</Link> used to developp these DApps.
             </Typography>
-          </Grid>
-          <Grid item style={{ marginBottom: '60px' }}>
-            <Button component={Link} to={useBaseUrl('docs/dapp-tools/')} variant='outlined' size='large'>
-              Technical Stack
-            </Button>
           </Grid>
           <Grid item>
             <Grid container direction='row' spacing={4} justify="center" alignItems="center">
