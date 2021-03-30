@@ -52,7 +52,11 @@ completium-cli import faucet account.json as admin
 
 A prompt asks if you want to overwrite the current amount. Answer 'Yes' or give it another alias of your choice.
 
-Note that it is possible to register several accounts and switch from one account to another.
+Note that it is possible to register several accounts and switch from one account to another:
+
+```
+completium-cli switch account
+```
 
 By default, completium-cli uses the testnet. The following command displays the endpoint's URL:
 
