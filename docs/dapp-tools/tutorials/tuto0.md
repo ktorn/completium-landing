@@ -50,7 +50,7 @@ Import the faucet file with the following command:
 completium-cli import faucet account.json as admin
 ```
 
-A prompt asks if you want to overwrite the current amount. Answer 'Yes'.
+A prompt asks if you want to overwrite the current amount. Answer 'Yes' or give it another alias of your choice.
 
 Note that it is possible to register several accounts and switch from one account to another.
 
