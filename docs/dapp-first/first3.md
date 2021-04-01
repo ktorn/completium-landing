@@ -12,9 +12,9 @@ The goal is to display some data retrieved from the ownership contract storage.
 
 This section is for information only, no action is required.
 
-Say we want to display the data `assetid`, `owner` and `status` from the deployed contract.
+We want to display the data `assetid`, `owner` and `status` from the deployed contract.
 
-Reading contract data is done asynchronously with RPC calls to the blockchain. The following code is a standard React pattern to load data retrieved from calls to network, and refresh component display when received.
+Reading contract data is done asynchronously with RPC calls to the blockchain. The following code is a standard React pattern to load  remote data, and refresh component display when received.
 
 It defines a component named `OwnershipData` whose role is to retrieve and display contract data:
 
@@ -77,9 +77,9 @@ The code blow synthesizes the sections above. Copy the code and insert it line 1
 ```js
 import { TezosToolkit } from '@taquito/taquito';
 import Container from '@material-ui/core/Container';
-import { endpoint, contractAddress } from 'settings.js';
+import { endpoint, contractAddress } from './settings.js';
 
-const OwnershipView = (props) => {
+const OwnershipData = (props) => {
   const [{ assetId, owner, forsale }, setData] = useState(() => ({
       assetId : "",
       owner   : "",
@@ -99,21 +99,18 @@ const OwnershipView = (props) => {
   return (
     <Container maxWidth='xs'>
     <Grid container direction="row" justify="flex-start" alignItems="center" spacing={1}>
-      // first line
       <Grid item xs={6}>
         <Typography>Asset Id</Typography>
       </Grid>
       <Grid item xs={6}>
         <Typography>{assetId}</Typography>
       </Grid>
-      // second line
       <Grid item xs={6}>
         <Typography>Owner</Typography>
       </Grid>
       <Grid item xs={6}>
         <Typography>{owner}</Typography>
       </Grid>
-      // third line
       <Grid item xs={6}>
         <Typography>Status</Typography>
       </Grid>
@@ -124,3 +121,16 @@ const OwnershipView = (props) => {
 }
 ```
 
+Now line 88 replace:
+
+```js
+<Typography variant="h6" style={{ color: theme.palette.text.primary }}>
+  Edit <code>src/App.js</code> and save to reload.
+</Typography>
+```
+
+with the call to the `OwnershipData` component:
+
+```js
+<OnwershipData />
+```
