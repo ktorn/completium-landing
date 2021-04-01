@@ -44,7 +44,7 @@ Origination completed for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd named ownership.a
 https://better-call.dev/edo2net/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
 ```
 
-Click on the generated link to display the contract in <Link to=''>Better Call Dev</Link> indexer. It shows the origination cost of 0.34ꜩ.
+Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer. It shows the origination cost of 0.34ꜩ.
 
 ## Contract API
 
@@ -63,9 +63,9 @@ It stores 4 extra variables used to implement the transfer of ownership process:
 
 | Name | Type | Description | Initial Value |
 | -- | :-- | -- | -- |
-| `bestBidder` | address | Address of the best bidder; it is equal to the owner address when asset is not for sale. | `owner` |
+| `bestbidder` | address | Address of the best bidder; it is equal to the owner address when asset is not for sale. | `owner` |
 | `bestbid` | tez | Best bid amount. | `0tz` |
-| `endofBid` | date | Date of the end of bid. | `now` (date of origination) |
+| `endofbid` | date | Date of the end of bid. | `now` (date of origination) |
 | `_state` | int | Value is either 0 (not for sale) or 1 (for sale). | `0` (not for sale) |
 
 ### Entrypoints
