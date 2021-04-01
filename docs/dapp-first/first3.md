@@ -5,6 +5,7 @@ sidebar_label: 3. Display contract data
 slug: /dapp-first/display-storage
 ---
 import Link from '@docusaurus/Link';
+import DappFigure from '../DappFigure';
 
 The goal is to display some data retrieved from the ownership contract storage.
 
@@ -37,7 +38,7 @@ const OwnershipData = (props) => {
 
 The function `loadstorage` is called when `assetId` is not yet initialized. When it returns, the call to `setData` triggers the refresh of the component with loaded data.
 
-## Get data with Taquito
+## Taquito
 
 The <a href='https://tezostaquito.io/' target='_blank'>Taquito</a> library provides easy integration of blockchain features in javascript applications. It is pre-installed in the Gitpod environment.
 
@@ -70,7 +71,7 @@ For example:
 export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
 ```
 
-## Source code
+## Insert component code
 
 The code blow synthesizes the sections above. Copy the code and insert it line 11 of `~/src/App.js`:
 
@@ -121,7 +122,7 @@ const OwnershipData = (props) => {
 }
 ```
 
-Now line 88 replace:
+Now replace lines 88 to 90 of `~/src/App.js`:
 
 ```js
 <Typography variant="h6" style={{ color: theme.palette.text.primary }}>
@@ -134,3 +135,7 @@ with the call to the `OwnershipData` component:
 ```js
 <OnwershipData />
 ```
+
+The result should look something like:
+
+<DappFigure img="ownership1.png" width='70%'/>
