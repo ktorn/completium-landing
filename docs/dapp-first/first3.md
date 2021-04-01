@@ -40,6 +40,8 @@ The function `loadstorage` is called when `assetId` is not yet initialized. When
 
 ## Taquito
 
+This section is for information only, no action is required.
+
 The <a href='https://tezostaquito.io/' target='_blank'>Taquito</a> library provides easy integration of blockchain features in javascript applications. It is pre-installed in the Gitpod environment.
 
 The following code shows how to retrieve data from the contract when in an asynchronous function. This code is to be inserted in the function passed to `useCallback` above:
@@ -57,16 +59,19 @@ setData({
 
 The `endpoint` constant is the endpoint URL to the Tezos test network.
 
-The `contractAddress` constant is the address of the conctract that has been deployed in previous step. To display its address, run the command:
+The `contractAddress` constant is the address of the conctract that has been deployed in previous step.
+
+## Set contract address
+
+It is required to set the ownership contract address in `~/src/settings.js`.
+
+To display the contract address, run the command:
 
 ```
 completium-cli show contract ownership
 ```
-:::info
-Copy-paste the contract address in `~/src/settings.js`.
-:::
 
-For example:
+For example in `~/src/settings.js`:
 ```js
 export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
 ```
