@@ -15,7 +15,7 @@ Before anything, check the *admin* account balance with the following command in
 completium-cli show account
 ```
 
-If the balance is below 3 tez, then follow these <Link to='/docs/dapp-tools/gitpod#check-admin-account'>instructions</Link> to import a new account (or transfer some tez to the admin account).
+If the balance is below 3 tezies, then follow these <Link to='/docs/dapp-tools/gitpod#check-admin-account'>instructions</Link> to import a new account (or transfer some tezies to the admin account).
 
 ## Create smart contract file
 
