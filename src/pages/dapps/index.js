@@ -101,7 +101,7 @@ function Dapps() {
       <Container maxWidth="md">
         <Grid container direction='column'  justify="center" alignItems="center" spacing={4}>
           <Grid item style={{ textAlign: 'center' }}>
-            <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to developp Dapps</Typography>
+            <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to developp DApps</Typography>
           </Grid>
           <Grid item style={{ textAlign: 'center' }}>
             <Typography variant='h4' style={{ marginTop: '40px' }}>Ten minutes to build a first DApp on Tezos</Typography>
@@ -123,7 +123,7 @@ function Dapps() {
           <Grid item>
             <Typography>
               Dapps presented below are potential real-life applications that illustrate how to leverage the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain technology to create a new generation of game-changing applications.
-              Tezos is a powerfull self-amending blockchain that comes with a rich technical ecosystem. Discover the <Link to='/docs/dapp-tools/'>technical stack</Link> used to developp these DApps.
+              Discover the <Link to='/docs/dapp-tools/'>technical stack</Link> used to developp these DApps.
             </Typography>
           </Grid>
           <Grid item>
