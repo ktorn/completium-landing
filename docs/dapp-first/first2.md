@@ -48,7 +48,11 @@ Click on the generated link to display the contract in <Link to='/docs/dapp-tool
 
 ## Contract API
 
-This section presents the <Link to='/docs/dapp-first/contract#source-code'>contract</Link> API for information only, and does not require any action from your side.
+:::note
+This section is for information only, no action is required.
+:::
+
+This section presents the <Link to='/docs/dapp-first/contract#source-code'>contract</Link> API.
 
 ### Storage
 
@@ -110,7 +114,7 @@ transition openAuction (price : tez) {
 
 entry bid() {
    require {
-      r1 otherwise "Asset not for sale" : state = ForSale;
+      r1 otherwise "Asset Not For Sale" : state = ForSale;
       r2: now < endofbid;
       r3: caller <> bestbidder;
       r4: transferred > bestbid;

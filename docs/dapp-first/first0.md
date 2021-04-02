@@ -1,6 +1,6 @@
 ---
 id: first0
-title: First DApp on Tezos
+title: Transfer of Ownership
 sidebar_label: 0. First DApp
 slug: /dapp-first
 ---

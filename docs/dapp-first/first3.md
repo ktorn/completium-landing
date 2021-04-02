@@ -10,12 +10,13 @@ import DappFigure from '../DappFigure';
 The goal is to display some data retrieved from the ownership contract storage.
 
 ## React pattern
-
+:::note
 This section is for information only, no action is required.
+:::
 
 We want to display the data `assetid`, `owner` and `status` from the deployed contract.
 
-Reading contract data is done asynchronously with RPC calls to the blockchain. The following code is a standard React pattern to load  remote data, and refresh component display when received.
+Reading contract data is done asynchronously with RPC calls to the blockchain. The following code is a standard React pattern to load  remote data, and refresh component when data is received.
 
 It defines a component named `OwnershipData` whose role is to retrieve and display contract data:
 
@@ -40,8 +41,9 @@ The function `loadstorage` is called when `assetId` is not yet initialized. When
 
 ## Taquito
 
+:::note
 This section is for information only, no action is required.
-
+:::
 The <a href='https://tezostaquito.io/' target='_blank'>Taquito</a> library provides easy integration of blockchain features in javascript applications. It is pre-installed in the Gitpod environment.
 
 The following code shows how to retrieve data from the contract when in an asynchronous function. This code is to be inserted in the function passed to `useCallback` above:
@@ -78,12 +80,13 @@ export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
 
 ## Insert component code
 
-The code blow synthesizes the sections above. Copy the code and insert it line 11 of `~/src/App.js`:
+The code below synthesizes the sections above. Copy the code and insert it line 12 of `~/src/App.js`:
 
 ```js
 import { TezosToolkit } from '@taquito/taquito';
 import Container from '@material-ui/core/Container';
 import { endpoint, contractAddress } from './settings.js';
+import { useSatate } from 'react';
 
 const OwnershipData = (props) => {
   const [{ assetId, owner, forsale }, setData] = useState(() => ({
@@ -127,7 +130,7 @@ const OwnershipData = (props) => {
 }
 ```
 
-Now replace lines 88 to 90 of `~/src/App.js`:
+Now replace lines 84 to 86 of `~/src/App.js`:
 
 ```js
 <Typography variant="h6" style={{ color: theme.palette.text.primary }}>
