@@ -78,7 +78,7 @@ The ownership contract provides three entrypoints:
 
 | Name | Parameter(s) | Description |
 | -- | -- | :-- |
-| `openAuction` | minimum selling price | Called by current owner to open bid process. Contract state is to "for sale". |
+| `upforsale` | minimum selling price | Called by current owner to open bid process. Resulting contract state is `ForSale`. |
 | `bid` | | Called by anyone. It requires: <ul> <li>the asset to be up for sale</li><li>the bid period is not over</li><li>the transferred amount is above the current best bid amount</li></ul> If these conditions are met, it transfers back the previous best bid amount to the previous best bidder, and updates the `bestbidder` and `bestbid` variables with new values; `endofbid` is incremented by 2 minutes.  |
 | `claim`| | Called by anyone. It requires: <ul><li>the asset to be up for sale</li><li>the bid period to be over</li></ul>If these condidions are met, it transfers the best bid value to the previous owner, and sets the `owner` variable to the best bidder address. Contract state is set back to "not for sale".|
 
@@ -103,7 +103,7 @@ states =
 | Owned initial
 | ForSale
 
-transition openAuction (price : tez) {
+transition upforsale (price : tez) {
    called by owner
    from Owned to ForSale
    with effect {

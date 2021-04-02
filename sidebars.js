@@ -54,6 +54,8 @@ module.exports = {
     'dapp-first/first3',
     'dapp-first/first4',
     'dapp-first/first5',
+    'dapp-first/first6',
+    'dapp-first/first7',
   ],
   miles: [
     'dapp-miles/miles1',

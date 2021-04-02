@@ -49,9 +49,9 @@ The <a href='https://tezostaquito.io/' target='_blank'>Taquito</a> library provi
 The following code shows how to retrieve data from the contract when in an asynchronous function. This code is to be inserted in the function passed to `useCallback` above:
 
 ```js {5-7}
-const Tezos   = new TezosToolkit(endpoint);
-var contract  = await Tezos.contract.at(contractAddress);
-var storage   = await contract.storage();
+const tezos     = new TezosToolkit(endpoint);
+const contract  = await tezos.contract.at(contractAddress);
+const storage   = await contract.storage();
 setData({
   assetId : storage.assetId,
   owner   : storage.owner,
@@ -67,7 +67,7 @@ The `contractAddress` constant is the address of the conctract that has been dep
 
 It is required to set the ownership contract address in `~/src/settings.js`.
 
-To display the contract address, run the command:
+To display the contract address, **run** the command:
 
 ```
 completium-cli show contract ownership
@@ -80,9 +80,10 @@ export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
 
 ## Insert component code
 
-The code below synthesizes the sections above. Copy the code and insert it line 12 of `~/src/App.js`:
+The code below synthesizes the sections above.
+**Copy** the code and **insert** it line 13 of `~/src/App.js`:
 
-```js
+```js {13-15,17-19}
 import { TezosToolkit } from '@taquito/taquito';
 import Container from '@material-ui/core/Container';
 import { endpoint, contractAddress } from './settings.js';
@@ -95,9 +96,9 @@ const OwnershipData = (props) => {
       forsale : "",
     }));
   const loadStorage = React.useCallback(async () => {
-    const Tezos = new TezosToolkit(endpoint);
-    var contract  = await Tezos.contract.at(contractAddress);
-    var storage   = await contract.storage();
+    const tezos     = new TezosToolkit(endpoint);
+    const contract  = await tezos.contract.at(contractAddress);
+    const storage   = await contract.storage();
     setData({
       assetId : storage.assetId,
       owner   : storage.owner,
@@ -130,7 +131,7 @@ const OwnershipData = (props) => {
 }
 ```
 
-Now replace lines 84 to 86 of `~/src/App.js`:
+Now **replace** lines 85 to 87 of `~/src/App.js`:
 
 ```js
 <Typography variant="h6" style={{ color: theme.palette.text.primary }}>
