@@ -8,7 +8,7 @@ import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
 The goal is to add a *Post Bid* button to call the contract.
-## Add button
+## Button's code
 
 **Copy** the code below and **insert** it line 17 of `~/src/App.js` to define the `BidButton`:
 
@@ -22,21 +22,21 @@ const BidButton = () => {
   const tezos = useTezos();
   const account = useAccountPkh();
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
-  const handlebid = async () => {
+  const bid = async () => {
     try {
       const contract  = await tezos.wallet.at(contractAddress);
       const operation = await contract.methods.bid(UnitValue).send({ amount: 10 });
-      const shorthash = operation.opHash.substring(0,10)+"...";
-      setInfoSnack(`waiting for ${shorthash} to be confirmed ...`);
+      const shorthash = operation.opHash.substring(0, 10) + "...";
+      setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
       await operation.receipt();
       hideSnack();
     } catch (error) {
       setErrorSnack(error.message);
-      setTimeout(hideSnack,4000);
+      setTimeout(hideSnack, 4000);
     }
   }
   return (
-    <Button onClick={handlebid} variant="outlined" disabled={account === null}>
+    <Button onClick={ bid } variant="outlined" disabled={ account === null }>
       post bid
     </Button>);
 }

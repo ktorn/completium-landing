@@ -25,7 +25,7 @@ const OwnershipData = (props) => {
   const [{ assetid, owner, forsale }, setData] = React.useState(() => ({
       assetid : "",
       owner   : "",
-      forsale : 0,
+      forsale : "",
     }));
   const loadStorage = React.useCallback(async () => {
     /* Retrieve data and store them with setData(...) */
@@ -55,7 +55,7 @@ const storage   = await contract.storage();
 setData({
   assetId : storage.assetId,
   owner   : storage.owner,
-  forsale : storage._state.toNumber(),
+  forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
 });
 ```
 
@@ -78,20 +78,26 @@ For example in `~/src/settings.js`:
 export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
 ```
 
-## Insert component code
+## Storage display code
 
 The code below synthesizes the sections above.
 **Copy** the code and **insert** it line 13 of `~/src/App.js`:
 
-```js {13-15,17-19}
+```js {6-10,30-36}
 import { TezosToolkit } from '@taquito/taquito';
 import Container from '@material-ui/core/Container';
-import { endpoint, contractAddress } from './settings.js';
-import { useSatate } from 'react';
+import { endpoint, contractAddress, courier } from './settings.js';
+import { useState } from 'react';
+
+const Cell = (props) => {
+  return (<Grid item xs={6}><Typography align="left" variant="subtitle2"
+    style={ props.data ? { fontFamily: courier }: {} }> { props.val }
+  </Typography></Grid>)
+}
 
 const OwnershipData = (props) => {
-  const [{ assetId, owner, forsale }, setData] = useState(() => ({
-      assetId : "",
+  const [{ assetid, owner, forsale }, setData] = useState(() => ({
+      assetid : "",
       owner   : "",
       forsale : "",
     }));
@@ -100,36 +106,25 @@ const OwnershipData = (props) => {
     const contract  = await tezos.contract.at(contractAddress);
     const storage   = await contract.storage();
     setData({
-      assetId : storage.assetId,
+      assetid : storage.assetId,
       owner   : storage.owner,
-      forsale : storage._state.toNumber(),
+      forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
     });
   }, [assetId, owner, forsale]);
   if (assetId === "") loadStorage();
   return (
     <Container maxWidth='xs'>
-    <Grid container direction="row" justify="flex-start" alignItems="center" spacing={1}>
-      <Grid item xs={6}>
-        <Typography>Asset Id</Typography>
-      </Grid>
-      <Grid item xs={6}>
-        <Typography>{assetId}</Typography>
-      </Grid>
-      <Grid item xs={6}>
-        <Typography>Owner</Typography>
-      </Grid>
-      <Grid item xs={6}>
-        <Typography>{owner}</Typography>
-      </Grid>
-      <Grid item xs={6}>
-        <Typography>Status</Typography>
-      </Grid>
-      <Grid item xs={6}><Typography>{forsale>0?"For sale":"Not for sale"}</Typography></Grid>
+    <Grid container direction="row" alignItems="center" spacing={1}>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..." data }/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..." data }/>
+      <Cell val="Status"  /><Cell val={ forsale }/>
     </Grid>
     </Container>
   );
 }
 ```
+
+User interface code to display contract data is highlighted above.
 
 Now **replace** lines 85 to 87 of `~/src/App.js`:
 

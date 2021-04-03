@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 ## Connect to wallet
 
-Click the *Connect to Wallet* button; it opens a popup window to select an account:
+**Click** the *Connect to Wallet* button; it opens a popup window to select an account:
 
 <DappFigure img='connect_dapp.png' width='40%'/>
 
