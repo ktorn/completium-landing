@@ -101,7 +101,7 @@ function Dapps() {
       <Container maxWidth="md">
         <Grid container direction='column'  justify="center" alignItems="center" spacing={4}>
           <Grid item style={{ textAlign: 'center' }}>
-            <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to developp DApps</Typography>
+            <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to develop DApps</Typography>
           </Grid>
           <Grid item style={{ textAlign: 'center' }}>
             <Typography variant='h4' style={{ marginTop: '40px' }}>Ten minutes to build a first DApp on Tezos</Typography>
@@ -115,7 +115,7 @@ function Dapps() {
             </Button>
           </Grid>
           <Grid item style={{ textAlign: 'center' }}>
-            <Typography variant='h4' style={{ marginTop: '0px' }}>Learn with examples</Typography>
+            <Typography variant='h4' style={{ marginTop: '0px' }} id="dapp_examples">Learn with examples</Typography>
           </Grid>
           {/* <Grid item>
             <img src={useBaseUrl('/img/undraw_code_review.svg')} style={{ width: '300px' }}></img>

@@ -89,7 +89,7 @@ The ownership contract provides three entrypoints:
 ```archetype
 archetype asset_ownership
 
-variable assetId : bytes =
+variable assetid : bytes =
   0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2
 
 variable owner : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw

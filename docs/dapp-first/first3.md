@@ -29,15 +29,15 @@ const OwnershipData = (props) => {
     }));
   const loadStorage = React.useCallback(async () => {
     /* Retrieve data and store them with setData(...) */
-  }, [assetId, owner, forsale]);
-  if (assetId === "") loadStorage();
+  }, [assetid, owner, forsale]);
+  if (assetid === "") loadStorage();
   return (
     /* Render Component */
   );
 }
 ```
 
-The function `loadstorage` is called when `assetId` is not yet initialized. When it returns, the call to `setData` triggers the refresh of the component with loaded data.
+The function `loadstorage` is called when `assetid` is not yet initialized. When it returns, the call to `setData` triggers the refresh of the component with loaded data.
 
 ## Taquito
 
@@ -53,7 +53,7 @@ const tezos     = new TezosToolkit(endpoint);
 const contract  = await tezos.contract.at(contractAddress);
 const storage   = await contract.storage();
 setData({
-  assetId : storage.assetId,
+  assetid : storage.assetid,
   owner   : storage.owner,
   forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
 });
@@ -91,7 +91,7 @@ import { useState } from 'react';
 
 const Cell = (props) => {
   return (<Grid item xs={6}><Typography align="left" variant="subtitle2"
-    style={ props.data ? { fontFamily: courier }: {} }> { props.val }
+    style={ props.data ? { fontFamily: courier } : { } }> { props.val }
   </Typography></Grid>)
 }
 
@@ -106,7 +106,7 @@ const OwnershipData = (props) => {
     const contract  = await tezos.contract.at(contractAddress);
     const storage   = await contract.storage();
     setData({
-      assetid : storage.assetId,
+      assetid : storage.assetid,
       owner   : storage.owner,
       forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
     });
@@ -124,7 +124,7 @@ const OwnershipData = (props) => {
 }
 ```
 
-User interface code to display contract data is highlighted above.
+The interface code to display contract data is highlighted above.
 
 Now **replace** lines 85 to 87 of `~/src/App.js`:
 
