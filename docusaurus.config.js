@@ -29,13 +29,11 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        { to: 'dapps', label: 'DApps', position: 'left'},
-        {
-          to: 'docs/dapp-tools/',
-          label: 'Technical stack',
-          position: 'left',
-          docId: 'tools1'
-        },
+        { to: 'docs/dapp-first', label: 'First DApp', position: 'left' },
+        { to: 'dapps', label: 'Examples', position: 'left' },
+        { to: '/docs/contract', label: 'Smart Contract', position: 'left' },
+        { to: '/docs/cli', label: 'CLI', position: 'left' },
+        { to: 'docs/dapp-tools', label: 'Technical stack', position: 'left' },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/edukera/completium-landing',
@@ -50,14 +48,11 @@ module.exports = {
         {
           title: 'Docs',
           items: [
-            {
-              label: 'DApps',
-              to: '/dapps',
-            },
-            {
-              label: 'Technical Stack',
-              to: 'docs/dapp-tools/',
-            },
+            { label: 'First Dapp', to: 'docs/dapp-first' },
+            { label: 'Examples', to: '/dapps' },
+            { label: 'Smart Contract', to: '/docs/contract' },
+            { label: 'CLI', to: '/docs/cli' },
+            { label: 'Technical Stack', to: 'docs/dapp-tools/' },
           ],
         },
         {

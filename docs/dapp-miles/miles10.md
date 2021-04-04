@@ -7,7 +7,7 @@ slug: /dapp-miles/miles-contract-interface
 
 import Link from '@docusaurus/Link';
 
-The smart contract is developed with the <Link to="/docs/dapp-tools/archetype">Archetype</Link> language.
+The smart contract is developed with the <a href='https://archetype-lang.org/'>Archetype</a> language.
 ## Storage
 
 The contract defines an admin address that only can call the `add` and `clear_expired` entry points:
@@ -16,7 +16,7 @@ The contract defines an admin address that only can call the `add` and `clear_ex
 variable admin : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 ```
 
-The contract defines a <Link to="/docs/dapp-tools/archetype#collection">collection</Link> of miles:
+The contract defines a <Link to="/docs/contract/tuto/archetype-assets">collection</Link> of miles:
 
 ```archetype
 asset mile identified by id {

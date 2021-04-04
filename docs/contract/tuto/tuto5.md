@@ -2,7 +2,7 @@
 id: tuto5
 title: Date arithmetic
 sidebar_label: 5. Dates arithmetic
-slug: /dapp-tools/tutorials/archetype-datearith
+slug: /contract/tuto/archetype-datearith
 ---
 
 import Link from '@docusaurus/Link';
@@ -50,7 +50,7 @@ entry weekday (d : date) {
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 5-weekday.arl

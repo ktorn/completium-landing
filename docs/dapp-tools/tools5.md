@@ -48,8 +48,8 @@ To open the terminal, click on the "New Terminal" in the "Terminal" menu, illust
 ## Check `admin` account
 
 The Gitpod environement comes with:
-* <Link to='/docs/dapp-tools/'>Archetype</Link>
-* <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> to interact with archetype smart contracts on the Tezos blockchain (deploy, call, ...)
+* <a href='https://archetype-lang.org/'>Archetype</a>
+* <Link to='/docs/cli'>Completium CLI</Link> to interact with archetype smart contracts on the Tezos blockchain (deploy, call, ...)
 
 An account is required to interact with the blockchain.
 

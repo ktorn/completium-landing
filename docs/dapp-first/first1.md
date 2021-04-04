@@ -16,9 +16,9 @@ The environment provides the following elements:
 
 | Element | Description |
 | -- | :-- |
-| <a href='' target='_blank'>Completium project</a> | Repository to clone to start a new Completium DApp project using <Link to='/docs/dapp-tools/react'>React</Link> UI technology. |
-| <Link to='/docs/dapp-tools/archetype'>Archetype</Link> | Smart Contract language. |
-| <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> | Command line interface to deploy and interact with archetype contracts. |
+| <a href='https://github.com/edukera/completium-dapp-first' target='_blank'>Completium project</a> | Project to start a new DApp project with <Link to='/docs/dapp-tools/react'>React JS</Link>. |
+| <a href='https://archetype-lang.org/'>Archetype</a> | Smart Contract language. |
+| <Link to='/docs/cli'>Completium CLI</Link> | Command line interface to deploy and interact with archetype contracts. |
 
 The DApp project uses the <Link to='/docs/dapp-tools/thanos'>Temple wallet</Link> to manage the Tezos account and sign transactions.
 

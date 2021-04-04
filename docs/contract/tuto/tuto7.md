@@ -2,7 +2,7 @@
 id: tuto7
 title: Assets
 sidebar_label: 7. Assets
-slug: /dapp-tools/tutorials/archetype-assets
+slug: /contract/tuto/archetype-assets
 ---
 
 import Link from '@docusaurus/Link';
@@ -95,7 +95,7 @@ At last, note that the `sort` function sorts in ascending order. Another way to 
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 7-assets.arl

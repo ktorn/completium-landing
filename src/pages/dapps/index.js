@@ -100,7 +100,7 @@ function Dapps() {
       <ThemeProvider theme={theme}>
       <Container maxWidth="md">
         <Grid container direction='column'  justify="center" alignItems="center" spacing={4}>
-          <Grid item style={{ textAlign: 'center' }}>
+          {/*<Grid item style={{ textAlign: 'center' }}>
             <Typography variant='h3' style={{ marginTop: '40px' }}>Learn to develop DApps</Typography>
           </Grid>
           <Grid item style={{ textAlign: 'center' }}>
@@ -117,10 +117,10 @@ function Dapps() {
           <Grid item style={{ textAlign: 'center' }}>
             <Typography variant='h4' style={{ marginTop: '0px' }} id="dapp_examples">Learn with examples</Typography>
           </Grid>
-          {/* <Grid item>
+           <Grid item>
             <img src={useBaseUrl('/img/undraw_code_review.svg')} style={{ width: '300px' }}></img>
           </Grid> */}
-          <Grid item>
+          <Grid item style={{ marginTop: '80px', marginBottom: '40px' }}>
             <Typography>
               Dapps presented below are potential real-life applications that illustrate how to leverage the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain technology to create a new generation of game-changing applications.
               Discover the <Link to='/docs/dapp-tools/'>technical stack</Link> used to developp these DApps.

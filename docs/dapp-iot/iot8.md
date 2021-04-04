@@ -7,7 +7,7 @@ slug: /dapp-iot/interface
 
 import Link from '@docusaurus/Link';
 
-The smart contract is developed with the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> language.
+The smart contract is developed with the <a href='https://archetype-lang.org/'>Archetype</a> language.
 
 ## Storage
 

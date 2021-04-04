@@ -7,9 +7,9 @@ slug: /dapp-first/contract
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
-The first step is to originate (deploy) the ownership <Link to='/docs/dapp-tools/tezos#smart-contract'>Smart Contract</Link> with the *admin* test account that comes preconfigured with <Link to='/docs/dapp-tools/completium-cli'>completium CLI</Link>.
+The first step is to originate (deploy) the ownership <Link to='/docs/dapp-tools/tezos#smart-contract'>Smart Contract</Link> with the *admin* test account that comes preconfigured with <Link to='/docs/cli'>completium CLI</Link>.
 
-Before anything, check the *admin* account balance with the following command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link>:
+Before anything, check the *admin* account balance. Open a new <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link> tab and enter the command below:
 
 ```
 completium-cli show account
@@ -44,7 +44,7 @@ Origination completed for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd named ownership.a
 https://better-call.dev/edo2net/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
 ```
 
-Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer. It shows the origination cost of 0.34ꜩ.
+Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer. It shows the origination cost of 0.39ꜩ.
 
 ## Contract API
 

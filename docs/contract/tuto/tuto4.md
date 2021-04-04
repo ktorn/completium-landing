@@ -2,7 +2,7 @@
 id: tuto4
 title: Dates and durations
 sidebar_label: 4. Dates & Durations
-slug: /dapp-tools/tutorials/archetype-datedur
+slug: /contract/tuto/archetype-datedur
 ---
 
 
@@ -45,7 +45,7 @@ var date4 : date = 2019-01-01T00:00:00-05:30; (* iso 8601 *)
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 4-time_window.arl --amount 5tz

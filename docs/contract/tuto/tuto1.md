@@ -2,7 +2,7 @@
 id: tuto1
 title: Hello Tezos world
 sidebar_label: 1. Hello Tezos world
-slug: /dapp-tools/tutorials/archetype-hello
+slug: /contract/tuto/archetype-hello
 ---
 
 import Link from '@docusaurus/Link';
@@ -26,7 +26,7 @@ Use the `:=` operator to assign value to storage variable.
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 1-hello.arl

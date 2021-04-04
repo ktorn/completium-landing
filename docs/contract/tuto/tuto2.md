@@ -2,7 +2,7 @@
 id: tuto2
 title: Execution Conditions
 sidebar_label: 2. Execution conditions
-slug: /dapp-tools/tutorials/archetype-execcond
+slug: /contract/tuto/archetype-execcond
 ---
 
 
@@ -42,7 +42,7 @@ Execution conditions have identifiers (here `r1` and `r2`) used for fail message
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 2-exec_condition.arl

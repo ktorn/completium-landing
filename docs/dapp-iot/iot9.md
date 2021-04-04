@@ -38,7 +38,7 @@ function get_rate_in_s_by_utz () : rational {
 
 `dateofstop` is computed with the following simple formula `now + dur + read_interval`.
 
-We note that the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> makes it very simple to manipulate durations.
+We note that the <a href='https://archetype-lang.org/'>Archetype</a> makes it very simple to manipulate durations.
 
 ## Interrupt
 

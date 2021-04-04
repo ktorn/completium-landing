@@ -13,7 +13,7 @@ The smart contract is at this location:
 
 `~/completium-dapp-miles/contract/miles_with_expiration.arl`
 
-The contract is written in <Link to="/docs/dapp-tools/archetype">Archetype</Link> language. Go to the Smart contract section for a detailed presentation.
+The contract is written in <a href='https://archetype-lang.org/'>Archetype</a> language. Go to the Smart contract section for a detailed presentation.
 
 The setup consists in deploying the contract and adding mile to the user account.
 
@@ -25,13 +25,13 @@ Open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and en
 completium-cli deploy ./contract/miles_with_expiration.arl --named miles
 ```
 
-The <Link to="/docs/dapp-tools/completium-cli#deploy">originate command</Link> triggers two operations:
+The <Link to="/docs/cli/contract#deploy--originate">originate command</Link> triggers two operations:
 * the contract compilation to Michelson with archetype compiler
 * the Michelson contract origination with Tezos client
 
 The contract may then be referred to as `miles` in future interactions.
 
-If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/dapp-tools/completium-cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/faucet#admin-account">admin</Link> account. See this section for more information.
+If you are using the preset <Link to="/docs/dapp-tools/gitpod">Gitpod</Link> environement, note that <Link to="/docs/cli">completium-cli</Link> is pre-installed with the <Link to="/docs/dapp-tools/faucet#admin-account">admin</Link> account. See this section for more information.
 
 The address of the newly originated contract is visible in the command output, as illustrated below:
 

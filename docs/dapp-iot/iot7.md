@@ -94,7 +94,7 @@ The code blow reads the contract storage:
     });
 ```
 
-`rate` is of `rational` type in the contract. In <Link to="/docs/dapp-tools/archetype">Archetype</Link> language, rational are encoded as a pair of `int` and `nat`. That's why you need to retrieve numerator and denominator from Taquito's transcoded value (line 6).
+`rate` is of `rational` type in the contract. In <a href='https://archetype-lang.org/'>Archetype</a> language, rational are encoded as a pair of `int` and `nat`. That's why you need to retrieve numerator and denominator from Taquito's transcoded value (line 6).
 
 
 ## Read account

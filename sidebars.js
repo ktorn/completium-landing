@@ -1,33 +1,30 @@
 module.exports = {
   docs:  ['doc1', 'doc2', 'doc3'],
+  cli: [
+    'cli/cli0',
+    'cli/cli1',
+    'cli/cli2',
+    'cli/cli3',
+  ],
+  archetype: [
+    'contract/contract',
+    { type: 'category',
+      label: 'Archetype Tutorial',
+      items: [
+        'contract/tuto/tuto1',
+        'contract/tuto/tuto2',
+        'contract/tuto/tuto3',
+        'contract/tuto/tuto4',
+        'contract/tuto/tuto5',
+        'contract/tuto/tuto6',
+        'contract/tuto/tuto7',
+        'contract/tuto/tuto8',
+        'contract/tuto/tuto9',
+      ] }
+  ],
   tools:  [
     'dapp-tools/tools1',
-    {
-      type: 'category',
-      label: 'Blockchain',
-      items: [
-        'dapp-tools/tools8',
-        { type: 'category',
-          label: 'Archetype',
-          items: [
-            'dapp-tools/tools7',
-            { type: 'category',
-              label: 'Tutorial',
-              items: [
-                'dapp-tools/tutorials/tuto1',
-                'dapp-tools/tutorials/tuto2',
-                'dapp-tools/tutorials/tuto3',
-                'dapp-tools/tutorials/tuto4',
-                'dapp-tools/tutorials/tuto5',
-                'dapp-tools/tutorials/tuto6',
-                'dapp-tools/tutorials/tuto7',
-                'dapp-tools/tutorials/tuto8',
-                'dapp-tools/tutorials/tuto9',
-              ] }
-            ] },
-            'dapp-tools/tools3',
-          ]
-    },
+    'dapp-tools/tools8',
     {
       type: 'category',
       label: 'User Interface',

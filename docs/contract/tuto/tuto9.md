@@ -2,12 +2,12 @@
 id: tuto9
 title: Testing a contract
 sidebar_label: 9. Testing a contract
-slug: /dapp-tools/tutorials/archetype-test
+slug: /contract/tuto/archetype-test
 ---
 
 import Link from '@docusaurus/Link';
 
-In this exercise, a test is written to test the <Link to='/docs/dapp-tools/tutorials/archetype-assets'>asset</Link> contract (step 7).
+In this exercise, a test is written to test the <Link to='/docs/contract/tuto/archetype-assets'>asset</Link> contract (step 7).
 
 The test is written in javascript with the <Link to='/docs/dapp-tools/taquito'>Taquito</Link> library and executed with node.
 

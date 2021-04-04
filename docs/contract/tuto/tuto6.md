@@ -2,7 +2,7 @@
 id: tuto6
 title: State Machine
 sidebar_label: 6. State Machine
-slug: /dapp-tools/tutorials/archetype-statem
+slug: /contract/tuto/archetype-statem
 ---
 
 import DappFigure from '../../DappFigure';
@@ -57,7 +57,7 @@ Each transition is a contract entry point.
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 6-state_machine.arl

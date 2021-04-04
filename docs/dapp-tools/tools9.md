@@ -48,7 +48,7 @@ Note that the user account is managed by the <Link to='/docs/dapp-tools/thanos'>
 
 Taquito originates contracts provided in the Micheline format, a json version of <Link to='/docs/dapp-tools/tezos#micheslon'>Michelson</Link>.
 
-The <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command to generate Micheline from `contract.arl`:
+The <Link to='/docs/cli'>Completium CLI</Link> command to generate Micheline from `contract.arl`:
 
 ```bash
 $ completium-cli generate javascript contract.arl > contract.js
@@ -60,18 +60,20 @@ The generated `contract.js` file exports:
 
 These two elements are passed to the Taquito's originate method:
 
-```js {3-5}
+```js {4-6}
 import { code, getStorage } from 'contract.js';
 
-tezos.wallet.originate({
-  code: code,
-  storage: getStorage(...)
-}).send().then(op => {
+try {
+  const operation = await tezos.wallet.originate({
+    code: code,
+    storage: getStorage(...)
+  });
   console.log(`Waiting for confirmation of origination...`);
-  return op.contract()
-}).then (contract => {
+  const contract = await operation.contract();
   console.log(`Origination completed for ${contract.address}.`);
-}).catch(error => console.log(`Error: ${JSON.stringify(error, null, 2)}`));
+} catch (error) {
+  console.log(`Error: ${JSON.stringify(error, null, 2)}`);
+}
 ```
 
 Examples of contract origination are found is the following DApps:
@@ -87,7 +89,7 @@ It is very straightforward to call contracts entry points with Taquito.
 
 ### Basics
 
-For example, the <Link to='/docs/dapp-ideabox/'>Idea Box</Link> DApp's smart contract, developed in <Link to='/docs/dapp-tools/archetype'>Archetype</Link> language, defines an entry point `vote` to vote for an idea:
+For example, the <Link to='/docs/dapp-ideabox/'>Idea Box</Link> DApp's smart contract, developed in <a href='https://archetype-lang.org/'>Archetype</a> language, defines an entry point `vote` to vote for an idea:
 
 ```archetype
 entry vote(n : nat, weight : nat) {
@@ -110,14 +112,10 @@ The entry point requires two natural integer parameters:
 The following code calls the `vote` entry point:
 
 ```js {2}
-tezos.wallet.at(contractAddress).then(contract => {
-  contract.methods.vote(props.id, props.weight).send().then(op => {
-    console.log(`waiting for ${op.opHash} to be confirmed`);
-    op.receipt().then(() => {
-        props.handleReceipt();
-    });
-  })
-});
+const contract  = await tezos.wallet.at(contractAddress);
+const operation = await contract.methods.vote(id, weight).send();
+console.log(`waiting for ${operation.opHash} to be confirmed`);
+await operation.receipt();
 ```
 
 Note that while the contract defines parameters as `nat` (natural integers), the javascript type is simply `integer`; Taquito emits an error if the conversion to Michelson type is not possible.
@@ -130,18 +128,13 @@ Some entry points require to send an amount of tez for the contract to execute p
 
 For example, the `start` entry point of the <Link to='/docs/dapp-iot/'>Connected Object</Link> DApp requires to transfer some Tez to switch on the bulb. The amount is passed as argument of the `send` method:
 
-```js {5}
+```js {4}
 import { UnitValue } from '@taquito/taquito';
 
-tezos.wallet.at(contractAddress).then(contract => {
-    var price = (props.switch.rate * duration).toFixed(6);
-    contract.methods.start(UnitValue).send({ amount : price }).then(op => {
-      console.log(`waiting for ${op.opHash} to be confirmed`);
-      op.receipt().then(() => {
-        props.handleReceipt();
-      });
-    })
-});
+const contract  = await tezos.wallet.at(contractAddress);
+const operation = await contract.methods.start(UnitValue).send({ amount : price });
+console.log(`waiting for ${operation.opHash} to be confirmed`);
+await operation.receipt();
 ```
 
 Note that `UnitValue` is necessary to pass when the entry point does not have any argument.
@@ -166,12 +159,9 @@ const dexparams = dex.methods.exchange(UnitValue).toTransferParams();
 dexparams.kind = OpKind.TRANSACTION;
 
 // Group them in a batch operation and send
-const batch = await tezos.wallet.batch([fa12params, dexparams]);
-const op = await batch.send();
-props.openSnack();
-op.receipt().then(() => {
-  props.handleReceipt();
-})
+const batch     = await tezos.wallet.batch([fa12params, dexparams]);
+const operation = await batch.send();
+await operation.receipt();
 ```
 
 The parameters of `approve` and `exchange` have been simplified to `UnitValue` for demo purpose.
@@ -182,31 +172,36 @@ The parameters of `approve` and `exchange` have been simplified to `UnitValue` f
 
 For example in the <Link to='/docs/dapp-iot/'>Connected Object</Link> DApp, it is necessary to read the dates of service to know whether the object is currently in use.
 
-These variables are declared in the smart contract with the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> language:
+These variables are declared in the smart contract with the <a href='https://archetype-lang.org/'>Archetype</a> language:
 
 ```archetype
 variable dateofstop   : date = now
 
 variable dateofstart  : date = now
+
+variable value : int = 0tz
 ```
 
 These values are stored in the contract storage (click <a href='https://better-call.dev/edo2net/KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU/storage' target='_blank'>here</a> to view an instance in <Link to=''>Better Call dev</Link> indexer).
 
 Taquito provides the contract storage as a *POJO* for direct access to the contract data:
 
-```js {4,5}
-var contract  = await Tezos.contract.at(contractAddress);
+```js {4-6}
+var contract  = await tezos.contract.at(contractAddress);
 var storage   = await contract.storage();
 
-var dateofstart = new Date(storage.dateofstart);
-var dateofstop = new Date(storage.dateofstop);
+const dateofstart = new Date(storage.dateofstart);
+const dateofstop  = new Date(storage.dateofstop);
+const value       = storage.value.toNumber();
 ```
+
+Since Tezos can store arbitrary large number values, Taquito provides the number values as <a href='https://mikemcl.github.io/bignumber.js/' target='_blank'>bignumber</a> objects to be converted with `toNumber`.
 
 ### Collection of assets
 
 For example in the the <Link to='/docs/dapp-ideabox/'>Idea Box</Link> DApp, the smart contract stores the idea and the votes.
 
-The collection of ideas is declared in <Link to='/docs/dapp-tools/archetype'>Archetype</Link> language the following way:
+The collection of ideas is declared in <a href='https://archetype-lang.org/'>Archetype</a> language the following way:
 
 ```archetype
 asset idea {

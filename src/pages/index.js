@@ -88,7 +88,7 @@ function LearnDapps() {
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
         <Typography>
-          Discover how Decentralized Applications work through examples covering real life domains: DeFi, Governance, Gaming, ...
+          Discover how Decentralized Applications work through <Link to='dapps'>examples</Link> covering real life domains: DeFi, Governance, Gaming, ...
         </Typography>
       </Grid>
       <Grid item xs={12} style={{ textAlign: 'center' }}>
@@ -104,9 +104,14 @@ function LearnDapps() {
           <Grid item md={1} sm={0} xs={0}></Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} style={{ textAlign: 'center' }}>
-        <Button component={Link} to={useBaseUrl('dapps')} variant='outlined' size='large'>learn dapps</Button>
-      </Grid>
+      <Grid item style={{ textAlign: 'center' }} xs={12}>
+            <Typography variant='h6' style={{ fontWeight: 'bold', marginBottom: '32px' }}>10 Minutes to Build a First DApp</Typography>
+          </Grid>
+          <Grid item style={{ marginBottom: '40px', textAlign: 'center' }} xs={12}>
+            <Button component={Link} to={useBaseUrl('docs/dapp-first/')} variant='outlined' size='large'>
+              build first dapp
+            </Button>
+          </Grid>
     </Grid>
   )
 }

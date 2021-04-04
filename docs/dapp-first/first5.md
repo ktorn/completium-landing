@@ -66,7 +66,7 @@ The asset has not been set up for sale by the owner.
 
 Say the owner requires a minimum price of 7 tezis.
 
-**Enter** the following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command to invoke the entrypoint `upforsale`:
+**Enter** the following <Link to='/docs/cli'>Completium CLI</Link> command to invoke the entrypoint `upforsale`:
 
 ```bash
 completium-cli call ownership --entry upforsale --with 7tz

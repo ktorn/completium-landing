@@ -2,7 +2,7 @@
 id: tuto8
 title: Call another Contract
 sidebar_label: 8. Call a contract
-slug: /dapp-tools/tutorials/archetype-callcontr
+slug: /contract/tuto/archetype-callcontr
 ---
 
 import DappFigure from '../../DappFigure';
@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 Can a contract read another contract's storage?
 
-No, not directly. However it is possible to call another contract with the `transfer` instruction we have seen in <Link to='/docs/dapp-tools/tutorials/archetype-datedur'>previous</Link> examples.
+No, not directly. However it is possible to call another contract with the `transfer` instruction we have seen in <Link to='/docs/contract/tuto/archetype-datedur'>previous</Link> examples.
 
 It is then possible to setup a mechanism for a smart contract to retrieve a data from another smart contracts, under certain conditions and constraints:
 * the smart contract you want to retrieve data from must provide an dedicated entry point to provide the data
@@ -58,7 +58,7 @@ A detailed presentation of the `getter` keyword may be found <a href='https://do
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> commands deploy the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> commands deploy the contract on the Tezos network:
 
 ```
 completium-cli deploy 8-1-contract_called.arl

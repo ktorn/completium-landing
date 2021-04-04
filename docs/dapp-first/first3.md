@@ -81,11 +81,10 @@ export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
 ## Storage display code
 
 The code below synthesizes the sections above.
-**Copy** the code and **insert** it line 13 of `~/src/App.js`:
+**Copy** the code and **insert** it line 16 of `~/src/App.js`:
 
 ```js {6-10,30-36}
 import { TezosToolkit } from '@taquito/taquito';
-import Container from '@material-ui/core/Container';
 import { endpoint, contractAddress, courier } from './settings.js';
 import { useState } from 'react';
 
@@ -110,13 +109,13 @@ const OwnershipData = (props) => {
       owner   : storage.owner,
       forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
     });
-  }, [assetId, owner, forsale]);
-  if (assetId === "") loadStorage();
+  }, [assetid, owner, forsale]);
+  if (assetid === "") loadStorage();
   return (
     <Container maxWidth='xs'>
     <Grid container direction="row" alignItems="center" spacing={1}>
-      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..." data }/>
-      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..." data }/>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..."} data/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..."} data/>
       <Cell val="Status"  /><Cell val={ forsale }/>
     </Grid>
     </Container>
@@ -126,20 +125,40 @@ const OwnershipData = (props) => {
 
 The interface code to display contract data is highlighted above.
 
-Now **replace** lines 85 to 87 of `~/src/App.js`:
+Now **replace** lines 72 to 92 of `~/src/App.js` (remove all default UI components):
 
 ```js
-<Typography variant="h6" style={{ color: theme.palette.text.primary }}>
-  Edit <code>src/App.js</code> and save to reload.
-</Typography>
+<Grid item xs={12}>
+  <Typography variant="h2" style={{ fontFamily : alegreya }}>
+    Completium
+  </Typography>
+</Grid>
+<Grid item xs={12}>
+  <Typography variant="h6">
+    Edit <code>src/App.js</code> and save to reload.
+  </Typography>
+</Grid>
+<Grid item xs={12}>
+  <Link
+    href="https://completium.com/dapps"
+    target="_blank" rel="noopener noreferrer"
+    style={{ color: theme.palette.primary.light }}
+  >
+    <Typography variant="h6">
+      Learn everything about DApps
+    </Typography>
+  </Link>
+</Grid>
 ```
 
 with the call to the `OwnershipData` component:
 
 ```js
-<OnwershipData />
+<Grid item xs={12}>
+  <OwnershipData />
+</Grid>
 ```
 
 The result should look something like:
 
-<DappFigure img="ownership1.png" width='70%'/>
+<DappFigure img="ownership1.png" width='60%'/>

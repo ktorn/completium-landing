@@ -42,7 +42,7 @@ In this example, the following parameters are hardcoded in the contract:
 
 The contract code is embedded in origination transaction's json parameter in the `script` section, split in `code` and `storage` sections.
 
-This json format of the <Link to='/docs/dapp-tools/tezos#micheslon'>Michelson</Link> contract code (called *Micheline*) is <Link to='/docs/dapp-escrow/compilation'>generated</Link> by the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> compiler.
+This json format of the <Link to='/docs/dapp-tools/tezos#micheslon'>Michelson</Link> contract code (called *Micheline*) is <Link to='/docs/dapp-escrow/compilation'>generated</Link> by the <a href='https://archetype-lang.org/'>Archetype</a> compiler.
 
 ```json
 [

@@ -74,12 +74,12 @@ The section above presents the exchange principle between two tokens A and B. In
 
 <DappFigure img='dex-principle2.svg' width='30%'/>
 
-Tokens ownership is managed with one <a href='' target='_blank'>Financial Asset 1.2</a> (FA 1.2) <Link to='/docs/dapp-tools/tezos#smart-contract'>smart contract</Link> per Token. FA 1.2 is a specification of Fungible Token ownership for the Tezos blockchain; a FA 1.2 contract provides the following entry points:
+Tokens ownership is managed with one <a href='' target='_blank'>Financial Asset 1.2</a> (FA 1.2) <Link to='/docs/contract'>smart contract</Link> per Token. FA 1.2 is a specification of Fungible Token ownership for the Tezos blockchain; a FA 1.2 contract provides the following entry points:
 * `allow` to authorize a third party to transfer a given quantity of token
 * `transfer` to transfer a quantity of tokens from one account to another according to transfer authorizations
 * `get_balance` enable to retrieve account balance
 
-A detailed presentation of the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> implementation is available <a href='' target='_blank'>here</a>.
+A detailed presentation of the <a href='https://archetype-lang.org/'>Archetype</a> implementation is available <a href='' target='_blank'>here</a>.
 
 The <Link to='/docs/dapp-dex/interface'>DEX smart contract</Link> manages the XTZ pools, the interactions to the FA 1.2 contracts, and the liquidity ownership data:
 

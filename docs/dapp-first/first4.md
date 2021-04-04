@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 The goal is to add a *Post Bid* button to call the contract.
 ## Button's code
 
-**Copy** the code below and **insert** it line 17 of `~/src/App.js` to define the `BidButton`:
+**Copy** the code below and **insert** it line 19 of `~/src/App.js` to define the `BidButton`:
 
 ```js {12-13,16}
 import Button from '@material-ui/core/Button';
@@ -49,9 +49,9 @@ The highlighted lines above show the interactions with the wallet:
 
 Note that the contract's `bid` method does not take any argument, and that its javascript counterpart takes the default `UnitValue` value.
 
-Note that 10 tezies are sent to the contract with the `send` argument `{ amount: 10 }`. It is the value of the bid. This amount is refered to with the <Link to='/docs/dapp-tools/archetype'>Archetype</Link> keyword `transferred` in the contract <Link to='/docs/dapp-first/contract#source-code'>code</Link>.
+Note that 10 tezies are sent to the contract with the `send` argument `{ amount: 10 }`. It is the value of the bid. This amount is refered to with the <a href='https://archetype-lang.org/'>Archetype</a> keyword `transferred` in the contract <Link to='/docs/dapp-first/contract#source-code'>code</Link>.
 
-**Insert** the code below line 112 of `~/src/App.js` to add the `BidButton`:
+**Insert** the code below line 101 of `~/src/App.js` to add the `BidButton`:
 
 ```html
 <Grid item xs={12}>
@@ -65,7 +65,7 @@ The *Bid* button is disabled if the DApp is not connected to the <Link to='/docs
 
 The project provides a utility button `WalletButton` to connect to the wallet. It is defined in `~/src/components/WalletButton.js`.
 
-**Insert** the code below line 115 of `~/src/App.js`:
+**Insert** the code below line 104 of `~/src/App.js`:
 
 ```html
 <Grid item xs={12}>

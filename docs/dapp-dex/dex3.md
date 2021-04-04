@@ -13,7 +13,7 @@ import Link from '@docusaurus/Link';
 
 The Use Case scenario of the <Link to="/docs/dapp-dex">Dex</Link> DApp consists in the exchange city coins.
 
-You need a <Link to="/docs/dapp-escrow/Presentation#create-a-user-account">user account</Link> to interact with the smart contract.
+You need a <Link to="/docs/dapp-dex/Presentation#create-a-user-account">user account</Link> to interact with the smart contract.
 
 ## User Interface
 

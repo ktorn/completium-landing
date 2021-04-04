@@ -11,7 +11,7 @@ The goal is to add a *Claim* button and claim the ownership.
 
 ## Claim button
 
-**Copy** the code below and **insert** it line 17 of `~/src/App.js` to define the ClaimButton:
+**Copy** the code below and **insert** it line 23 of `~/src/App.js` to define the ClaimButton:
 
 ```js {8}
 const ClaimButton = () => {
@@ -41,7 +41,7 @@ The implementation is very similar to the one of the <Link to='/docs/dapp-first/
 * it does not require any transfer of tezis, hence the `send` method does not have any argument
 * the <Link to='/docs/dapp-first/contract#entrypoints'>contract</Link>'s `claim` method is called
 
-**Insert** the code below line 112 of `~/src/App.js` to add the `ClaimButton`:
+**Insert** the code below line 125 of `~/src/App.js` to add the `ClaimButton`:
 
 ```html
 <Grid item xs={12}>

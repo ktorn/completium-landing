@@ -16,7 +16,7 @@ First, the bid process could display the <Link to='/docs/dapp-first/contract#sto
 
 Then, the bid amount shouldn't be hard-coded to 10 tezis obviously, but rater be set with an input field. This input field could for example check whether the bid amount is above the current best bid and below the account balance, and display an error message if not.
 
-Then, it would be convenient to refresh the best bid data automatically. This can be done by setting a timer to reload contract data on a regular basis. An example of such a refresh feature may be found in the <Link to='/docs/dapp-zcb/'>Zero-Coupon Bond</Link> DApp example: in this DApp, the contract history tab is automatically updated when a transaction is sent to the smart contract. (link to <a href='https://github.com/edukera/completium-dapp-zerocouponbond/blob/master/src/indexer.js' target='_blank'>source code</a>). You may use the *Better Call Dev* <a href='https://better-call.dev/docs#operation/get-contract-operations' target='_blank'>Web API</a> to retrieve contract operations in raw Json format.
+Then, it would be convenient to refresh the best bid data automatically. This can be done by setting a timer to reload contract data on a regular basis. An example of such a refresh feature may be found in the <Link to='/docs/dapp-zcb/'>Zero-Coupon Bond</Link> DApp example: in this DApp, the contract history tab is automatically updated when a transaction is sent to the smart contract (link to <a href='https://github.com/edukera/completium-dapp-zerocouponbond/blob/master/src/indexer.js' target='_blank'>source code</a>). You may use the *Better Call Dev* <a href='https://better-call.dev/docs#operation/get-contract-operations' target='_blank'>Web API</a> to retrieve contract operations in raw Json format.
 
 ## Other Ownership DApps
 
@@ -26,7 +26,7 @@ Another nice DApp would be an ownership contracts indexer, which notifies when a
 
 ## Smart Contracts
 
-Write your own smart contract with <Link to=''>Archetype</Link>, a high-level domain-specific language with all Michelson features, plus exclusive features (new types, state machine design, ...) to ease development, tests and formal verification.
+Write your own smart contract with <a href='https://archetype-lang.org/'>Archetype</a>, a high-level domain-specific language with all Michelson features, plus exclusive features (new types, state machine design, ...) to ease development, tests and formal verification.
 
 Archetype comes with a convenient set of <a href='https://github.com/edukera/try-archetype#smart-contracts-base' target='_blank'>contract examples</a> to start with. Scan it, select the one to start from, and adapt it to your needs. Learn the Archetype language with a eight steps online tutorial:
 
@@ -34,7 +34,7 @@ Archetype comes with a convenient set of <a href='https://github.com/edukera/try
 
 ## Explore DApp examples
 
-Dapps presented <Link to='/dapps#dapp_examples'>here</Link> are potential real-life applications that illustrate how to leverage the Tezos blockchain technology to create a new generation of game-changing applications. Explore them to figure out everything about DApps!
+Dapps presented <Link to='/dapps'>here</Link> are potential real-life applications that illustrate how to leverage the Tezos blockchain technology to create a new generation of game-changing applications. Explore them to figure out everything about DApps!
 
 
 

@@ -2,7 +2,7 @@
 id: tuto3
 title: Rationals and transfers
 sidebar_label: 3. Rationals & Transfers
-slug: /dapp-tools/tutorials/archetype-rattrans
+slug: /contract/tuto/archetype-rattrans
 ---
 
 import Link from '@docusaurus/Link';
@@ -36,7 +36,7 @@ var v : rational = 4.2%;
 
 ## Deploy
 
-The following <Link to='/docs/dapp-tools/completium-cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
 ```
 completium-cli deploy 3-rat_transfer.arl

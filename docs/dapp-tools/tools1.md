@@ -16,8 +16,8 @@ The section presents the technologies and tools used to developp the DApps.
 | Name | Description |
 | ------------- | -------- |
 | <Link to="/docs/dapp-tools/tezos">Tezos</Link> | Tezos is an open-source platform for assets and applications backed by a global community of validators, researchers, and builders. |
-| <Link to="/docs/dapp-tools/archetype">Archetype</Link> | Archetype is a high level DSL to developp smart contract on the Tezos blockchain. |
-| <Link to="/docs/dapp-tools/completium-cli">Completium CLI</Link> | CLI to interact with Archetype contracts on the blockchain. |
+| <a href='https://archetype-lang.org/'>Archetype</a> | Archetype is a high level DSL to developp smart contract on the Tezos blockchain. |
+| <Link to="/docs/cli">Completium CLI</Link> | CLI to interact with Archetype contracts on the blockchain. |
 
 ## User Interface
 
