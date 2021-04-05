@@ -64,7 +64,7 @@ The asset has not been set up for sale by the owner.
 
 ## Set asset up for sale
 
-Say the owner requires a minimum price of 7 tezis.
+Say the owner requires a minimum price of 7 tezies.
 
 **Enter** the following <Link to='/docs/cli'>Completium CLI</Link> command to invoke the entrypoint `upforsale`:
 
@@ -100,4 +100,4 @@ Check the effect on the contract storage:
 Notes:
 * `bestbid` and `bestbidder` variables have been updated
 * `endofbid` has been incremented by 2 minutes
-* transferred amount is 10 tezis
+* transferred amount is 10 tezies

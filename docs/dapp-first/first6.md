@@ -38,7 +38,7 @@ const ClaimButton = () => {
 }
 ```
 The implementation is very similar to the one of the <Link to='/docs/dapp-first/bid-button#buttons-code'>Bid</Link> button. The differences are:
-* it does not require any transfer of tezis, hence the `send` method does not have any argument
+* it does not require any transfer of tezies, hence the `send` method does not have any argument
 * the <Link to='/docs/dapp-first/contract#entrypoints'>contract</Link>'s `claim` method is called
 
 **Insert** the code below line 125 of `~/src/App.js` to add the `ClaimButton`:
@@ -59,7 +59,7 @@ Notes:
 * `Owner` has been set to the account in your walletn, which means you are now the owner of the asset!
 *  Contract state is back to `0` which is "Not For Sale".
 
-The internal transaction (at the bottom in the screenshot above) is the transfer of the contract balance (10 tezis) to the previous owner, as per the <Link to='/docs/dapp-first/contract#entrypoints'>contract</Link> entrypoint `claim`:
+The internal transaction (at the bottom in the screenshot above) is the transfer of the contract balance (10 tezies) to the previous owner, as per the <Link to='/docs/dapp-first/contract#entrypoints'>contract</Link> entrypoint `claim`:
 
 ```archetype {5}
 transition claim () {
