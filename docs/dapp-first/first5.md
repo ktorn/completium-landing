@@ -101,3 +101,30 @@ Notes:
 * `bestbid` and `bestbidder` variables have been updated
 * `endofbid` has been incremented by 2 minutes
 * transferred amount is 10 tezies
+
+If the time window (5 minutes) to make a bid has expired, the error message below is displayed:
+
+<DappFigure img="make_bid2.png" width='30%' />
+
+Id `r2` is defined in the <Link to='/docs/dapp-first/contract#copy-contract-code'>smart contract</Link> as the id of the execution condition of the `bid` entrypoint:
+
+```archetype
+entry bid() {
+   require {
+     ...
+      r2: now < endofbid;
+     ...
+   }
+   effect {
+     ...
+   }
+}
+```
+
+The solution is to set back the contract state to `Owned` by calling the `claim` from `admin` account. This is done with the following command:
+
+```
+completium-cli call ownership --entry claim
+```
+
+Once confirmed, you may proceed to <Link to='/docs/dapp-first/make-bid#set-asset-up-for-sale'>Set asset up for sale</Link> step above.

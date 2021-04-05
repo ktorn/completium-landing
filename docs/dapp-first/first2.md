@@ -72,8 +72,8 @@ entry bid() {
 }
 
 transition claim () {
+  require { r5 otherwize "Bid Period Is Still On" : now > endofbid }
   from ForSale to Owned
-  when { now > endofbid }
   with effect {
      if balance > 0tz then
          transfer balance to owner;
