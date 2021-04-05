@@ -75,7 +75,7 @@ completium-cli show contract ownership
 
 For example in `~/src/settings.js`:
 ```js
-export const contractAddress = "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd";
+export const contractAddress = "KT1LyBhUUP6vnqwAyJTrZ3y2iA6BeZtSSnbk";
 ```
 
 ## Storage display code
