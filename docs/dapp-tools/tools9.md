@@ -46,7 +46,7 @@ Note that the user account is managed by the <Link to='/docs/dapp-tools/thanos'>
 
 ## Contract origination
 
-Taquito originates contracts provided in the Micheline format, a json version of <Link to='/docs/dapp-tools/tezos#micheslon'>Michelson</Link>.
+Taquito originates contracts provided in the Micheline format, a json version of <Link to='/docs/contract#micheslon'>Michelson</Link>.
 
 The <Link to='/docs/cli'>Completium CLI</Link> command to generate Micheline from `contract.arl`:
 
