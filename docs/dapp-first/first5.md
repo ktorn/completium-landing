@@ -33,7 +33,7 @@ For information, the raw transaction parameter is displayed below:
 
 ```json
 [{
-  "destination": "KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd",
+  "destination": "KT1LyBhUUP6vnqwAyJTrZ3y2iA6BeZtSSnbk",
   "kind": "transaction",
   "amount": 10000000,
   "parameters": {
