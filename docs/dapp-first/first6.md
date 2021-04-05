@@ -11,7 +11,13 @@ The goal is to add a *Claim* button and claim the ownership.
 
 ## Claim button
 
-**Copy** the code below and **insert** it line 23 of `~/src/App.js` to define the ClaimButton:
+**Replace** in `~/src/App.js` the comment below:
+
+```js
+/* FIXME: Step 6.1 */
+```
+
+with the code below (click 'copy' in the upper-right-hand corner):
 
 ```js {8}
 const ClaimButton = () => {
@@ -41,7 +47,13 @@ The implementation is very similar to the one of the <Link to='/docs/dapp-first/
 * it does not require any transfer of tezies, hence the `send` method does not have any argument
 * the <Link to='/docs/dapp-first/contract#entrypoints'>contract</Link>'s `claim` method is called
 
-**Insert** the code below line 125 of `~/src/App.js` to add the `ClaimButton`:
+**Replace** in `~/src/App.js` the comment below:
+
+```js
+{ /* FIXME: Step 6.2 */ }
+```
+
+with the code below:
 
 ```html
 <Grid item xs={12}>
@@ -72,3 +84,157 @@ transition claim () {
 }
 ```
 
+## `App.js` code
+
+:::note
+This section is for information only, no action is required.
+:::
+
+This section presents the code of `~/src/App.js` at the end of this step:
+
+```js {81-102,128-130}
+import './App.css';
+import React from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+
+import { DAppProvider } from './dappstate';
+import { SnackProvider } from './snackstate';
+import { appName, alegreya } from './settings';
+import Snack from './components/Snack';
+import WalletButton from './components/WalletButton';
+
+import { TezosToolkit } from '@taquito/taquito';
+import { endpoint, contractAddress, courier } from './settings.js';
+import { useState } from 'react';
+
+import Button from '@material-ui/core/Button';
+import { useTezos, useAccountPkh } from './dappstate';
+import { useSnackContext } from './snackstate';
+import { UnitValue } from '@taquito/taquito';
+
+const Cell = (props) => {
+  return (<Grid item xs={6}><Typography align="left" variant="subtitle2"
+    style={ props.data ? { fontFamily: courier } : { } }> { props.val }
+  </Typography></Grid>)
+}
+
+const OwnershipData = (props) => {
+  const [{ assetid, owner, forsale }, setData] = useState(() => ({
+      assetid : "",
+      owner   : "",
+      forsale : "",
+    }));
+  const loadStorage = React.useCallback(async () => {
+    const tezos     = new TezosToolkit(endpoint);
+    const contract  = await tezos.contract.at(contractAddress);
+    const storage   = await contract.storage();
+    setData({
+      assetid : storage.assetid,
+      owner   : storage.owner,
+      forsale : storage._state.toNumber() > 0 ? "For Sale" : "Not For Sale",
+    });
+  }, [assetid, owner, forsale]);
+  if (assetid === "") loadStorage();
+  return (
+    <Container maxWidth='xs'>
+    <Grid container direction="row" alignItems="center" spacing={1}>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..."} data/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..."} data/>
+      <Cell val="Status"  /><Cell val={ forsale }/>
+    </Grid>
+    </Container>
+  );
+}
+const BidButton = () => {
+  const tezos = useTezos();
+  const account = useAccountPkh();
+  const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
+  const bid = async () => {
+    try {
+      const contract  = await tezos.wallet.at(contractAddress);
+      const operation = await contract.methods.bid(UnitValue).send({ amount: 10 });
+      const shorthash = operation.opHash.substring(0, 10) + "...";
+      setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
+      await operation.receipt();
+      hideSnack();
+    } catch (error) {
+      setErrorSnack(error.message);
+      setTimeout(hideSnack, 4000);
+    }
+  }
+  return (
+    <Button onClick={ bid } variant="outlined" disabled={ account === null }>
+      post bid
+    </Button>);
+}
+const ClaimButton = () => {
+  const tezos = useTezos();
+  const account = useAccountPkh();
+  const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
+  const claim = async () => {
+    try {
+      const contract  = await tezos.wallet.at(contractAddress);
+      const operation = await contract.methods.claim(UnitValue).send();
+      const shorthash = operation.opHash.substring(0, 10) + "...";
+      setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
+      await operation.receipt();
+      hideSnack();
+    } catch (error) {
+      setErrorSnack(error.message);
+      setTimeout(hideSnack, 4000);
+    }
+  }
+  return (
+    <Button onClick={ claim } variant="outlined" disabled={ account === null }>
+      Claim
+    </Button>);
+}
+function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
+  return (
+    <DAppProvider appName={ appName }>
+      <SnackProvider>
+      <ThemeProvider theme={ theme }>
+      <CssBaseline />
+      <div className="App">
+        <Container style={{ marginTop: 50 }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+                <OwnershipData />
+            </Grid>
+            <Grid item xs={12}>
+                <BidButton />
+            </Grid>
+            <Grid item xs={12}>
+                <ClaimButton />
+            </Grid>
+            <Grid item xs={12}>
+                <WalletButton />
+            </Grid>
+          </Grid>
+        </Container>
+      </div>
+      <Snack />
+      </ThemeProvider>
+      </SnackProvider>
+    </DAppProvider>
+  );
+}
+
+export default App;
+```

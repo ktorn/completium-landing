@@ -44,7 +44,7 @@ Origination completed for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd named ownership.a
 https://better-call.dev/edo2net/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
 ```
 
-Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer. It shows the origination cost of 0.39ꜩ.
+Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer (it may take up to a dozen of seconds for BCD to synchronize with the blockchain). It shows the origination cost of 0.39ꜩ.
 
 ## Contract API
 
