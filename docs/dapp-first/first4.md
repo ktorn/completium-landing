@@ -18,7 +18,7 @@ The goal is to add a *Post Bid* button to call the contract.
 
 with the code below (click 'copy' in the upper-right-hand corner):
 
-```js {12-13,16}
+```js {7-8,11}
 const BidButton = () => {
   const tezos = useTezos();
   const account = useAccountPkh();
