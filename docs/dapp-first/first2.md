@@ -57,7 +57,7 @@ transition upforsale (price : tez) {
 
 entry bid() {
    require {
-      r1 otherwise "Asset Not For Sale" : state = ForSale;
+      r1 otherwise "Asset Not For Sale": state = ForSale;
       r2: now < endofbid;
       r3: caller <> bestbidder;
       r4: transferred > bestbid;
@@ -72,7 +72,7 @@ entry bid() {
 }
 
 transition claim () {
-  require { r5 otherwise "Bid Period Is Still On" : now > endofbid }
+  require { r5 otherwise "Bid Period Is Still On": now > endofbid }
   from ForSale to Owned
   with effect {
      if balance > 0tz then

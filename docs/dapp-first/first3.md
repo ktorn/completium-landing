@@ -117,8 +117,8 @@ const OwnershipData = (props) => {
   return (
     <Container maxWidth='xs'>
     <Grid container direction="row" alignItems="center" spacing={1}>
-      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..."} data/>
-      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..."} data/>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..." } data/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..." } data/>
       <Cell val="Status"  /><Cell val={ forsale }/>
     </Grid>
     </Container>
