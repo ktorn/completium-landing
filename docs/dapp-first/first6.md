@@ -92,7 +92,7 @@ This section is for information only, no action is required.
 
 This section presents the code of `~/src/App.js` at the end of this step:
 
-```js {81-102,128-130}
+```js {83-104,131-133}
 import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -151,6 +151,7 @@ const OwnershipData = (props) => {
     </Container>
   );
 }
+
 const BidButton = () => {
   const tezos = useTezos();
   const account = useAccountPkh();
@@ -173,6 +174,7 @@ const BidButton = () => {
       post bid
     </Button>);
 }
+
 const ClaimButton = () => {
   const tezos = useTezos();
   const account = useAccountPkh();
@@ -195,6 +197,7 @@ const ClaimButton = () => {
       Claim
     </Button>);
 }
+
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(

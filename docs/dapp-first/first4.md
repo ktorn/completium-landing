@@ -104,7 +104,7 @@ This section is for information only, no action is required.
 
 This section presents the code of `~/src/App.js` at the end of this step:
 
-```js {59-80,106-108,111-113}
+```js {60-81,108-110,114-116}
 import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -163,6 +163,7 @@ const OwnershipData = (props) => {
     </Container>
   );
 }
+
 const BidButton = () => {
   const tezos = useTezos();
   const account = useAccountPkh();
@@ -185,6 +186,7 @@ const BidButton = () => {
       post bid
     </Button>);
 }
+
 /* FIXME: Step 6.1 */
 
 function App() {
@@ -213,6 +215,7 @@ function App() {
             <Grid item xs={12}>
                 <BidButton />
             </Grid>
+
             { /* FIXME: Step 6.2 */ }
 
             <Grid item xs={12}>

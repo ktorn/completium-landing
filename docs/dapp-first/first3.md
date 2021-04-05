@@ -154,7 +154,7 @@ This section is for information only, no action is required.
 
 This section presents the code of `~/src/App.js` at the end of this step:
 
-```js {26-58,82-84}
+```js {26-58,83-85}
 import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -213,6 +213,7 @@ const OwnershipData = (props) => {
     </Container>
   );
 }
+
 /* FIXME: step 4.1 */
 
 /* FIXME: Step 6.1 */
