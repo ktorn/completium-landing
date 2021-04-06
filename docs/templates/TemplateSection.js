@@ -15,8 +15,8 @@ const sections = {
     subtitle: "Fungible tokens can be exchanged among individuals for trading, sale and purchase of goods and services.",
     image: "img/template_ft.svg",
     items: [
-      { name: "Tezos Fungible Token", desc: "FA 1.2 specification for Tezos Fungible Token.", to: "/docs/contract/templates/fa12" },
-      { name: "ERC20", desc: "Transcription to Tezos World of Ethereum ERC20 norm.", to: "/docs/contract/templates/erc20" },
+      { name: "Tezos Fungible Token", desc: "FA 1.2 specification for Tezos Fungible Token.", to: "/docs/templates/fa12" },
+      { name: "ERC20", desc: "Transcription to Tezos World of Ethereum ERC20 norm.", to: "/docs/templates/erc20" },
     ]
   },
   nft: {
@@ -24,7 +24,7 @@ const sections = {
     subtitle: "A Non-Fungible Token is a unit of data on a digital ledger called a blockchain, where each NFT can represent a unique digital item. NFTs can represent digital files such as art, audio, videos, items in video games and other forms of creative work. ",
     image: "img/template_nft.svg",
     items: [
-      { name: "Tezos NFT", desc: "FA 2 specification for Tezos Non Fungible Token", to: '/docs/contract/templates/nft' },
+      { name: "Tezos NFT", desc: "FA 2 specification for Tezos Non Fungible Token", to: '/docs/templates/nft' },
     ]
   },
   defi: {
@@ -34,8 +34,8 @@ const sections = {
     items: [
       { name: "DEX", desc: "A Uniswap-like decentralized exchange.", to: "" },
       { name: "ICO", desc: "An typical ICO contract.", to: "" },
-      { name: "Zero-Coupon Bond", desc: "A transcription to Tezos of a Zero-Coupon bond.", to: "/docs/contract/templates/dex" },
-      { name: "Autocallable note", desc: "A transcription to Tezos blockchain of an auto-callable note from Goldman Sachs.", to: "/docs/contract/templates/acn" },
+      { name: "Zero-Coupon Bond", desc: "A transcription to Tezos of a Zero-Coupon bond.", to: "/docs/templates/dex" },
+      { name: "Autocallable note", desc: "A transcription to Tezos blockchain of an auto-callable note from Goldman Sachs.", to: "/docs/templates/acn" },
     ]
   },
   payment: {
@@ -43,8 +43,8 @@ const sections = {
     subtitle: "Implement decentralised payment process for retail with the blockchain.",
     image: "img/template_payment.svg",
     items: [
-      { name: "Escrow", desc: "Escrow the purchase amount and transfer it to seller under conditions.", to: "/docs/contract/templates/escrow" },
-      { name: "Miles", desc: "Collect and consume miles.", to: "/docs/contract/templates/miles" },
+      { name: "Escrow", desc: "Escrow the purchase amount and transfer it to seller under conditions.", to: "/docs/templates/escrow" },
+      { name: "Miles", desc: "Collect and consume miles.", to: "/docs/templates/miles" },
     ]
   },
   governance: {
@@ -52,9 +52,9 @@ const sections = {
     subtitle: "Blockchain traceability and immutability makes it especially suitable for process whose goal is to establish a consensus.",
     image: "img/template_governance.svg",
     items: [
-      { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/contract/templates/ideabox' },
-      { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/contract/templates/competition' },
-      { name: "Auction", desc: "Collect bids and determine the winner.", to: '/docs/contract/templates/auction' },
+      { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/templates/ideabox' },
+      { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/templates/competition' },
+      { name: "Auction", desc: "Collect bids and determine the winner.", to: '/docs/templates/auction' },
     ]
   },
   insurance: {
@@ -62,8 +62,8 @@ const sections = {
     subtitle: "Disrupt Insurance industries with a decentralised open process which escrows insurance premiums.",
     image: "img/template_insurance.svg",
     items: [
-      { name: "Health Care", desc: "Organise consultations and transfer health care premiums to doctors.", to: '/docs/contract/templates/healthcare' },
-      { name: "Fizzy", desc: "Archetype transcription of IRL insurance use case.", to: '/docs/contract/templates/fizzy' }
+      { name: "Health Care", desc: "Organise consultations and transfer health care premiums to doctors.", to: '/docs/templates/healthcare' },
+      { name: "Fizzy", desc: "Archetype transcription of IRL insurance use case.", to: '/docs/templates/fizzy' }
     ]
   }
 }

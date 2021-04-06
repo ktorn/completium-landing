@@ -30,8 +30,9 @@ module.exports = {
       },
       items: [
         { to: 'docs/dapp-first', label: 'First DApp', position: 'left' },
-        { to: 'dapps', label: 'Examples', position: 'left' },
+        { to: 'dapps', label: 'DApps', position: 'left' },
         { to: '/docs/contract', label: 'Smart Contract', position: 'left' },
+        { to: '/docs/templates', label: 'Contract Templates', position: 'left' },
         { to: '/docs/cli', label: 'CLI', position: 'left' },
         { to: 'docs/dapp-tools', label: 'Technical stack', position: 'left' },
         // {to: 'blog', label: 'Blog', position: 'left'},
@@ -49,8 +50,9 @@ module.exports = {
           title: 'Docs',
           items: [
             { label: 'First Dapp', to: 'docs/dapp-first' },
-            { label: 'Examples', to: '/dapps' },
+            { label: 'DApps', to: '/dapps' },
             { label: 'Smart Contract', to: '/docs/contract' },
+            { label: 'Contract Templates', to: '/docs/templates' },
             { label: 'CLI', to: '/docs/cli' },
             { label: 'Technical Stack', to: 'docs/dapp-tools/' },
           ],

@@ -1,5 +1,4 @@
 module.exports = {
-  docs:  ['doc1', 'doc2', 'doc3'],
   cli: [
     'cli/cli0',
     'cli/cli1',
@@ -7,25 +6,49 @@ module.exports = {
     'cli/cli3',
   ],
   templates: [
-    'contract/templates/template1',
-    'contract/templates/template2',
-    'contract/templates/template3',
-    'contract/templates/template4',
-    'contract/templates/template5',
-    'contract/templates/template6',
-    'contract/templates/template7',
-    'contract/templates/template8',
-    'contract/templates/template9',
-    'contract/templates/template10',
-    'contract/templates/template11',
-    'contract/templates/template12',
-    'contract/templates/template13',
-    'contract/templates/template14',
+    'templates/template0',
+    { type: 'category',
+      label: 'Fungible Token',
+      items: [
+        'templates/template1',
+        'templates/template2',
+      ] },
+    { type: 'category',
+      label: 'Non-Fungible Token',
+      items: [
+        'templates/template3',
+      ] },
+    { type: 'category',
+      label: 'DeFi',
+      items: [
+        'templates/template4',
+        'templates/template5',
+        'templates/template6',
+        'templates/template7',
+      ] },
+    { type: 'category',
+      label: 'Payment',
+      items: [
+        'templates/template8',
+        'templates/template9',
+      ] },
+    { type: 'category',
+      label: 'Governance',
+      items: [
+        'templates/template10',
+        'templates/template11',
+        'templates/template12',
+      ] },
+    { type: 'category',
+      label: 'Insurance',
+      items: [
+        'templates/template13',
+        'templates/template14',
+      ] },
   ],
-  archetype: [
+  contract: [
     'contract/contract1',
     'contract/contract2',
-    'contract/contract3',
     { type: 'category',
       label: 'Archetype Tutorial',
       items: [

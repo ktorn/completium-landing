@@ -1,10 +1,9 @@
 ---
-id: contract3
-title: Templates
-sidebar_label: Templates
-slug: /contract/templates
+id: template0
+title: Introduction
+sidebar_label: Introduction
+slug: /templates
 ---
-
 import TemplateSection from './TemplateSection';
 
 Install contract templates with the following command:
