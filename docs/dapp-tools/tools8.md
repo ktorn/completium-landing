@@ -21,6 +21,7 @@ This section provides links to the main ressources.
 | -- | :-- |
 | [tezos.com](https://tezos.com) | Main portal to the Tezos community |
 | [Developper portal](https://tezos.com/developer-portal) |  This is the place to start to get an overview of the technical eco system (install, smart contract languages, libraries, indexers ...) |
+| [Technical Documentation](https://tezos.gitlab.io/) | Technical documentation for developpers |
 | [TQ portal](https://tqtezos.com) | TQ Tezos Powers Assets & Applications in the Tezos Ecosystem |
 | [Slack](https://tezos.slack.com) | This is the place to interact with the community |
 | [Reddit](https://www.reddit.com/r/tezos) | This is another place |

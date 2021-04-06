@@ -109,7 +109,7 @@ Click on the generated link to display the contract in <Link to='/docs/dapp-tool
 This section is for information only, no action is required.
 :::
 
-This section presents the <Link to='/docs/dapp-first/contract#source-code'>contract</Link> API.
+This section presents the <Link to='/docs/dapp-first/contract#copy-contract-code'>contract</Link> API.
 
 ### Storage
 

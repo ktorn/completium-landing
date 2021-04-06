@@ -50,7 +50,7 @@ The highlighted lines above show the interactions with the wallet:
 
 Note that the contract's `bid` method does not take any argument, and that its javascript counterpart takes the default `UnitValue` value.
 
-Note that 10 tezies are sent to the contract with the `send` argument `{ amount: 10 }`. It is the value of the bid. This amount is refered to with the <a href='https://archetype-lang.org/'>Archetype</a> keyword `transferred` in the contract <Link to='/docs/dapp-first/contract#source-code'>code</Link>.
+Note that 10 tezies are sent to the contract with the `send` argument `{ amount: 10 }`. It is the value of the bid. This amount is refered to with the <a href='https://archetype-lang.org/'>Archetype</a> keyword `transferred` in the contract <Link to='/docs/dapp-first/contract#copy-contract-code'>code</Link>.
 
 Now **replace** in `~/src/App.js` the comment below:
 
