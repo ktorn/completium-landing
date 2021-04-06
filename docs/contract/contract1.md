@@ -11,7 +11,7 @@ import Link from '@docusaurus/Link';
 
 A smart contract is a program that is executed by the blockchain.
 
-<DappFigure img='smart-contract.svg' width='40%'/>
+<DappFigure img='smart-contract.svg' width='35%'/>
 
 Smart contracts unleash the full potential of the blockchain because they enable the development of a new class of applications, called *Decentralized Applications* (DApps), which benefit from blockchain's strengths (decentralization, trust-less, immutability, governance by consensus in <Link to='/docs/dapp-tools/tezos'>Tezos</Link> case, ...).
 
@@ -46,7 +46,7 @@ Calling a smart contract has a cost which depends on:
 * the size of additional data it creates
 * a constant fee
 
-Currently on <Link to='/docs/dapp-tools/tezos'>Tezos</Link>, the cost of origination is 0.000250 ꜩ per byte of data. The constant fee is the *baker fee* equal to 0.001189 ꜩ (it may be increased to impact transaction priority).
+Currently on <Link to='/docs/dapp-tools/tezos'>Tezos</Link>, the cost of origination is 0.000250 ꜩ per byte of data. The constant fee is the *baker fee* equal to 0.001189 ꜩ (it may be increased to increase transaction priority).
 
 Note that once data storage is allocated to the contract, it does not decrease; if data has been removed by the contract, additional data does not require payment while total data size remains below allocated storage size.
 

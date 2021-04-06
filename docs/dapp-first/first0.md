@@ -7,9 +7,10 @@ slug: /dapp-first
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
-<DappFigure img="ownership_logo.svg" width='30%' />
 
 The decentralized application you are about to develop allows the purchase of an asset whose title of ownership is a <Link to='/docs/contract'>Smart Contract</Link> on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain.
+
+<DappFigure img="ownership_logo.svg" width='30%' />
 
 The DApp enables the *transfer of ownership* of the asset based on a bid process:
 1. the current owner puts the asset up for sale, which enables anyone to bid during a period

@@ -6,9 +6,26 @@ module.exports = {
     'cli/cli2',
     'cli/cli3',
   ],
+  templates: [
+    'contract/templates/template1',
+    'contract/templates/template2',
+    'contract/templates/template3',
+    'contract/templates/template4',
+    'contract/templates/template5',
+    'contract/templates/template6',
+    'contract/templates/template7',
+    'contract/templates/template8',
+    'contract/templates/template9',
+    'contract/templates/template10',
+    'contract/templates/template11',
+    'contract/templates/template12',
+    'contract/templates/template13',
+    'contract/templates/template14',
+  ],
   archetype: [
     'contract/contract1',
     'contract/contract2',
+    'contract/contract3',
     { type: 'category',
       label: 'Archetype Tutorial',
       items: [
@@ -21,7 +38,7 @@ module.exports = {
         'contract/tuto/tuto7',
         'contract/tuto/tuto8',
         'contract/tuto/tuto9',
-      ] }
+      ] },
   ],
   tools:  [
     'dapp-tools/tools1',
