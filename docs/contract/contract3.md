@@ -10,7 +10,7 @@ import TemplateSection from './TemplateSection';
 Install contract templates with the following command:
 
 ```
-git clone git@github.com:edukera/completium-contract-templates.git
+git clone https://github.com/edukera/completium-contract-templates.git
 ```
 
 <TemplateSection data="fungible"/>
