@@ -11,7 +11,9 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
+A fungible token is basically an association table between the token owner (the account address) and the amount of tokens (a natural integer). It is possible to allow another account to transfer tokens on your behalf.
 
+This contract follows the <a href='https://assets.tqtezos.com/docs/token-contracts/fa12/1-fa12-intro/'>Financial Asset 1.2</a> (FA 1.2) <a href='https://gitlab.com/tzip/tzip/blob/master/proposals/tzip-7/tzip-7.md'>TZIP 7</a> specification for fungible token on Tezos.
 
 ## API
 
@@ -21,13 +23,13 @@ import TabItem from '@theme/TabItem';
 | Name | Type | Desc |
 | -- | -- | -- |
 | `totalsupply` | `nat` | Total number of tokens. |
-| `ledger` | `` | Association between token holder and number of tokens. |
-| `allowance` | `` |  |
+| `ledger` | `collection` | Association between token holder and number of tokens. |
+| `allowance` | `collection` | Association between the pair owner and spender and the allowed amount.  |
 ### Entrypoints
 
 | Name | Parameters | Desc |
 | -- | -- | -- |
-| `transfer` | `from`, `to`, `value` | Transfers `value` tokens from `from` to `to`. If the *caller* is not equal to `from`, then caller must have been allowed by `from` to transfer this amount to `to`. |
+| `transfer` | `from`, `to`, `value` | Transfers `value` tokens from `from` to `to`. If the *caller* is not equal to `from`, then *caller* must have been allowed by `from` to transfer this amount to `to`. |
 | `approve` | `spender`, `value` | Approves `spender` to transfer `value` tokens from *caller*. |
 | `getAllowance` | `owner`, `spender` | Getter for the allowed value for `owner` and `spender`. |
 | `getBalance` | `owner` | Getter for the number of tokens owned by `owner`. |
@@ -35,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ## Code
 
-Deploy the contract from <a href=''>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> command:
+Deploy the contract from <a href=''>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
 ```
 completium-cli deploy fa12.arl --init '(@tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG, 10_000_000)'
@@ -45,7 +47,7 @@ The command sets:
 * `initialholder` constant to `tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG`
 * `totalsupply` variable to 10 millions
 
-<Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.2 of Archetype.
+<Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
 
 <Tabs
   defaultValue="archetype"
