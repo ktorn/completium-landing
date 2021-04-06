@@ -1,6 +1,6 @@
 ---
 id: template3
-title: Non Fungible Token
-sidebar_label: Non-Fungible Token
+title: FA 2
+sidebar_label: FA 2
 slug: /templates/nft
 ---
