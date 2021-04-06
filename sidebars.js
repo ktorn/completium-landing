@@ -7,7 +7,8 @@ module.exports = {
     'cli/cli3',
   ],
   archetype: [
-    'contract/contract',
+    'contract/contract1',
+    'contract/contract2',
     { type: 'category',
       label: 'Archetype Tutorial',
       items: [
