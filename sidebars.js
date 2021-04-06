@@ -27,15 +27,15 @@ module.exports = {
         'templates/template7',
       ] },
     { type: 'category',
-      label: 'Payment',
+      label: 'Governance',
       items: [
         'templates/template8',
         'templates/template9',
+        'templates/template10',
       ] },
     { type: 'category',
-      label: 'Governance',
+      label: 'Payment',
       items: [
-        'templates/template10',
         'templates/template11',
         'templates/template12',
       ] },
