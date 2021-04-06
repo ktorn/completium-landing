@@ -1,5 +1,5 @@
 ---
-id: contract
+id: contract1
 title: Introduction
 sidebar_label: Introduction
 slug: /contract
@@ -9,110 +9,50 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-A smart contract is a program that is executed by the blockchain. It possesses:
+A smart contract is a program that is executed by the blockchain.
+
+<DappFigure img='smart-contract.svg' width='40%'/>
+
+Smart contracts unleash the full potential of the blockchain because they enable the development of a new class of applications, called *Decentralized Applications* (DApps), which benefit from blockchain's strengths (decentralization, trust-less, immutability, governance by consensus in <Link to='/docs/dapp-tools/tezos'>Tezos</Link> case, ...).
+
+A smart contract is similar to a stored procedure on a public distributed database. As such, it must ensure the **logical consistency** and integrity of the data.
+
+## Structure
+
+A smart contract possesses:
 1. an *address*
 2. a *balance* of currency
 3. a *storage* of data
-4. *entrypoints* to call and execute the contract's business logic and read/write data
+4. a *code* to implement the contract's *business logic*, structured as *entrypoints* to call
 
-The following information is available to the contract's business logic:
+Contract storage, code and transactions (incoming and outcoming) are all *publically* available.
+
+## Business logic
+
+Besides the storage data, the following information is available to the contract's business logic:
 * **when** the contract is called
 * **who** the contract is called by
 * **how much** currency is **transferred** to the contract
-* **how much** currency the contract **owns**
+* **how much** currency the contract **owns** (balance)
 
-An amount of currency can by transferred to the contract when calling an entrypoint. The contract can be programmed to send currency to an account or to another contract.
+The contract can be programmed to send currency to an account or to another contract.
 
-Interacting with a smart contract has an exectution cost which depends on:
-* the complexity of the contract's program
-* the size of data it creates
+## Cost
+
+Originating (deploying) a smart contract has a cost which depends on the size of the code and the size of the initial storage.
+
+Calling a smart contract has a cost which depends on:
+* the complexity of the execution (number and nature of instructions executed by the program)
+* the size of additional data it creates
 * a constant fee
 
-This cost is automatically taken from your account when invoking a contract.
+Currently on <Link to='/docs/dapp-tools/tezos'>Tezos</Link>, the cost of origination is 0.000250 ꜩ per byte of data. The constant fee is the *baker fee* equal to 0.001189 ꜩ (it may be increased to impact transaction priority).
 
-Note that contract storage, code and transactions (incoming and outcoming) are all *publically* available.
+Note that once data storage is allocated to the contract, it does not decrease; if data has been removed by the contract, additional data does not require payment while total data size remains below allocated storage size.
 
-## Micheslon
+## Limits
 
-Michelson is the default language to write smart contracts on the Tezos blockchain. You can find the language reference <a href='https://tezos.gitlab.io/michelson-reference/'>here</a>.
+The *gas* is the unit to measure code execution and storage allocation for any kind of transactions (origination, call to an entrypoint).
 
-Michelson is a <a href='https://en.wikipedia.org/wiki/Stack_machine#:~:text=In%20computer%20science%2C%20computer%20engineering,buffer%2C%20known%20as%20a%20stack%2C' target='_blank'>stack machine</a> language. Here is an example of a Michelson contract deployed on the mainnet:
-
-```css
-parameter (pair (option %admin (list address))
-                (pair (string %oldhash) (string %newhash)));
-storage (pair (list %admin address) (string %hash));
-code { { UNPAIR ;
-         UNPAIR ;
-         DIP { UNPAIR @oldhash @newhash } ;
-         DIP { DIP { DIP { UNPAIR @storedadmin @storedhash } } } } ;
-       SWAP ;
-       { DIP { DIP { DIP { SWAP } } } } ;
-       { DIP { DIP { SWAP } } } ;
-       DIP { SWAP } ;
-       { DIP { DIP { DIP { SWAP } } } } ;
-       { DIP { DIP { SWAP ; DUP ; DIP { SWAP } } } } ;
-       ASSERT_CMPEQ ;
-       SENDER ;
-       SWAP ;
-       { DIP { DIP { PUSH @admin bool False } } } ;
-       ITER { DIP { DUP } ; CMPEQ ; SWAP ; DIP { OR @admin } } ;
-       DROP ;
-       ASSERT ;
-       IF_NONE {} { DIP { DROP } } ;
-       NIL operation ;
-       { DIP { PAIR %admin %hash } ; PAIR %op } }
-```
-
-The contract is available at the address [KT1Gbu1Gm2U47Pmq9VP7ZMy3ZLKecodquAh4](https://better-call.dev/mainnet/KT1Gbu1Gm2U47Pmq9VP7ZMy3ZLKecodquAh4/code)
-
-## Register languages
-
-A smart contract is a public object, and as such is required to convey confidence in the business process it implements. It is then suggested to use register languages which make the code easier to read, write and <Link to='/docs/dapp-tools/tezos#formal-verification'>verify</Link>.
-
-Several register languages are available and listed <a href='https://tezos.com/developer-portal/#2-write-a-smart-contract'>here</a>. They compile contracts to Michelson.
-## Archetype
-
-In the DApps presented here we are using <a href='https://archetype-lang.org/'>Archetype</a>, a high-level language to develop Smart Contracts on the Tezos blockchain, with all Michelson features, plus exclusive features (new types, state machine design, ...) to ease development, tests and formal verification.
-
-For example, below is the <a href='https://archetype-lang.org/'>Archetype</a> version of the above contract:
-
-```archetype
-archetype c3n(admins : list<address>, hash : bytes)
-
-entry register (newadmins : option<list<address>>,
-                oldhash : bytes,
-                newhash : bytes) {
-   require {
-       r1: oldhash = hash;
-       r2: contains(admins, caller);
-   }
-   effect {
-       hash := newhash;
-       match newadmins with
-        | some(nadmins) -> admins := nadmins
-        | none -> ()
-       end
-   }
-}
-```
-
-Archetype comes with a convenient set of <a href='https://github.com/edukera/try-archetype#smart-contracts-base' target='_blank'>contract examples</a> to start your project from. Learn the Archetype language with a eight steps online tutorial:
-
-<DappButton url="https://gitpod.io/#https://github.com/edukera/try-archetype" txt="try archetype"/>
-
-
-## Formal verification
-
-Formal verification is the act of proving or disproving the correctness of intended algorithms underlying a system with respect to a certain formal specification or property, using formal methods of mathematics.
-
-Formal verification provides maximum decentralized confidence that the smart contract behaves as described in the formal specification.
-
-The Tezos community provides a rich technical and human eco-system regarding formal verification:
-
-| Tools | Description |
-| -- | :-- |
-| <a href='https://gitlab.com/nomadic-labs/mi-cho-coq/' target='_blank'>Michocoq</a> | A specification of Michelson in <a href='https://coq.inria.fr/' target='_blank'>Coq</a> to prove properties about smart contracts in Tezos. |
-| <a href='https://archetype-lang.org/'>Archetype</a> | Archetype provides a specification language for contract invariant and entry point postconditions. It generates the contract in the <a href='http://why3.lri.fr/' target='_blank'>Why3</a> language for verification |
-
+Currently on <Link to='/docs/dapp-tools/tezos'>Tezos</Link>, the gas per transaction is limited to 1040000.
 
