@@ -1,7 +1,7 @@
 ---
 id: template0
-title: Introduction
-sidebar_label: Introduction
+title: Presentation
+sidebar_label: Presentation
 slug: /templates
 ---
 import TemplateSection from './TemplateSection';
