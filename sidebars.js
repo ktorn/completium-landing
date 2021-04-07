@@ -237,14 +237,6 @@ module.exports = {
         'dapp-nonfungible/nonfungible5', 'dapp-nonfungible/nonfungible6', 'dapp-nonfungible/nonfungible7'
       ]
     },
-    {
-      type: 'category',
-      label: 'FA 2 Smart Contract',
-      items: [
-        'dapp-nonfungible/nonfungible8',
-        'dapp-nonfungible/nonfungible9',
-      ]
-    }
   ],
   dex: [
     'dapp-dex/dex1',

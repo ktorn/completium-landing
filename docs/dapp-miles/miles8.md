@@ -9,9 +9,9 @@ import Link from '@docusaurus/Link';
 
 This page presents how to implement the DApp's interactions with the smart contract.
 
-## Connect to Thanos' utilities
+## Connect to wallet utilities
 
-The `src/dapp.js` file defines the necessary utilities to connect the DApp to the blockchain via the Thanos wallet:
+The `src/dapp.js` file defines the necessary utilities to connect the DApp to the blockchain via the Temple wallet:
 * check whether wallet is connected
 * get the Taquito's object
 * ...

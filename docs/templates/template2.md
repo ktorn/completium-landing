@@ -34,7 +34,7 @@ It is strongly suggested to use the <Link to='/docs/templates/fa12'>FA 1.2</Link
 
 ## Code
 
-Deploy the contract from <a href=''>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
+Deploy the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
 ```
 completium-cli deploy erc20.arl --init '(1_000_000_000_000_000, 1_000_000, @tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG)'

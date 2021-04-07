@@ -37,7 +37,7 @@ This contract follows the <a href='https://assets.tqtezos.com/docs/token-contrac
 
 ## Code
 
-Deploy the contract from <a href=''>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
+Deploy the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
 ```
 completium-cli deploy fa12.arl --init '(@tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG, 10_000_000)'

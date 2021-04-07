@@ -33,7 +33,7 @@ const sections = {
     image: "img/template_defi.svg",
     items: [
       { name: "DEX", desc: "A Uniswap-like decentralized exchange.", to: "/docs/templates/dex" },
-      { name: "ICO", desc: "An typical ICO contract.", to: "/docs/templates/ico" },
+      { name: "ICO", desc: "An example of ICO process.", to: "/docs/templates/ico" },
       { name: "Zero-Coupon Bond", desc: "A transcription to Tezos of a Zero-Coupon bond.", to: "/docs/templates/zcb" },
       { name: "Autocallable note", desc: "A transcription to Tezos blockchain of an auto-callable note from Goldman Sachs.", to: "/docs/templates/acn" },
     ]
