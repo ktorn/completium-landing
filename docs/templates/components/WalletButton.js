@@ -12,7 +12,6 @@ const WalletButton = (props) => {
   const connect= useConnect();
   const handleConnect = React.useCallback((main) => async () => {
     try {
-      console.log(main);
       await connect(main?"mainnet":network);
     } catch (err) {
       alert(err.message);
