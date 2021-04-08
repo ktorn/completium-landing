@@ -75,6 +75,7 @@ asset liquidity identified by tokenid owner {
 
 entry registertoken (i : string, a : address, n : string) {
   called by admin
+  failif { f1: i = "XTZ" }
   effect { token.addupdate(i, { addr = a; name = n }); }
 }
 
