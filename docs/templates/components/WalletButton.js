@@ -10,9 +10,10 @@ const WalletButton = (props) => {
   const ready = useReady();
   const wallet = useWallet();
   const connect= useConnect();
-  const handleConnect = React.useCallback(async () => {
+  const handleConnect = React.useCallback((main) => async () => {
     try {
-      await connect(props.main?"mainnet":network);
+      console.log(main);
+      await connect(main?"mainnet":network);
     } catch (err) {
       alert(err.message);
     };
@@ -22,7 +23,7 @@ const WalletButton = (props) => {
       ) :(wallet ? (
           <Button variant="outlined"
             color={theme.palette.text.primary}
-            onClick={handleConnect}>
+            onClick={ handleConnect(props.main) }>
             connect to wallet
           </Button>
         ):(

@@ -33,7 +33,7 @@ const Connect = (props) => {
       </Grid>
       <Grid item xs={2}>
         <Switch checked={main}
-            onChange={handleChange}
+            onChange={ handleChange }
             name="checkedB"
             color="primary"></Switch>
       </Grid>
