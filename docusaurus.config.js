@@ -12,6 +12,7 @@ module.exports = {
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
   themeConfig: {
+    hideableSidebar: false,
     prism: {
       theme: require('./src/theme/prism-archetype-theme'),
     },
