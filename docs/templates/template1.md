@@ -35,6 +35,14 @@ This contract follows the <a href='https://assets.tqtezos.com/docs/token-contrac
 | `getBalance` | `owner` | Getter for the number of tokens owned by `owner`. |
 | `getTotalSupply` | | Getter for `totalsupply` |
 
+## Originate
+
+Originate a FA 1.2 contract with the widget below.
+
+Click "Connect to Wallet" button, fill the fields "Initial Holder" and "Total Supply", and click "Originate".
+
+<Deploy/>
+
 ## Code
 
 Deploy the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
@@ -48,8 +56,6 @@ The command sets:
 * `totalsupply` variable to 10 millions
 
 <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
-
-<Deploy/>
 
 <Tabs
   defaultValue="archetype"
