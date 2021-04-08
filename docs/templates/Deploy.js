@@ -11,6 +11,10 @@ import WalletButton from './components/WalletButton';
 import { getStorage, code } from './fa12.js';
 import Link from '@docusaurus/Link';
 import Switch from '@material-ui/core/Switch';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Connect = (props) => {
   const ready = useReady();
@@ -60,6 +64,11 @@ const DeployWidget = () => {
   const [ addr, setAddr ] = React.useState("");
   const [ totalsupply, setTotalSupply ] = React.useState(10000000);
   const [ contract, setContract ] = React.useState("");
+  const [ meta, setMeta ] = React.useState(false);
+  const [ symbol, setSymbol ] = React.useState("CMPL");
+  const [ name, setName ] = React.useState("Completium Token");
+  const [ decimals, setDecimals ] = React.useState(0);
+  const [ url, setUrl ] = React.useState("https://github.com/edukera/completium-landing/blob/master/static/img/favicon.ico");
   const [main,setMain] = React.useState(false);
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const tezos = useTezos();
@@ -98,6 +107,28 @@ const DeployWidget = () => {
     }
   }
   const isContractCreated = () => { return (contract !== "") }
+  const handleMeta = (event, isExpanded) => {
+    setMeta(isExpanded);
+  }
+  const handleSymbol = (event) => {
+    setSymbol(event.target.value);
+  }
+  const isSymbolError = () => { return false; }
+
+  const handleName = (event) => {
+    setName(event.target.value);
+  }
+  const isNameError = () => { return false; }
+
+  const handleDecimals = (event) => {
+    setDecimals(event.target.value);
+  }
+  const isDecimalsError = () => { return false; }
+
+  const handleUrl = (event) => {
+    setUrl(event.target.value);
+  }
+  const isUrlError = () => { return false; }
   return (
     <Card style={{ backgroundColor: 'transparent', border: '1px solid #606770', marginTop: '20px', marginBottom: '20px' }} raised={false}>
       <Grid container style={{ padding: 22 }} spacing={3}>
@@ -139,6 +170,68 @@ const DeployWidget = () => {
           >originate</Button>}
         </Grid>
       </Grid>
+      <Accordion expanded={meta} onChange={ handleMeta } style={{ backgroundColor: 'transparent' }}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel4bh-content"
+          id="panel4bh-header"
+        >
+          <Typography style={{ marginLeft: '10px' }}>Metadata</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Grid container spacing={3} style={{ marginLeft: '0px' }}>
+            <Grid item xs={6}>
+            <TextField
+              onChange={ handleSymbol }
+              error={ isSymbolError() }
+              helperText={(isSymbolError())?"Invalid Token Symbol":"Token symbol, like 'USD' for United States Dollar."}
+              value={symbol}
+              variant="outlined"
+              color="primary"
+              fullWidth required
+              id="symbol"
+              label="Symbol"></TextField>
+            </Grid>
+            <Grid item xs={6}>
+            <TextField
+              onChange={ handleName }
+              error={ isNameError() }
+              helperText={(isNameError())?"Invalid Token Name":"Token name, like 'Bitcoin' for BTC asset."}
+              value={name}
+              variant="outlined"
+              color="primary"
+              fullWidth required
+              id="name"
+              label="Name"></TextField>
+            </Grid>
+            <Grid item xs={6}>
+            <TextField
+              type="number"
+              onChange={ handleDecimals }
+              error={ isDecimalsError() }
+              helperText={(isDecimalsError())?"Invalid Decimals Value":"A number of decimal places after point."}
+              value={decimals}
+              variant="outlined"
+              color="primary"
+              fullWidth required
+              id="decimals"
+              label="Decimals"></TextField>
+            </Grid>
+            <Grid item xs={6}>
+            <TextField
+              onChange={ handleUrl }
+              error={ isUrlError() }
+              helperText={(isUrlError())?"Invalid Icon URL":"Image URL for token logo."}
+              value={url}
+              variant="outlined"
+              color="primary"
+              fullWidth required
+              id="url"
+              label="Icon URL"></TextField>
+            </Grid>
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
     </Card>
   )
 }
