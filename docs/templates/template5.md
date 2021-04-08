@@ -36,9 +36,6 @@ This ICO process is inspired by the 2018 BCDiploma's ICO described in this <a hr
 ```archetype
 archetype ico(token : address)
 
-constant symbol : string = "BCDT"
-constant decimals : nat  = 18
-
 variable min_contribution : tez        = 1tz
 variable max_contribution_silver : tez = 10tz
 

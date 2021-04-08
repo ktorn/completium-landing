@@ -109,7 +109,7 @@ entry transferFrom(%from : address, %to : address, value : nat) {
 
 </TabItem>
 
-<TabItem value="archetype">
+<TabItem value="michelson">
 
 ```js
 

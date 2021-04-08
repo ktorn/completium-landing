@@ -32,21 +32,22 @@ Buy and sell City Tokens with the DEX!
 
 A <a href='https://en.wikipedia.org/wiki/Decentralized_exchange' target='_blank'>Decentralized Exchange</a> (DEX) is a business that allows customers to trade cryptocurrencies or digital currencies for other assets in a decentralized way, that is without the need for an intermediary.
 
-The automated market maker's (AMM) principle of the DEX presented in this example DApp is the one of the Uniswap exchange on another blockchain technology, as presented in <a href='https://web.stanford.edu/~guillean/papers/uniswap_analysis.pdf' target='_blank'>this paper</a>.
+The automated market maker's (AMM) principle of the DEX presented in this example DApp is the one of *Uniswap*, as presented in <a href='https://web.stanford.edu/~guillean/papers/uniswap_analysis.pdf' target='_blank'>this paper</a>.
 
 There is a *pool* for each each token from which tokens are withdrawn from and credited to. The quantity of tokens in the pool is noted p.
 
-Say we want to exchange a quantity qB of Token B against a quantity (qA) of token A. How to compute qA as a function of qB?
-
+Say a user wants to exchange a quantity *qA* of Token A against a quantity *qB* of token B. In that case, the user credits the pool of Token A with *qA* tokens, and *qB* tokens from pool of Token B are sent to the user, as illustrated below:
 <DappFigure img='dex-principle.svg' width='70%'/>
 
-The exchange principle is to consider that the product of *pA* and *pB* is constant, named *constant product markets*. Formally there exists a constant value *k* such that:
+How to compute *qB* as a function of *qA*?
+
+The principle is to consider that the product of *pA* and *pB* is constant; it is named *constant product markets*. Formally there exists a constant value *k* such that:
 
 <MathJax.Provider>
 <MathJax.Node formula={`pB*pA=k`} />
 </MathJax.Provider>
 
-The exchange of *qB* tokens B for *qA* tokens A is designed to respect this constant, which writes:
+The quantities *qB* of Token B and *qA* of Token A are such that they keep the resulting pool quantities equal to this constant, which writes:
 
 <MathJax.Provider>
 <MathJax.Node formula={`(pB - qB)*(pA + qA)=k`} />
@@ -61,7 +62,7 @@ Each exchange transaction is subject to a fee. Let *f* be the percentage of *qA*
 Which simplifies to:
 
 <MathJax.Provider>
-<MathJax.Node formula={`qA = pA * \\frac{qB}{(1-f)*(pB-qB)}`} />
+<MathJax.Node formula={`qB = pB * \\frac{(1-f)*qA}{pA+(1-f)*qA}`} />
 </MathJax.Provider>
 
 At the beginning, pools A and B are empty and must then be initialized by providing liquidity to both of them, thus setting the initial exchange rate.
@@ -74,14 +75,14 @@ The section above presents the exchange principle between two tokens A and B. In
 
 <DappFigure img='dex-principle2.svg' width='30%'/>
 
-Tokens ownership is managed with one <a href='' target='_blank'>Financial Asset 1.2</a> (FA 1.2) <Link to='/docs/contract'>smart contract</Link> per Token. FA 1.2 is a specification of Fungible Token ownership for the Tezos blockchain; a FA 1.2 contract provides the following entry points:
+Tokens ownership is managed with a <Link to='/docs/templates/fa12'>FA 1.2 smart contract</Link> per Token. FA 1.2 is a specification of Fungible Token ownership for the Tezos blockchain; a FA 1.2 contract provides the following entry points:
 * `allow` to authorize a third party to transfer a given quantity of token
 * `transfer` to transfer a quantity of tokens from one account to another according to transfer authorizations
 * `get_balance` enable to retrieve account balance
 
 A detailed presentation of the <a href='https://archetype-lang.org/'>Archetype</a> implementation is available <a href='' target='_blank'>here</a>.
 
-The <Link to='/docs/dapp-dex/interface'>DEX smart contract</Link> manages the XTZ pools, the interactions to the FA 1.2 contracts, and the liquidity ownership data:
+The <Link to='/docs/templates/dex'>DEX smart contract</Link> manages the XTZ pools, the interactions to the FA 1.2 contracts, and the liquidity ownership data:
 
 <DappFigure img='dex-principle3.svg' width='80%'/>
 

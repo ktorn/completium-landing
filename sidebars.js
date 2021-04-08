@@ -254,28 +254,6 @@ module.exports = {
         'dapp-dex/dex5', 'dapp-dex/dex6', 'dapp-dex/dex7'
       ]
     },
-    {
-      type: 'category',
-      label: 'Smart Contracts',
-      items: [
-        {
-          type: 'category',
-          label: 'DEX',
-          items: [ 'dapp-dex/dex8',
-                   'dapp-dex/dex9', ]
-        },
-        {
-          type: 'category',
-          label: 'FA 1.2',
-          items: [
-            'dapp-dex/dex11',
-            'dapp-dex/dex12',
-            'dapp-dex/dex13',
-          ]
-        },
-
-      ]
-    }
   ],
   zcb: [
     'dapp-zcb/zcb1',

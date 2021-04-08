@@ -7,8 +7,19 @@ slug: /templates/dex
 import Link from '@docusaurus/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MathJax from 'react-mathjax';
 
 ## Introduction
+
+This Decentralized Exchange (DEX) presented here is based on the Uniswap-like exchange presented in this <a href='https://web.stanford.edu/~guillean/papers/uniswap_analysis.pdf' target='_blank'>paper</a>. The principle is the one of automated market maker (AMM), that is that the exchange rate from token A to token B is computed automatically.
+
+To exchange *qA* tokens A against *qB* tokens B, the DEX establishes a pool of tokens A and a pool of tokens B, from which tokens are withdrawn or credited; if *pA* and *pB* are the numbers of tokens A and B in the pools, then the quantity *qB* of token B received in exchange of a quantity *qA* of token A is given by the following formula:
+
+<MathJax.Provider>
+<MathJax.Node formula={`qB = pB * \\frac{(1-f)*qA}{pA+(1-f)*qA}`} />
+</MathJax.Provider>
+
+This principle is explained in more detailed in the <Link to='/docs/dapp-dex/#exchange-principle'>DEX DApp</Link> example.
 
 ## API
 
@@ -17,7 +28,7 @@ import TabItem from '@theme/TabItem';
 | Name | Type | Description |
 | -- | -- | -- |
 | `admin` | `address` | Address that can register and unregister tokens in the DEX. |
-| `token` | `collection` | Token data: <ul><li>token identifier (key)</li><li>FA 1.2 contract address</li><li>token name</li><li>XTZ value in pool</li><li>total number of tokens in pool</li><li>total number of liquidity tokens</li></ul>|
+| `token` | `collection` | Token data: <ul><li>token identifier (key)</li><li>FA 1.2 contract address</li><li>token name</li><li>XTZ value in pool</li><li>number of tokens in pool</li><li>number of liquidity tokens</li></ul>|
 |  `liquidity` | `collection` | Number of liquidity tokens per owner and token: <ul><li>token id (key)</li><li>owner (key)</li><li>number of liquidity tokens</li></ul>|
 
 ### Entrypoints
@@ -26,10 +37,9 @@ import TabItem from '@theme/TabItem';
 | -- | -- | -- |
 | `registertoken` |  `i`, `a`, `n` | Admin adds token `{ i; a; n; 0; 0; 0 }` to DEX. |
 | `deletetoken` | `i` | Admin removes token `i` from DEX. |
-| `exchange` | `tA`, `aA`, `tB`, `aB` |  *Caller* exchanges `aA` tokens `tA` for `bB` tokens `tB`. |
-| `addLiquidity` | `tL`, `qL` | *Caller* sends XTZ and `destqty` of `dst` tokens so that the value of *transferred* (just approved so far) dst tokens is equal to the value of transferred XTZ.<p/>LQT tokens are minted so that it reflects the proportion of the *transferred* value towards the pool. |
-| `removeLiquidity` | `qL`, `tA` | *Caller* redeems its LTQ tokens; 2 transactions are generated : <ul><li>transfer of XTZ in proportion of the token pool</li><li>transfer of src tokens in proportion of the token pool</li></ul> |
-
+| `exchange` | `tA`, `qA`, `tB`, `qB` |  *Caller* exchanges `qA` tokens `tA` for `qB` tokens `tB`. |
+| `addLiquidity` | `tA`, `qA` | *Caller* provides `qA` tokens `tA` and the corresponding amount of XTZ is transferred.<p/>Liquidity tokens are minted and affected to  *caller* so that it reflects the proportion of *transferred* XTZ towards the XTZ pool. |
+| `removeLiquidity` | `tA`, `qL` | *Caller* redeems `qL` liquidity token for token `tA`; 2 transactions are generated : <ul><li>transfer of XTZ in proportion of the token XTZ pool</li><li>transfer of `tA` tokens in proportion of the token pool</li></ul> |
 
 ## Code
 
@@ -43,7 +53,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="archetype">
 
 ```archetype
-archetype dex(admin : address, const initialminted)
+archetype dex(admin : address, initialminted : nat)
 
 constant gamma   : rational = 1 - 0.003
 constant epsilon : nat      = 1
@@ -52,21 +62,20 @@ asset token {
   id        : string ;
   addr      : address;
   name      : string ;
-  poolvalue : nat = 0;
-  totalqty  : nat = 0;
-  totallqt  : nat = 0;
+  xtzpool   : nat = 0;
+  tokpool   : nat = 0;
+  liqpool   : nat = 0;
 }
 
 asset liquidity identified by tokenid owner {
   tokenid  : string ;
   owner    : address;
-  lqt      : nat = 0;
+  liqt     : nat = 0;
 }
 
 entry registertoken (i : string, a : address, n : string) {
   called by admin
-  effect {
-    token.addupdate(i, { addr = a; name = n }); }
+  effect { token.addupdate(i, { addr = a; name = n }); }
 }
 
 entry deletetoken (i : string) {
@@ -74,96 +83,103 @@ entry deletetoken (i : string) {
   effect { token.remove(i) }
 }
 
-function compute_exchanged(aA : nat, qA : nat, qB : nat) : rational {
-  return (qB * gamma * aA / (qA + gamma * aA))
+function compute_qB(qA : nat, pA : nat, pB : nat) : rational {
+  var gqA = gamma * qA;
+  return (pB * gqA / (pA + gqA))
 }
 
-entry exchange(tA : string, aA: nat, tB : string, aB : nat) {
+entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
   require {
     r0 otherwise "SRC_EQ_DST" : tA <> tB;
   }
   effect {
+    (* DEX receives *)
     if tA = "XTZ" then begin
-      var qA = token[tB].poolvalue;
-      var qB = token[tB].totalqty;
-      var expectedB = compute_exchanged(aA,qA,qB);
-      if (abs(expectedB - aB) > epsilon) then fail(("INVALID_B_AMOUNT", expectedB));
+      var pA = token[tB].xtzpool;
+      var pB = token[tB].tokpool;
+      var expected_qB = compute_qB(qA, pA, pB);
+      dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
       var xtzin : nat = transferred;
-      if aA <> xtzin then fail(("INVALID_A_AMOUNT", xtzin));
-      match entrypoint<(address * address * nat)>("%transfer",token[tB].addr) with
+      dorequire(qA = xtzin, ("INVALID_A_AMOUNT", xtzin));
+      match entrypoint<(address * address * nat)>("%transfer", token[tB].addr) with
       | some(transferB) ->
-        transfer 0tz to entry transferB((selfaddress, caller, aB))
+        transfer 0tz to entry transferB((selfaddress, caller, qB))
       | none -> fail("INVALID_B_ENTRY")
       end;
-      token.update(tB, { poolvalue += xtzin; totalqty -= aB });
+      token.update(tB, { xtzpool += xtzin; tokpool -= qB });
     end else if tB = "XTZ" then begin
-      var qA = token[tA].totalqty;
-      var qB = token[tA].poolvalue;
-      var expectedB = compute_exchanged(aA,qA,qB);
-      if (abs(expectedB - aB) > epsilon) then fail(("INVALID_B_AMOUNT", expectedB));
+      var pA = token[tA].tokpool;
+      var pB = token[tA].xtzpool;
+      var expected_qB = compute_qB(aA, qA, qB);
+      dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
       match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
       | some(transferA) ->
-        transfer 0tz to entry transferA((caller, selfaddress, aA))
+        transfer 0tz to entry transferA((caller, selfaddress, qA))
       | none -> fail("INVALID_A_ENTRY")
       end;
-      transfer (aB * 1utz) to caller;
-      token.update(tA, { poolvalue -= aB; totalqty += aA });
+      transfer (qB * 1utz) to caller;
+      token.update(tA, { xtzpool -= qB; tookpool += qA });
     end else begin
-      var qA  = token[tA].totalqty;
-      var qTA = token[tA].poolvalue;
-      var aT  = abs(floor(compute_exchanged(aA, qA, qTA)));
-      var qTB = token[tB].poolvalue;
-      var qB  = token[tB].totalqty;
-      var expectedB = compute_exchanged(aT, qTB, qB);
-      if (abs(expectedB - aB) > epsilon) then fail(("INVALID_B_AMOUNT",expectedB));
+      var pA      = token[tA].tokpool;
+      var pXTZA   = token[tA].xtzpool;
+      var qXTZ    = abs(floor(compute_qB(qA, pA, pXTZA)));
+      var pXTZB   = token[tB].xtzpool;
+      var pB      = token[tB].tokpool;
+      var expected_qB = compute_qB(qXTZ, pXTZB, pB);
+      dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
       match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
       | some(transferA) ->
-        transfer 0tz to entry transferA((caller, selfaddress, aA))
+        transfer 0tz to entry transferA((caller, selfaddress, qA))
       | none -> fail("INVALID_A_ENTRY")
       end;
       match entrypoint<(address * address * nat)>("%transfer", token[tB].addr) with
-      | some(transferA) ->
-        transfer 0tz to entry transferA((selfaddress, caller, aB))
+      | some(transferB) ->
+        transfer 0tz to entry transferB((selfaddress, caller, qB))
       | none -> fail("INVALID_B_ENTRY")
       end;
-      token.update(tA, { poolvalue -= aT; totalqty += aA });
-      token.update(tB, { poolvalue += aT; totalqty -= aB });
+      token.update(tA, { xtzpool -= qXTZ; tokpool += qA });
+      token.update(tB, { xtzpool += qXTZ; tokpool -= qB });
     end
   }
 }
 
-entry addLiquidity(tL : string, qL : nat) {
-  match entrypoint<(address * address * nat)>("%transfer", token[tL].addr) with
+entry addLiquidity(tA : string, qA : nat) {
+  (* transfer qA tokens tA to dex contract *)
+  match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
    | some(transfer_src) ->
-    transfer 0tz to entry transfer_src((caller, selfaddress, qL))
+    transfer 0tz to entry transfer_src((caller, selfaddress, qA))
    | none -> fail("INVALID_DST_ENTRY")
   end;
   var xtzin : nat = transferred;
-  var mintedLTQ =
-    if token[tL].poolvalue = 0 then initialminted
-    else abs(floor(token[tL].totallqt * xtzin / token[tL].poolvalue));
-  liquidity.addupdate((tL, caller), { lqt += mintedLTQ });
-  token.update(tL, { poolvalue += xtzin; totalqty += qL; totallqt += mintedLTQ })
+  (* does qA tokens exchange for xtzin XTZ ? *)
+  var pA = token[tA].tokpool;
+  var pB = token[tA].xtzpool;
+  var expected_qB = compute_exchanged(qA, pA, pB);
+  dorequire(abs(expected_qB - xtzin) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
+  var mintedLiqT =
+    if token[tA].tokpool = 0 then initialminted
+    else abs(floor(token[tA].liqpool * xtzin / token[tA].xtzpool));
+  liquidity.addupdate((tA, caller), { liqt += mintedLiqT });
+  token.update(tA, { xtzpool += xtzin; tokpool += qA; liqpool += mintedLiqT })
 }
 
-entry removeLiquidity(qL : nat, tA : string) {
+entry removeLiquidity(tA : string, qL : nat) {
   require {
-    r1 otherwise "NOT_ENOUGHT_LQT": qL <= liquidity[(tA, caller)].lqt
+    r1 otherwise "NOT_ENOUGHT_LQT": qL <= liquidity[(tA, caller)].liqt
   }
   effect {
-    var lqtratio = qL / token[tA].totallqt;
-    var xtzout = abs(floor(lqtratio * token[tA].poolvalue));
+    var liqratio = qL / token[tA].liqpool;
+    var xtzout = abs(floor(liqratio * token[tA].xtzpool));
     transfer (xtzout * 1utz) to caller;
-    match entrypoint<(address * address * nat)>("%transfer",token[tA].addr) with
+    match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
     | some(transfer_src) ->
-      var qty = abs(floor(lqtratio * token[tA].totalqty));
-      transfer 0tz to entry transfer_src((selfaddress, caller, qty));
-      liquidity.addupdate((tA, caller), { lqt -= qL });
-      token.update(tA, { poolvalue -= xtzout; totalqty -= qty; totallqt -= qL })
+      var qA = abs(floor(lqratio * token[tA].tokpool));
+      transfer 0tz to entry transfer_src((selfaddress, caller, qA));
+      liquidity.addupdate((tA, caller), { liqt -= qL });
+      token.update(tA, { xtzpool -= xtzout; tokpool -= qA; liqpool -= qL })
     | none -> fail("INVALID_DST_ENTRY")
     end;
   }
-
 }
 ```
 
