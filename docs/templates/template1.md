@@ -125,21 +125,21 @@ getter getTotalSupply () : nat {
 <TabItem value="michelson">
 
 ```js
-# (Pair {  } { Elt "tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG" 10000000 })
+# (Pair 10000000 (Pair {  } { Elt "tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG" 10000000 }))
 {
-  storage (pair (big_map %allowance (pair address address) nat) (big_map %ledger address nat));
+  storage (pair (nat %totalsupply) (pair (big_map %allowance (pair address address) nat) (big_map %ledger address nat)));
   parameter (or (pair %getAllowance (pair (address %owner) (address %spender)) (contract nat)) (or (pair %getBalance (address %owner) (contract nat)) (or (pair %getTotalSupply unit (contract nat)) (or (pair %transfer (address %from) (pair (address %to) (nat %value))) (pair %approve (address %spender) (nat %value))))));
   code { NIL operation;
          DIG 1;
          UNPAIR;
-         DIP { UNPAIR; SWAP };
+         DIP { UNPAIR; SWAP; UNPAIR; SWAP };
          IF_LEFT
            { UNPAIR;
              UNPAIR;
              SWAP;
-             DIG 5;
+             DIG 6;
              DUP;
-             DUG 6;
+             DUG 7;
              DIG 3;
              DUP;
              DUG 4;
@@ -161,18 +161,20 @@ getter getTotalSupply () : nat {
                {  };
              TRANSFER_TOKENS;
              CONS;
-             DIP { DIG 5; DROP };
-             DUG 5;
+             DIP { DIG 6; DROP };
+             DUG 6;
              DROP 3;
+             SWAP;
+             PAIR;
              SWAP;
              PAIR;
              DIG 1;
              PAIR }
            { IF_LEFT
                { UNPAIR;
-                 DIG 4;
+                 DIG 5;
                  DUP;
-                 DUG 5;
+                 DUG 6;
                  DIG 2;
                  DUP;
                  DUG 3;
@@ -199,9 +201,11 @@ getter getTotalSupply () : nat {
                    { PUSH nat 0 };
                  TRANSFER_TOKENS;
                  CONS;
-                 DIP { DIG 4; DROP };
-                 DUG 4;
+                 DIP { DIG 5; DROP };
+                 DUG 5;
                  DROP 2;
+                 SWAP;
+                 PAIR;
                  SWAP;
                  PAIR;
                  DIG 1;
@@ -209,19 +213,23 @@ getter getTotalSupply () : nat {
                { IF_LEFT
                    { UNPAIR;
                      DROP;
-                     DIG 3;
+                     DIG 4;
                      DUP;
-                     DUG 4;
+                     DUG 5;
                      DIG 1;
                      DUP;
                      DUG 2;
                      AMOUNT;
-                     PUSH nat 10000000;
+                     DIG 6;
+                     DUP;
+                     DUG 7;
                      TRANSFER_TOKENS;
                      CONS;
-                     DIP { DIG 3; DROP };
-                     DUG 3;
+                     DIP { DIG 4; DROP };
+                     DUG 4;
                      DROP;
+                     SWAP;
+                     PAIR;
                      SWAP;
                      PAIR;
                      DIG 1;
@@ -448,6 +456,8 @@ getter getTotalSupply () : nat {
                          DROP 3;
                          SWAP;
                          PAIR;
+                         SWAP;
+                         PAIR;
                          DIG 1;
                          PAIR }
                        { UNPAIR;
@@ -511,6 +521,8 @@ getter getTotalSupply () : nat {
                          DIP { DIG 4; DROP };
                          DUG 4;
                          DROP 3;
+                         SWAP;
+                         PAIR;
                          SWAP;
                          PAIR;
                          DIG 1;
