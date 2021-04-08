@@ -55,7 +55,7 @@ This principle is explained in more detailed in the <Link to='/docs/dapp-dex/#ex
 ```archetype
 archetype dex(admin : address, initialminted : nat)
 
-constant gamma   : rational = 1 - 0.003
+constant fee     : rational = 0.003
 constant epsilon : nat      = 1
 
 asset token {
@@ -84,8 +84,8 @@ entry deletetoken (i : string) {
 }
 
 function compute_qB(qA : nat, pA : nat, pB : nat) : rational {
-  var gqA = gamma * qA;
-  return (pB * gqA / (pA + gqA))
+  var feeqA = (1 - fee) * qA;
+  return (pB * feeqA / (pA + feeqA))
 }
 
 entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
