@@ -13,10 +13,9 @@ import Link from '@docusaurus/Link';
 import Switch from '@material-ui/core/Switch';
 
 const Connect = (props) => {
-  const [main,setMain] = React.useState(false);
   const ready = useReady();
   const handleChange = (event) => {
-    setMain(event.target.checked);
+    props.setMain(event.target.checked);
   }
   if (ready) {
     const address = useAccountPkh();
@@ -29,10 +28,10 @@ const Connect = (props) => {
   } else {
     return (<Grid container>
       <Grid item xs={8}>
-        <WalletButton main={main}/>
+        <WalletButton main={props.main}/>
       </Grid>
       <Grid item xs={2}>
-        <Switch checked={main}
+        <Switch checked={props.main}
             onChange={ handleChange }
             name="checkedB"
             color="primary"></Switch>
@@ -53,7 +52,7 @@ const Contract = (props) => {
   justify="center"
   alignItems="center">
     <Typography variant='subtitle2'>Contract available at:</Typography>
-    <Typography component={Link} to={ 'https://better-call.dev/edo2net/'+props.contract+'/operations' } variant='subtitle2' style={{ fontFamily: 'Courier Prime, monospace' }}>{ props.contract }</Typography>
+    <Typography component={Link} to={ 'https://better-call.dev/'+(props.main?"mainnet":"edo2net")+'/'+props.contract+'/operations' } variant='subtitle2' style={{ fontFamily: 'Courier Prime, monospace' }}>{ props.contract }</Typography>
   </Grid>)
 }
 
@@ -61,6 +60,7 @@ const DeployWidget = () => {
   const [ addr, setAddr ] = React.useState("");
   const [ totalsupply, setTotalSupply ] = React.useState(10000000);
   const [ contract, setContract ] = React.useState("");
+  const [main,setMain] = React.useState(false);
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const tezos = useTezos();
   const ready = useReady();
@@ -90,7 +90,7 @@ const DeployWidget = () => {
       const contract = await operation.contract();
       hideSnack();
       console.log(`Origination completed for ${contract.address}.`);
-      setContract(contract.address);
+      setTimeout(() => setContract(contract.address), 5000);
     } catch (error) {
       console.log(error);
       setErrorSnack(error.message);
@@ -114,7 +114,7 @@ const DeployWidget = () => {
             helperText={(isAddrError())?"Invalid address format":""}></TextField>
         </Grid>
         <Grid item xs={6} style={{ textAlign: 'center', marginTop: '10px' }}>
-          <Connect />
+          <Connect main={main} setMain={setMain} />
         </Grid>
         <Grid item xs={6}>
           <TextField
@@ -130,7 +130,7 @@ const DeployWidget = () => {
             label="Total Supply"></TextField>
         </Grid>
         <Grid item xs={6} style={{ textAlign: 'center', marginTop: '10px' }}>
-        { isContractCreated()?<Contract contract={contract} />:
+        { isContractCreated()?<Contract contract={contract} main={main}/>:
           <Button
             variant="contained"
             color="primary"
