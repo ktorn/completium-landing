@@ -1,7 +1,7 @@
 ---
 id: miles1
 title: Fidelity program
-sidebar_label: Fidelity program
+sidebar_label: Introduction
 slug: /dapp-miles
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: game1
 title: 2048 Competition
-sidebar_label: 2048 Competition
+sidebar_label: Introduction
 slug: /dapp-game
 ---
 

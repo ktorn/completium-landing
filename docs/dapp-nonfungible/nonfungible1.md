@@ -1,7 +1,7 @@
 ---
 id: nonfungible1
 title: Collectible Cards
-sidebar_label: Collectible Cards
+sidebar_label: Introduction
 slug: /dapp-nonfungible
 ---
 

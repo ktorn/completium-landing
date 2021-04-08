@@ -1,7 +1,7 @@
 ---
 id: iot1
 title: Connected Object
-sidebar_label: Connected Object
+sidebar_label: Introduction
 slug: /dapp-iot
 ---
 

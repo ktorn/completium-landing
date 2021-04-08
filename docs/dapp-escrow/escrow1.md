@@ -1,7 +1,7 @@
 ---
 id: escrow1
 title: Online Purchase
-sidebar_label: Online Purchase
+sidebar_label: Introduction
 slug: /dapp-escrow
 ---
 

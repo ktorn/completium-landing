@@ -1,7 +1,7 @@
 ---
 id: zcb1
 title: Zero Coupon Bond
-sidebar_label: Zero Coupon Bond
+sidebar_label: Introduction
 slug: /dapp-zcb/
 ---
 

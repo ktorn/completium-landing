@@ -1,7 +1,7 @@
 ---
 id: dex1
 title: Decentralised Exchange
-sidebar_label: Decentralised Exchange
+sidebar_label: Introduction
 slug: /dapp-dex
 ---
 

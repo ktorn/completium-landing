@@ -1,7 +1,7 @@
 ---
 id: ideabox1
 title: Idea Box
-sidebar_label: Idea Box
+sidebar_label: Introduction
 slug: /dapp-ideabox
 ---
 
