@@ -66,8 +66,8 @@ import { code, getStorage } from 'contract.js';
 try {
   const operation = await tezos.wallet.originate({
     code: code,
-    storage: getStorage(...)
-  });
+    init: getStorage(...)
+  }).send();
   console.log(`Waiting for confirmation of origination...`);
   const contract = await operation.contract();
   console.log(`Origination completed for ${contract.address}.`);

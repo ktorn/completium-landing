@@ -9,6 +9,7 @@ import Snack from './components/Snack';
 import { SnackProvider, useSnackContext } from './snackstate';
 import WalletButton from './components/WalletButton';
 import { getStorage, code } from './fa12.js';
+import Link from '@docusaurus/Link';
 
 const Connect = (props) => {
   const ready = useReady();
@@ -31,9 +32,19 @@ function isInvalidAddress (v) {
   return (lgt !== 36) | !tz1;
 }
 
+const Contract = (props) => {
+  return (<Grid container direction="column"
+  justify="center"
+  alignItems="center">
+    <Typography variant='subtitle2'>Contract available at:</Typography>
+    <Typography component={Link} to={ 'https://better-call.dev/edo2net/'+props.contract+'/operations' } variant='subtitle2' style={{ fontFamily: 'Courier Prime, monospace' }}>{ props.contract }</Typography>
+  </Grid>)
+}
+
 const DeployWidget = () => {
   const [ addr, setAddr ] = React.useState("");
   const [ totalsupply, setTotalSupply ] = React.useState(1000000);
+  const [ contract, setContract ] = React.useState("");
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const tezos = useTezos();
   const ready = useReady();
@@ -55,20 +66,22 @@ const DeployWidget = () => {
   const originate = async () => {
     try {
       const operation = await tezos.wallet.originate({
-        code: code(),
-        storage: getStorage(addr,totalsupply)
-      });
+        code: code,
+        init: getStorage(addr,totalsupply)
+      }).send();
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
-      console.log(`Waiting for confirmation of origination...`);
       const contract = await operation.contract();
+      hideSnack();
       console.log(`Origination completed for ${contract.address}.`);
+      setContract(contract.address);
     } catch (error) {
       console.log(error);
       setErrorSnack(error.message);
       setTimeout(hideSnack, 4000);
     }
   }
+  const isContractCreated = () => { return (contract !== "") }
   return (
     <Card style={{ backgroundColor: 'transparent', border: '1px solid #606770', marginTop: '20px', marginBottom: '20px' }} raised={false}>
       <Grid container style={{ padding: 22 }} spacing={3}>
@@ -101,12 +114,13 @@ const DeployWidget = () => {
             label="Total Supply"></TextField>
         </Grid>
         <Grid item xs={6} style={{ textAlign: 'center', marginTop: '10px' }}>
+        { isContractCreated()?<Contract contract={contract} />:
           <Button
             variant="contained"
             color="primary"
             disableElevation disabled={isOriginateDisabled()}
             onClick={ originate }
-          >originate</Button>
+          >originate</Button>}
         </Grid>
       </Grid>
     </Card>
