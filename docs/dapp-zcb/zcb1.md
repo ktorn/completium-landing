@@ -33,7 +33,7 @@ The schema below illustrates the two steps of the bond:
 
 ## Smart contract
 
-The Zero-coupon bond's business logic is anchored in the Tezos blockchain with a <Link to='/docs/dapp-tools/tezos#smart-contract'>smart contract</Link> implemented the bond's logic.
+The Zero-coupon bond's business logic is anchored with a <Link to='/docs/templates/zcb'>smart contract</Link> on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain.
 
 The smart contract is designed with the <a href='https://archetype-lang.org/'>Archetype</a> language as a simple state machine for clarity purpose toward involved parties:
 

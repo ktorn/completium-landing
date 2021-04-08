@@ -110,7 +110,7 @@ entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
     end else if tB = "XTZ" then begin
       var pA = token[tA].tokpool;
       var pB = token[tA].xtzpool;
-      var expected_qB = compute_qB(aA, qA, qB);
+      var expected_qB = compute_qB(qA, pA, pB);
       dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
       match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
       | some(transferA) ->
@@ -118,7 +118,7 @@ entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
       | none -> fail("INVALID_A_ENTRY")
       end;
       transfer (qB * 1utz) to caller;
-      token.update(tA, { xtzpool -= qB; tookpool += qA });
+      token.update(tA, { xtzpool -= qB; tokpool += qA });
     end else begin
       var pA      = token[tA].tokpool;
       var pXTZA   = token[tA].xtzpool;
@@ -154,7 +154,7 @@ entry addLiquidity(tA : string, qA : nat) {
   (* does qA tokens exchange for xtzin XTZ ? *)
   var pA = token[tA].tokpool;
   var pB = token[tA].xtzpool;
-  var expected_qB = compute_exchanged(qA, pA, pB);
+  var expected_qB = compute_qB(qA, pA, pB);
   dorequire(abs(expected_qB - xtzin) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
   var mintedLiqT =
     if token[tA].tokpool = 0 then initialminted
@@ -173,7 +173,7 @@ entry removeLiquidity(tA : string, qL : nat) {
     transfer (xtzout * 1utz) to caller;
     match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
     | some(transfer_src) ->
-      var qA = abs(floor(lqratio * token[tA].tokpool));
+      var qA = abs(floor(liqratio * token[tA].tokpool));
       transfer 0tz to entry transfer_src((selfaddress, caller, qA));
       liquidity.addupdate((tA, caller), { liqt -= qL });
       token.update(tA, { xtzpool -= xtzout; tokpool -= qA; liqpool -= qL })
