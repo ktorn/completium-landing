@@ -10,9 +10,14 @@ import { SnackProvider, useSnackContext } from './snackstate';
 import WalletButton from './components/WalletButton';
 import { getStorage, code } from './fa12.js';
 import Link from '@docusaurus/Link';
+import Switch from '@material-ui/core/Switch';
 
 const Connect = (props) => {
+  const [main,setMain] = React.useState(false);
   const ready = useReady();
+  const handleChange = (event) => {
+    setMain(event.target.checked);
+  }
   if (ready) {
     const address = useAccountPkh();
     return (<Grid container direction="column"
@@ -22,7 +27,18 @@ const Connect = (props) => {
       <Typography variant='subtitle2' style={{ fontFamily: 'Courier Prime, monospace' }}>{ address }</Typography>
     </Grid>);
   } else {
-    return <WalletButton />;
+    return (<Grid container>
+      <Grid item xs={8}>
+        <WalletButton main={main}/>
+      </Grid>
+      <Grid item xs={2}>
+        <Switch checked={main}
+            onChange={handleChange}
+            name="checkedB"
+            color="primary"></Switch>
+      </Grid>
+      <Grid item xs={2}><Typography variant='subtitle2' style={{marginTop: '8px'}}>Mainnet</Typography></Grid>
+    </Grid>);
   }
 }
 
@@ -43,7 +59,7 @@ const Contract = (props) => {
 
 const DeployWidget = () => {
   const [ addr, setAddr ] = React.useState("");
-  const [ totalsupply, setTotalSupply ] = React.useState(1000000);
+  const [ totalsupply, setTotalSupply ] = React.useState(10000000);
   const [ contract, setContract ] = React.useState("");
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const tezos = useTezos();

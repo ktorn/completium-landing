@@ -43,9 +43,7 @@ Click "Connect to Wallet" button, fill the fields "Initial Holder" and "Total Su
 
 <Deploy/>
 
-## Code
-
-Deploy the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
+Originate the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
 ```
 completium-cli deploy fa12.arl --init '(@tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG, 10_000_000)'
@@ -55,7 +53,13 @@ The command sets:
 * `initialholder` constant to `tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG`
 * `totalsupply` variable to 10 millions
 
-<Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
+## Code
+
+The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
+
+:::info
+The Archetype FA 1.2 code has been <Link to='https://assets.tqtezos.com/docs/token-contracts/fa12/4-fa12-archetype/'>verified</Link> towards the formal specification presented below.
+:::
 
 <Tabs
   defaultValue="archetype"
