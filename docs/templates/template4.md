@@ -157,7 +157,8 @@ entry addLiquidity(tA : string, qA : nat) {
   var expected_qB = compute_qB(qA, pA, pB);
   dorequire(abs(expected_qB - xtzin) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
   var mintedLiqT =
-    if token[tA].tokpool = 0 then initialminted
+    if token[tA].tokpool = 0
+    then initialminted
     else abs(floor(token[tA].liqpool * xtzin / token[tA].xtzpool));
   liquidity.addupdate((tA, caller), { liqt += mintedLiqT });
   token.update(tA, { xtzpool += xtzin; tokpool += qA; liqpool += mintedLiqT })

@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 This ICO process is inspired by the 2018 BCDiploma's ICO described in this <a href='https://github.com/VinceBCD/BCDiploma/tree/master/sources/BCDT/contracts/BCDToken'>document</a>.
 
-Contributors are whitlisted with their address to participate in the ICO. 2 whitelists are available:
+Contributors are whitlisted with their address to participate in the ICO. Two whitelists are available:
 * A *silver* whitelist, with a contribution limit of 10 XTZ maximum
 * A *gold* whitelist, without contribution limit
 
@@ -125,7 +125,7 @@ function get_remaining_tez_to_raise () : tez {
   return
     match vstate with
     | PresaleRunning | PresaleFinished -> presales_cap - nb_tez_raised
-    | Round1Running   | Round1Finished   -> round1_cap - nb_tez_raised
+    | Round1Running  | Round1Finished  -> round1_cap - nb_tez_raised
     | _ -> (((max_token_to_sell - nb_tok_sold) / exchange_rate_tez_tok) * 1tz)
     end
 }
@@ -133,10 +133,10 @@ function get_remaining_tez_to_raise () : tez {
 function transition_to_finished () : gstate {
   return
     match vstate with
-    | PresaleRunning  -> PresaleFinished
-    | Round1Running   -> Round1Finished
-    | Round1Finished  -> Round2Running
-    | _               -> Round2Finished
+    | PresaleRunning -> PresaleFinished
+    | Round1Running  -> Round1Finished
+    | Round1Finished -> Round2Running
+    | _              -> Round2Finished
     end
 }
 
