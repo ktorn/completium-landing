@@ -7,7 +7,7 @@ slug: /templates/fa12
 import Link from '@docusaurus/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import Deploy from './Deploy';
 
 ## Introduction
 
@@ -48,6 +48,8 @@ The command sets:
 * `totalsupply` variable to 10 millions
 
 <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
+
+<Deploy/>
 
 <Tabs
   defaultValue="archetype"
