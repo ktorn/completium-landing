@@ -9,13 +9,11 @@ import Link from '@docusaurus/Link';
 
 ## Execution conditions
 
-One of the key requirements of a smart contract's entry point is to establish execution conditions:
-* Who can call the contract?
-* Under which logical conditions?
+In this exercise, the entry point may only be called by the `admin` address; it also requires:
+* that the argument value `v` be between 10 (included) and 20 (strictly)
+* be even
 
-Archetype provides dedicated syntax to make execution conditions very explicit and non ambiguous.
-
-In this exercise, the entry point may only be called by the `admin` address; it also requires that the argument value `v` be between 10 (included) and 20 (strictly) and be even otherwise; if not even, it must fail with this following message : `Expected even value`:
+If not even, it must fail with this following message : `Expected even value`:
 
 ```archetype {8,10,11} title="2-exec-condition.arl"
 archetype exec_condition
@@ -38,6 +36,12 @@ entry main(v : nat) {
 
 It is also possible to establish execution conditions with a `failif` section.
 Execution conditions have identifiers (here `r1` and `r2`) used for fail message when no `otherwise` is established, and to name the property in contract formal verification.
+
+One of the key requirements of a smart contract's entry point is to establish execution conditions:
+* Who can call the contract?
+* Under which logical conditions?
+
+Archetype provides dedicated syntax to make execution conditions very explicit and non ambiguous.
 
 ### Deploy
 

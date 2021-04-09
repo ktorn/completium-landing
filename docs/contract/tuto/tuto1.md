@@ -22,6 +22,10 @@ entry main () {
 }
 ```
 
+:::info
+Do not forget to save the file with Ctrl+s (or Cmd+s)
+:::
+
 Use the `:=` operator to assign value to storage variable.
 
 ### Deploy
@@ -40,6 +44,12 @@ The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the con
 
 ```
 completium-cli deploy 1-hello.arl
+```
+
+This command must be run in the `tutorial` directory, so enter this command first:
+
+```
+cd tutorial
 ```
 
 ### Call entry point
