@@ -3,14 +3,11 @@ id: template0
 title: Presentation
 sidebar_label: Presentation
 slug: /templates
+hide_table_of_contents: false
+hide_side_bar: true
+hide_title: true
 ---
 import TemplateSection from './TemplateSection';
-
-Install contract templates with the following command:
-
-```
-git clone https://github.com/edukera/completium-contract-templates.git
-```
 
 <TemplateSection data="fungible"/>
 
@@ -23,5 +20,13 @@ git clone https://github.com/edukera/completium-contract-templates.git
 <TemplateSection data="payment"/>
 
 <TemplateSection data="insurance"/>
+
+## Install
+
+Install contract templates with the following command:
+
+```
+git clone https://github.com/edukera/completium-contract-templates.git
+```
 
 

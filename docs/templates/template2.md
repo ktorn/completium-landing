@@ -32,7 +32,8 @@ It is strongly suggested to use the <Link to='/docs/templates/fa12'>FA 1.2</Link
 | `approve` | `spender`, `value` | Approves `spender` to transfer `value` tokens from *caller*. |
 | `transferFrom` | `from`, `to`, `value`| Transfers `value` tokens from `from` to `to`. It requires that *caller* have been allowed by `from` to transfer this amount to `to`.  |
 
-## Code
+
+## Originate
 
 Deploy the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
@@ -44,8 +45,7 @@ The command sets:
 * `total` variable to 10 millions
 * `onetoken` variable to 1 million
 * `initialholder` constant to `tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG`
-
-<Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
+## Code
 
 <Tabs
   defaultValue="archetype"
@@ -56,8 +56,7 @@ The command sets:
 
 <TabItem value="archetype">
 
-
-```archetype
+```archetype title="erc20.arl"
 archetype erc20(total : nat, onetoken: nat, const initialowner : address)
 
 asset allowance identified by owner spender {
@@ -110,6 +109,8 @@ entry transferFrom(%from : address, %to : address, value : nat) {
 </TabItem>
 
 <TabItem value="michelson">
+
+The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
 
 ```js
 

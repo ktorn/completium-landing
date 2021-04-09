@@ -80,7 +80,7 @@ function TemplateSection (props) {
     [true],
   );
   return (<ThemeProvider theme={theme}>
-  <Card style={{ marginBottom: '40px', backgroundColor: '#242526' }}>
+  <Card style={{ marginBottom: '40px', backgroundColor: 'transparent', border: '1px solid #606770', paddingBottom: '8px' }}>
     <Grid container>
       <Grid item xs={8}>
         <Grid container spacing={3} direction="column" justify="center" alignItems="flex-start" style={{ padding: '22px' }}>
@@ -94,7 +94,7 @@ function TemplateSection (props) {
       </Grid>
       <Grid item xs={4} style={{ textAlign: 'center' }}>
         <img alt="Docusaurus with Keytar" style={{
-          width: props.width,
+          width: '65%',
           paddingTop: '0px',
         }} src={useBaseUrl(section.image)} />
       </Grid>
@@ -107,7 +107,7 @@ function TemplateSection (props) {
         <ListItem button divider component={Link} to={useBaseUrl(item.to)}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
-              <Typography style={{ fontWeight: 'bold' }}>{item.name}</Typography>
+              <Typography style={{ fontWeight: 'bold', marginLeft: '8px' }}>{item.name}</Typography>
             </Grid>
             <Grid item xs={8}>
               <Typography>{item.desc}</Typography>

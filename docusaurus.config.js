@@ -12,6 +12,9 @@ module.exports = {
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
   themeConfig: {
+    navbar: {
+      hideOnScroll: true,
+    },
     hideableSidebar: false,
     prism: {
       theme: require('./src/theme/prism-archetype-theme'),

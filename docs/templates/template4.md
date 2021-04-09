@@ -52,7 +52,7 @@ This principle is explained in more detailed in the <Link to='/docs/dapp-dex'>DE
 
 <TabItem value="archetype">
 
-```archetype
+```archetype title="dex.arl"
 archetype dex(admin : address, initialminted : nat)
 
 constant fee     : rational = 0.003

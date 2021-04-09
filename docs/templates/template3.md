@@ -43,7 +43,8 @@ These 2 entrypoints make the contract itself be the NFT operator: `sell` declare
 | `buy` | `tokenids` | Internall calls `transfer` to transfer ownership of `tokenids` tokens to *caller*. Token price is transferred to token owner. It fails if a token is not up for sale, that is if a token has not been delegated to the contract by `sell`. It also fails if the transferred amount does not exceed the sum of purchased tokens. |
 | `sell` | `tokenid` | Declares the contract as the operator of the token `tokenid`; it internally calls the `update_operators` with `selfaddress` as operator address. As a result, the token `tokenid` is up for sale (transfer). |
 
-## Code
+## Originate
+
 
 Deploy the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
@@ -69,6 +70,7 @@ asset token {
   { 973020; 12.4tz };
 }
 ```
+## Code
 
 <Tabs
   defaultValue="archetype"
@@ -79,7 +81,7 @@ asset token {
 
 <TabItem value="archetype">
 
-```archetype
+```archetype title="nft.arl"
 archetype nft
 
 (* STORAGE --------------------------------------------------------------------*)
@@ -212,6 +214,9 @@ entry sell (tokenid : nat) {
 </TabItem>
 
 <TabItem value="michelson">
+
+The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
+
 
 ```js
 

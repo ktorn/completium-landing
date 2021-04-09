@@ -66,7 +66,7 @@ Token ownership is handled by a <Link to='/docs/templates/fa12'>FA 1.2 fungible 
 
 <TabItem value="archetype">
 
-```archetype
+```archetype title="ico.arl"
 archetype ico(owner : address, token : address)
 
 variable min_contribution : tez        = 0.1tz

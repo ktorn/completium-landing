@@ -3,6 +3,7 @@ id: contract2
 title: Programming language
 sidebar_label: Programming language
 slug: /contract/programming-language
+hide_title: true
 ---
 import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
@@ -10,7 +11,7 @@ import Link from '@docusaurus/Link';
 
 ## Micheslon
 
-Michelson is the default language to write smart contracts on the Tezos blockchain. You can find the language reference <a href='https://tezos.gitlab.io/michelson-reference/'>here</a>.
+Michelson is the default language to write smart contracts on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain. You can find the language reference <a href='https://tezos.gitlab.io/michelson-reference/'>here</a>.
 
 Michelson is a <a href='https://en.wikipedia.org/wiki/Stack_machine#:~:text=In%20computer%20science%2C%20computer%20engineering,buffer%2C%20known%20as%20a%20stack%2C' target='_blank'>stack machine</a> language. Here is an example of a Michelson contract deployed on the mainnet:
 

@@ -3,6 +3,7 @@ id: tools1
 title: Overview
 sidebar_label: Overview
 slug: /dapp-tools
+hide_title: true
 ---
 
 import DappFigure from '../DappFigure';

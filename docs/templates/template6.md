@@ -49,7 +49,7 @@ A detailed presentation of the process is available in the <Link to='/docs/dapp-
 
 <TabItem value="archetype">
 
-```archetype
+```archetype title="zcb.arl"
 archetype zero_coupon_bond (
   issuer : role,
   subscriber : role,

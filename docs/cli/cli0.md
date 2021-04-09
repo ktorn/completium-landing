@@ -3,6 +3,7 @@ id: cli0
 title: Getting Started
 sidebar_label: Getting Started
 slug: /cli
+hide_title: true
 ---
 import Link from '@docusaurus/Link';
 import DappButton from '../DappButton';

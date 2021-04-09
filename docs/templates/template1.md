@@ -43,6 +43,8 @@ Click "Connect to Wallet" button, fill the fields "Initial Holder" and "Total Su
 
 <Deploy/>
 
+### Command line
+
 Originate the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
 
 ```
@@ -54,8 +56,6 @@ The command sets:
 * `totalsupply` variable to 10 millions
 
 ## Code
-
-The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
 
 :::info
 The Archetype FA 1.2 code has been <Link to='https://assets.tqtezos.com/docs/token-contracts/fa12/4-fa12-archetype/'>verified</Link> towards the formal specification presented below.
@@ -71,7 +71,7 @@ The Archetype FA 1.2 code has been <Link to='https://assets.tqtezos.com/docs/tok
 
 <TabItem value="archetype">
 
-```archetype
+```archetype title="fa12.arl"
 archetype fa12(const initialholder: address, totalsupply : nat)
 
 asset allowance identified by addr_owner addr_spender to big_map {
@@ -127,6 +127,8 @@ getter getTotalSupply () : nat {
 </TabItem>
 
 <TabItem value="michelson">
+
+The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
 
 ```js
 # (Pair 10000000 (Pair {  } { Elt "tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG" 10000000 }))
@@ -538,7 +540,7 @@ getter getTotalSupply () : nat {
 
 <TabItem value="specification">
 
-```archetype
+```archetype title="fa12.arl"
 specification {
   s1: ledger.sum(tokens) = totalsupply;
 }
