@@ -6,9 +6,7 @@ slug: /cli/contract
 ---
 import Link from '@docusaurus/Link';
 
-## Contract
-
-### Deploy / originate
+## Deploy / originate
 
 ```
 $ completium-cli deploy <FILE.arl> \
@@ -16,6 +14,7 @@ $ completium-cli deploy <FILE.arl> \
     [--named <CONTRACT_ALIAS>] \
     [--amount <AMOUNT>(tz|utz)] \
     [--burn-cap <BURN_CAP>] \
+    [--metadata-storage <PATH_TO_JSON> | --metadata-uri <VALUE_URI>]
     [--force]
 ```
 
@@ -27,9 +26,30 @@ $ completium-cli deploy mycontract.arl --amount 15.5tz
 
 This creates a contract alias `mycontract`.
 
-### Show
+One way to set *metadata* is to provide a json file as the `--metadata-storage` argument.
 
-#### Info
+For example the following metadata file:
+
+```bash
+$ cat fa12_metadata.json
+{
+  "symbol": "MTK",
+  "name": "MyToken",
+  "decimals": "1",
+  "description": "description of MyToken",
+  "thumbnailUri": "https://completium.com/img/logo_completium_128.png"
+}
+```
+
+Then the command to deploy the FA 1.2 contract:
+
+```
+$ completium-cli deploy fa12.arl --metadata-storage fa12_metadata.json
+```
+
+## Show
+
+### Info
 
 It is possible to show data related to a contract alias:
 
@@ -50,7 +70,7 @@ Version:  1.2.2
 Url:      https://better-call.dev/edo2net/KT1CQmaCLLdEQ3X9PmxoqEAy3Xusvs1J5wW1
 ```
 
-#### All contracts
+### All contracts
 
 The following command lists all contracts managed by `$completium-cli`:
 
@@ -58,14 +78,14 @@ The following command lists all contracts managed by `$completium-cli`:
 completium-cli show contracts
 ```
 
-#### Source
+### Source
 
 It is possible to show the contract source with:
 
 ```
 $ completium-cli show source <CONTRACT_ALIAS>
 ```
-#### Entries
+### Entries
 
 ```
 completium-cli show entries <CONTRACT_ADDRESS|CONTRACT_ALIAS>
@@ -80,7 +100,7 @@ completium-cli show entries KT1EFgRdrT4r6QLx2riZiPNHjo7gcQM8n7f7
 %decide (_ : unit)
 ```
 
-### Call
+## Call
 
 ```
 $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
@@ -104,7 +124,7 @@ The command to call the entry is:
 $ completium-cli call mycontract --entry payback --with 5
 ```
 
-### Generate javascript
+## Generate javascript
 
 The javascript verion of the contract is required when a DApp is originating the contract using <Link to='/docs/dapp-tools/taquito'>Taquito</Link>.
 
