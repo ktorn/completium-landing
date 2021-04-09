@@ -1,0 +1,7 @@
+{
+  "symbol": "MTK",
+  "name": "MyToken",
+  "decimals": "1",
+  "description": "description of MyToken",
+  "thumbnailUri": "https://completium.com/img/logo_completium_128.png"
+}
