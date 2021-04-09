@@ -8,7 +8,7 @@ import { DAppProvider, useAccountPkh, useReady, useTezos } from './dappstate';
 import Snack from './components/Snack';
 import { SnackProvider, useSnackContext } from './snackstate';
 import WalletButton from './components/WalletButton';
-import { getStorage, code } from './fa12.js';
+import { getStorage, getStorageWithMetadata, code, code_with_metadata } from './fa12.js';
 import Link from '@docusaurus/Link';
 import Switch from '@material-ui/core/Switch';
 import Accordion from '@material-ui/core/Accordion';
@@ -60,6 +60,18 @@ const Contract = (props) => {
   </Grid>)
 }
 
+function getMetadata(symbol, name, decimals, description, iconUri) {
+  const obj = {
+    symbol: symbol,
+    name: name,
+    decimals: decimals,
+    description: description,
+    thumbnailUri: iconUri,
+  };
+  const res = Buffer.from(JSON.stringify(obj)).toString('hex');
+  return res;
+}
+
 const DeployWidget = () => {
   const [ addr, setAddr ] = React.useState("");
   const [ totalsupply, setTotalSupply ] = React.useState(10000000);
@@ -67,8 +79,8 @@ const DeployWidget = () => {
   const [ meta, setMeta ] = React.useState(false);
   const [ symbol, setSymbol ] = React.useState("CMPL");
   const [ name, setName ] = React.useState("Completium Token");
-  const [ decimals, setDecimals ] = React.useState(0);
-  const [ url, setUrl ] = React.useState("https://github.com/edukera/completium-landing/blob/master/static/img/favicon.ico");
+  const [ decimals, setDecimals ] = React.useState(1);
+  const [ url, setUrl ] = React.useState("https://completium.com/img/logo_completium_128.png");
   const [main,setMain] = React.useState(false);
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const tezos = useTezos();
@@ -91,8 +103,8 @@ const DeployWidget = () => {
   const originate = async () => {
     try {
       const operation = await tezos.wallet.originate({
-        code: code,
-        init: getStorage(addr,totalsupply)
+        code: meta ? code_with_metadata : code,
+        init: meta ? getStorageWithMetadata(addr,totalsupply, getMetadata(symbol, name, decimals, "", url)) : getStorage(addr,totalsupply)
       }).send();
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
