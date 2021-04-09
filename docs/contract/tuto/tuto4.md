@@ -3,18 +3,18 @@ id: tuto4
 title: Dates and durations
 sidebar_label: 4. Dates & Durations
 slug: /contract/tuto/archetype-datedur
+hide_title: true
 ---
-
-
 import Link from '@docusaurus/Link';
+
+## Dates & durations
 
 The `date` and `duration` types are convenient to establish time related business logic.
 
-## Code
 
-In the following example, the call to the entry point succeeds if the contract was created more than 5 minutes and 10 seconds ago; the contract balance must be transferred to caller:
+The call to the entry point succeeds if the contract was created more than 5 minutes and 10 seconds ago; the contract balance must be transferred to caller:
 
-```archetype {6-11}
+```archetype {6-11} title="4-time_window.arl"
 archetype time_window
 
 variable creation : date = now
@@ -43,7 +43,7 @@ var date4 : date = 2019-01-01T00:00:00-05:30; (* iso 8601 *)
 ```
 
 
-## Deploy
+### Deploy
 
 The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
@@ -53,7 +53,7 @@ completium-cli deploy 4-time_window.arl --amount 5tz
 
 Note here that the contract's balance is intialized to 5tz.
 
-## Call entry point
+### Call entry point
 
 The following command calls the unique entry point:
 
@@ -75,3 +75,7 @@ Account 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw' is calling default of KT1GKryAWod
   message: 'InvalidCondition: r1'
 }
 ```
+### Next
+
+Open '5-weekday.arl' and click on "Next: Dates arithmetic" below.
+

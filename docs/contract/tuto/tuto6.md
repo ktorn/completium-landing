@@ -3,16 +3,17 @@ id: tuto6
 title: State Machine
 sidebar_label: 6. State Machine
 slug: /contract/tuto/archetype-statem
+hide_title: true
 ---
-
 import DappFigure from '../../DappFigure';
 import Link from '@docusaurus/Link';
 
+## State machine
+
 It is possible to design the smart contract as a state machine which is convenient for ease of read.
 
-## Code
 
-In this example, the machine has 4 states and 3 transitions as illustrated in the shcema below:
+In this exercise, the machine has 4 states and 3 transitions as illustrated in the shcema below:
 
 <DappFigure img='tuto_statem.svg' width='60%'/>
 
@@ -20,7 +21,7 @@ Transitions have conditions:
 * goes in InProgress state if balance is greater than 3tz
 * complete if internal `value` is strictly greater than 1 (requires calls to `inc_value`)
 
-```archetype
+```archetype title="6-state_machine.arl"
 archetype state_machine
 
 states =
@@ -55,7 +56,7 @@ transition interrupt () {
 
 Each transition is a contract entry point.
 
-## Deploy
+### Deploy
 
 The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
@@ -63,7 +64,7 @@ The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the con
 completium-cli deploy 6-state_machine.arl
 ```
 
-## Call entry points
+### Call entry points
 
 In this example it is necessary to call specific entry points. A contract's entrypoints may be listed with:
 
@@ -96,4 +97,8 @@ This last call may be replaced by the following command to go to `Interrupted` s
 ```
 completium-cli call 6-state_machine --entry interrupt
 ```
+
+### Next
+
+Open '7-assets.arl' and click on "Next: Assets" below.
 

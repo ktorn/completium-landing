@@ -60,7 +60,6 @@ module.exports = {
         'contract/tuto/tuto6',
         'contract/tuto/tuto7',
         'contract/tuto/tuto8',
-        'contract/tuto/tuto9',
       ] },
   ],
   tools:  [

@@ -3,9 +3,11 @@ id: tuto7
 title: Assets
 sidebar_label: 7. Assets
 slug: /contract/tuto/archetype-assets
+hide_title: true
 ---
-
 import Link from '@docusaurus/Link';
+
+## Assets
 
 A collection of assets is a convenient way to store indexed records of data; it comes with a rich API to read and write data to:
 * add, remove, update, addupdate
@@ -15,15 +17,13 @@ A collection of assets is a convenient way to store indexed records of data; it 
 
 A detailed presentation of the asset API is available <a href='https://docs.archetype-lang.org/archetype-language/data-model' target='_blank'>here</a>.
 
-## Code
-
-A vehicle dealer manages his stock of rental cars on-chain for maximal transparency with customers and mechanical service suppliers:
+In this exercise, a vehicle dealer manages his stock of rental cars on-chain for maximal transparency with customers and mechanical service suppliers:
 * a car has a unique identifier, the *vin*, and is described with a color, the number of repairs and the last repair date.
 * each time a car is repaired, the `repair` entry point is called to update the vehicle's repair data; it increments the number of repairs and updates the last date of repair.
 * a mechanical service supplier specializes on repairing the 3 cars with olded repair dates; a dedicated entry point `repair_oldest` has been designed to ease the update process.
 * a nother mechanical service supplier is specialised in repainting cars which have been repaired at least once. A dedicated entry point `repaint_repaired` has been designed.
 
-```archetype {30,34,38-40,44-46}
+```archetype {30,34,38-40,44-46} title="7-assets.arl"
 archetype assets
 
 enum color =
@@ -93,7 +93,7 @@ At last, note that the `sort` function sorts in ascending order. Another way to 
   done
 ```
 
-## Deploy
+### Deploy
 
 The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
@@ -101,7 +101,7 @@ The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the con
 completium-cli deploy 7-assets.arl
 ```
 
-## Call entry point
+### Call entry point
 
 The following command adds a vehicle:
 
@@ -128,3 +128,7 @@ completium-cli call 7-assets --entry repaint_repaired --with '3'
 ```
 
 Enums are implemented with integer values starting from 0.
+
+### Next
+
+Open '8-1-contract_called.arl' and click on "Next: Call a Contract" below.

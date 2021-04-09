@@ -3,18 +3,16 @@ id: tuto5
 title: Date arithmetic
 sidebar_label: 5. Dates arithmetic
 slug: /contract/tuto/archetype-datearith
+hide_title: true
 ---
-
 import Link from '@docusaurus/Link';
-
 import MathJax from 'react-mathjax';
 
+## Dates arithmetic
 
 Standard arithmetic operations are available on dates.
 
-## Code
-
-In this example, convert a date to a day of week, so that:
+Convert a date to a day of week, so that:
 * 0 if sunday
 * 1 if monday
 * 2 if tuesday
@@ -38,7 +36,7 @@ where:
 
 The euclidean division `div` will efficiently implement the floor and division operations.
 
-```archetype {6}
+```archetype {6} title="5-weekday.arl"
 archetype weekday
 
 variable n : int = 0
@@ -48,7 +46,7 @@ entry weekday (d : date) {
 }
 ```
 
-## Deploy
+### Deploy
 
 The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
@@ -56,10 +54,16 @@ The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the con
 completium-cli deploy 5-weekday.arl
 ```
 
-## Call entry point
+### Call entry point
 
 The following command calls the unique entry point:
 
 ```
 completium-cli call 5-weekday --with '2008-11-28'
 ```
+
+### Next
+
+Open '6-state_machine.arl' and click on "Next: State Machine" below.
+
+

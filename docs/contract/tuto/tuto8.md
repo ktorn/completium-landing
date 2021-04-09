@@ -3,10 +3,12 @@ id: tuto8
 title: Call another Contract
 sidebar_label: 8. Call a contract
 slug: /contract/tuto/archetype-callcontr
+hide_title: true
 ---
-
 import DappFigure from '../../DappFigure';
 import Link from '@docusaurus/Link';
+
+## Call a contract
 
 Can a contract read another contract's storage?
 
@@ -21,11 +23,9 @@ It is indeed possible in Michelson to wrap an entrypoint address in a value and 
 
 Archetype provides a high-level syntax for this pattern: the keyword `getter` generates the required entry point and arguments.
 
-## Code
-
 The *called* contract provides a `getter` entry point:
 
-```archetype {9}
+```archetype {9} title="8-1-contract_called.arl"
 archetype contract_called
 
 variable n : nat = 42
@@ -38,9 +38,9 @@ getter get_n () : nat { return n }
 
 ```
 
-The smart contract uses a variation of the `transfer` instruction to call the `get_n` entry point. The address of the called contract is passed as parameter:
+The *caller* contract uses a variation of the `transfer` instruction to call the `get_n` entry point. The address of the called contract is passed as parameter:
 
-```archetype {10}
+```archetype {10} title="8-2-contract_caller.arl"
 archetype contract_caller
 
 variable r : nat = 0
