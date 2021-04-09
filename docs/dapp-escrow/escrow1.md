@@ -38,7 +38,7 @@ At this stage the seller may *abort* the contract for any reason, typically when
 * if *aborted* by the seller, the escrow contract transfers the payment back to the buyer
 * if *accepted* by the seller, then transit of the purchased item may occur
 
-The next step is be to transfer the payment to the seller when the item is delivered. For simplicity purpose, we consider the item is properly delivered. The situation of delivery failure is addressed in the <Link to='/docs/dapp-escrow#discussion'>discussion</Link> section below.
+The next step is to transfer the payment to the seller when the item is delivered. For simplicity purpose, we consider the item is properly delivered. The situation of delivery failure is addressed in the <Link to='/docs/dapp-escrow#discussion'>discussion</Link> section below.
 
 Ideally the buyer transfers the payment to the seller when the item is delivered. However what does prevent the buyer from not transferring the payment?
 
@@ -57,7 +57,7 @@ The figure below illustrates the main payment process:
 ### Architecture
 
 The DApp architecture is 4-tier:
-1. escrow smart contract
+1. <Link to='/docs/templates/escrow'>escrow</Link> smart contract
 2. off-chain retailing web pages and content servers
 3. off-chain contract indexer
 4. off-chain seller's back office

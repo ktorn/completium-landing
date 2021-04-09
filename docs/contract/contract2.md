@@ -74,9 +74,9 @@ entry register (newadmins : option<list<address>>,
 }
 ```
 
-Archetype comes with a convenient set of <a href='https://github.com/edukera/try-archetype#smart-contracts-base' target='_blank'>contract examples</a> to start your project from. Learn the Archetype language with a eight steps online tutorial:
+Completium provides a convenient set of <Link to='/docs/templates'>contract templates</Link> to start your project from. Learn the Archetype language with a eight steps online tutorial:
 
-<DappButton url="https://gitpod.io/#https://github.com/edukera/try-archetype" txt="try archetype"/>
+<DappButton url="https://gitpod.io/#https://github.com/edukera/try-archetype" txt="archetype tutorial"/>
 
 
 ## Formal verification

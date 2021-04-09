@@ -35,12 +35,17 @@ The connected object is permanently reading its state and service information in
 
 <DappFigure img='iot-archi.svg' width='80%'/>
 
-0. The customer interacts with the smart contract through the DApp's <Link to="/docs/dapp-iot/presentation">web interface</Link>. The smart contract provides two entry points:
+0. The customer interacts with the smart contract through the DApp's <Link to="/docs/dapp-iot/presentation">web interface</Link>. The <Link to='/docs/dapp-iot/interface'>smart contract</Link> provides two entry points:
   * `start` to start the service
   * `interrupt` to interrupt the service
 
 1. the connected object reads its state on a regular basis (typically every 5 seconds)
 2. the connected object may retrieve content to broadcast from a content server
+
+Inspect the smart contract transactions in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link>:
+
+<DappButton url="https://better-call.dev/edo2net/KT19ZQUnVrDT5xnfvPqYhn1DeM489875oWGU/operations" txt="inspect smart contract"/>
+
 
 :::info
 In this DApp example, there is no need for a content server because of the simple nature of the on/off bulb service. With more sophisticated objects like advertising display equipment, the content to display is retrieved from a dedicated off-chain content server.

@@ -26,7 +26,7 @@ The challenge is to guarantee contestants that the competition is fair, that is 
 
 This example DApp illustrates how to organize a fair competition with the help of the Tezos blockchain.
 
-A new score is stored in the DApp's <Link to='/docs/dapp-tools/tezos#smart-contract'>smart contract</Link> storage by invoking the <Link to='/docs/dapp-game/interface#submit'>submit</Link> entry point. How to prevent anyone from storing any arbitrary score ?
+A new score is stored in the DApp's <Link to='/docs/templates/competition'>smart contract</Link> storage by invoking the <Link to='/docs/dapp-game/interface#submit'>submit</Link> entry point. How to prevent anyone from storing any arbitrary score ?
 
 A standard solution is to use an *Oracle* which is an off-chain process whose role is to guaranty the validity of the data stored in the smart contract by <Link to='/docs/dapp-tools/tezos#signing-data'>signing</Link> the data.
 
@@ -54,7 +54,7 @@ Note that the random seed is not (and must no be) known by the player. Note also
 
 The Dapp architecture is 3-tier:
 
-* Tezos' smart contract (to store Oracle-signed scores)
+* a <Link to='/docs/templates/competition'>smart contract</Link> to store Oracle-signed scores and declare winner
 * User web interface for customer to exchange miles (consume) for rewards
 * Game *oracle* that:
   * provides a new unique session id at each new game session
@@ -68,6 +68,10 @@ Interactions between these three elements are illustrated in the schema below:
 The smart contract provides other entry points for administration purpose. The complete interface is presented <Link to='/docs/dapp-game/interface'>here</Link>.
 
 In this DApp example, for simplicity purpose, the Oracle server is <u>not provided</u> as a separate entity, but rather embedded in the web interface. You are invited to implement a stand alone operational version of the Oracle.
+
+Inspect the smart contract transactions in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link>:
+
+<DappButton url="https://better-call.dev/edo2net/KT1UTJoUXgyXPW34wca92dGfiP4tjQyrG64f/operations" txt="inspect smart contract"/>
 
 ### Benefits
 

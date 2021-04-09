@@ -31,3 +31,6 @@ In a nutshell it specifies that a NFT has the following entry points:
 * `transfer` is used to actually transfer ownership
 * `balance_of` is used to retrieve ownership information
 
+Inspect the smart contract transactions in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link>:
+
+<DappButton url="https://better-call.dev/edo2net/KT1Hefg7wL4dfW3PGFQCN9B7CnBycLZm6utp/operations" txt="inspect smart contract"/>

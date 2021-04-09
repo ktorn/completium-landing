@@ -101,3 +101,6 @@ Note that:
 * when exchanging city token for XTZ, the token ownership is transferred from the user's account to the DEX account as a FA 1.2 does not allow token destruction; in that case the user needs to allow the DEX for transferring ownership by calling ``
 * when exchanging XTZ for city token, the token ownership is transferred from the DEX's account to the user's account
 
+Inspect the DEX smart contract transactions in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link>:
+
+<DappButton url="https://better-call.dev/edo2net/KT1MNgjnJg7c2WmnCwCAkhmcAGbrrPMoxcSa/operations" txt="inspect smart contract"/>

@@ -27,11 +27,15 @@ The DApp *chairman* registers voters, and decides when the voting period starts 
 
 ### Architecture
 
-The DApp is made of a smart contract and a web interface for voters to interact with the smart contract:
+The DApp is made of a <Link to='/docs/templates/ideabox'>smart contract</Link> and a web interface for voters to interact with the smart contract:
 
 <DappFigure img='ideabox-archi.svg' width='80%'/>
 
 An idea is made of a title and a body. Ideas are stored in the contract's storage in *zipped* format to reduce the contract size and reduce transaction costs. The positive side effect is that ideas are not on-chain readable as such.
+
+Inspect the smart contract transactions in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link>:
+
+<DappButton url="https://better-call.dev/edo2net/KT1QNURPMuFJSmTLRttRutb4gfJ6NS4BfsM6/operations" txt="inspect smart contract"/>
 
 ### Benefits
 

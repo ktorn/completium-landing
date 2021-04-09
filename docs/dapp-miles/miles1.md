@@ -30,7 +30,7 @@ A smart contract on the Tezos blockchain is used to store and manage customers' 
 ### Architecure
 
 The Dapp architecture is 3-tier:
-* Tezos' smart contract (to store and manage miles' lifecycle)
+* A <Link to='/docs/templates/miles'>smart contract</Link> to store and manage miles' lifecycle
 * User web interface for customer to exchange miles (consume) for rewards
 * Standard application server to create miles according to customer activity
 
@@ -43,6 +43,11 @@ The User Interface straightforwardly interacts with the smart contract to consum
 It uses a wallet technology (hardware or sofware) to forge, sign and send the operations to the blockchain.
 
 The Application Server interacts with the blockchain through a dedicated library that provides a high level API. It is <u>not provided</u> in this example Dapp though.
+
+Inspect the smart contract transactions in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link>:
+
+<DappButton url="https://better-call.dev/edo2net/KT1M3WqApg77zxkdmzbNmib7kCXGupVbNBLM/operations" txt="inspect smart contract"/>
+
 ### Benefits
 
 The benefits of the on-chain miles' lifecycle management are:
