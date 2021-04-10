@@ -12,7 +12,9 @@ import TabItem from '@theme/TabItem';
 
 This contract is the adaptation to the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain of an autocallable note issued by Goldman Sachs presented in <Link to='https://drive.google.com/file/d/0B64p1w9JOO-QQlhFQWEzMVl0cmRRVk5Td3d6czR5ZDRsWTRN/view'>this document</Link>.
 
-An autocallable collect
+AutoCallable notes are short-term market-linked investments offering an above-market coupon if automatically matured prior to the scheduled maturity date. The product is automatically matured (“auto-called”) if the reference asset is at or above its initial level on a predetermined observation date. If called, the investor will receive their initial principal investment plus an above-market coupon.
+
+Because of the passive nature of the blockchain, the contract here is an escrow of the issuer's payments (interests and redeem amounts in due time). At any time, the holder can check whether the escrowed amount is equal to what was initially planned by the contract, by calling the `check` entrypoint. If the balance is not equal to the expected amount, the contract goes to state `Defaulted`. The holder may then turn to a dispute resolution mecanism to recover the due amount, the contract state being the proof of the default in payment.
 
 ## API
 

@@ -13,7 +13,6 @@ $ completium-cli deploy <FILE.arl> \
     [--as <ACCOUNT_ALIAS>] \
     [--named <CONTRACT_ALIAS>] \
     [--amount <AMOUNT>(tz|utz)] \
-    [--burn-cap <BURN_CAP>] \
     [--metadata-storage <PATH_TO_JSON> | --metadata-uri <VALUE_URI>]
     [--force]
 ```

@@ -42,17 +42,23 @@ const Completium = require('@completium/completium-cli');
 const test = async () => {
   const completium = new Completium ();
   // Scenario
-  await completium.originate('state_machine.arl');
-  const initial = await completium.getBalance();
-  await completium.call("state_machine", { entry : "init", amount: "5tz" });
-  await completium.call("state_machine", { entry : "inc_value" });
-  await completium.call("state_machine", { entry : "inc_value" });
-  await completium.call("state_machine", { entry : "complete" });
+  const initial = (await completium.getBalance()).toNumber();
+  var cost = 0;
+  var op = await completium.originate('state_machine.arl');
+  cost += op.cost.toNumber();
+  var op = await completium.call("state_machine", { entry : "init", amount: "5tz" });
+  cost += op.cost.toNumber();
+  var op = await completium.call("state_machine", { entry : "inc_value" });
+  cost += op.cost.toNumber();
+  var op = await completium.call("state_machine", { entry : "inc_value" });
+  cost += op.cost.toNumber();
+  var op = await completium.call("state_machine", { entry : "complete" });
+  cost += op.cost.toNumber();
   // Test final state and balance
   const storage = await completium.getStorage("state_machine");
-  const final   = await completium.getBalance();
+  const final   = (await completium.getBalance()).toNumber();
   assert(storage._state == 3, "Invalid contract state");
-  assert(initial.toNumber() - final.toNumber() < 1000000, "Invalid caller balance");
+  assert(initial = final + cost, "Invalid caller balance");
 }
 
 test();
@@ -89,7 +95,7 @@ Edit the package file to set the test command:
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@completium/completium-cli": "^0.1.7"
+    "@completium/completium-cli": "^0.1.8"
   }
 }
 ```
