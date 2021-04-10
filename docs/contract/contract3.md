@@ -50,9 +50,9 @@ const test = async () => {
   await completium.call("state_machine", { entry : "complete" });
   // Test final state and balance
   const storage = await completium.getStorage("state_machine");
-  const final = await completium.getBalance();
+  const final   = await completium.getBalance();
   assert(storage._state == 3, "Invalid contract state");
-  assert(initial - final < 1, "Invalid caller balance");
+  assert(initial.toNumber() - final.toNumber() < 1000000, "Invalid caller balance");
 }
 
 test();

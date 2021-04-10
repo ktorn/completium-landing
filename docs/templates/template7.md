@@ -4,9 +4,15 @@ title: Autocallable note
 sidebar_label: Autocallable note
 slug: /templates/acn
 ---
-
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Introduction
+
+This contract is the adaptation to the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain of an autocallable note issued by Goldman Sachs presented in <Link to='https://drive.google.com/file/d/0B64p1w9JOO-QQlhFQWEzMVl0cmRRVk5Td3d6czR5ZDRsWTRN/view'>this document</Link>.
+
+An autocallable collect
 
 ## API
 
@@ -15,6 +21,15 @@ slug: /templates/acn
 ### Entrypoints
 
 ## Code
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Archetype', value: 'archetype', },
+    { label: 'Michelson', value: 'michelson', },
+  ]}>
+
+<TabItem value="archetype">
 
 ```archetype
 archetype autocallable(
@@ -36,14 +51,14 @@ archetype autocallable(
 )
 
 (* CONTRACT DATA *)
-asset early identified by eobservation {
+asset early {
   eobservation : date;
   redemption   : date;
   trigger      : rational;
   value        : rational;
 }
 
-asset interest identified by iobservation {
+asset interest {
   iobservation : date;
   payment     : date;
   barrier     : rational;
@@ -51,7 +66,7 @@ asset interest identified by iobservation {
 }
 
 (* underlyings values *)
-asset fixing identified by fobservation {
+asset fixing {
   fobservation : date;
   bac : rational;  (* Bank of America Corporation *)
   sg  : rational;  (* Societe Generale *)
@@ -120,9 +135,9 @@ entry pay_note () {
 
 entry add_fixing (
   ffobservation : date,
-  fbac : rational,
-  fsg : rational,
-  fubs : rational) {
+  fbac          : rational,
+  fsg           : rational,
+  fubs          : rational) {
   fixing.add({ffobservation; fbac; fsg; fubs})
 }
 
@@ -160,3 +175,15 @@ transition terminate () {
   to Terminated when { actual_payment >= compute_expected(now) }
 }
 ```
+
+</TabItem>
+
+<TabItem value="michelson">
+
+```js
+
+```
+
+</TabItem>
+
+</Tabs>

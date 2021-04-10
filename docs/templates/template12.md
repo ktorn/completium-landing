@@ -10,6 +10,10 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
+This contract stores miles per owners. Miles have an expiration date and valid miles can be consumed.
+
+See this contract in action in the <Link to='/docs/dapp-miles/'>Fidelity Program</Link> Dapp example.
+
 ## API
 
 ### Storage
