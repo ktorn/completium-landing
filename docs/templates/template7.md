@@ -16,6 +16,10 @@ AutoCallable notes are short-term market-linked investments offering an above-ma
 
 Because of the passive nature of the blockchain, the contract here is an escrow of the issuer's payments (interests and redeem amounts in due time). At any time, the holder can check whether the escrowed amount is equal to what was initially planned by the contract, by calling the `check` entrypoint. If the balance is not equal to the expected amount, the contract goes to state `Defaulted`. The holder may then turn to a dispute resolution mecanism to recover the due amount, the contract state being the proof of the default in payment.
 
+Fixing values are provided to the contract by the `oracle` address. Knowing that these data are licensed by market places to their customers, it is an open question to know whether the publically available blockchain data is a no-go. The challenge for the DeFi is to find business models not based on fixing values, but rather on the operation of such contracts.
+
+> Thank you to Alain Frisch, CTO at <Link to='https://www.lexifi.com/'>Lexifi</Link>, for this example contract and his help to adapt it. Lexifi provides financial services with a DSL (Domain Specific Language) to execute and simulate financial contracts. Alain Frish also provided the corresponding Lexifi code, automatically extracted by Lexifi drivers from the above document.
+
 ## API
 
 ### Storage
