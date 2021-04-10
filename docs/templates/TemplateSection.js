@@ -29,7 +29,7 @@ const sections = {
   },
   defi: {
     title: "DeFi",
-    subtitle: "DeFi is short for “decentralized finance,” an umbrella term for a variety of financial applications toward disrupting financial intermediaries.",
+    subtitle: "DeFi is short for “decentralized finance”, an umbrella term for a variety of financial applications toward disrupting financial intermediaries.",
     image: "img/template_defi.svg",
     items: [
       { name: "DEX", desc: "A Uniswap-like decentralized exchange.", to: "/docs/templates/dex" },

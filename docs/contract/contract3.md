@@ -47,13 +47,15 @@ const test = async () => {
   var op = await completium.originate('state_machine.arl');
   cost += op.cost.toNumber();
   // send 5tz to contract
-  var op = await completium.call("state_machine", { entry : "init", amount: "5tz" });
+  var op = await completium.call("state_machine", {
+    entry : "init",
+    amount: "5tz" });
   cost += op.cost.toNumber();
   var op = await completium.call("state_machine", { entry : "inc_value" });
   cost += op.cost.toNumber();
   var op = await completium.call("state_machine", { entry : "inc_value" });
   cost += op.cost.toNumber();
-  // complete should return 5tz
+  // Should return 5tz
   var op = await completium.call("state_machine", { entry : "complete" });
   cost += op.cost.toNumber();
   // Test final state and balance
