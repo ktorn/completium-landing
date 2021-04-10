@@ -23,7 +23,7 @@
 		},
 		// For the list of keywords and operators,
 		// see: http://caml.inria.fr/pub/docs/manual-ocaml/lex.html#sec84
-		'declaration': /\b(?:constant|archetype|enum|states|variable|asset|entry|transition|function|getter|var|let some|specification|postcondition|record)\b/,
+		'declaration': /\b(?:constant|archetype|enum|states|variable|asset|entry|transition|function|getter|var|let some|specification|postcondition|record|invariant)\b/,
 		'keyword': /\b(?:as|require|failif|called|by|effect|initial|identified by|initialized by|assert|begin|end|do|done|else|otherwise|return|before|for|if|in|match|in|forall|added|removed|exists|struct|then|from|to|while|with|when|fails|operations)\b/,
 		'boolean': /\b(?:false|true)\b/,
 		// Custom operators are allowed

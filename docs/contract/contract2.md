@@ -60,17 +60,17 @@ archetype c3n(admins : list<address>, hash : bytes)
 entry register (newadmins : option<list<address>>,
                 oldhash : bytes,
                 newhash : bytes) {
-   require {
-       r1: oldhash = hash;
-       r2: contains(admins, caller);
-   }
-   effect {
-       hash := newhash;
-       match newadmins with
-        | some(nadmins) -> admins := nadmins
-        | none -> ()
-       end
-   }
+  require {
+    r1: oldhash = hash;
+    r2: contains(admins, caller);
+  }
+  effect {
+    hash := newhash;
+    match newadmins with
+    | some(nadmins) -> admins := nadmins
+    | none -> ()
+    end
+  }
 }
 ```
 
