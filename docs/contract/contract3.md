@@ -108,7 +108,7 @@ In order to launch the test in a sandbox, run the following script:
 
 ```sh
 completium-cli start sandbox
-completium-cli set endpoint sandbox
+completium-cli set endpoint http://localhost:20000
 npm test
 completium-cli stop sandbox
 ```

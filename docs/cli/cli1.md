@@ -128,5 +128,5 @@ You can import a faucet account as explained <Link to='/docs/cli/account#faucet'
 
 ```bash
 $ completium-cli import faucet admin.json as admin
-$ completium-cli transfer 10000 from alice to admin
+$ completium-cli transfer 10000tz from alice to admin
 ```
