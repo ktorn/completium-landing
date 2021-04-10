@@ -46,19 +46,21 @@ const test = async () => {
   var cost = 0;
   var op = await completium.originate('state_machine.arl');
   cost += op.cost.toNumber();
+  // send 5tz to contract
   var op = await completium.call("state_machine", { entry : "init", amount: "5tz" });
   cost += op.cost.toNumber();
   var op = await completium.call("state_machine", { entry : "inc_value" });
   cost += op.cost.toNumber();
   var op = await completium.call("state_machine", { entry : "inc_value" });
   cost += op.cost.toNumber();
+  // complete should return 5tz
   var op = await completium.call("state_machine", { entry : "complete" });
   cost += op.cost.toNumber();
   // Test final state and balance
   const storage = await completium.getStorage("state_machine");
   const final   = (await completium.getBalance()).toNumber();
   assert(storage._state == 3, "Invalid contract state");
-  assert(initial = final + cost, "Invalid caller balance");
+  assert(initial == final + cost, "Invalid caller balance");
 }
 
 test();
