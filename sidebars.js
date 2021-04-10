@@ -4,6 +4,7 @@ module.exports = {
     'cli/cli1',
     'cli/cli2',
     'cli/cli3',
+    'cli/cli4',
   ],
   templates: [
     'templates/template0',
@@ -61,6 +62,7 @@ module.exports = {
         'contract/tuto/tuto7',
         'contract/tuto/tuto8',
       ] },
+    'contract/contract3',
   ],
   tools:  [
     'dapp-tools/tools1',
