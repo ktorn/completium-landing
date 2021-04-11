@@ -77,9 +77,28 @@ record balance_of_response {
   balance_ : nat;
 } as ((request, balance))
 
+function get_add_update_operators_param(
+  powner : address,
+  popp   : address,
+  pid    : nat
+) : list<or<operator_param, operator_param>> {
+  return ([
+    left<operator_param>({
+      opp_owner    = powner;
+      opp_operator = popp;
+      opp_token_id = pid
+    })
+  ])
+}
+
 entry check_ownership(brl : list<balance_of_response>) {
   match brl with
-  | hd::tl -> dorequire(hd.balance_ = 1, "Caller Is Not Owner")
+  | hd::tl -> begin
+    dorequire(hd.balance_ = 1, "Caller Is Not Owner");
+    transfer 0tz to nftoken
+      call update_operators<list<or<operator_param, operator_param>>>(
+        get_add_update_operators_param(hd.request.bo_owner, selfaddress, hd.request.btoken_id));
+  end
   | []     -> fail("Empty Response")
   end
 }
@@ -172,12 +191,12 @@ entry claim (id : nat) {
     r4 otherwise "Auction Is Still On" : nft[id].endofbid < now
   }
   effect {
+    transfer 0tz to nftoken
+      call update_operators<list<or<operator_param, operator_param>>>(
+        get_update_operators_param(nft[id].owner, selfaddress, id));
     match nft[id].bestbidder with
     | none -> ()
     | some bidder -> begin
-        transfer 0tz to nftoken
-          call update_operators<list<or<operator_param, operator_param>>>(
-            get_update_operators_param(nft[id].owner, selfaddress, id));
         transfer 0tz to nftoken
           call %transfer<list<address * list<transfer_destination>>>(
             get_transfer_param(nft[id].owner, bidder, id));
