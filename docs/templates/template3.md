@@ -60,7 +60,7 @@ completium-cli deploy nft.arl
 ```archetype title="nft.arl"
 archetype nft
 
-asset ledger identified by ltoken {
+asset ledger identified by ltoken to big_map {
   ltoken     : nat;
   lowner     : address;
 }
