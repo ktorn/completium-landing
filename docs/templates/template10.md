@@ -123,7 +123,7 @@ entry bid (id : nat) {
       endofbid  +=
         (if nft[id].endofbid - now < dur_incr
          then dur_incr
-         else 0)
+         else 0s)
     })
   }
 }
