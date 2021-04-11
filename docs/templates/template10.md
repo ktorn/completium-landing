@@ -67,6 +67,12 @@ asset nft {
   endofbid   : date;
 }
 
+record operator_param {
+  opp_owner    : address;
+  opp_operator : address;
+  opp_token_id : nat
+} as ((owner, (operator, token_id)))
+
 record balance_of_request {
   bo_owner : address;
   btoken_id : nat;
@@ -77,7 +83,7 @@ record balance_of_response {
   balance_ : nat;
 } as ((request, balance))
 
-function get_add_update_operators_param(
+function get_addop_param(
   powner : address,
   popp   : address,
   pid    : nat
@@ -92,15 +98,18 @@ function get_add_update_operators_param(
 }
 
 entry check_ownership(brl : list<balance_of_response>) {
-  match brl with
-  | hd::tl -> begin
-    dorequire(hd.balance_ = 1, "Caller Is Not Owner");
-    transfer 0tz to nftoken
-      call update_operators<list<or<operator_param, operator_param>>>(
-        get_add_update_operators_param(hd.request.bo_owner, selfaddress, hd.request.btoken_id));
-  end
-  | []     -> fail("Empty Response")
-  end
+  called by nftoken
+  effect {
+    match brl with
+    | hd::tl -> begin
+      dorequire(hd.balance_ = 1, "Caller Is Not Owner");
+      transfer 0tz to nftoken
+        call update_operators<list<or<operator_param, operator_param>>>(
+          get_addop_param(hd.request.bo_owner, selfaddress, hd.request.btoken_id));
+    end
+    | []     -> fail("Empty Response")
+    end
+  }
 }
 
 entry upforsale (id : nat, price : tez) {
@@ -166,13 +175,7 @@ function get_transfer_param(
   ])
 }
 
-record operator_param {
-  opp_owner    : address;
-  opp_operator : address;
-  opp_token_id : nat
-} as ((owner, (operator, token_id)))
-
-function get_update_operators_param(
+function get_rmop_param(
   powner : address,
   popp   : address,
   pid    : nat
@@ -193,7 +196,7 @@ entry claim (id : nat) {
   effect {
     transfer 0tz to nftoken
       call update_operators<list<or<operator_param, operator_param>>>(
-        get_update_operators_param(nft[id].owner, selfaddress, id));
+        get_rmop_param(nft[id].owner, selfaddress, id));
     match nft[id].bestbidder with
     | none -> ()
     | some bidder -> begin
