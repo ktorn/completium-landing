@@ -155,7 +155,11 @@ function get_update_operators_param(
   pid    : nat
 ) : list<or<operator_param, operator_param>> {
   return ([
-    right<address * address * nat>((powner, popp, pid))
+    right<operator_param>({
+      opp_owner    = powner;
+      opp_operator = popp;
+      opp_token_id = pid
+    })
   ])
 }
 
