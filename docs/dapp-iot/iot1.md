@@ -35,7 +35,7 @@ The connected object is permanently reading its state and service information in
 
 <DappFigure img='iot-archi.svg' width='80%'/>
 
-0. The customer interacts with the smart contract through the DApp's <Link to="/docs/dapp-iot/presentation">web interface</Link>. The <Link to='/docs/dapp-iot/interface'>smart contract</Link> provides two entry points:
+0. The customer interacts with the <Link to='/docs/templates/iot'>smart contract</Link> through the DApp's <Link to="/docs/dapp-iot/presentation">web interface</Link>. The contract provides two entry points:
   * `start` to start the service
   * `interrupt` to interrupt the service
 

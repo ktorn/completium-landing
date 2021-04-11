@@ -141,14 +141,6 @@ module.exports = {
             'dapp-iot/iot5', 'dapp-iot/iot6', 'dapp-iot/iot7'
           ]
         },
-        {
-          type: 'category',
-          label: 'Smart Contract',
-          items: [
-            'dapp-iot/iot8',
-            'dapp-iot/iot9',
-          ]
-        }
       ]
     },
     {
