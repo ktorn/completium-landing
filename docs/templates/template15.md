@@ -45,7 +45,7 @@ See this contract in action in the <Link to='/docs/dapp-iot/'>Connected Object</
 | `start` | | Starts service. The duration *d* of service is computed as: <p />*d* = `rate` * *transferred* |
 | `interrupt` | | User who started service can interrupt it. <p />It pays back the user so that only the effective duration of service is paid. |
 | `collect` | | Owner collects payments. |
-| `setunits` | `d`, `t` | Owner can sets time unit to `d` and tez unit to `t` when computing duration of service. |
+| `setunits` | `d`, `t` | Owner can set time unit to `d` and tez unit to `t` when computing duration of service. |
 
 ## Originate
 

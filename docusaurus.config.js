@@ -103,7 +103,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/edukera/completium-landing/tree/master',
         },
         'dapp-miles': {
           sidebarPath: require.resolve('./sidebars.js'),
