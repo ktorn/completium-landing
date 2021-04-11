@@ -119,7 +119,10 @@ entry bid (id : nat) {
     nft.update(id, {
       bestbidder = some(caller);
       best       = transferred;
-      endofbid  += dur_incr
+      endofbid  +=
+        if nft[id].endofbid - now < dur_incr
+        then dur_incr
+        else 0
     })
   }
 }
