@@ -52,6 +52,7 @@ The transfer of ownership performed by `calim` supposes that the NFT owner calls
 <TabItem value="archetype">
 
 ```archetype title="auction.arl"
+
 archetype auction(
   nftoken     : address,
   auction_dur : duration,
@@ -120,9 +121,9 @@ entry bid (id : nat) {
       bestbidder = some(caller);
       best       = transferred;
       endofbid  +=
-        if nft[id].endofbid - now < dur_incr
-        then dur_incr
-        else 0
+        (if nft[id].endofbid - now < dur_incr
+         then dur_incr
+         else 0)
     })
   }
 }
@@ -176,11 +177,11 @@ entry claim (id : nat) {
     | some bidder -> begin
         transfer nft[id].best to nft[id].owner;
         transfer 0tz to nftoken
-          call %transfer<list<address * list<transfer_destination>>>(
-            get_transfer_param(nft[id].owner, bidder, id));
-        transfer 0tz to nftoken
           call update_operators<list<or<operator_param, operator_param>>>(
             get_update_operators_param(bidder, selfaddress, id));
+        transfer 0tz to nftoken
+          call %transfer<list<address * list<transfer_destination>>>(
+            get_transfer_param(nft[id].owner, bidder, id));
       end
     end;
     nft.remove(id);
