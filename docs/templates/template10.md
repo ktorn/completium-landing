@@ -51,7 +51,6 @@ The transfer of ownership performed by `calim` supposes that the NFT owner calls
 
 <TabItem value="archetype">
 
-
 ```archetype title="auction.arl"
 archetype auction(
   nftoken     : address,
