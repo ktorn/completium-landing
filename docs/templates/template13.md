@@ -63,7 +63,7 @@ The patient pays the insurer:
 
 <TabItem value="archetype">
 
-```archetype
+```archetype title="healthcare.arl"
 archetype health_care(
   patient       : address,
   insurer       : address,
@@ -176,8 +176,24 @@ entry pay_deductibles () {
 
 <TabItem value="specification">
 
-```archetype
+```archetype title="healthcare.arl"
+specification entry pay_doctor (docid : address) {
+  postcondition p1 {
+    balance = before.balance
+  }
+}
 
+specification entry pay_fee () {
+  postcondition p2 {
+    balance = before.balance
+  }
+}
+
+specification entry pay_consulation () {
+  postcondition p3 {
+    balance = before.balance;
+  }
+}
 ```
 
 </TabItem>

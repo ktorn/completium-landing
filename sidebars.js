@@ -39,6 +39,7 @@ module.exports = {
       items: [
         'templates/template11',
         'templates/template12',
+        'templates/template15',
       ] },
     { type: 'category',
       label: 'Insurance',

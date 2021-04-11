@@ -45,6 +45,7 @@ const sections = {
     items: [
       { name: "Escrow", desc: "Escrow the purchase amount and transfer it to seller under conditions.", to: "/docs/templates/escrow" },
       { name: "Miles", desc: "Collect and consume miles.", to: "/docs/templates/miles" },
+      { name: "Connected Object", desc: "Switch on a connected object for a certain duration against payment.", to: "/docs/templates/iot" },
     ]
   },
   governance: {
