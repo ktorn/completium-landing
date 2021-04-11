@@ -175,13 +175,13 @@ entry claim (id : nat) {
     match nft[id].bestbidder with
     | none -> ()
     | some bidder -> begin
-        transfer nft[id].best to nft[id].owner;
         transfer 0tz to nftoken
           call update_operators<list<or<operator_param, operator_param>>>(
-            get_update_operators_param(bidder, selfaddress, id));
+            get_update_operators_param(nft[id].owner, selfaddress, id));
         transfer 0tz to nftoken
           call %transfer<list<address * list<transfer_destination>>>(
             get_transfer_param(nft[id].owner, bidder, id));
+        transfer nft[id].best to nft[id].owner;
       end
     end;
     nft.remove(id);
