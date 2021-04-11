@@ -60,7 +60,7 @@ The generated `contract.js` file exports:
 
 These two elements are passed to the Taquito's originate method:
 
-```js {4-6}
+```js {4-7}
 import { code, getStorage } from 'contract.js';
 
 try {

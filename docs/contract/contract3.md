@@ -33,7 +33,7 @@ $ npm i @completium/completium-cli
 
 The following example illustrates how to test the <Link to='/docs/contract/tuto/archetype-statem'>State machine</Link> contract of the Archetype <Link to='/docs/contract/programming-language#archetype'>tutorial</Link>.
 
-The goal is to check whether the contract is in the right state after a series of calls to `init`, `inc_value` twice and `complete` entrypoints, and to check whether the caller balance is almost unchanged while transferring 5tz to `init`.
+The goal is to check whether the contract is in the right state after a series of calls to `init`, `inc_value` twice and `complete` entrypoints, and to check whether the caller's balance is unchanged while transferring 5tz to `init` (within cost of transactions).
 
 ```js title="test.js"
 const assert     = require('assert');
@@ -42,7 +42,7 @@ const Completium = require('@completium/completium-cli');
 const test = async () => {
   const completium = new Completium ();
   // Scenario
-  const initial = (await completium.getBalance()).toNumber();
+  const balance_before = (await completium.getBalance()).toNumber();
   var cost = 0;
   var op = await completium.originate('state_machine.arl');
   cost += op.cost.toNumber();
@@ -55,18 +55,20 @@ const test = async () => {
   cost += op.cost.toNumber();
   var op = await completium.call("state_machine", { entry : "inc_value" });
   cost += op.cost.toNumber();
-  // Should return 5tz
+  // Should return the 5tz sent with `init`
   var op = await completium.call("state_machine", { entry : "complete" });
   cost += op.cost.toNumber();
   // Test final state and balance
   const storage = await completium.getStorage("state_machine");
-  const final   = (await completium.getBalance()).toNumber();
+  const balance   = (await completium.getBalance()).toNumber();
   assert(storage._state == 3, "Invalid contract state");
-  assert(initial == final + cost, "Invalid caller balance");
+  assert(balance == balance_before - cost, "Invalid caller balance");
 }
 
 test();
 ```
+
+The cost of transactions is accumulated in the local `cost` variable. It is used to test that the caller has got back the 5 tezies send to `init` entrypoint.
 
 The script is using the current account and endpoint, shown with the Completium <Link to='/docs/cli'>CLI</Link> commands:
 

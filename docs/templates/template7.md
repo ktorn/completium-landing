@@ -217,30 +217,25 @@ transition terminate () {
 
 <TabItem value="storage">
 
-Code snippet to set initial storage to values specified in contract.
+Code snippet to set initial storage according to values specified in contract.
 
 ```archetype
+variable nominal : tez = 1000tz
 
-constant issuer : role = @tz1bfVgcJC4ukaQSHUe1EbrUd5SekXeP9CWk
-constant owner  : role = @tz1Lc2qBKEWCBeDU8npG6zCeCqpmaegRi6Jg
-constant oracle : role = @tz1iawHeddgggn6P5r5jtq2wDRqcJVksGVSa (* exchange *)
-
-constant nominal : tez = 1000tz
-
-constant trade       : date = 2017-03-14T00:00:00
-constant init        : date = 2017-03-14T00:00:00
-constant issue       : date = 2017-03-28T00:00:00
-constant final       : date = 2020-03-16T00:00:00
-constant gredemption : date = 2020-03-30T00:00:00
+variable trade       : date = 2017-03-14T00:00:00
+variable init        : date = 2017-03-14T00:00:00
+variable issue       : date = 2017-03-28T00:00:00
+variable final       : date = 2020-03-16T00:00:00
+variable gredemption : date = 2020-03-30T00:00:00
 
 (* UNDERLYINGS *)
-constant bac_initial : rational = 25.32
-constant sg_initial  : rational = 46.945
-constant ubs_initial : rational = 15.98
+variable bac_initial : rational = 25.32
+variable sg_initial  : rational = 46.945
+variable ubs_initial : rational = 15.98
 
-constant bac_strike : rational = 12.66   (* ~ 0.5 * bac_initial *)
-constant sg_strike  : rational = 23.4725 (* ~ 0.5 * sg_initial  *)
-constant ubs_strike : rational = 15.98   (* ~ 0.5 * ubs_initial *)
+variable bac_strike : rational = 12.66   (* ~ 0.5 * bac_initial *)
+variable sg_strike  : rational = 23.4725 (* ~ 0.5 * sg_initial  *)
+variable ubs_strike : rational = 15.98   (* ~ 0.5 * ubs_initial *)
 
 (* CONTRACT DATA *)
 asset early identified by eobservation {
