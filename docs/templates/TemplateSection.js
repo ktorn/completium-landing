@@ -32,20 +32,21 @@ const sections = {
     subtitle: "DeFi is short for “decentralized finance”, an umbrella term for a variety of financial applications toward disrupting financial intermediaries.",
     image: "img/template_defi.svg",
     items: [
+      { name: "Zero-Coupon Bond", desc: "A transcription to Tezos of a Zero-Coupon bond.", to: "/docs/templates/zcb" },
       { name: "DEX", desc: "A Uniswap-like decentralized exchange.", to: "/docs/templates/dex" },
       { name: "ICO", desc: "An example of ICO process.", to: "/docs/templates/ico" },
-      { name: "Zero-Coupon Bond", desc: "A transcription to Tezos of a Zero-Coupon bond.", to: "/docs/templates/zcb" },
       { name: "Autocallable note", desc: "A transcription to the Tezos blockchain of an auto-callable note from Goldman Sachs.", to: "/docs/templates/acn" },
     ]
   },
   payment: {
     title: "Payment",
-    subtitle: "Implement decentralised payment process for retail with the blockchain.",
+    subtitle: "Implement decentralised payment process for retail, marketing, insurance, ... with the blockchain.",
     image: "img/template_payment.svg",
     items: [
       { name: "Escrow", desc: "Escrow the purchase amount and transfer it to seller under conditions.", to: "/docs/templates/escrow" },
       { name: "Miles", desc: "Collect and consume miles.", to: "/docs/templates/miles" },
       { name: "Connected Object", desc: "Switch on a connected object for a certain duration against payment.", to: "/docs/templates/iot" },
+      { name: "Health Care", desc: "Payments between patient, insurer, and doctors.", to: '/docs/templates/healthcare' },
     ]
   },
   governance: {
@@ -56,15 +57,6 @@ const sections = {
       { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/templates/ideabox' },
       { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/templates/competition' },
       { name: "Auction", desc: "Collect bids and determine the winner.", to: '/docs/templates/auction' },
-    ]
-  },
-  insurance: {
-    title: "Insurance",
-    subtitle: "Disrupt Insurance industries with a decentralised open process which escrows insurance premiums.",
-    image: "img/template_insurance.svg",
-    items: [
-      { name: "Health Care", desc: "Organise consultations and transfer health care premiums to doctors.", to: '/docs/templates/healthcare' },
-      { name: "Fizzy", desc: "Archetype transcription of IRL insurance use case.", to: '/docs/templates/fizzy' }
     ]
   }
 }

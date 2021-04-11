@@ -15,11 +15,10 @@ import TemplateSection from './TemplateSection';
 
 <TemplateSection data="defi"/>
 
-<TemplateSection data="governance"/>
-
 <TemplateSection data="payment"/>
 
-<TemplateSection data="insurance"/>
+<TemplateSection data="governance"/>
+
 
 ## Install
 
