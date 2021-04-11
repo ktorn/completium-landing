@@ -81,9 +81,12 @@ const DeployWidget = () => {
   }
   const originate = async () => {
     try {
+      const Fraction = require('fractional').Fraction
+      const rat = new Fraction(rate);
+      const vrate = {  "prim": "Pair", "args": [ {  "int": rat.numerator.toString()  }, {  "int": rat.denominator.toString()  } ] }
       const operation = await tezos.wallet.originate({
         code: code,
-        init: getStorage(addr,rate)
+        init: getStorage(addr, vrate)
       }).send();
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
