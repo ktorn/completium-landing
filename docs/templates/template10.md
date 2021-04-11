@@ -53,53 +53,100 @@ Learn to developp a user interface on top of this contract with the <Link to=''>
 
 ```archetype title="auction.arl"
 archetype auction(
-  assetid     : bytes,
-  owner       : address,
+  nftoken     : address,
   auction_dur : duration,
   dur_incr    : duration
 )
 
-variable bestbidder : address = owner
-variable bestbid    : tez = 0tz
-
-variable endofbid   : date = now
-
-states =
-| Closed initial
-| Open
-
-transition upforsale (price : tez) {
-   called by owner
-   from Closed to Open
-   with effect {
-      bestbid := price;
-      endofbid := now + auction_dur;
-   }
+asset nft {
+  nftid      : nat;
+  owner      : address;
+  bestbidder : option<address>;
+  best       : tez;
+  endofbid   : date;
 }
 
-entry bid() {
-   require {
-      r1 otherwise "Auction Closed": state = Open;
-      r2: now < endofbid;
-      r3: caller <> bestbidder;
-      r4: transferred > bestbid;
-   }
-   effect {
-     if balance <> transferred then
-       transfer bestbid to bestbidder;
-     bestbidder := caller;
-     bestbid := transferred;
-     endofbid += dur_incr;
-   }
+record balance_of_request {
+  bo_owner : address;
+  btoken_id : nat;
+} as ((owner, token_id))
+
+record balance_of_response {
+  request : balance_of_request;
+  balance_ : nat;
+} as ((request, balance))
+
+entry check_ownership(brl : list<balance_of_response>) {
+  match brl with
+  | hd::tl ->  dorequire(hd.balance_ = 1, "Caller Is Not Owner")
+  | [] -> fail("Empty Response")
+  end
 }
 
-transition claim () {
-  require { r5 otherwise "Auction Is Still On": now > endofbid }
-  from Open to Closed
-  with effect {
-     if balance > 0tz then
-         transfer balance to owner;
-     owner := bestbidder;
+entry upforsale (id : nat, price : tez) {
+  require {
+    r1: if nft.contains(id) then nft[id].endofbid < now else true
+  }
+  effect {
+    nft.addupdate(id, {
+      owner = caller;
+      bestbidder = none;
+      best = 0tz;
+      endofbid = (now + 1h)
+    });
+    (* check ownership with FA2 balance_of *)
+    transfer 0tz to nftoken
+       call balance_of<
+              list<balance_of_request> *
+              contract<list<balance_of_response>>
+       >(([ { bo_owner = caller; btoken_id = id } ], self.check_ownership));
+  }
+}
+
+entry bid (id : nat) {
+  require {
+    r2 otherwise "No Auction"   : now < nft[id].endofbid;
+    r3 otherwise "Not Best Bid" : transferred > nft[id].best;
+  }
+  effect {
+    match nft[id].bestbidder with
+    | none -> ()
+    | some bidder -> transfer nft[id].best to bidder
+    end;
+    nft.update(id, {
+      bestbidder = some(caller);
+      best       = transferred;
+      endofbid  += dur_incr
+    })
+  }
+}
+
+record transfer_destination {
+  to_dest           : address;
+  token_id_dest     : nat;
+  token_amount_dest : nat
+} as ((to_, (token_id, amount)))
+
+entry claim (id : nat) {
+  require {
+    r4 otherwise "Auction Is Still On" : nft[id].endofbid < now
+  }
+  effect {
+    match nft[id].bestbidder with
+    | none -> ()
+    | some bidder -> begin
+        transfer nft[id].best to nft[id].owner;
+        transfer 0tz to nftoken
+          call %transfer<list<address * list<transfer_destination>>>([
+            (nft[id].owner, [{
+              to_dest           = bidder;
+              token_id_dest     = id;
+              token_amount_dest = 1
+            }])
+          ])
+      end
+    end;
+    nft.remove(id);
   }
 }
 ```
