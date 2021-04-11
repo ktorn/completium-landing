@@ -90,10 +90,10 @@ entry upforsale (id : nat, price : tez) {
   }
   effect {
     nft.addupdate(id, {
-      owner = caller;
+      owner      = caller;
       bestbidder = none;
-      best = 0tz;
-      endofbid = (now + auction_dur)
+      best       = price;
+      endofbid   = (now + auction_dur)
     });
     (* check ownership with FA2 balance_of *)
     transfer 0tz to nftoken
@@ -107,7 +107,10 @@ entry upforsale (id : nat, price : tez) {
 entry bid (id : nat) {
   require {
     r2 otherwise "No Auction"   : now < nft[id].endofbid;
-    r3 otherwise "Not Best Bid" : transferred > nft[id].best;
+    r3 otherwise "Not Best Bid" :
+      if issome(nft[id].bestbidder)
+      then transferred >= nft[id].best
+      else transferred >= nft[id].best;
   }
   effect {
     match nft[id].bestbidder with
