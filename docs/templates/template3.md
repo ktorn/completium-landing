@@ -14,6 +14,8 @@ This contract follows the Financial Asset 2 (FA 2) <a href='https://gitlab.com/t
 
 You can observe the contract in action in the <Link to='/docs/dapp-nonfungible/'>Collectible cards</Link> DApp example.
 
+A <Link to='/docs/templates/auction'>contract template</Link> is available to transfer ownership of a FA 2 NFT based on an auction process.
+
 ## API
 
 FA 2 introduces the concept of *operator*, which is an account that can transfer a token on behalf of the owner. The delegation is done by the owner with the `update_operators` entrypoint.

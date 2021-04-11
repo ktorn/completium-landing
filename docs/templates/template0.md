@@ -8,6 +8,7 @@ hide_side_bar: true
 hide_title: true
 ---
 import TemplateSection from './TemplateSection';
+import Link from '@docusaurus/Link';
 
 <TemplateSection data="fungible"/>
 
@@ -19,6 +20,9 @@ import TemplateSection from './TemplateSection';
 
 <TemplateSection data="governance"/>
 
+:::info
+If you need a specific version of a contract, or a contract not listed here, please <Link to='/#contact'>contact us</Link>.
+:::
 
 ## Install
 

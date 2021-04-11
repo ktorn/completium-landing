@@ -11,11 +11,13 @@ import DeployIOT from './DeployIOT';
 
 ## Introduction
 
-Simple auction process to transfer <Link to='/docs/templates/nft'>FA2 NFT</Link> ownership to best bidder.
+Auction process to transfer a <Link to='/docs/templates/nft'>FA2 NFT</Link> to best bidder.
 
 The best bid is escrowed by the contract til ownership is claimed. Previous best bidder gets its bid back. When asset ownership claimed, it is transfered to asset owner.
 
-Learn to developp a user interface on top of this contract with the <Link to=''>First DApp</Link> tutorial.
+The contract calls the FA2 contract to check NFT ownership, and transfer ownership when auction is over.
+
+The benefit of splitting the auction process from the FA2 ledger is that it makes it possible to change or select the appropriate auction process, while keeping the ledger intact.
 ## API
 
 ### Storage
@@ -26,18 +28,17 @@ Learn to developp a user interface on top of this contract with the <Link to=''>
 | `owner` | `address` | Address to collect best bid. |
 | `auction_dur` | `duration` | Auction duration. |
 | `dur_incr` | `duration` | Increment of auction duration when a bid is placed. |
-| `bestbidder` | `address` | Address of best bidder. |
-| `bestbid` | `tez` | Value of best bid. |
-| `endofbid` | `date` | Date of end of bid. |
-| `_state` | `states` | One of `Open`, `Closed` |
+| `nft` | `collection` | An NFT auction is defined by:<ul><li>nft id</li><li>`owner` of the NFT</li><li>`bestbidder` option of address of best bidder</li><li>`best` best bid amount</li><li>`endofbid` date of the end of bid</li></ul> |
 
 ### Entrypoints
 
+The transfer of ownership performed by `calim` supposes that the NFT owner calls the `update_operators` entrypoint of the <Link to='/docs/templates/nft'>FA2 contract</Link>.
+
 | Name | Parameters | Description |
 | -- | -- | -- |
-| `upforsale` | `price` | Owner sets the item up for sale. <p /> Sets date of end of bid to `now + auction_dur`.|
-| `bid` | | Places a bid. Bid amount is transferred. <p />If this is best bid, previous best bid amount is transferred back to previous bet bidder. |
-| `claim` | | Transfers escrowed bid amount to `owner` if auction is over. New `owner` value is set to `bestbidder`. |
+| `upforsale` | `id`, `price` | Owner sets the NFT `id` up for sale. <p />Sets date of end of bid to `now + auction_dur`. <p />FA2 NFT contract entrypoint `balance_of` is called to check that caller is the owner of NFT `id`. |
+| `bid` | `id` | Places a bid for NFT `id`. Bid amount is transferred. <p />If this is best bid, previous best bid amount is transferred back to previous bet bidder. |
+| `claim` | `id`| Transfers escrowed bid amount to `owner` if auction is over for NFT `id`. New `owner` value is set to `bestbidder`.<p />FA2 NFT contract entrypoint `transfer` is called to transfer ownership to best bidder. |
 
 ## Code
 
@@ -92,7 +93,7 @@ entry upforsale (id : nat, price : tez) {
       owner = caller;
       bestbidder = none;
       best = 0tz;
-      endofbid = (now + 1h)
+      endofbid = (now + auction_dur)
     });
     (* check ownership with FA2 balance_of *)
     transfer 0tz to nftoken
