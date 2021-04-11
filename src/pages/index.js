@@ -25,7 +25,7 @@ function Banner() {
     <Grid container direction='row' justify="center" alignItems="center" style={{
       height: '340px',
       width: '100%',
-      backgroundImage: "linear-gradient(rgba(0 0 78 / 34%), rgba(178 189 77 / 41%))",
+      backgroundImage: "linear-gradient(rgb(0 0 0 / 71%), #00ace761)",
 /*       backgroundImage: "linear-gradient(rgba(0 0 78 / 34%), rgba(178 189 77 / 41%)), url("+useBaseUrl('img/banner2.svg')+")",
  */
       backgroundRepeat: 'repeat-x'
@@ -244,7 +244,7 @@ function Scrollable() {
         <Grid item xs={12}>
           <Parallax strength={400}>
             <Background>
-              <img src={useBaseUrl('img/banner2.svg')} style={{ transform: 'scale('+scalef+')'}}/>
+              <img src={useBaseUrl('img/hardware.svg')} style={{ transform: 'scale('+scalef+')'}}/>
             </Background>
             <Banner />
           </Parallax>
