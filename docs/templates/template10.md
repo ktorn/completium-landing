@@ -109,7 +109,7 @@ entry bid (id : nat) {
     r2 otherwise "No Auction"   : now < nft[id].endofbid;
     r3 otherwise "Not Best Bid" :
       if issome(nft[id].bestbidder)
-      then transferred >= nft[id].best
+      then transferred >  nft[id].best
       else transferred >= nft[id].best;
   }
   effect {
