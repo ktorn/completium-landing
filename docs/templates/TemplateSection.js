@@ -56,7 +56,7 @@ const sections = {
     items: [
       { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/templates/ideabox' },
       { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/templates/competition' },
-      { name: "Auction", desc: "Collect bids and determine the winner.", to: '/docs/templates/auction' },
+      { name: "Auction", desc: "Auction process to transfer ownership of FA2 NFTs.", to: '/docs/templates/auction' },
     ]
   }
 }
