@@ -144,6 +144,22 @@ function get_transfer_param(
   ])
 }
 
+record operator_param {
+  opp_owner    : address;
+  opp_operator : address;
+  opp_token_id : nat
+} as ((owner, (operator, token_id)))
+
+function get_update_operators_param(
+  powner : address,
+  popp   : address,
+  pid    : nat
+) : list<or<operator_param, operator_param>> {
+  return ([
+    right<address * address * nat>((powner, popp, pid))
+  ])
+}
+
 entry claim (id : nat) {
   require {
     r4 otherwise "Auction Is Still On" : nft[id].endofbid < now
@@ -155,7 +171,10 @@ entry claim (id : nat) {
         transfer nft[id].best to nft[id].owner;
         transfer 0tz to nftoken
           call %transfer<list<address * list<transfer_destination>>>(
-            get_transfer_param(nft[id].owner, bidder, id))
+            get_transfer_param(nft[id].owner, bidder, id));
+        transfer 0tz to nftoken
+          call update_operators<list<or<operator_param, operator_param>>>(
+            get_update_operators_param(caller, selfaddress, id));
       end
     end;
     nft.remove(id);
