@@ -102,22 +102,16 @@ entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
       dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
       var xtzin : nat = transferred;
       dorequire(qA = xtzin, ("INVALID_A_AMOUNT", xtzin));
-      match entrypoint<(address * address * nat)>("%transfer", token[tB].addr) with
-      | some(transferB) ->
-        transfer 0tz to entry transferB((selfaddress, caller, qB))
-      | none -> fail("INVALID_B_ENTRY")
-      end;
+      transfer 0tz to token[tB].addr
+        call %transfer<address * address * nat>((selfaddress, caller, qB));
       token.update(tB, { xtzpool += xtzin; tokpool -= qB });
     end else if tB = "XTZ" then begin
       var pA = token[tA].tokpool;
       var pB = token[tA].xtzpool;
       var expected_qB = compute_qB(qA, pA, pB);
       dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
-      match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
-      | some(transferA) ->
-        transfer 0tz to entry transferA((caller, selfaddress, qA))
-      | none -> fail("INVALID_A_ENTRY")
-      end;
+      transfer 0tz to token[tA].addr
+        call %transfer<address * address * nat>((caller, selfaddress, qA));
       transfer (qB * 1utz) to caller;
       token.update(tA, { xtzpool -= qB; tokpool += qA });
     end else begin
@@ -128,16 +122,10 @@ entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
       var pB      = token[tB].tokpool;
       var expected_qB = compute_qB(qXTZ, pXTZB, pB);
       dorequire(abs(expected_qB - qB) <= epsilon, ("INVALID_B_AMOUNT", expected_qB));
-      match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
-      | some(transferA) ->
-        transfer 0tz to entry transferA((caller, selfaddress, qA))
-      | none -> fail("INVALID_A_ENTRY")
-      end;
-      match entrypoint<(address * address * nat)>("%transfer", token[tB].addr) with
-      | some(transferB) ->
-        transfer 0tz to entry transferB((selfaddress, caller, qB))
-      | none -> fail("INVALID_B_ENTRY")
-      end;
+      transfer 0tz to token[tA].addr
+        call %transfer<address * address * nat>((caller, selfaddress, qA));
+      transfer 0tz to token[tB].addr
+        call %transfer<address * address * nat>((selfaddress, caller, qB));
       token.update(tA, { xtzpool -= qXTZ; tokpool += qA });
       token.update(tB, { xtzpool += qXTZ; tokpool -= qB });
     end
@@ -146,11 +134,8 @@ entry exchange(tA : string, qA : nat, tB : string, qB : nat) {
 
 entry addLiquidity(tA : string, qA : nat) {
   (* transfer qA tokens tA to dex contract *)
-  match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
-   | some(transfer_src) ->
-    transfer 0tz to entry transfer_src((caller, selfaddress, qA))
-   | none -> fail("INVALID_DST_ENTRY")
-  end;
+  transfer 0tz to token[tA].addr
+    call %transfer<address * address * nat>((caller, selfaddress, qA));
   var xtzin : nat = transferred;
   (* does qA tokens exchange for xtzin XTZ ? *)
   var pA = token[tA].tokpool;
@@ -173,14 +158,11 @@ entry removeLiquidity(tA : string, qL : nat) {
     var liqratio = qL / token[tA].liqpool;
     var xtzout = abs(floor(liqratio * token[tA].xtzpool));
     transfer (xtzout * 1utz) to caller;
-    match entrypoint<(address * address * nat)>("%transfer", token[tA].addr) with
-    | some(transfer_src) ->
-      var qA = abs(floor(liqratio * token[tA].tokpool));
-      transfer 0tz to entry transfer_src((selfaddress, caller, qA));
-      liquidity.addupdate((tA, caller), { liqt -= qL });
-      token.update(tA, { xtzpool -= xtzout; tokpool -= qA; liqpool -= qL })
-    | none -> fail("INVALID_DST_ENTRY")
-    end;
+    var qA = abs(floor(liqratio * token[tA].tokpool));
+    transfer 0tz to token[tA].addr
+      call %transfer<address * address * nat>((selfaddress, caller, qA));
+    liquidity.addupdate((tA, caller), { liqt -= qL });
+    token.update(tA, { xtzpool -= xtzout; tokpool -= qA; liqpool -= qL })
   }
 }
 ```
