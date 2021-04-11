@@ -192,11 +192,8 @@ entry contribute () {
     (* convert contribution to nb of bcd tokens *)
     var nb_tokens : nat = get_rate() * contrib;
     (* transfer tokens to contributor *)
-    match entrypoint<(address * address * nat)>("%transfer", token) with
-      | some(transferTok) ->
-        transfer 0tz to entry transferTok((owner, caller, nb_tokens))
-      | none -> fail("INVALID_ENTRY")
-    end;
+    transfer 0tz to token
+        call %transfer<address * address * nat>((owner, caller, nb_tokens));
     (* update ico stats *)
     nb_tok_sold   += nb_tokens;
     nb_tez_raised += contrib;
