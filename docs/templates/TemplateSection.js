@@ -29,7 +29,7 @@ const sections = {
   },
   defi: {
     title: "DeFi",
-    subtitle: "DeFi is short for “decentralized finance”, an umbrella term for a variety of financial applications toward disrupting financial intermediaries.",
+    subtitle: "DeFi is short for “decentralized finance”, an umbrella term for a variety of financial applications.",
     image: "img/template_defi.svg",
     items: [
       { name: "Zero-Coupon Bond", desc: "A transcription to Tezos of a Zero-Coupon bond.", to: "/docs/templates/zcb" },

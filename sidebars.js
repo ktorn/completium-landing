@@ -22,9 +22,9 @@ module.exports = {
     { type: 'category',
       label: 'DeFi',
       items: [
+        'templates/template6',
         'templates/template4',
         'templates/template5',
-        'templates/template6',
         'templates/template7',
       ] },
     { type: 'category',
