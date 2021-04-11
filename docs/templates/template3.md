@@ -58,11 +58,6 @@ completium-cli deploy nft.arl
 ```archetype title="nft.arl"
 archetype nft
 
-asset token {
-  tid        : nat;
-  (* add NFT data if necessary, like price ? *)
-}
-
 asset ledger identified by ltoken {
   ltoken     : nat;
   lowner     : address;
