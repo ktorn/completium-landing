@@ -78,8 +78,8 @@ record balance_of_response {
 
 entry check_ownership(brl : list<balance_of_response>) {
   match brl with
-  | hd::tl ->  dorequire(hd.balance_ = 1, "Caller Is Not Owner")
-  | [] -> fail("Empty Response")
+  | hd::tl -> dorequire(hd.balance_ = 1, "Caller Is Not Owner")
+  | []     -> fail("Empty Response")
   end
 }
 
@@ -127,6 +127,19 @@ record transfer_destination {
   token_amount_dest : nat
 } as ((to_, (token_id, amount)))
 
+function get_transfer_param(
+  %from : address,
+  %to   : address,
+  id    : nat) : list<address * list<transfer_destination>> {
+  return ([
+    (%from, [{
+      to_dest           = %to;
+      token_id_dest     = id;
+      token_amount_dest = 1
+    }])
+  ])
+}
+
 entry claim (id : nat) {
   require {
     r4 otherwise "Auction Is Still On" : nft[id].endofbid < now
@@ -137,13 +150,8 @@ entry claim (id : nat) {
     | some bidder -> begin
         transfer nft[id].best to nft[id].owner;
         transfer 0tz to nftoken
-          call %transfer<list<address * list<transfer_destination>>>([
-            (nft[id].owner, [{
-              to_dest           = bidder;
-              token_id_dest     = id;
-              token_amount_dest = 1
-            }])
-          ])
+          call %transfer<list<address * list<transfer_destination>>>(
+            get_transfer_param(nft[id].owner, bidder, id))
       end
     end;
     nft.remove(id);
