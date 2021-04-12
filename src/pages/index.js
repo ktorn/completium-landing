@@ -120,7 +120,7 @@ function Archetype() {
 
   return (
     <Grid container direction='row' justify="center" alignItems="center" style={{ padding: '50px',
-      backgroundImage: "linear-gradient(rgb(15 39 89 / 1), rgba(178 189 77 / 0%))",
+      backgroundImage: "linear-gradient(rgb(0 57 98), rgba(178, 189, 77, 0))",
       backgroundRepeat: 'repeat-x' }}>
       <Grid item xs={12} style={{ display: 'contents', textAlign: 'center' }}>
         <img src={useBaseUrl('img/archetype.svg')} style={{ width: '300px', marginRight: '60px', marginBottom: '20px' }}></img>
@@ -244,7 +244,7 @@ function Scrollable() {
         <Grid item xs={12}>
           <Parallax strength={400}>
             <Background>
-              <img src={useBaseUrl('img/hardware.svg')} style={{ transform: 'scale('+scalef+')'}}/>
+              <img src={useBaseUrl('img/arrows.png')} style={{ transform: 'scale('+scalef+')'}}/>
             </Background>
             <Banner />
           </Parallax>

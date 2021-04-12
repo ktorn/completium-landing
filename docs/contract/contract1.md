@@ -13,7 +13,7 @@ import Link from '@docusaurus/Link';
 
 <DappFigure img='smart-contract.svg' width='30%'/>
 
-A smart contract is a program that is executed by the blockchain. It is similar to a stored procedure on a public distributed database. As such, it must ensure the **logical consistency** and integrity of the data.
+A smart contract is a program that is executed by the blockchain. It is similar to a stored procedure on a public distributed database. As such, it must ensure the consistency of the **business logic** it implements.
 
 Smart contracts unleash the full potential of the blockchain because they enable the development of a new class of applications, called *Decentralized Applications* (DApps), which benefit from blockchain's strengths (decentralization, trust-less, immutability, governance by consensus in <Link to='/docs/dapp-tools/tezos'>Tezos</Link> case, ...).
 
