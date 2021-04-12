@@ -4,7 +4,7 @@ title: Idea Box
 sidebar_label: Introduction
 slug: /dapp-ideabox
 ---
-
+import Link from '@docusaurus/Link';
 import DappIcon from '../DappIcon';
 import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';

@@ -7,6 +7,7 @@ slug: /templates/ideabox
 import Link from '@docusaurus/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DeployIdeaBox from './DeployIdeaBox';
 
 ## Introduction
 
@@ -34,6 +35,26 @@ Ideas data (title and description) are stored as `bytes`.
 | `add_idea` | `ititle`, `description` | Adds an idea in the box if box not terminated (*anyone* can add an idea). |
 | `vote` | `n`, `weight` | Called by a voter to increment by `weight` the number of votes of idea `n`. It fails if box is terminated. |
 | `terminate` | | Called by `chairman` to close the box and select the top 3 best ideas with numbers of votes above `maxvotes`. |
+
+## Originate
+
+Originate a switch contract with the widget below.
+
+Click "Connect to Wallet" button, fill the fields "Owner" and "Rate", and click "Originate".
+
+<DeployIdeaBox />
+
+### Command line
+
+Originate the contract from <a href='https://archetype-lang.org/'>Archetype</a> code below with the following <Link to='/docs/cli'>Completium CLI</Link> example command:
+
+```
+completium-cli deploy ideabox.arl --init '(@tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG, 5)'
+```
+
+The command sets:
+* `chairman` variable to `tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG`
+* `maxvotes` variable to 2.5
 
 ## Code
 
