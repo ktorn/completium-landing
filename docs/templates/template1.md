@@ -131,28 +131,28 @@ getter getTotalSupply () : nat {
 The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
 
 ```js
-# (Pair 10000000 (Pair {  } { Elt "tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG" 10000000 }))
+# (Pair 10000000 (Pair {  } (Pair { Elt "tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG" 10000000 } { Elt "" 0x68747470733a2f2f636f6d706c657469756d2e636f6d2f6d657461646174612f666131322e6a736f6e })))
 {
-  storage (pair (nat %totalsupply) (pair (big_map %allowance (pair address address) nat) (big_map %ledger address nat)));
+  storage (pair (nat %totalsupply) (pair (big_map %allowance (pair address address) nat) (pair (big_map %ledger address nat) (big_map %metadata string bytes))));
   parameter (or (pair %getAllowance (pair (address %owner) (address %spender)) (contract nat)) (or (pair %getBalance (address %owner) (contract nat)) (or (pair %getTotalSupply unit (contract nat)) (or (pair %transfer (address %from) (pair (address %to) (nat %value))) (pair %approve (address %spender) (nat %value))))));
   code { NIL operation;
          DIG 1;
          UNPAIR;
-         DIP { UNPAIR; SWAP; UNPAIR; SWAP };
+         DIP { UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP };
          IF_LEFT
            { UNPAIR;
              UNPAIR;
              SWAP;
-             DIG 6;
+             DIG 7;
              DUP;
-             DUG 7;
+             DUG 8;
              DIG 3;
              DUP;
              DUG 4;
              AMOUNT;
-             DIG 7;
+             DIG 8;
              DUP;
-             DUG 8;
+             DUG 9;
              DIG 4;
              DUP;
              DUG 5;
@@ -167,9 +167,11 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                {  };
              TRANSFER_TOKENS;
              CONS;
-             DIP { DIG 6; DROP };
-             DUG 6;
+             DIP { DIG 7; DROP };
+             DUG 7;
              DROP 3;
+             SWAP;
+             PAIR;
              SWAP;
              PAIR;
              SWAP;
@@ -178,24 +180,24 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
              PAIR }
            { IF_LEFT
                { UNPAIR;
-                 DIG 5;
+                 DIG 6;
                  DUP;
-                 DUG 6;
+                 DUG 7;
                  DIG 2;
                  DUP;
                  DUG 3;
                  AMOUNT;
-                 DIG 5;
+                 DIG 6;
                  DUP;
-                 DUG 6;
+                 DUG 7;
                  DIG 4;
                  DUP;
                  DUG 5;
                  MEM;
                  IF
-                   { DIG 5;
+                   { DIG 6;
                      DUP;
-                     DUG 6;
+                     DUG 7;
                      DIG 4;
                      DUP;
                      DUG 5;
@@ -207,9 +209,11 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                    { PUSH nat 0 };
                  TRANSFER_TOKENS;
                  CONS;
-                 DIP { DIG 5; DROP };
-                 DUG 5;
+                 DIP { DIG 6; DROP };
+                 DUG 6;
                  DROP 2;
+                 SWAP;
+                 PAIR;
                  SWAP;
                  PAIR;
                  SWAP;
@@ -219,21 +223,23 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                { IF_LEFT
                    { UNPAIR;
                      DROP;
-                     DIG 4;
+                     DIG 5;
                      DUP;
-                     DUG 5;
+                     DUG 6;
                      DIG 1;
                      DUP;
                      DUG 2;
                      AMOUNT;
-                     DIG 6;
+                     DIG 7;
                      DUP;
-                     DUG 7;
+                     DUG 8;
                      TRANSFER_TOKENS;
                      CONS;
-                     DIP { DIG 4; DROP };
-                     DUG 4;
+                     DIP { DIG 5; DROP };
+                     DUG 5;
                      DROP;
+                     SWAP;
+                     PAIR;
                      SWAP;
                      PAIR;
                      SWAP;
@@ -246,9 +252,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                          UNPAIR;
                          SWAP;
                          DUP;
-                         DIG 4;
+                         DIG 5;
                          DUP;
-                         DUG 5;
+                         DUG 6;
                          DIG 4;
                          DUP;
                          DUG 5;
@@ -271,9 +277,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                          COMPARE;
                          NEQ;
                          IF
-                           { DIG 4;
+                           { DIG 5;
                              DUP;
-                             DUG 5;
+                             DUG 6;
                              SENDER;
                              DIG 4;
                              DUP;
@@ -302,9 +308,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                                  PAIR;
                                  FAILWITH }
                                {  };
-                             DIG 5;
+                             DIG 6;
                              DUP;
-                             DUG 6;
+                             DUG 7;
                              SENDER;
                              DIG 5;
                              DUP;
@@ -315,9 +321,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                                { PUSH string "GetNoneValue";
                                  FAILWITH }
                                {  };
-                             DIG 6;
+                             DIG 7;
                              DUP;
-                             DUG 7;
+                             DUG 8;
                              PUSH int 0;
                              DIG 4;
                              DUP;
@@ -348,13 +354,13 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                              DUG 8;
                              PAIR;
                              UPDATE;
-                             DIP { DIG 6; DROP };
-                             DUG 6;
+                             DIP { DIG 7; DROP };
+                             DUG 7;
                              DROP 2 }
                            {  };
-                         DIG 3;
+                         DIG 4;
                          DUP;
-                         DUG 4;
+                         DUG 5;
                          DIG 3;
                          DUP;
                          DUG 4;
@@ -363,9 +369,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                            { PUSH string "GetNoneValue";
                              FAILWITH }
                            {  };
-                         DIG 4;
+                         DIG 5;
                          DUP;
-                         DUG 5;
+                         DUG 6;
                          PUSH int 0;
                          DIG 3;
                          DUP;
@@ -394,20 +400,20 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                          DUP;
                          DUG 6;
                          UPDATE;
-                         DIP { DIG 4; DROP };
-                         DUG 4;
+                         DIP { DIG 5; DROP };
+                         DUG 5;
                          DROP;
-                         DIG 3;
+                         DIG 4;
                          DUP;
-                         DUG 4;
+                         DUG 5;
                          DIG 2;
                          DUP;
                          DUG 3;
                          MEM;
                          IF
-                           { DIG 3;
+                           { DIG 4;
                              DUP;
-                             DUG 4;
+                             DUG 5;
                              DIG 2;
                              DUP;
                              DUG 3;
@@ -416,9 +422,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                                { PUSH string "GetNoneValue";
                                  FAILWITH }
                                {  };
-                             DIG 4;
+                             DIG 5;
                              DUP;
-                             DUG 5;
+                             DUG 6;
                              DIG 2;
                              DUP;
                              DUG 3;
@@ -431,12 +437,12 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                              DUP;
                              DUG 5;
                              UPDATE;
-                             DIP { DIG 4; DROP };
-                             DUG 4;
+                             DIP { DIG 5; DROP };
+                             DUG 5;
                              DROP }
-                           { DIG 3;
+                           { DIG 4;
                              DUP;
-                             DUG 4;
+                             DUG 5;
                              DIG 2;
                              DUP;
                              DUG 3;
@@ -444,9 +450,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                              IF
                                { PUSH string "KeyAlreadyExists";
                                  FAILWITH }
-                               { DIG 3;
+                               { DIG 4;
                                  DUP;
-                                 DUG 4;
+                                 DUG 5;
                                  DIG 1;
                                  DUP;
                                  DUG 2;
@@ -457,9 +463,11 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                                  DUP;
                                  DUG 4;
                                  UPDATE;
-                                 DIP { DIG 3; DROP };
-                                 DUG 3 } };
+                                 DIP { DIG 4; DROP };
+                                 DUG 4 } };
                          DROP 3;
+                         SWAP;
+                         PAIR;
                          SWAP;
                          PAIR;
                          SWAP;
@@ -473,17 +481,17 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                          DUG 2;
                          SENDER;
                          PAIR;
-                         DIG 4;
+                         DIG 5;
                          DUP;
-                         DUG 5;
+                         DUG 6;
                          DIG 1;
                          DUP;
                          DUG 2;
                          MEM;
                          IF
-                           { DIG 4;
+                           { DIG 5;
                              DUP;
-                             DUG 5;
+                             DUG 6;
                              DIG 1;
                              DUP;
                              DUG 2;
@@ -513,9 +521,9 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                                {  };
                              DROP }
                            {  };
-                         DIG 4;
+                         DIG 5;
                          DUP;
-                         DUG 5;
+                         DUG 6;
                          DIG 2;
                          DUP;
                          DUG 3;
@@ -524,9 +532,11 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                          DUP;
                          DUG 3;
                          UPDATE;
-                         DIP { DIG 4; DROP };
-                         DUG 4;
+                         DIP { DIG 5; DROP };
+                         DUG 5;
                          DROP 3;
+                         SWAP;
+                         PAIR;
                          SWAP;
                          PAIR;
                          SWAP;

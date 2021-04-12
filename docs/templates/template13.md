@@ -169,7 +169,736 @@ entry pay_deductibles () {
 <TabItem value="michelson">
 
 ```js
-
+# (Pair patient (Pair insurer (Pair fee (Pair fee_period (Pair deductible (Pair 1618187246 (Pair False (Pair False (Pair 0 (Pair 0 {  }))))))))))
+{
+  storage (pair (address %patient) (pair (address %insurer) (pair (mutez %fee) (pair (int %fee_period) (pair (mutez %deductible) (pair (timestamp %last_fee_date) (pair (bool %patient_confirmed) (pair (bool %insurer_confirmed) (pair (mutez %deductible_debt) (pair (nat %_state) (map %doctor address mutez)))))))))));
+  parameter (or (unit %toRunning) (or (unit %confirm) (or (unit %cancel) (or (address %register_doctor) (or (mutez %declare_consultation) (or (address %pay_doctor) (or (unit %pay_fees) (unit %pay_deductibles))))))));
+  code { NIL operation;
+         DIG 1;
+         UNPAIR;
+         DIP { UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP };
+         IF_LEFT
+           { DROP;
+             SELF;
+             ADDRESS;
+             SENDER;
+             COMPARE;
+             EQ;
+             NOT;
+             IF
+               { PUSH string "InvalidCaller";
+                 FAILWITH }
+               {  };
+             DIG 1;
+             DUP;
+             DUG 2;
+             DUP;
+             PUSH nat 0;
+             COMPARE;
+             EQ;
+             IF
+               { NOW;
+                 DIP { DIG 6; DROP };
+                 DUG 6;
+                 PUSH nat 1;
+                 DIP { DIG 2; DROP };
+                 DUG 2 }
+               { PUSH string "InvalidState";
+                 FAILWITH };
+             DROP;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             DIG 1;
+             PAIR }
+           { IF_LEFT
+               { DROP;
+                 DIG 10;
+                 DUP;
+                 DUG 11;
+                 SENDER;
+                 COMPARE;
+                 EQ;
+                 IF
+                   { PUSH bool True;
+                     DIP { DIG 4; DROP };
+                     DUG 4 }
+                   {  };
+                 DIG 9;
+                 DUP;
+                 DUG 10;
+                 SENDER;
+                 COMPARE;
+                 EQ;
+                 IF
+                   { PUSH bool True;
+                     DIP { DIG 3; DROP };
+                     DUG 3 }
+                   {  };
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 DIG 5;
+                 DUP;
+                 DUG 6;
+                 AND;
+                 IF
+                   { DIG 11;
+                     DUP;
+                     DUG 12;
+                     SELF;
+                     ADDRESS;
+                     CONTRACT %toRunning unit;
+                     IF_NONE
+                       { PUSH string "BadContract";
+                         FAILWITH }
+                       {  };
+                     PUSH mutez 0;
+                     UNIT;
+                     TRANSFER_TOKENS;
+                     CONS;
+                     DIP { DIG 11; DROP };
+                     DUG 11 }
+                   {  };
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 DIG 1;
+                 PAIR }
+               { IF_LEFT
+                   { DROP;
+                     DIG 10;
+                     DUP;
+                     DUG 11;
+                     SENDER;
+                     COMPARE;
+                     EQ;
+                     DIG 10;
+                     DUP;
+                     DUG 11;
+                     SENDER;
+                     COMPARE;
+                     EQ;
+                     OR;
+                     NOT;
+                     IF
+                       { PUSH string "InvalidCaller";
+                         FAILWITH }
+                       {  };
+                     PUSH nat 2;
+                     DIP { DIG 1; DROP };
+                     DUG 1;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     SWAP;
+                     PAIR;
+                     DIG 1;
+                     PAIR }
+                   { IF_LEFT
+                       { DIG 11;
+                         DUP;
+                         DUG 12;
+                         SENDER;
+                         COMPARE;
+                         EQ;
+                         NOT;
+                         IF
+                           { PUSH string "InvalidCaller";
+                             FAILWITH }
+                           {  };
+                         PUSH nat 1;
+                         DIG 3;
+                         DUP;
+                         DUG 4;
+                         COMPARE;
+                         EQ;
+                         NOT;
+                         IF
+                           { PUSH string "InvalidCondition: r1";
+                             FAILWITH }
+                           {  };
+                         DIG 1;
+                         DUP;
+                         DUG 2;
+                         DIG 1;
+                         DUP;
+                         DUG 2;
+                         MEM;
+                         IF
+                           { PUSH string "KeyAlreadyExists";
+                             FAILWITH }
+                           { DIG 1;
+                             DUP;
+                             DUG 2;
+                             PUSH mutez 0;
+                             SOME;
+                             DIG 2;
+                             DUP;
+                             DUG 3;
+                             UPDATE;
+                             DIP { DIG 1; DROP };
+                             DUG 1 };
+                         DROP;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         SWAP;
+                         PAIR;
+                         DIG 1;
+                         PAIR }
+                       { IF_LEFT
+                           { PUSH nat 1;
+                             DIG 3;
+                             DUP;
+                             DUG 4;
+                             COMPARE;
+                             EQ;
+                             NOT;
+                             IF
+                               { PUSH string "InvalidCondition: r2";
+                                 FAILWITH }
+                               {  };
+                             DIG 1;
+                             DUP;
+                             DUG 2;
+                             SENDER;
+                             MEM;
+                             NOT;
+                             IF
+                               { PUSH string "InvalidCondition: r3";
+                                 FAILWITH }
+                               {  };
+                             DIG 1;
+                             DUP;
+                             DUG 2;
+                             SENDER;
+                             GET;
+                             IF_NONE
+                               { PUSH string "GetNoneValue";
+                                 FAILWITH }
+                               {  };
+                             DIG 2;
+                             DUP;
+                             DUG 3;
+                             DIG 2;
+                             DUP;
+                             DUG 3;
+                             DIG 2;
+                             DUP;
+                             DUG 3;
+                             ADD;
+                             SOME;
+                             SENDER;
+                             UPDATE;
+                             DIP { DIG 2; DROP };
+                             DUG 2;
+                             DROP;
+                             DIG 7;
+                             DUP;
+                             DUG 8;
+                             DIG 1;
+                             DUP;
+                             DUG 2;
+                             PAIR;
+                             DUP;
+                             UNPAIR;
+                             COMPARE;
+                             LT;
+                             IF
+                               { CAR }
+                               { CDR };
+                             DIG 4;
+                             DUP;
+                             DUG 5;
+                             ADD;
+                             DIP { DIG 3; DROP };
+                             DUG 3;
+                             DROP;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             SWAP;
+                             PAIR;
+                             DIG 1;
+                             PAIR }
+                           { IF_LEFT
+                               { DIG 10;
+                                 DUP;
+                                 DUG 11;
+                                 SENDER;
+                                 COMPARE;
+                                 EQ;
+                                 NOT;
+                                 IF
+                                   { PUSH string "InvalidCaller";
+                                     FAILWITH }
+                                   {  };
+                                 PUSH nat 1;
+                                 DIG 3;
+                                 DUP;
+                                 DUG 4;
+                                 COMPARE;
+                                 EQ;
+                                 NOT;
+                                 IF
+                                   { PUSH string "InvalidCondition: r4";
+                                     FAILWITH }
+                                   {  };
+                                 DIG 1;
+                                 DUP;
+                                 DUG 2;
+                                 DIG 1;
+                                 DUP;
+                                 DUG 2;
+                                 GET;
+                                 IF_NONE
+                                   { PUSH string "GetNoneValue";
+                                     FAILWITH }
+                                   {  };
+                                 AMOUNT;
+                                 PAIR;
+                                 DUP;
+                                 UNPAIR;
+                                 COMPARE;
+                                 LT;
+                                 IF
+                                   { CAR }
+                                   { CDR };
+                                 DIG 13;
+                                 DUP;
+                                 DUG 14;
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 CONTRACT unit;
+                                 IF_NONE
+                                   { PUSH string "BadContract";
+                                     FAILWITH }
+                                   {  };
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 UNIT;
+                                 TRANSFER_TOKENS;
+                                 CONS;
+                                 DIP { DIG 13; DROP };
+                                 DUG 13;
+                                 DIG 13;
+                                 DUP;
+                                 DUG 14;
+                                 DIG 12;
+                                 DUP;
+                                 DUG 13;
+                                 CONTRACT unit;
+                                 IF_NONE
+                                   { PUSH string "BadContract";
+                                     FAILWITH }
+                                   {  };
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 AMOUNT;
+                                 SUB;
+                                 UNIT;
+                                 TRANSFER_TOKENS;
+                                 CONS;
+                                 DIP { DIG 13; DROP };
+                                 DUG 13;
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 GET;
+                                 IF_NONE
+                                   { PUSH string "GetNoneValue";
+                                     FAILWITH }
+                                   {  };
+                                 DIG 3;
+                                 DUP;
+                                 DUG 4;
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 DIG 2;
+                                 DUP;
+                                 DUG 3;
+                                 SUB;
+                                 SOME;
+                                 DIG 4;
+                                 DUP;
+                                 DUG 5;
+                                 UPDATE;
+                                 DIP { DIG 3; DROP };
+                                 DUG 3;
+                                 DROP 3;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 SWAP;
+                                 PAIR;
+                                 DIG 1;
+                                 PAIR }
+                               { IF_LEFT
+                                   { DROP;
+                                     DIG 10;
+                                     DUP;
+                                     DUG 11;
+                                     SENDER;
+                                     COMPARE;
+                                     EQ;
+                                     NOT;
+                                     IF
+                                       { PUSH string "InvalidCaller";
+                                         FAILWITH }
+                                       {  };
+                                     PUSH nat 1;
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     COMPARE;
+                                     EQ;
+                                     NOT;
+                                     IF
+                                       { PUSH string "InvalidCondition: r5";
+                                         FAILWITH }
+                                       {  };
+                                     DIG 7;
+                                     DUP;
+                                     DUG 8;
+                                     DIG 6;
+                                     DUP;
+                                     DUG 7;
+                                     NOW;
+                                     SUB;
+                                     EDIV;
+                                     IF_NONE
+                                       { PUSH string "DivByZero";
+                                         FAILWITH }
+                                       { DUP;
+                                         CAR;
+                                         SWAP;
+                                         DROP };
+                                     DIG 9;
+                                     DUP;
+                                     DUG 10;
+                                     PUSH nat 1;
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     PAIR;
+                                     PAIR;
+                                     UNPAIR;
+                                     UNPAIR;
+                                     ABS;
+                                     DIG 2;
+                                     MUL;
+                                     EDIV;
+                                     IF_NONE
+                                       { PUSH string "DivByZero";
+                                         FAILWITH }
+                                       {  };
+                                     CAR;
+                                     DUP;
+                                     AMOUNT;
+                                     PAIR;
+                                     DUP;
+                                     UNPAIR;
+                                     COMPARE;
+                                     LT;
+                                     IF
+                                       { CAR }
+                                       { CDR };
+                                     DIG 14;
+                                     DUP;
+                                     DUG 15;
+                                     DIG 13;
+                                     DUP;
+                                     DUG 14;
+                                     CONTRACT unit;
+                                     IF_NONE
+                                       { PUSH string "BadContract";
+                                         FAILWITH }
+                                       {  };
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     UNIT;
+                                     TRANSFER_TOKENS;
+                                     CONS;
+                                     DIP { DIG 14; DROP };
+                                     DUG 14;
+                                     DIG 14;
+                                     DUP;
+                                     DUG 15;
+                                     DIG 14;
+                                     DUP;
+                                     DUG 15;
+                                     CONTRACT unit;
+                                     IF_NONE
+                                       { PUSH string "BadContract";
+                                         FAILWITH }
+                                       {  };
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     AMOUNT;
+                                     SUB;
+                                     UNIT;
+                                     TRANSFER_TOKENS;
+                                     CONS;
+                                     DIP { DIG 14; DROP };
+                                     DUG 14;
+                                     DIG 10;
+                                     DUP;
+                                     DUG 11;
+                                     PUSH nat 1;
+                                     DIG 4;
+                                     DUP;
+                                     DUG 5;
+                                     PAIR;
+                                     PAIR;
+                                     UNPAIR;
+                                     UNPAIR;
+                                     DIG 2;
+                                     MUL;
+                                     EDIV;
+                                     IF_NONE
+                                       { PUSH string "DivByZero";
+                                         FAILWITH }
+                                       {  };
+                                     CAR;
+                                     DIG 9;
+                                     DUP;
+                                     DUG 10;
+                                     ADD;
+                                     DIP { DIG 8; DROP };
+                                     DUG 8;
+                                     DROP 3;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     DIG 1;
+                                     PAIR }
+                                   { DROP;
+                                     DIG 10;
+                                     DUP;
+                                     DUG 11;
+                                     SENDER;
+                                     COMPARE;
+                                     EQ;
+                                     NOT;
+                                     IF
+                                       { PUSH string "InvalidCaller";
+                                         FAILWITH }
+                                       {  };
+                                     PUSH nat 1;
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     COMPARE;
+                                     EQ;
+                                     NOT;
+                                     IF
+                                       { PUSH string "InvalidCondition: r6";
+                                         FAILWITH }
+                                       {  };
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     AMOUNT;
+                                     PAIR;
+                                     DUP;
+                                     UNPAIR;
+                                     COMPARE;
+                                     LT;
+                                     IF
+                                       { CAR }
+                                       { CDR };
+                                     DIG 12;
+                                     DUP;
+                                     DUG 13;
+                                     DIG 11;
+                                     DUP;
+                                     DUG 12;
+                                     CONTRACT unit;
+                                     IF_NONE
+                                       { PUSH string "BadContract";
+                                         FAILWITH }
+                                       {  };
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     UNIT;
+                                     TRANSFER_TOKENS;
+                                     CONS;
+                                     DIP { DIG 12; DROP };
+                                     DUG 12;
+                                     DIG 12;
+                                     DUP;
+                                     DUG 13;
+                                     DIG 12;
+                                     DUP;
+                                     DUG 13;
+                                     CONTRACT unit;
+                                     IF_NONE
+                                       { PUSH string "BadContract";
+                                         FAILWITH }
+                                       {  };
+                                     DIG 2;
+                                     DUP;
+                                     DUG 3;
+                                     AMOUNT;
+                                     SUB;
+                                     UNIT;
+                                     TRANSFER_TOKENS;
+                                     CONS;
+                                     DIP { DIG 12; DROP };
+                                     DUG 12;
+                                     DUP;
+                                     DIG 4;
+                                     DUP;
+                                     DUG 5;
+                                     SUB;
+                                     DIP { DIG 3; DROP };
+                                     DUG 3;
+                                     DROP;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     SWAP;
+                                     PAIR;
+                                     DIG 1;
+                                     PAIR } } } } } } } };
+}
 ```
 
 </TabItem>

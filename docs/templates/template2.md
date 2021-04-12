@@ -69,25 +69,25 @@ asset ledger identified by holder {
   holder     : address;
   tokens     : nat = 0;
 } initialized by {
-  { holder = initialholder; tokens = total }
+  { holder = initialowner; tokens = total }
 }
 
-entry %transfer (to : pkey<ledger>, value : nat) {
+entry %transfer (%to : pkey<ledger>, value : nat) {
   require {
     d0 : ledger[caller].tokens >= value
   }
   effect {
-    ledger.addupdate(to,  { tokens += value });
+    ledger.addupdate(%to,  { tokens += value });
     ledger.update(caller, { tokens -= value })
   }
 }
 
-entry approve(spender : address, value : nat) {
+entry approve(ispender : address, value : nat) {
   require {
     d1 : ledger[caller].tokens >= value;
   }
   effect {
-    allowance.addupdate((caller, spender), { amount = value });
+    allowance.addupdate((caller, ispender), { amount = value });
   }
 }
 
@@ -113,7 +113,396 @@ entry transferFrom(%from : address, %to : address, value : nat) {
 The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> code is generated with version 1.2.3 of Archetype.
 
 ```js
-
+# (Pair 1000000000000000 (Pair 1000000 (Pair {  } { Elt "tz1LLJ3nxbpGGMLmjzcp9sTMYui87tycG6nG" 1000000000000000 })))
+{
+  storage (pair (nat %total) (pair (nat %onetoken) (pair (map %allowance (pair address address) nat) (map %ledger address nat))));
+  parameter (or (pair %transfer (address %to) (nat %value)) (or (pair %approve (address %ispender) (nat %value)) (pair %transferFrom (address %from) (pair (address %to) (nat %value)))));
+  code { UNPAIR;
+         DIP { UNPAIR; SWAP; UNPAIR; SWAP; UNPAIR; SWAP };
+         IF_LEFT
+           { UNPAIR;
+             SWAP;
+             DUP;
+             DIG 3;
+             DUP;
+             DUG 4;
+             SENDER;
+             GET;
+             IF_NONE
+               { PUSH string "GetNoneValue";
+                 FAILWITH }
+               {  };
+             COMPARE;
+             GE;
+             NOT;
+             IF
+               { PUSH string "InvalidCondition: d0";
+                 FAILWITH }
+               {  };
+             DIG 2;
+             DUP;
+             DUG 3;
+             DIG 2;
+             DUP;
+             DUG 3;
+             MEM;
+             IF
+               { DIG 2;
+                 DUP;
+                 DUG 3;
+                 DIG 2;
+                 DUP;
+                 DUG 3;
+                 GET;
+                 IF_NONE
+                   { PUSH string "GetNoneValue";
+                     FAILWITH }
+                   {  };
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 DIG 2;
+                 DUP;
+                 DUG 3;
+                 DIG 2;
+                 DUP;
+                 DUG 3;
+                 ADD;
+                 SOME;
+                 DIG 4;
+                 DUP;
+                 DUG 5;
+                 UPDATE;
+                 DIP { DIG 3; DROP };
+                 DUG 3;
+                 DROP }
+               { DIG 2;
+                 DUP;
+                 DUG 3;
+                 DIG 2;
+                 DUP;
+                 DUG 3;
+                 MEM;
+                 IF
+                   { PUSH string "KeyAlreadyExists";
+                     FAILWITH }
+                   { DIG 2;
+                     DUP;
+                     DUG 3;
+                     DIG 1;
+                     DUP;
+                     DUG 2;
+                     PUSH nat 0;
+                     ADD;
+                     SOME;
+                     DIG 3;
+                     DUP;
+                     DUG 4;
+                     UPDATE;
+                     DIP { DIG 2; DROP };
+                     DUG 2 } };
+             DIG 2;
+             DUP;
+             DUG 3;
+             SENDER;
+             GET;
+             IF_NONE
+               { PUSH string "GetNoneValue";
+                 FAILWITH }
+               {  };
+             DIG 3;
+             DUP;
+             DUG 4;
+             PUSH int 0;
+             DIG 3;
+             DUP;
+             DUG 4;
+             INT;
+             DIG 3;
+             DUP;
+             DUG 4;
+             SUB;
+             COMPARE;
+             GE;
+             IF
+               { DIG 2;
+                 DUP;
+                 DUG 3;
+                 INT;
+                 DIG 2;
+                 DUP;
+                 DUG 3;
+                 SUB;
+                 ABS }
+               { PUSH string "AssignNat";
+                 FAILWITH };
+             SOME;
+             SENDER;
+             UPDATE;
+             DIP { DIG 3; DROP };
+             DUG 3;
+             DROP 3;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             SWAP;
+             PAIR;
+             NIL operation;
+             PAIR }
+           { IF_LEFT
+               { UNPAIR;
+                 SWAP;
+                 DUP;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 SENDER;
+                 GET;
+                 IF_NONE
+                   { PUSH string "GetNoneValue";
+                     FAILWITH }
+                   {  };
+                 COMPARE;
+                 GE;
+                 NOT;
+                 IF
+                   { PUSH string "InvalidCondition: d1";
+                     FAILWITH }
+                   {  };
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 DIG 1;
+                 DUP;
+                 DUG 2;
+                 SOME;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 SENDER;
+                 PAIR;
+                 UPDATE;
+                 DIP { DIG 3; DROP };
+                 DUG 3;
+                 DROP 2;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 NIL operation;
+                 PAIR }
+               { UNPAIR;
+                 SWAP;
+                 UNPAIR;
+                 SWAP;
+                 DUP;
+                 DIG 5;
+                 DUP;
+                 DUG 6;
+                 SENDER;
+                 DIG 5;
+                 DUP;
+                 DUG 6;
+                 PAIR;
+                 GET;
+                 IF_NONE
+                   { PUSH string "GetNoneValue";
+                     FAILWITH }
+                   {  };
+                 COMPARE;
+                 GE;
+                 NOT;
+                 IF
+                   { PUSH string "InvalidCondition: d3";
+                     FAILWITH }
+                   {  };
+                 DUP;
+                 DIG 4;
+                 DUP;
+                 DUG 5;
+                 DIG 4;
+                 DUP;
+                 DUG 5;
+                 GET;
+                 IF_NONE
+                   { PUSH string "GetNoneValue";
+                     FAILWITH }
+                   {  };
+                 COMPARE;
+                 GE;
+                 NOT;
+                 IF
+                   { PUSH string "InvalidCondition: d4";
+                     FAILWITH }
+                   {  };
+                 DIG 4;
+                 DUP;
+                 DUG 5;
+                 SENDER;
+                 DIG 4;
+                 DUP;
+                 DUG 5;
+                 PAIR;
+                 GET;
+                 IF_NONE
+                   { PUSH string "GetNoneValue";
+                     FAILWITH }
+                   {  };
+                 DIG 5;
+                 DUP;
+                 DUG 6;
+                 PUSH int 0;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 INT;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 SUB;
+                 COMPARE;
+                 GE;
+                 IF
+                   { DIG 2;
+                     DUP;
+                     DUG 3;
+                     INT;
+                     DIG 2;
+                     DUP;
+                     DUG 3;
+                     SUB;
+                     ABS }
+                   { PUSH string "AssignNat";
+                     FAILWITH };
+                 SOME;
+                 SENDER;
+                 DIG 6;
+                 DUP;
+                 DUG 7;
+                 PAIR;
+                 UPDATE;
+                 DIP { DIG 5; DROP };
+                 DUG 5;
+                 DROP;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 DIG 2;
+                 DUP;
+                 DUG 3;
+                 MEM;
+                 IF
+                   { DIG 3;
+                     DUP;
+                     DUG 4;
+                     DIG 2;
+                     DUP;
+                     DUG 3;
+                     GET;
+                     IF_NONE
+                       { PUSH string "GetNoneValue";
+                         FAILWITH }
+                       {  };
+                     DIG 4;
+                     DUP;
+                     DUG 5;
+                     DIG 2;
+                     DUP;
+                     DUG 3;
+                     DIG 2;
+                     DUP;
+                     DUG 3;
+                     ADD;
+                     SOME;
+                     DIG 4;
+                     DUP;
+                     DUG 5;
+                     UPDATE;
+                     DIP { DIG 4; DROP };
+                     DUG 4;
+                     DROP }
+                   { DIG 3;
+                     DUP;
+                     DUG 4;
+                     DIG 2;
+                     DUP;
+                     DUG 3;
+                     MEM;
+                     IF
+                       { PUSH string "KeyAlreadyExists";
+                         FAILWITH }
+                       { DIG 3;
+                         DUP;
+                         DUG 4;
+                         DIG 1;
+                         DUP;
+                         DUG 2;
+                         PUSH nat 0;
+                         ADD;
+                         SOME;
+                         DIG 3;
+                         DUP;
+                         DUG 4;
+                         UPDATE;
+                         DIP { DIG 3; DROP };
+                         DUG 3 } };
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 GET;
+                 IF_NONE
+                   { PUSH string "GetNoneValue";
+                     FAILWITH }
+                   {  };
+                 DIG 4;
+                 DUP;
+                 DUG 5;
+                 PUSH int 0;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 INT;
+                 DIG 3;
+                 DUP;
+                 DUG 4;
+                 SUB;
+                 COMPARE;
+                 GE;
+                 IF
+                   { DIG 2;
+                     DUP;
+                     DUG 3;
+                     INT;
+                     DIG 2;
+                     DUP;
+                     DUG 3;
+                     SUB;
+                     ABS }
+                   { PUSH string "AssignNat";
+                     FAILWITH };
+                 SOME;
+                 DIG 5;
+                 DUP;
+                 DUG 6;
+                 UPDATE;
+                 DIP { DIG 4; DROP };
+                 DUG 4;
+                 DROP 4;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 SWAP;
+                 PAIR;
+                 NIL operation;
+                 PAIR } } };
+}
 ```
 
 </TabItem>
