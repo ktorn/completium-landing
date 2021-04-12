@@ -58,7 +58,7 @@ const Contract = (props) => {
 
 const DeployWidget = () => {
   const [ addr, setAddr ] = React.useState("");
-  const [ rate, setRate ] = React.useState(5);
+  const [ maxvotes, setMaxvotes ] = React.useState(5);
   const [ contract, setContract ] = React.useState("");
   const [main,setMain] = React.useState(false);
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
@@ -71,22 +71,19 @@ const DeployWidget = () => {
     return addr.length > 0 & isInvalidAddress(addr);
   }
   const handleRate = (event) => {
-    setRate(event.target.value);
+    setMaxvotes(event.target.value);
   }
-  const isRateError = () => {
-    return !(Math.round(rate) == rate & rate > 0);
+  const isMaxvotesError = () => {
+    return !(Math.round(maxvotes) == maxvotes & maxvotes > 0);
   }
   const isOriginateDisabled = () => {
-    return !ready | isRateError() | isAddrError() | addr.length == 0;
+    return !ready | isMaxvotesError() | isAddrError() | addr.length == 0;
   }
   const originate = async () => {
     try {
-      const Fraction = require('fractional').Fraction
-      const rat = new Fraction(rate);
-      const vrate = {  "prim": "Pair", "args": [ {  "int": rat.numerator.toString()  }, {  "int": rat.denominator.toString()  } ] }
       const operation = await tezos.wallet.originate({
         code: code,
-        init: getStorage(addr, vrate)
+        init: getStorage(addr, maxvotes)
       }).send();
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
@@ -123,9 +120,9 @@ const DeployWidget = () => {
           <TextField
             type="number"
             onChange={ handleRate }
-            error={ isRateError() }
-            helperText={(isRateError())?"Invalid Integer Number":""}
-            value={rate}
+            error={ isMaxvotesError() }
+            helperText={(isMaxvotesError())?"Invalid Integer Number":""}
+            value={maxvotes}
             variant="outlined"
             color="primary"
             fullWidth required
