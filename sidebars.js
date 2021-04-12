@@ -59,6 +59,7 @@ module.exports = {
         'contract/tuto/tuto8',
       ] },
     'contract/contract3',
+    'contract/contract4',
   ],
   tools:  [
     'dapp-tools/tools1',

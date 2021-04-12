@@ -76,19 +76,7 @@ entry register (newadmins : option<list<address>>,
 
 Completium provides a convenient set of <Link to='/docs/templates'>contract templates</Link> to start your project from. Learn the Archetype language with a eight steps online tutorial:
 
+<DappFigure img='archetype.svg' width='50%' />
 <DappButton url="https://gitpod.io/#https://github.com/edukera/try-archetype" txt="archetype tutorial"/>
 
-
-## Formal verification
-
-Formal verification is the act of proving or disproving the correctness of intended algorithms underlying a system with respect to a certain formal specification or property, using formal methods of mathematics.
-
-Formal verification provides maximum decentralized confidence that the smart contract behaves as described in the formal specification.
-
-The Tezos community provides a rich technical and human eco-system regarding formal verification:
-
-| Tools | Description |
-| -- | :-- |
-| <a href='https://gitlab.com/nomadic-labs/mi-cho-coq/' target='_blank'>Michocoq</a> | A specification of Michelson in <a href='https://coq.inria.fr/' target='_blank'>Coq</a> to prove properties about smart contracts in Tezos. |
-| <a href='https://archetype-lang.org/'>Archetype</a> | Archetype provides a specification language for contract invariant and entry point postconditions. It generates the contract in the <a href='http://why3.lri.fr/' target='_blank'>Why3</a> language for verification |
 
