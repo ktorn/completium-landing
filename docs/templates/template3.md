@@ -91,7 +91,7 @@ entry update_operators (upl : list<or<operator_param, operator_param>>) {
     match up with
     | left(param)  -> (* add *)
       dorequire(ledger[param.opp_token_id].lowner = source, "CALLER NOT OWNER");
-      operator.addupdate((param.opp_operator, param.opp_token_id, param.opp_owner), {})
+      operator.add({param.opp_operator; param.opp_token_id; param.opp_owner})
     | right(param) -> (* remove *)
       dorequire(ledger[param.opp_token_id].lowner = source, "CALLER NOT OWNER");
       operator.remove((param.opp_operator, param.opp_token_id, param.opp_owner))
@@ -236,26 +236,49 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                             DIG 4;
                             DUP;
                             DUG 5;
-                            PUSH bool True;
+                            DIG 1;
+                            DUP;
+                            DUG 2;
+                            CAR;
                             DIG 2;
                             DUP;
                             DUG 3;
-                            CAR;
-                            DIG 3;
-                            DUP;
-                            DUG 4;
                             CDR;
                             CDR;
                             PAIR;
-                            DIG 3;
+                            DIG 2;
                             DUP;
-                            DUG 4;
+                            DUG 3;
                             CDR;
                             CAR;
                             PAIR;
-                            UPDATE;
-                            DIP { DIG 4; DROP };
-                            DUG 4;
+                            MEM;
+                            IF
+                              { PUSH string "KeyAlreadyExists";
+                                FAILWITH }
+                              { DIG 4;
+                                DUP;
+                                DUG 5;
+                                PUSH bool True;
+                                DIG 2;
+                                DUP;
+                                DUG 3;
+                                CAR;
+                                DIG 3;
+                                DUP;
+                                DUG 4;
+                                CDR;
+                                CDR;
+                                PAIR;
+                                DIG 3;
+                                DUP;
+                                DUG 4;
+                                CDR;
+                                CAR;
+                                PAIR;
+                                UPDATE;
+                                DIP { DIG 4; DROP };
+                                DUG 4 };
                             DROP }
                           { SOURCE;
                             DIG 6;
