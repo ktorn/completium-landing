@@ -145,3 +145,22 @@ The generated `mycontract.js` file exports:
 
 See <Link to='/docs/dapp-tools/taquito#contract-origination'>here</Link> an example of how to use in a DApp.
 
+## Generate whyml
+
+The whyml version of the contract is required to formally verify the contract with <Link to='http://why3.lri.fr/'>Why3</Link>.
+
+The command to generate the whyml version is:
+
+```
+completium-cli generate whyml <FILE.arl|CONTRACT_ALIAS>
+```
+
+For example:
+
+```
+$ completium-cli generate whyml mycontract.arl > mycontract.mlw
+```
+
+The generated `mycontract.mlw` file defines 2 modules:
+* `Mycontract_storage` that defines the storage
+* `Mycontract` that defines entrypoints

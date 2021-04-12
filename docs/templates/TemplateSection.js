@@ -15,7 +15,7 @@ const sections = {
     subtitle: "Fungible tokens can be exchanged among individuals for trading, sale and purchase of goods and services.",
     image: "img/template_ft.svg",
     items: [
-      { name: "Tezos Fungible Token", desc: "FA 1.2 specification for Tezos Fungible Token.", to: "/docs/templates/fa12" },
+      { name: "FA 1.2", desc: "FA 1.2 specification for Tezos Fungible Token.", to: "/docs/templates/fa12" },
       { name: "ERC20", desc: "Transcription to Tezos World of Ethereum ERC20 norm.", to: "/docs/templates/erc20" },
     ]
   },
@@ -24,7 +24,7 @@ const sections = {
     subtitle: "A Non-Fungible Token is a unit of data on a digital ledger called a blockchain, where each NFT can represent a unique digital item. NFTs can represent digital files such as art, audio, videos, items in video games and other forms of creative work. ",
     image: "img/template_nft.svg",
     items: [
-      { name: "Tezos NFT", desc: "FA 2 specification for Tezos Non Fungible Token", to: '/docs/templates/nft' },
+      { name: "FA 2", desc: "FA 2 specification for Tezos Non Fungible Token", to: '/docs/templates/nft' },
     ]
   },
   defi: {
