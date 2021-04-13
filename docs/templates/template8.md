@@ -8,6 +8,7 @@ import Link from '@docusaurus/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DeployIdeaBox from './DeployIdeaBox';
+import DappButton from '../DappButton';
 
 ## Introduction
 
@@ -734,6 +735,18 @@ The <Link to='/docs/contract/test-scenario'>scenario</Link> assumes three accoun
 * `admin`, the current one
 * `alice`
 * `bob`
+
+To run the test, run the following script:
+
+```
+cd ideabox
+completium-cli set account admin
+npm test
+```
+
+in the <Link to='/docs/dapp-tools/gitpod#user-interface'>Terminal</Link> of the gitpod environment:
+
+<DappButton url='' txt="open gitpod"/>
 
 ```js title="test.js"
 const assert     = require('assert');
