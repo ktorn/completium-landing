@@ -740,13 +740,13 @@ To run the test, run the following script:
 
 ```
 cd ideabox
-completium-cli set account admin
+npm install
 npm test
 ```
 
 in the <Link to='/docs/dapp-tools/gitpod#user-interface'>Terminal</Link> of the gitpod environment:
 
-<DappButton url='' txt="open gitpod"/>
+<DappButton url='https://gitpod.io/#https://github.com/edukera/completium-contract-templates' txt="open gitpod"/>
 
 ```js title="test.js"
 const assert     = require('assert');
