@@ -24,7 +24,7 @@ This example DApp is using a <a href='https://en.wikipedia.org/wiki/Non-fungible
 
 Conversely to fungible token, a non-fungible token represents a unique asset and cannot be combined to another token.
 
-The <Link to='/docs/templates/nft'>smart contract</Link> used in this DApp implements the official Tezos <a>Financial Asset 2.0</a> specification.
+The <Link to='/docs/templates/nft'>smart contract</Link> used in this DApp implements the official Tezos <Link to='https://gitlab.com/tzip/tzip/-/blob/master/proposals/tzip-12/tzip-12.md'>Financial Asset 2.0</Link> specification.
 
 In a nutshell it specifies that a NFT has the following entry points:
 * `update_operators` is used to authorize third party to transfer tokens

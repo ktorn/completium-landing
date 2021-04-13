@@ -31,7 +31,7 @@ function sum(n : int) = if n > 0 then n + sum(n - 1) else 0
 And the formal property *P*:
 
 ```archetype
-forall n, n >= 0 => sum(n) = n * (n + 1) / 2
+forall n, n >= 0 -> sum(n) = n * (n + 1) / 2
 ```
 
 which reads: for every integer n, if n is above 0, then `sum(n)` is equal to n multiplied by n plus 1, divided by 2.
