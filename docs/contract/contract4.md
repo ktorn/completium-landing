@@ -1,14 +1,12 @@
 ---
 id: contract4
-title: Formal Verification
-sidebar_label: Formal Verification
+title: Introduction
+sidebar_label: Introduction
 slug: /contract/formal-verification
 hide_title: false
 ---
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
-
-## Introduction
 
 Formal verification is the act of proving or disproving the correctness of a program with respect to a certain formal specification, using formal methods of mathematics.
 
