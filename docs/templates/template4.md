@@ -19,7 +19,7 @@ To exchange *qA* tokens A against *qB* tokens B, the DEX establishes a pool of t
 <MathJax.Node formula={`qB = pB * \\frac{(1-f)*qA}{pA+(1-f)*qA}`} />
 </MathJax.Provider>
 
-This principle is explained in more detailed in the <Link to='/docs/dapp-dex'>DEX DApp</Link> example.
+This principle is explained in more details in the <Link to='/docs/dapp-dex'>DEX DApp</Link> example.
 
 ## API
 

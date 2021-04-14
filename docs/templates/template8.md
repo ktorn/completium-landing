@@ -134,8 +134,7 @@ entry vote(n : nat, weight : nat) {
 
 transition terminate () {
   called by chairman
-  from Activated
-  to Terminated
+  from Activated to Terminated
   with effect {
     for i in idea.select(the.nbvotes > maxvotes).sort(desc(nbvotes)).head(3) do
         selected.add({i})
