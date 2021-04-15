@@ -61,6 +61,6 @@ The formal verification process is two steps:
 
 Writing formal specification is a key step of the verification process because it defines the perimeter of the verification. This task requires to know the technical and business context of the contract execution, in order to describe accurately the contract's behavior.
 
-It also requires to know the formal specification language, which is equivalent to knowing a programming language. while there are no systemic method to write formal specification, it may follow some basic principles, presented in this <Link to='/docs/verification/specification'>guide</Link>.
+It also requires to know the formal specification language, which is equivalent to knowing a programming language. While there is no systemic method to write formal specification, it may follow some basic principles, presented in this <Link to='/docs/verification/specification'>guide</Link>.
 
 Proving the contract verifies the specification is a more technical taks. It requires to know the basics of <Link to='/docs/verification/logic'>formal logic</Link>, a formal method <Link to='/docs/verification/tools'>tool</Link>, and some training.
