@@ -59,14 +59,12 @@ module.exports = {
         'contract/tuto/tuto8',
       ] },
     'contract/contract3',
-    { type: 'category',
-      label: 'Formal Verification',
-      items: [
-        'contract/contract4',
-        'contract/contract6',
-        'contract/contract5',
-      ]
-    },
+  ],
+  verification: [
+    'verification/verification1',
+    'verification/verification2',
+    'verification/verification3',
+    'verification/verification4',
   ],
   tools:  [
     'dapp-tools/tools1',

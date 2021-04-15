@@ -1,8 +1,8 @@
 ---
-id: contract6
+id: verification3
 title: Formal Specification
 sidebar_label: Formal Specification
-slug: /contract/formal-specification
+slug: /verification/specification
 hide_title: false
 ---
 import DappFigure from '../DappFigure';

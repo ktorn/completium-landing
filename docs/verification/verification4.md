@@ -1,8 +1,8 @@
 ---
-id: contract5
+id: verification4
 title: Learn Formal Logic
 sidebar_label: Learn Formal Logic
-slug: /contract/formal-logic
+slug: /verification/logic
 hide_title: false
 ---
 import DappFigure from '../DappFigure';

@@ -37,6 +37,7 @@ module.exports = {
         { to: 'dapps', label: 'DApps', position: 'left' },
         { to: '/docs/contract', label: 'Smart Contract', position: 'left' },
         { to: '/docs/templates', label: 'Contract Templates', position: 'left' },
+        { to: '/docs/verification', label: 'Formal Verification', position: 'left' },
         { to: '/docs/cli', label: 'CLI', position: 'left' },
         { to: 'docs/dapp-tools', label: 'Technical stack', position: 'left' },
         // {to: 'blog', label: 'Blog', position: 'left'},
