@@ -14,23 +14,22 @@ The <Link to='/docs/dapp-tools/tezos'>Tezos</Link> community provides a rich tec
 | <a href='https://gitlab.com/nomadic-labs/mi-cho-coq/' target='_blank'>Michocoq</a> | A specification of Michelson in <Link to='https://coq.inria.fr/'>Coq</Link> to prove properties about smart contracts in Tezos. |
 | <a href='https://archetype-lang.org/'>Archetype</a> | Archetype provides a specification language for contract invariant and entry point postconditions. It generates the contract in the <Link to='http://why3.lri.fr/'>Why3</Link> language for verification |
 
-<Link to='https://coq.inria.fr/'>Coq</Link> is an interactive proof assistant. The user sends instructions to the proof engine to build up the proof step by step: apply a theorem to justify a proposition, rewrite a term by another and so on. It is possible to program macros for automation purpose. Proving a program in Coq requires first the language semantic to be described in Coq theory (provided by Michocoq for Michelson); it is then used to prove the correctness of the program step by step.
+<Link to='https://coq.inria.fr/'>Coq</Link> is an interactive proof assistant. The user sends instructions to the proof engine to build up the proof step by step: apply a theorem to justify a proposition, rewrite a term by another and so on. It is possible to program macros for automation purpose. Proving a program in Coq requires the language semantic in Coq theory (provided by Michocoq for Michelson) used to prove the correctness of the program.
 <p/>
 <Link to='http://why3.lri.fr/'>Why3</Link> is a plateform dedicated to program verification: it translates the program and specification into SMT problems (called proof obligation) for <Link to='https://en.wikipedia.org/wiki/Satisfiability_modulo_theories#Solver_approaches'>SMT solvers</Link> to solve. When solvers succeed, the verification is automatic. When solvers fail, it is necessary to help them by providing intermediate properties about the program, that they can solve, and that they can use to solve the problem.
 
 ## Archetype
 
-The Completium <Link to='/docs/templates'>contract templates</Link> have been formally specified with Archetype and some have been verified with Why3.
-
+The Completium <Link to='/docs/templates'>contract templates</Link> have been formally specified with Archetype.
 ### Specification language
 
 The Archetype specification language documentation is available <Link to='https://docs.archetype-lang.org/archetype-language/contract-specification'>here</Link>.
 
-In a nutshell, what can you specify with it? Mainly contract *invariants*, and entrypoint *postconditions*:
-* a contract *invariant* is a property of the contract's storage that is always true, regardless of the transactions history.
-* an entrypoint *postcondition* is a property about what changes in the contract's storage with the execution of the entrypoint.
+In a nutshell, what can you specify with it?
+* contract invariants: an *invariant* is a property about the contract's storage that is always true, regardless of the transactions history.
+* entrypoints' postconditions: a *postcondition* is a property about what the execution of the entrypoint changes in the contract's storage.
 
-An invariant of the <Link to='/docs/templates/fa12'>FA 1.2</Link> contract states that the total number of tokens is a constant (no token is minted):
+For example, an invariant of the <Link to='/docs/templates/fa12'>FA 1.2</Link> contract states that the total number of tokens is a constant (no token is minted):
 
 ```archetype
 specification {
