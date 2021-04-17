@@ -29,7 +29,7 @@ In a nutshell, what can you specify with it?
 * contract invariants: an *invariant* is a property about the contract's storage that is always true, regardless of the transactions history.
 * entrypoints' postconditions: a *postcondition* is a property about what the execution of the entrypoint changes in the contract's storage.
 
-For example, an invariant of the <Link to='/docs/templates/fa12'>FA 1.2</Link> contract states that the total number of tokens is a constant (no token is minted):
+For examples, an invariant of the <Link to='/docs/templates/fa12'>FA 1.2</Link> contract states that the total number of tokens is a constant (no token is minted):
 
 ```archetype
 specification {

@@ -40,11 +40,11 @@ You can either write a test program that computes the `sum` function for a large
 
 While you may be reasonably confident in the test program, and by transtion in the `sum` function, the property is only tested on a limited set of values, and the test program may itself contain bugs. The question to decide whether the test is correct is stil not decidable on a systemic level.
 
-With mathematic reasoning, properties are proven for any parameter value, and the confidence just relies on whether the proof is correct or not.
+With mathematic reasoning, properties are proven for any parameter value, and the confidence in the proof relies on whether it is correct or not.
 
 Another fundamental result is that it *is* possible to automatically decide whether a proof is correct or not, as long as it is formalized. Hence the confidence you get with formal methods does not rely on the confidence you may give the developper of the program and tests, but it relies on the *existence* of a correct formal proof.
 
-As such, formal verification provides *trust-less* confidence. That's why it is a key point for the development of smart contracts: with smart contracts, blockchains lost their trust-less execution feature; they claim it back with formal verification...
+As such, formal verification provides *trust-less* confidence. That's why it is a key point for the development of smart contracts bacuse, with smart contracts, blockchains had lost their trust-less execution feature; they claim it back with formal verification.
 
 ## Limits
 
