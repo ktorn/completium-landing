@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 
 A <Link to='/docs/verification/postcondition'>postcondition</Link> says something about the effect of an entrypoint when the entrypoint does not fail. It is possible to specify situations when the entrypoint fails.
 
+The goal is to generate one failure specification for every case the entrypoint fails.
+
 ## Basics
 
 For example, the entrypoint `set` fails when the parameter value `v` is greater than 10, and fails with the pair `v` and the message `"v must be below 10"`:
@@ -28,10 +30,10 @@ For example, the entrypoint `set` fails when the parameter value `v` is greater 
 specification entry set(v : nat)
   fails {
     f1 with ((a, msg) : nat * string):
-      (* specify fail value *)
+      (* specify failure object *)
       a   = v and
       msg = "v must be below 10" and
-      (* specify fail condition *)
+      (* specify failure condition *)
       v >= 10
   }
 }
@@ -59,10 +61,242 @@ entry set(v : nat) {
 
 Keyword `fails` introduces the section to declare specification of fail situations. In the example above the fail statment, is identified with id `f1`.
 
-As illustrated above, the failure statement
+As illustrated above, the failure statement is the conjunction of:
+1. a statement to describe the object the entrypoint fails with
+2. a statement to specify the conditions that makes the entrypoint fail
 
+The object the entrypoint fails with is usually a string message, but it can be more complex like for example a pair with the string message and a computed value used in the failure decision.
 
- ## Asset API
+ ## Archetype builtins
 
- ## Completeness
+:::note
+This section describes specification features available from version 1.2.4 of Archetype.
+:::
 
+The Archetype language provides several high-level syntaxes and builtins that may fail. This section presents how to specify their failure behavior.
+
+### Execution conditions
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f1 with InvalidCaller(msg : string) :
+  msg = "InvalidCaller" and
+  caller <> <ADDRESS>
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+called by <ADDRESS>
+```
+
+</TabItem>
+</Tabs>
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f1 with InvalidCondition(msg : string) :
+  msg = "InvalidCondition: r1" and
+  not <CONDITION>
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+require {
+  r1 : <CONDITION>
+}
+```
+
+</TabItem>
+</Tabs>
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f1 with InvalidCondition(msg : string) :
+  msg = "InvalidCondition: f1" and
+  <CONDITION>
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+failif {
+  f1 : <CONDITION>
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Not found
+
+In the following, `c` is an asset collection, `k` is a key value and `i` is a nat.
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f with NotFound(msg : string) :
+  msg = "NotFound" and
+  not c.contains(k)
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+c[k]
+```
+
+```archetype
+c.remove(k)
+```
+
+</TabItem>
+</Tabs>
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f with NotFound(msg : string) :
+  msg = "NotFound" and
+  c.count() < i
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+c.nth(i)
+```
+
+</TabItem>
+</Tabs>
+
+### Key exists
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f with KeyExists(msg : string) :
+  msg = "KeyExists" and
+  c.contains(k)
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+c.add({ <ID> = k; ... })
+```
+
+</TabItem>
+</Tabs>
+
+### Misc.
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f with NatAssign(msg : string) :
+  msg = "NatAssign" and
+  n < v
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+n -= v
+```
+
+</TabItem>
+</Tabs>
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Specification', value: 'specification', },
+    { label: 'Code', value: 'archetype', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f with SliceError(msg : string) :
+  msg = "SliceError" and
+  o >= length(s) or o+l >= length(s)
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+slice(s,o,l)
+```
+
+</TabItem>
+</Tabs>
