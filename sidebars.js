@@ -63,7 +63,14 @@ module.exports = {
   verification: [
     'verification/verification1',
     'verification/verification2',
-    'verification/verification3',
+    { type: 'category',
+    label: 'Specification Guidelines',
+    items: [
+        'verification/verification3',
+        'verification/verification5',
+        'verification/verification6',
+        'verification/verification7',
+      ] },
     'verification/verification4',
   ],
   tools:  [
