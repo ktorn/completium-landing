@@ -115,7 +115,7 @@ called by <ADDRESS>
 ```archetype
 f1 with InvalidCondition((msg, id): string * string) :
   msg = "InvalidCondition" and
-  id  = "r1"
+  id  = "r1" and
   not <CONDITION>
 ```
 
