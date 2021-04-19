@@ -254,30 +254,7 @@ c.add({ <ID> = k; ... })
 </TabItem>
 </Tabs>
 
-### Misc.
-
-<Tabs
-  defaultValue="archetype"
-  values={[
-    { label: 'Code', value: 'archetype', },
-    { label: 'Specification', value: 'specification', },
-  ]}>
-
-<TabItem value="specification">
-
-```archetype
-f with NatAssign(msg : string) :
-  msg = "NatAssign" and
-  n < v
-```
-
-</TabItem>
-
-<TabItem value="archetype">
-
-```archetype
-n -= v
-```
+### Arithmetic
 
 </TabItem>
 </Tabs>
@@ -315,3 +292,26 @@ a % b
 
 </TabItem>
 </Tabs>
+
+<Tabs
+  defaultValue="archetype"
+  values={[
+    { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
+  ]}>
+
+<TabItem value="specification">
+
+```archetype
+f with NatAssign(msg : string) :
+  msg = "NatAssign" and
+  n < v
+```
+
+</TabItem>
+
+<TabItem value="archetype">
+
+```archetype
+n -= v
+```
