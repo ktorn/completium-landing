@@ -142,8 +142,9 @@ require {
 <TabItem value="specification">
 
 ```archetype
-f1 with InvalidCondition(msg : string) :
-  msg = "InvalidCondition: f1" and
+f1 with InvalidCondition((msg, id): string * string) :
+  msg = "InvalidCondition" and
+  id  = "f1" and
   <CONDITION>
 ```
 
@@ -257,9 +258,6 @@ c.add({ <ID> = k; ... })
 
 ### Arithmetic
 
-</TabItem>
-</Tabs>
-
 <Tabs
   defaultValue="archetype"
   values={[
@@ -316,3 +314,6 @@ f with NatAssign(msg : string) :
 ```archetype
 n -= v
 ```
+
+</TabItem>
+</Tabs>
