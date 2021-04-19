@@ -200,6 +200,8 @@ c.update(k, ...)
 </TabItem>
 </Tabs>
 
+### Out of bound
+
 <Tabs
   defaultValue="archetype"
   values={[
@@ -210,8 +212,8 @@ c.update(k, ...)
 <TabItem value="specification">
 
 ```archetype
-f with NotFound((msg, v): string * nat) :
-  msg = "NotFound" and
+f with OutOfBound((msg, v): string * nat) :
+  msg = "OutOfBound" and
   v   = i and
   c.count() < i
 ```
@@ -239,7 +241,7 @@ c.nth(i)
 <TabItem value="specification">
 
 ```archetype
-f with KeyExists((msg, v) : string * <KEYTYPE>) :
+f with KeyExits((msg, v) : string * <KEYTYPE>) :
   msg = "KeyExists" and
   v   = k and
   c.contains(k)
