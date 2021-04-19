@@ -173,8 +173,9 @@ In the following, `c` is an asset collection, `k` is a key value and `i` is a na
 <TabItem value="specification">
 
 ```archetype
-f with NotFound(msg : string) :
+f with NotFound(msg, v : string * <KEYTYPE>) :
   msg = "NotFound" and
+  v = k and
   not c.contains(k)
 ```
 
@@ -190,6 +191,10 @@ c[k]
 c.remove(k)
 ```
 
+```archetype
+c.update(k, ...)
+```
+
 </TabItem>
 </Tabs>
 
@@ -203,8 +208,9 @@ c.remove(k)
 <TabItem value="specification">
 
 ```archetype
-f with NotFound(msg : string) :
+f with NotFound((msg, v): string * nat) :
   msg = "NotFound" and
+  v   = i and
   c.count() < i
 ```
 
@@ -231,8 +237,9 @@ c.nth(i)
 <TabItem value="specification">
 
 ```archetype
-f with KeyExists(msg : string) :
+f with KeyExists((msg, v) : string * <KEYTYPE>) :
   msg = "KeyExists" and
+  v   = k and
   c.contains(k)
 ```
 
@@ -285,9 +292,9 @@ n -= v
 <TabItem value="specification">
 
 ```archetype
-f with SliceError(msg : string) :
-  msg = "SliceError" and
-  o >= length(s) or o+l >= length(s)
+f with DivByZero(msg : string) :
+  msg = "DivByZero" and
+  b = 0
 ```
 
 </TabItem>
@@ -295,7 +302,15 @@ f with SliceError(msg : string) :
 <TabItem value="archetype">
 
 ```archetype
-slice(s,o,l)
+a / b
+```
+
+```archetype
+a div b
+```
+
+```archetype
+a % b
 ```
 
 </TabItem>

@@ -27,7 +27,7 @@
 		'keyword': /\b(?:as|require|failif|called|by|shadow|effect|initial|identified by|initialized by|assert|begin|end|do|done|else|otherwise|return|before|for|if|in|match|in|forall|added|removed|exists|struct|then|from|to|while|with|when|fails|operations|InvalidCondition|InvalidCaller|NotFound|NatAssign|SliceError)\b/,
 		'boolean': /\b(?:false|true)\b/,
 		// Custom operators are allowed
-		'operator': /:=|\+=|\-=|[=<>@^|&+\-*\/$%!?~][!$%&*+\-.\/:<=>?@^|~]*|\b(?:and|not|asr|land|lor|lsl|lsr|lxor|mod|or|update|addupdate|dofailif|dorequire|sum|fail|some|isempty|length|now|transferred|caller|selfaddress|the|transfer|state|min|max)\b/,
+		'operator': /:=|\+=|\-=|[=<>@^|&+\-*\/$%!?~][!$%&*+\-.\/:<=>?@^|~]*|\b(?:and|not|asr|land|lor|lsl|lsr|lxor|mod|or|remove|update|nth|addupdate|dofailif|dorequire|sum|fail|some|isempty|length|now|transferred|caller|selfaddress|the|transfer|state|min|max)\b/,
 		'punctuation': /[(){}\[\]|.,:;]|\b_\b/
 	};
 }(Prism));
