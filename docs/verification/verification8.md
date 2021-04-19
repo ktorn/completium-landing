@@ -13,4 +13,4 @@ Writing specification is about describing the effect of entrypoints on the contr
 
 Writing loop invariants is not covered in these guidelines at it belongs to the verification phase. Loops are what makes verification not decidable and thus complex. A loop invariant is a property created by the loop process: it is a property true at each loop iteration, which says something useful to prove the postcondition.
 
-At last, we note that postconditions and invariants are made to describe the code correctness of entrypoints considered separately, but they cannot capture the effect of a *sequence* of calls, and sequence invariants, on the contract. This is still a topic for research to provide more powerful formal method approach.
+At last, we note that postconditions and invariants are made to describe the code correctness of entrypoints considered separately, but they cannot capture the effect of a *sequence* of calls, and sequence invariants, on the contract. This is still a topic for research to provide powerful formal method approaches capable to consider properties at protocol level...
