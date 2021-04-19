@@ -72,7 +72,6 @@ module.exports = {
         'verification/verification7',
         'verification/verification8',
       ] },
-    'verification/verification4',
   ],
   tools:  [
     'dapp-tools/tools1',

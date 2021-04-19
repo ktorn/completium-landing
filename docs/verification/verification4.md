@@ -8,6 +8,10 @@ hide_title: false
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
+Formal logic is necessary to
+
+<DappFigure img='edukera.png' width='20%'/>
+
 <iframe id="inlineFrameExample"
     style={{ border: 'none' }}
     title="Inline Frame Example"
