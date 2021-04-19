@@ -26,28 +26,9 @@ The Completium <Link to='/docs/templates'>contract templates</Link> have been fo
 The Archetype specification language documentation is available <Link to='https://docs.archetype-lang.org/archetype-language/contract-specification'>here</Link>.
 
 In a nutshell, what can you specify with it?
-* contract invariants: an *invariant* is a property about the contract's storage that is always true, regardless of the transactions history.
-* entrypoints' postconditions: a *postcondition* is a property about what the execution of the entrypoint changes in the contract's storage.
-
-For examples, an invariant of the <Link to='/docs/templates/fa12'>FA 1.2</Link> contract states that the total number of tokens is a constant (no token is minted):
-
-```archetype
-specification {
-  i: ledger.sum(tokens) = totalsupply;
-}
-```
-
-A postcondition of the `consume` entrypoint of the <Link to='/docs/templates/miles'>Miles</Link> contract states that the number of miles is decreased by `quantity`:
-
-```archetype
-specification entry consume (quantity : int) {
-  postcondition p {
-    mile.sum(the.amount) = before.mile.sum(the.amount) - quantity
-  }
-}
-```
-
-Note that postconditions say something about the contract's storage when the endpoint does *not fail*.
+* entrypoints' postconditions: a <Link to='/docs/verification/postcondition'>postcondition</Link> is a property about what the execution of the entrypoint changes in the contract's storage.
+* entrypoints' fail conditions: a <Link to='/docs/verification/fail'>fail condition</Link> is a property that holds true when the entrypoint is fails
+* contract invariants: an <Link to='/docs/verification/invariant'>invariant</Link> is a property about the contract's storage that is always true, regardless of the transactions history.
 
 ### Whyml
 
@@ -59,7 +40,7 @@ The following <Link to='/docs/cli'>Completium CLI</Link> command:
 completium-cli generate whyml elementary.arl
 ```
 
-generates the whyml version of the elementary archetype example contract:
+generates the whyml version of this elementary archetype contract:
 
 ```archetype title="elementary.arl"
 archetype js

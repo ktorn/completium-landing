@@ -80,8 +80,8 @@ The Archetype language provides several high-level syntaxes and builtins that ma
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -106,8 +106,8 @@ called by <ADDRESS>
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -134,8 +134,8 @@ require {
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -166,8 +166,8 @@ In the following, `c` is an asset collection, `k` is a key value and `i` is a na
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -196,8 +196,8 @@ c.remove(k)
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -224,8 +224,8 @@ c.nth(i)
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -252,8 +252,8 @@ c.add({ <ID> = k; ... })
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">
@@ -278,8 +278,8 @@ n -= v
 <Tabs
   defaultValue="archetype"
   values={[
-    { label: 'Specification', value: 'specification', },
     { label: 'Code', value: 'archetype', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="specification">

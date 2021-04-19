@@ -70,6 +70,7 @@ module.exports = {
         'verification/verification5',
         'verification/verification6',
         'verification/verification7',
+        'verification/verification8',
       ] },
     'verification/verification4',
   ],
