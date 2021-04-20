@@ -9,7 +9,7 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-## Micheslon
+## Michelson
 
 Michelson is the default language to write smart contracts on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain. You can find the language reference <a href='https://tezos.gitlab.io/michelson-reference/'>here</a>.
 

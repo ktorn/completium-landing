@@ -1,6 +1,6 @@
 ---
 id: verification4
-title: Learn Formal Logic
+title: Formal Logic
 sidebar_label: Learn Formal Logic
 slug: /verification/logic
 hide_title: false
@@ -8,7 +8,10 @@ hide_title: false
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
-Formal logic is necessary to
+Formal Logic provides the basic rules used by formal method tools to verify programs. It is thus necessary to learn and understand the basics of formal logic.
+
+edukera is an online application to practice formal
+
 
 <DappFigure img='edukera.png' width='20%'/>
 
