@@ -241,7 +241,7 @@ c.nth(i)
 <TabItem value="specification">
 
 ```archetype
-f with KeyExits((msg, v) : string * <KEYTYPE>) :
+f with KeyExists((msg, v) : string * <KEYTYPE>) :
   msg = "KeyExists" and
   v   = k and
   c.contains(k)
