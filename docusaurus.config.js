@@ -58,6 +58,7 @@ module.exports = {
             { label: 'DApps', to: '/dapps' },
             { label: 'Smart Contract', to: '/docs/contract' },
             { label: 'Contract Templates', to: '/docs/templates' },
+            { label: 'Formal Verification', to: '/docs/verification' },
             { label: 'CLI', to: '/docs/cli' },
             { label: 'Technical Stack', to: 'docs/dapp-tools/' },
           ],
