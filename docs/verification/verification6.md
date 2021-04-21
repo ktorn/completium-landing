@@ -175,9 +175,8 @@ In the following, `c` is an asset collection, `k` is a key value and `i` is a na
 <TabItem value="specification">
 
 ```archetype
-f with NotFound(msg, v : string * <KEYTYPE>) :
+f with NotFound(msg : string) :
   msg = "NotFound" and
-  v = k and
   not c.contains(k)
 ```
 
@@ -241,9 +240,8 @@ c.nth(i)
 <TabItem value="specification">
 
 ```archetype
-f with KeyExists((msg, v) : string * <KEYTYPE>) :
+f with KeyExists(msg : string) :
   msg = "KeyExists" and
-  v   = k and
   c.contains(k)
 ```
 
