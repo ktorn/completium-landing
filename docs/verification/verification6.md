@@ -112,9 +112,8 @@ called by <ADDRESS>
 <TabItem value="specification">
 
 ```archetype
-f1 with InvalidCondition((msg, id): string * string) :
-  msg = "InvalidCondition" and
-  id  = "r1" and
+f1 with InvalidCondition(x : string * string) :
+  x   = ("InvalidCondition", "r1") and
   not <CONDITION>
 ```
 
