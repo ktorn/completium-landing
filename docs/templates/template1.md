@@ -72,7 +72,7 @@ The Archetype FA 1.2 code has been <Link to='https://assets.tqtezos.com/docs/tok
 <TabItem value="archetype">
 
 ```archetype title="fa12.arl"
-archetype fa12(const initialholder: address, totalsupply : nat)
+archetype fa12(const initialholder : address, totalsupply : nat)
 
 asset allowance identified by addr_owner addr_spender to big_map {
   addr_owner       : address;

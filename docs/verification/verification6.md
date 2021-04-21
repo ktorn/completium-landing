@@ -29,10 +29,9 @@ For example, the entrypoint `set` fails when the parameter value `v` is greater 
 ```archetype
 specification entry set(v : nat)
   fails {
-    f1 with ((a, msg) : nat * string):
+    f1 with (x : nat * string):
       (* specify failure object *)
-      a   = v and
-      msg = "v must be below 10" and
+      x   = (v, "v must be below 10") and
       (* specify failure condition *)
       v >= 10
   }
@@ -142,9 +141,8 @@ require {
 <TabItem value="specification">
 
 ```archetype
-f1 with InvalidCondition((msg, id): string * string) :
-  msg = "InvalidCondition" and
-  id  = "f1" and
+f1 with InvalidCondition(x : string * string) :
+  x = ("InvalidCondition", "f1") and
   <CONDITION>
 ```
 
@@ -211,9 +209,8 @@ c.update(k, ...)
 <TabItem value="specification">
 
 ```archetype
-f with OutOfBound((msg, v): string * nat) :
-  msg = "OutOfBound" and
-  v   = i and
+f with OutOfBound(x : string * nat) :
+  x   = ("OutOfBound", i) and
   c.count() < i
 ```
 
