@@ -19,14 +19,15 @@ The goal is to add a *Claim* button and claim the ownership.
 
 with the code below (click 'copy' in the upper-right-hand corner):
 
-```js {8}
+```js {9}
 const ClaimButton = () => {
+  const { settings } = useSettingsContext();
   const tezos = useTezos();
   const account = useAccountPkh();
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const claim = async () => {
     try {
-      const contract  = await tezos.wallet.at(contractAddress);
+      const contract  = await tezos.wallet.at(settings.contract);
       const operation = await contract.methods.claim(UnitValue).send();
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
@@ -92,7 +93,7 @@ This section is for information only, no action is required.
 
 This section presents the code of `~/src/App.js` at the end of this step:
 
-```js {83-104,131-133}
+```js {86-108,136-138}
 import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -125,15 +126,17 @@ const Cell = (props) => {
 }
 
 const OwnershipData = (props) => {
+  const { settings } = useSettingsContext();
   const [{ assetid, owner, forsale }, setData] = useState(() => ({
       assetid : "",
       owner   : "",
       forsale : "",
     }));
   const loadStorage = React.useCallback(async () => {
-    const tezos     = new TezosToolkit(endpoint);
-    const contract  = await tezos.contract.at(contractAddress);
+    const tezos     = new TezosToolkit(settings.endpoint);
+    const contract  = await tezos.contract.at(settings.contract);
     const storage   = await contract.storage();
+    console.log(storage);
     setData({
       assetid : storage.assetid,
       owner   : storage.owner,
@@ -144,8 +147,8 @@ const OwnershipData = (props) => {
   return (
     <Container maxWidth='xs'>
     <Grid container direction="row" alignItems="center" spacing={1}>
-      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..."} data/>
-      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..."} data/>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..." } data/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..." } data/>
       <Cell val="Status"  /><Cell val={ forsale }/>
     </Grid>
     </Container>
@@ -155,10 +158,11 @@ const OwnershipData = (props) => {
 const BidButton = () => {
   const tezos = useTezos();
   const account = useAccountPkh();
+  const { settings } = useSettingsContext();
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const bid = async () => {
     try {
-      const contract  = await tezos.wallet.at(contractAddress);
+      const contract  = await tezos.wallet.at(contract);
       const operation = await contract.methods.bid(UnitValue).send({ amount: 10 });
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
@@ -176,12 +180,13 @@ const BidButton = () => {
 }
 
 const ClaimButton = () => {
+  const { settings } = useSettingsContext();
   const tezos = useTezos();
   const account = useAccountPkh();
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const claim = async () => {
     try {
-      const contract  = await tezos.wallet.at(contractAddress);
+      const contract  = await tezos.wallet.at(settings.contract);
       const operation = await contract.methods.claim(UnitValue).send();
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
@@ -211,6 +216,7 @@ function App() {
   );
   return (
     <DAppProvider appName={ appName }>
+      <SettingsProvider>
       <SnackProvider>
       <ThemeProvider theme={ theme }>
       <CssBaseline />
@@ -232,9 +238,11 @@ function App() {
           </Grid>
         </Container>
       </div>
+      <SettingsPanel/>
       <Snack />
       </ThemeProvider>
       </SnackProvider>
+      </SettingsProvider>
     </DAppProvider>
   );
 }

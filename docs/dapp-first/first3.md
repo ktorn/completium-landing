@@ -22,6 +22,7 @@ It defines a component named `OwnershipData` whose role is to retrieve and displ
 
 ```js
 const OwnershipData = (props) => {
+  const { settings } = useSettingsContext();
   const [{ assetid, owner, forsale }, setData] = React.useState(() => ({
       assetid : "",
       owner   : "",
@@ -49,8 +50,8 @@ The <a href='https://tezostaquito.io/' target='_blank'>Taquito</a> library provi
 The following code shows how to retrieve data from the contract when in an asynchronous function. This code is to be inserted in the function passed to `useCallback` above:
 
 ```js {5-7}
-const tezos     = new TezosToolkit(endpoint);
-const contract  = await tezos.contract.at(contractAddress);
+const tezos     = new TezosToolkit(settings.endpoint);
+const contract  = await tezos.contract.at(settings.contract);
 const storage   = await contract.storage();
 setData({
   assetid : storage.assetid,
@@ -73,9 +74,14 @@ To display the contract address, **run** the command:
 completium-cli show contract ownership
 ```
 
-For example in `~/src/settings.js`:
-```js
-export const contractAddress = "KT1LyBhUUP6vnqwAyJTrZ3y2iA6BeZtSSnbk";
+**Copy-paste** the contract address line 9 of `~/src/settings.js`, like for example:
+```js {4}
+const [settings,setState] = useState({
+    network  : 'edo2net',
+    endpoint : 'https://edonet.smartpy.io',
+    contract : 'KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd',
+    show     : false,
+});
 ```
 
 ## Storage display code
@@ -98,14 +104,15 @@ const Cell = (props) => {
 }
 
 const OwnershipData = (props) => {
+  const { settings } = useSettingsContext();
   const [{ assetid, owner, forsale }, setData] = useState(() => ({
       assetid : "",
       owner   : "",
       forsale : "",
     }));
   const loadStorage = React.useCallback(async () => {
-    const tezos     = new TezosToolkit(endpoint);
-    const contract  = await tezos.contract.at(contractAddress);
+    const tezos     = new TezosToolkit(settings.endpoint);
+    const contract  = await tezos.contract.at(settings.contract);
     const storage   = await contract.storage();
     setData({
       assetid : storage.assetid,
@@ -154,7 +161,7 @@ This section is for information only, no action is required.
 
 This section presents the code of `~/src/App.js` at the end of this step:
 
-```js {26-58,83-85}
+```js {26-59,85-87}
 import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -187,14 +194,15 @@ const Cell = (props) => {
 }
 
 const OwnershipData = (props) => {
+  const { settings } = useSettingsContext();
   const [{ assetid, owner, forsale }, setData] = useState(() => ({
       assetid : "",
       owner   : "",
       forsale : "",
     }));
   const loadStorage = React.useCallback(async () => {
-    const tezos     = new TezosToolkit(endpoint);
-    const contract  = await tezos.contract.at(contractAddress);
+    const tezos     = new TezosToolkit(settings.endpoint);
+    const contract  = await tezos.contract.at(settings.contract);
     const storage   = await contract.storage();
     setData({
       assetid : storage.assetid,
@@ -206,8 +214,8 @@ const OwnershipData = (props) => {
   return (
     <Container maxWidth='xs'>
     <Grid container direction="row" alignItems="center" spacing={1}>
-      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..."} data/>
-      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..."} data/>
+      <Cell val="Asset Id"/><Cell val={ assetid.substring(0, 20) + "..." } data/>
+      <Cell val="Owner"   /><Cell val={ owner.substring(0, 20) + "..." } data/>
       <Cell val="Status"  /><Cell val={ forsale }/>
     </Grid>
     </Container>
@@ -231,6 +239,7 @@ function App() {
   );
   return (
     <DAppProvider appName={ appName }>
+      <SettingsProvider>
       <SnackProvider>
       <ThemeProvider theme={ theme }>
       <CssBaseline />
@@ -249,9 +258,11 @@ function App() {
           </Grid>
         </Container>
       </div>
+      <SettingsPanel/>
       <Snack />
       </ThemeProvider>
       </SnackProvider>
+      </SettingsProvider>
     </DAppProvider>
   );
 }
