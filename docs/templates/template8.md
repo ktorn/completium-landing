@@ -41,7 +41,7 @@ Ideas data (title and description) are stored as `bytes`.
 
 ## Originate
 
-Originate a switch contract with the widget below.
+Originate this contract with the widget below.
 
 Click "Connect to Wallet" button, fill the fields "Owner" and "Rate", and click "Originate".
 
