@@ -57,6 +57,7 @@ const sections = {
       { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/templates/ideabox' },
       { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/templates/competition' },
       { name: "Auction", desc: "Auction process to transfer ownership of FA2 NFTs.", to: '/docs/templates/auction' },
+      { name: "A 2", desc: "Whitelisting process to define transfer permissions per group of users.", to: '/docs/templates/a2' },
     ]
   }
 }

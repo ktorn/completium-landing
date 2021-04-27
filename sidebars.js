@@ -41,6 +41,7 @@ module.exports = {
         'templates/template8',
         'templates/template9',
         'templates/template10',
+        'templates/template16',
       ] },
   ],
   contract: [

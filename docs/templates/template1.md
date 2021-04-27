@@ -13,7 +13,7 @@ import Deploy from './Deploy';
 
 A fungible token is basically an association table between the token owner (the account address) and the amount of tokens (a natural integer). It is possible to allow another account to transfer tokens on your behalf.
 
-This contract follows the <a href='https://assets.tqtezos.com/docs/token-contracts/fa12/1-fa12-intro/'>Financial Asset 1.2</a> (FA 1.2) <a href='https://gitlab.com/tzip/tzip/blob/master/proposals/tzip-7/tzip-7.md'>TZIP 7</a> specification for fungible token on Tezos.
+This contract implements the <Link to='https://assets.tqtezos.com/docs/token-contracts/fa12/1-fa12-intro/'>Financial Asset 1.2</Link> (FA 1.2) <Link to='https://gitlab.com/tzip/tzip/blob/master/proposals/tzip-7/tzip-7.md'>TZIP 7</Link> specification for fungible token on Tezos.
 
 ## API
 

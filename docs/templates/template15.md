@@ -40,7 +40,7 @@ See this contract in action in the <Link to='/docs/dapp-iot/'>Connected Object</
 
 ### Entrypoints
 
-| Name | Type | Description |
+| Name | Argument | Description |
 | -- | -- | -- |
 | `start` | | Starts service. The duration *d* of service is computed as: <p />*d* = `rate` * *transferred* |
 | `interrupt` | | User who started service can interrupt it. <p />It pays back the user so that only the effective duration of service is paid. |
