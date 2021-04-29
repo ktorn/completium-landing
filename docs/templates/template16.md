@@ -20,7 +20,7 @@ It defines transfer authorisation from users to other users. A user belongs to a
 
 | Name | Type | Description |
 | -- | -- | -- |
-| `issuer` | `address` | Issuer is a special user that can transfer to anyone. |
+| `issuer` | `address` | Issuer is a special user that can transfer (inbound and outbound) to/from anyone. |
 | `admin` | `address` | Admin can set the address of the issuer, and update the transfer lists data. |
 | `users` | `big_map<adress, nat>`| A user, identified by the address, is associated to a list id. |
 | `transferlists` | `big_map<nat, bool*set<nat>>` | A transfer list, identified by a `nat` id, is associated to:<lu><li>a boolean `unrestricted` state</li><li>a set `transferlists` of ids</li></lu> If `unrestricted` is false, then any transfer from the list or to the list is not authorised. If `unrestricted` is true, then transfers are allowed only to lists and from lists in the `transferlists` set. |
@@ -46,6 +46,7 @@ It defines transfer authorisation from users to other users. A user belongs to a
   values={[
     { label: 'Archetype', value: 'archetype', },
     { label: 'Michelson', value: 'michelson', },
+    { label: 'Specification', value: 'specification', },
   ]}>
 
 <TabItem value="archetype">
@@ -56,12 +57,12 @@ archetype a2(
   issuer : address
 )
 
+variable users         : big_map<address, nat>      = []
+
 record transferlist {
   unrestricted         : bool;
   allowedTransferlists : set<nat>;
 }
-
-variable users         : big_map<address, nat>      = []
 variable transferlists : big_map<nat, transferlist> = []
 
 function assertReceiver(addr : address) : bool {
@@ -179,5 +180,169 @@ getter getUser (user : address) : option<nat> {
 <TabItem value="michelson">
 
 </TabItem>
+
+<TabItem value="specification">
+
+```archetype
+specification function assertReceiver(addr: address) {
+  postcondition p1 {
+    let some tlid = users[addr] in
+      result = transferlists[tlid].unrestricted
+    otherwise
+      result = false
+  }
+}
+
+specification entry assertReceivers (addrs : list<address>) {
+  fails {
+    f_assertReceivers with (msg: string):
+      msg = "USER_RESTRICTED" and
+      exists a : address,
+        contains(addrs, a) and
+        a <> issuer        and
+        assertReceiver(a) = false;
+  }
+  postcondition p2 {
+    users  = before.users  and transferlists = before.transferlists and
+    issuer = before.issuer and admin = before.admin
+  }
+}
+
+specification entry assertTransfers (input_list : list<address * list<address>>) {
+  fails {
+    f_assertTransfers with (msg: string):
+      exists e : (address * list<address>),
+        contains(input_list, e) and (
+        let %from = e[0] in
+        let tos   = e[1] in
+        exists %to : address,
+          contains(tos, %to) and ((
+            msg = "TO_RESTRICTED" and
+            %from = issuer and
+            assertReceiver(%to) = false
+          ) or (
+            msg = "FROM_RESTRICTED" and
+            assertReceiver(%from) = false
+          ) or (
+            msg = "TO_RESTRICTED" and
+            assertReceiver(%to) = false
+          ) or (
+            let some fromid = users[%from] in
+            let some toid   = users[%to] in
+            let some tl     = transferlists[%fromid] in
+              msg = "TO_NOT_ALLOWED" and
+              not contains(tl.allowedTransferlists, toid)
+            otherwise msg = "NOT_FOUND"
+            otherwise msg = "NOT_FOUND"
+            otherwise msg = "NOT_FOUND"
+          )));
+  }
+  postcondition p3 {
+    users  = before.users  and transferlists = before.transferlists and
+    issuer = before.issuer and admin = before.admin
+  }
+}
+
+specification entry assertTransferlist (transferlistId : nat, input : option<transferlist>) {
+  fails {
+    f_assertTransferlist with (msg : string):
+    let some tl = input in (
+      msg = "TRANSFERLIST_NOT_FOUND" and
+      not contains(transferlists, transferlistId)
+    ) or (
+      msg = "INVALID_UNRESTRICTED_STATE" /*
+      let some l = transferlists[transferlistId] in
+        msg = "INVALID_UNRESTRICTED_STATE" and
+        not l.unrestricted = tl.unrestricted
+      otherwise msg = "NOT_FOUND" */
+    ) or (
+      exists i : nat,
+      contains(tl.allowedTransferlists, i) and
+      let some l = transferlists[transferlistId] in
+      not contains(l.allowedTransferlists, i) and
+      msg = "IS_NOT_SUBSET"
+      otherwise msg = "NOT_FOUND"
+    )
+    otherwise
+      msg = "EXISTS_TRANSFERLIST" and not contains(transferlists, transferlistId);
+  }
+  postcondition p4 {
+    users  = before.users  and transferlists = before.transferlists and
+    issuer = before.issuer and admin = before.admin
+  }
+}
+
+specification entry updateUser (user : address, transferlistId : option<nat>) {
+  fails {
+    f_updateUser1 with (msg : string):
+      msg = "Invalid CALLER" and
+      caller <> admin;
+    f_updateUser2 with (msg : string):
+      msg = "ISSUER_NOT_USER" and
+      issuer = user;
+  }
+  postcondition p5 {
+    let some i = transferlistId in
+      let some v = users[user] in
+        v = i
+      otherwise false
+    otherwise
+      let some v = users[user] in
+      false
+      otherwise true
+  }
+  postcondition p6 {
+    forall a : address,
+      a <> users ->
+      let some na  = users[a] in
+      let some bna = before.users[a] in
+      na = bna
+      otherwise true
+      otherwise true
+  }
+}
+
+specification entry updateTransferlist (
+    transferlistId : nat,
+    u : option<(bool * list<nat> * set<nat>)>) {
+  fails {
+    f_updateTransferlist with (msg : string):
+      msg = "Invalid CALLER" and
+      caller <> admin;
+  }
+  postcondition p7 {
+    let some v = u in
+      let some tl = transferlists[transferlistId] in
+        let lunrestricted          = v[0] in
+        let ldisallowTransferlists = v[1] in
+        let lallowTransferlists    = v[2] in
+        tl.unrestricted := lunrestricted and
+        (forall r : nat,
+          contains(ldisallowTransferlists, r) ->
+          not contains(lallowTransferlists, r) ->
+          not contains(tl.allowedTransferlists, r)) and
+        (forall a : nat,
+          contains(lallowTransferlists, a) ->
+          contains(tl.allowedTransferlists, a))
+      otherwise true
+    otherwise
+      let some tl = transferlists[transferlistId] in
+        false
+      otherwise true
+  }
+  postcondition p8 {
+    forall i : nat,
+      i <> transferlistId ->
+      let some tl  = transferlists[i] in
+      let some btl = before.transferlists[i] in
+      tl = btl
+      otherwise true
+      otherwise true
+  }
+}
+```
+
+</TabItem>
+
 
 </Tabs>
