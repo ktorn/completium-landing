@@ -53,9 +53,9 @@ In order to motivate both the seller and the buyer to execute the process, the b
 
 ```archetype title="escrow.arl"
 archetype escrow(
-seller       : role,
-buyer        : role,
-taxcollector : role,
+seller       : address,
+buyer        : address,
+taxcollector : address,
 price        : tez,
 taxrate      : rational,
 securityrate : rational,

@@ -13,7 +13,7 @@ The smart contract is developed with the <a href='https://archetype-lang.org/'>A
 The contract defines an admin address that only can call the `add` and `clear_expired` entry points:
 
 ```archetype
-variable admin : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable admin : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 ```
 
 The contract defines a <Link to="/docs/contract/tuto/archetype-assets">collection</Link> of miles:
@@ -30,7 +30,7 @@ The contract defines a collection of owners and defines which owner owns which m
 
 ```archetype
 asset owner identified by addr {
-  addr  : role;
+  addr  : address;
   miles : partition<mile> = []
 }
 ```

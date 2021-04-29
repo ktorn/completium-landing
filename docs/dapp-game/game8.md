@@ -12,7 +12,7 @@ import DappButton from '../DappButton';
 ## Storage
 
 ```archetype
-variable organizer : role = @tz1NUKyDbQtSu4g1bgpwgvwqTeggbtKrNkdv
+variable organizer : address = @tz1NUKyDbQtSu4g1bgpwgvwqTeggbtKrNkdv
 ```
 
 ```archetype

@@ -13,15 +13,15 @@ import DappButton from '../DappButton';
 ## Storage
 
 ```archetype
-variable seller       : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable seller       : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 ```
 
 ```archetype
-variable buyer        : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable buyer        : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 ```
 
 ```archetype
-variable taxcollector : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable taxcollector : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 ```
 
 ```archetype

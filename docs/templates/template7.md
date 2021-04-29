@@ -72,9 +72,9 @@ The contract relies on the 3 underlyings: Bank of America, Société Générale 
 
 ```archetype title="autocallable.arl"
 archetype autocallable(
-  issuer  : role,
-  holder  : role,
-  oracle  : role,
+  issuer  : address,
+  holder  : address,
+  oracle  : address,
   nominal : tez,
   trade   : date,
   final   : date,

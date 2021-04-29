@@ -26,8 +26,8 @@ import { code, getStorage } from '../contract';
 tezos.wallet.originate({
       code: code,
       init: getStorage(
-        zcbState.contractInfo.issueraccount,                         // issuer           : role,
-        zcbState.contractInfo.subscriberaccount,                     // subscriber       : role,
+        zcbState.contractInfo.issueraccount,                         // issuer           : address,
+        zcbState.contractInfo.subscriberaccount,                     // subscriber       : address,
         zcbState.contractInfo.faceprice * 1000000,                   // facevalue        : tez,
         mk_rational (parseInt(zcbState.contractInfo.discount), 100), // discount         : rational,
         zcbState.contractInfo.duration * 60,                         // maturityduration : duration,

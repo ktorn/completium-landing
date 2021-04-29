@@ -13,11 +13,11 @@ import DappButton from '../DappButton';
 ## Storage
 
 ```archetype
-variable issuer     : role = @tz1bfVgcJC4ukaQSHUe1EbrUd5SekXeP9CWk
+variable issuer     : address = @tz1bfVgcJC4ukaQSHUe1EbrUd5SekXeP9CWk
 ```
 
 ```archetype
-variable subscriber : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable subscriber : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 ```
 
 ```archetype
