@@ -153,6 +153,10 @@ The result should look something like:
 
 <DappFigure img="ownership1.png" width='60%'/>
 
+:::info
+Note that the interface is launched in the right-hand panel. It is **automatically** recompiled and updated when a source file is saved (no need to launch anything).
+:::
+
 ## `App.js` code
 
 :::note
