@@ -68,7 +68,11 @@ variable transferlists : big_map<nat, transferlist> = []
 function assertReceiver(addr : address) : bool {
   return
     match getopt(users, addr) with
-    | some v -> transferlists[v].unrestricted
+    | some v ->
+        match getopt(transferlists, v) with
+        | some(r) -> r.unrestricted
+        | none -> false
+        end
     | none   -> false
     end
 }
@@ -187,9 +191,10 @@ getter getUser (user : address) : option<nat> {
 specification function assertReceiver(addr: address) {
   postcondition p1 {
     let some tlid = users[addr] in
-      result = transferlists[tlid].unrestricted
-    otherwise
-      result = false
+    let some tl   = transferlists[tlid] in
+      result = tl.unrestricted
+    otherwise result = false
+    otherwise result = false
   }
 }
 
