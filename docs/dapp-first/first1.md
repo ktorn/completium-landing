@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 A <Link to=''>Gitpod</Link> environment is setup so that you don't spend time installing anything. Click the button below to launch the environment:
 
-<DappButton url="https://gitpod.io/#https://github.com/edukera/completium-dapp-first" txt="open environment"/>
+<DappButton url="https://gitpod.io/#https://gitlab.com/completium/completium-dapp-first" txt="open environment"/>
 
 The environment provides the following elements:
 

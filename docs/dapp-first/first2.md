@@ -7,35 +7,29 @@ slug: /dapp-first/contract
 import DappFigure from '../DappFigure';
 import Link from '@docusaurus/Link';
 
-The first step is to originate (deploy) the ownership <Link to='/docs/dapp-tools/tezos#smart-contract'>Smart Contract</Link> with the *admin* test account that comes preconfigured with <Link to='/docs/cli'>completium CLI</Link>.
+The first step is to originate (deploy) the ownership <Link to='/docs/dapp-tools/tezos#smart-contract'>Smart Contract</Link> with <Link to='/docs/cli'>completium CLI</Link>.
 
-Before anything, check the *admin* account balance. Open a new <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link> tab and enter the command below:
+Before anything, follow these <Link to='/docs/dapp-tools/gitpod#check-admin-account'>instructions</Link> to import a new account :
+* copy paste (or upload to gitpod) in `faucet.json` file a test account retrieved from <Link to='https://faucet.tzalpha.net/'>faucet.tzalpha.net</Link>
+* in order to import the faucet account with `completium-cli`, enter the following command in a VS code <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link> tab:
 
 ```
-completium-cli show account
+completium-cli import faucet faucet.json as admin --force
 ```
 
-If the balance is below 3 tezies, then follow these <Link to='/docs/dapp-tools/gitpod#check-admin-account'>instructions</Link> to import a new account (or transfer some tezies to the admin account).
+## Smart contract code
 
-## Create smart contract file
+:::note
+This section is for information only, no action is required.
+:::
 
-Create a file named `ownership.arl` by right clicking in the left-hand panel:
-
-<DappFigure img='new_file.png' width='50%'/>
-
-## Copy contract code
-
-Copy-paste in `ownership.arl` the source code below and *save* the file (with ctrl/cmd + s).
-
-(Click 'copy' in the upper-right-hand corner of the area below)
+The contract is written in <Link to='http://archetype-lang.org/'>Archetype</Link> language. The source code is available in the `contract` folder.
 
 ```archetype
-archetype asset_ownership
+archetype asset_ownership (owner : address)
 
 variable assetid : bytes =
   0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2
-
-variable owner : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
 
 variable bestbidder : address = owner
 variable bestbid    : tez = 0tz
@@ -84,11 +78,13 @@ transition claim () {
 
 ## Originate contract
 
+### From Archetype
 Enter this command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link>:
 
 ```
-completium-cli deploy ownership.arl
+completium-cli deploy ./contract/ownership.arl --init 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw'
 ```
+(replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by any other valid address you own)
 
 It displays the main origination parameters and asks for confirmation. Enter `Y` and press enter.
 
@@ -102,6 +98,15 @@ https://better-call.dev/edo2net/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
 ```
 
 Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer (it may take up to a dozen of seconds for BCD to synchronize with the blockchain). It shows the origination cost of 0.39ꜩ.
+
+### From Michelson
+
+In order to originate from the Michelson version (available in `contract` folder), enter the following command :
+
+```
+completium-cli originate ./contract/ownership.tz --init '(Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0 (Pair 1624952132 0)))))'
+```
+(replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by any other valid address you own)
 
 ## Contract API
 
