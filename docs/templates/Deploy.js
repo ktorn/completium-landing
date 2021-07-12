@@ -15,6 +15,7 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { bcd_testnet } from './settings';
 
 const Connect = (props) => {
   const ready = useReady();
@@ -56,7 +57,7 @@ const Contract = (props) => {
   justify="center"
   alignItems="center">
     <Typography variant='subtitle2'>Contract available at:</Typography>
-    <Typography component={Link} to={ 'https://better-call.dev/'+(props.main?"mainnet":"edo2net")+'/'+props.contract+'/operations' } variant='subtitle2' style={{ fontFamily: 'Courier Prime, monospace' }}>{ props.contract }</Typography>
+    <Typography component={Link} to={ 'https://better-call.dev/'+(props.main ? "mainnet" : bcd_testnet)+'/'+props.contract+'/operations' } variant='subtitle2' style={{ fontFamily: 'Courier Prime, monospace' }}>{ props.contract }</Typography>
   </Grid>)
 }
 

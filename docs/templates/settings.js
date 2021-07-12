@@ -1,4 +1,3 @@
-export const network  = "edo2net"
-export const endpoint = "https://edonet.smartpy.io"
-
-export const contractAddress = "";
+export const network  = "florencenet"
+export const endpoint = "https://florencenet.smartpy.io"
+export const bcd_testnet  = "florencenet";
