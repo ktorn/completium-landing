@@ -32,7 +32,7 @@ For example:
 ```bash
 $ completium-cli show endpoint
 Current network: granada
-Current endpoint: https://granadanet-tezos.giganode.io
+Current endpoint: https://testnet-tezos.giganode.io
 ```
 ## Switch endpoint
 
@@ -50,7 +50,7 @@ Current network: edo
 Current endpoint: https://edonet-tezos.giganode.io
 ? Switch endpoint …
 ❯ main       https://mainnet-tezos.giganode.io
-  edo        https://edonet-tezos.giganode.io
+  granada    https://testnet-tezos.giganode.io
   florence   https://florence-tezos.giganode.io
 
 ```
