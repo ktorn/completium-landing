@@ -208,7 +208,7 @@ $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
 | Command | Description |
 | -- | -- |
 | `--as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
-| `--entry` | Name of the entrypoint to call. May be omitted if the contract has only one entrypoint. |
+| `--entry` | Name of the entrypoint to call. *Must* be omitted if the contract has only one entrypoint. |
 | `--arg` | Specifies entrypoints parameter values (see example below). |
 | `--arg-michelson` | Specifies entrypoints parameter values in Michelson format. |
 | `--amount` | Amount of XTZ to sent when calling contract.  |
