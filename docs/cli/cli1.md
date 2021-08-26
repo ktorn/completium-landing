@@ -46,8 +46,8 @@ completium-cli switch endpoint
 
 ```bash
 $ completium-cli switch endpoint
-Current network: edo
-Current endpoint: https://edonet-tezos.giganode.io
+Current network: granada
+Current endpoint: https://testnet-tezos.giganode.io
 ? Switch endpoint …
 ❯ main       https://mainnet-tezos.giganode.io
   granada    https://testnet-tezos.giganode.io
@@ -58,7 +58,7 @@ Current endpoint: https://edonet-tezos.giganode.io
 ## Add endpoint
 
 ```bash
-completium-cli add endpoint (main|edo|florence) <ENDPOINT_URL>
+completium-cli add endpoint (main|granada|florence) <ENDPOINT_URL>
 ```
 
 ## Remove endpoint
@@ -84,7 +84,7 @@ Check the container is running with the following docker command:
 ```
 $ docker container ls
 CONTAINER ID   IMAGE                       COMMAND          CREATED        STATUS        PORTS                      NAMES
-719c8f02f119   tqtezos/flextesa:20210316   "edobox start"   14 hours ago   Up 14 hours   0.0.0.0:20000->20000/tcp   my-sandbox
+719c8f02f119   tqtezos/flextesa:20210316   "flobox start"   14 hours ago   Up 14 hours   0.0.0.0:20000->20000/tcp   my-sandbox
 ```
 
 The following command stops the sandbox:
@@ -106,7 +106,7 @@ Current endpoint: http://localhost:20000
   main       https://mainnet.smartpy.io
   main       https://rpc.tzbeta.net
   main       https://api.tez.ie/rpc/mainnet
-  granada    https://granadanet-tezos.giganode.io
+  granada    https://testnet-tezos.giganode.io
   granada    https://granadanet.smartpy.io
   florence   https://florence-tezos.giganode.io
 ❯ sandbox    http://localhost:20000
