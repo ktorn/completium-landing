@@ -45,10 +45,39 @@ The second argument object may have the following entries:
 | `init`| `string` | Overwrites contract initial storage with Michelson value. |
 | `test-mode` | `bool` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
 
+## call
+
+Suppose the `escrow.arl` has several entrypoints among wich the `deposit` entrypoint.
+
+```js
+const { deploy } = require('@completium/completium-cli');
+const [escrow, op] = await deploy('./escrow.arl');
+const op = await escrow.deposit({ amount: '50tz', as: 'admin' });
+```
+
+The parameter object may have the following entries:
+
+| Entry | JS type | Description |
+| -- | -- | -- |
+| `as` | `string` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
+| `arg` | `object` | Specifies entrypoints parameter values (see example below). |
+| `arg-michelson` | `string`| Specifies entrypoints parameter values in Michelson format. |
+| `amount` | `string` | Amount of XTZ to sent when calling contract.  |
+
+:::info
+Note that when there is only one entrypoint, the `call` function must be used.
+:::
+
+ For example:
+```js
+const { deploy, call } = require('@completium/completium-cli');
+const [escrow, op] = await deploy('./escrow.arl');
+const op = await call({ amount: '50tz', as: 'admin' });
+```
+
 ## transfer
 
 ## getBalance
-## call
 
 ## getStorage
 ## getContract
@@ -65,13 +94,3 @@ The second argument object may have the following entries:
 
 ## blake2b
 ## setNow
-
-| Function | Argument(s) | Description |
-| -- | -- | -- |
-| `originate` | `path`, `params` | Originates Archetype contract with source code at `path`.<p/> `params` is an *optional* object to specify originate parameters: <ul><li>`as` : contract alias (defaulted to source file without *.arl*)</li><li>`amount`</li><li>`parameters`</li><li>`metadatastorage`</li><li>`metadatauri`</li></ul> |
-| `call` | `alias`, `params` | Calls the contract with alias `alias`.<p /> `params` is an *optional* object to specify call parameters:<ul><li>`as` : account to use (defaulted to current one)</li><li>`entry`</li><li>`with`: entrypoint arguments</li><li>`amount`</li></ul><p />Returns the <Link to='/docs/dapp-tools/taquito'>Taquito</Link> operation object, augmented with a `cost` field, the total cost of the transaction. |
-| `getStorage` | `alias` | Returns the <Link to='/docs/dapp-tools/taquito#read-contract-storage'>Taquito</Link> storage object of the contract with alias `alias`. |
-| `getAddress` | `alias` | Returns the address of the account or contract associated to `alias`. |
-| `setAccount` | `alias` | Changes the current account used to interact with contracts. |
-| `setEndpoint` | `alias` | Changes the current endpoint. |
-
