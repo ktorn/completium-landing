@@ -56,7 +56,7 @@ const test = async () => {
   var op = await state_machine.complete();
   cost += op.cost.toNumber();
   // Test final state and balance
-  const storage = await state_machine.getStorage();
+  const storage = await state_machine.storage();
   const balance   = (await getBalance()).toNumber();
   assert(storage._state == 3, "Invalid contract state");
   assert(balance == balance_before - cost, "Invalid caller balance");
