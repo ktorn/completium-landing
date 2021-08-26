@@ -49,7 +49,7 @@ The following archetype contract requires one parameter `fee` when deployed:
 ```archetype title="payment.arl"
 archetype payment(fee : tez)
 
-variable amount : tez : 150tz
+variable amount : tez = 150tz
 
 entry pay(seller : address) {
   transfer (amount - fee) to seller
