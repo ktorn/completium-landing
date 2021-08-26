@@ -249,7 +249,7 @@ This section presents exemples of parameter and argument values to pass to `depl
 | `or<int, string>` | `or int string` | `{ "kind" : "right", "value" : "hello" }` |
 | `list<string>` | `list string` | `["world", "hello"]`  |
 | `set<string>` | `set string` | `["hello", "world"]` (mind order) |
-| `map<nat, string>` | `map nat string` | `[{ "key" : 0, "value" : "value for 0" }, { "key" : 1, "value" : "value for 1" }]`|
+| `map<nat, string>` | `map nat string` | `[{ "key" : 0, "value" : "value for 0" }, { "key" : 1, "value" : "value for 1" }]` (mind order)|
 
 ## Generate javascript
 
