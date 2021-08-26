@@ -239,7 +239,14 @@ This section presents exemples of parameter and argument values to pass to `depl
 | `string` | `string` | "hello" |
 | `date` | `timestamp` |  "1629965551", "2022-01-01T12:00:00Z" |
 | `duration` | `int` | -965551 |
-| `rational` | `Pair int nat` | [-5, 2] |
+| `rational` | `pair int nat` | [-5, 2] |
+| `tez` | `mutez` | 5000000, "5tz", "5000000utz" |
+| `int * string` | `pair int string` | [-5, "hello"] |
+| `option<int>` | `option int` | null (for `none`), 1 (for `some(1)`) |
+| `or<int, string>` | `or int string` | { "kind" : "right", "value" : "hello" } |
+| `list<string>` | `list string` | ["world", "hello"]  |
+| `set<string>` | `set string` | ["hello", "world"] (mind order) |
+| `map<nat, string>` | `map nat string` | [{ "key" : 0, "value" : "value for 0" }, { "key" : 1, "value" : "value for 1" }]
 
 ## Generate javascript
 
