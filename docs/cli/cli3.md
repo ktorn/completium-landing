@@ -239,6 +239,8 @@ This section presents exemples of parameter and argument values to pass to `depl
 | `string` | `string` | "hello" |
 | `date` | `timestamp` |  "1629965551", "2022-01-01T12:00:00Z" |
 | `duration` | `int` | -965551 |
+| `address` | `address` | "tz1..." |
+| `bytes` | `bytes` | "10abff" |
 | `rational` | `pair int nat` | [-5, 2] |
 | `tez` | `mutez` | 5000000, "5tz", "5000000utz" |
 | `int * string` | `pair int string` | [-5, "hello"] |
