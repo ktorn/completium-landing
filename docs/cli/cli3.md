@@ -58,7 +58,7 @@ entry pay(seller : address) {
 
 The command to deploy:
 ```bash
-$ completium-cli deploy payment.arl --parameters '{ "fee" : 5 }'
+$ completium-cli deploy payment.arl --parameters '{ "fee" : "5tz" }'
 ```
 
 ### Metadata
