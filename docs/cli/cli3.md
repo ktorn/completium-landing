@@ -18,6 +18,7 @@ $ completium-cli (deploy <FILE.arl> | originate <FILE.tz>) \
     [--amount <AMOUNT>(tz|utz)] \
     [--metadata-storage <PATH_TO_JSON> | --metadata-uri <VALUE_URI>]
     [--init <MICHELSON_DATA>]
+    [--test-mode]
     [--force]
 ```
 
@@ -25,11 +26,12 @@ $ completium-cli (deploy <FILE.arl> | originate <FILE.tz>) \
 | -- | -- |
 | `--as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
 | `--name` | Names deployed contract with specified logical name. Logical name is used to refer to contract when calling or displaying contract. |
-| `--parameters` | Specifies archetype parameter values (only for archetype contract) |
+| `--parameters` | Specifies archetype parameter values (only with archetype contract) |
 | `--amount` | Amount of XTZ to sent when deploying contract.  |
-| `--metadata-storage` | Adds medatadata to contract from json file. |
-| `--metadata-uri` | Adds metadata to contract from uri. |
+| `--metadata-storage` | Adds metadata to contract from json file (only with archetype contract). |
+| `--metadata-uri` | Adds metadata to contract from uri (only with archetype contract). |
 | `--init` | Overwrites contract initial storage with Michelson value. |
+| `--test-mode` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
 | `--force` | Does not prompt for parameter validation. |
 
 For example:
