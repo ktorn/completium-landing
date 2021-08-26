@@ -137,6 +137,62 @@ completium-cli show entries KT1EFgRdrT4r6QLx2riZiPNHjo7gcQM8n7f7
 %decide (_ : unit)
 ```
 
+### Storage
+
+It is possible to show contract's storage:
+
+```
+$ completium-cli show storage <CONTRACT_ALIAS|CONTRACT_ADDRESS>
+```
+
+or in json format:
+```
+$ completium-cli show storage <CONTRACT_ALIAS|CONTRACT_ADDRESS> --json
+```
+
+For example:
+```
+$ cat simple.arl
+archetype simple
+variable v  : nat = 0
+entry setvalue(p : nat) { v := p }
+
+$ completium-cli deploy simple.arl
+? simple already exists, overwrite it? Yes
+Originate settings:
+  network	    : granada
+  contract	  : simple
+  by		      : admin
+  send		    : 0 ꜩ
+  storage	    : 0
+  total cost	: 0.082488 ꜩ
+? Confirm settings Yes
+Forging operation...
+Waiting for confirmation of origination for KT1WVrMD4RWVEkW9gWqH4ntEMNBckG7Lucm8 ...
+Origination completed for KT1WVrMD4RWVEkW9gWqH4ntEMNBckG7Lucm8 named simple.
+https://better-call.dev/granadanet/KT1WVrMD4RWVEkW9gWqH4ntEMNBckG7Lucm8
+
+$ completium-cli call simple --arg '{ "p" : 2 }'
+Call settings:
+  network	    : granada
+  contract	  : simple_nat
+  by		      : admin
+  send		    : 0 ꜩ
+  entrypoint	: default
+  argument	  : 2
+  total cost	: 0.000532 ꜩ
+? Confirm settings Yes
+Forging operation...
+Waiting for ooGRwqf9GKYsvvggiyqYEF1xRqa9gnXcQDvJJjDt73M1yTrmyAV to be confirmed...
+Operation injected: https://granada.tzstats.com/ooGRwqf9GKYsvvggiyqYEF1xRqa9gnXcQDvJJjDt73M1yTrmyAV
+
+$ completium-cli show storage simple
+2
+
+$ completium-cli sjow storage simple --json
+{ "int" : 2 }
+```
+
 ## Call
 
 ```
@@ -159,7 +215,7 @@ $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
 For example, if `mycontract.arl` defines an entry point `payback`:
 
 ```archetype
-entry payback (n : int) {
+entry payback (i : int, n : nat) {
   // ...
 }
 ```
@@ -167,7 +223,7 @@ entry payback (n : int) {
 The command to call the entry is:
 
 ```
-$ completium-cli call mycontract --entry payback --arg '{ "n" : 5 }'
+$ completium-cli call mycontract --entry payback --arg '{ "i" : -4, "n" : 5 }'
 ```
 
 ## Argument
