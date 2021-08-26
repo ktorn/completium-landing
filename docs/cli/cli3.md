@@ -160,12 +160,12 @@ entry setvalue(p : nat) { v := p }
 $ completium-cli deploy simple.arl
 ? simple already exists, overwrite it? Yes
 Originate settings:
-  network	    : granada
-  contract	  : simple
-  by		      : admin
-  send		    : 0 ꜩ
-  storage	    : 0
-  total cost	: 0.082488 ꜩ
+  network	  : granada
+  contract    : simple
+  by          : admin
+  send  	  : 0 ꜩ
+  storage	  : 0
+  total cost  : 0.082488 ꜩ
 ? Confirm settings Yes
 Forging operation...
 Waiting for confirmation of origination for KT1WVrMD4RWVEkW9gWqH4ntEMNBckG7Lucm8 ...
@@ -174,13 +174,13 @@ https://better-call.dev/granadanet/KT1WVrMD4RWVEkW9gWqH4ntEMNBckG7Lucm8
 
 $ completium-cli call simple --arg '{ "p" : 2 }'
 Call settings:
-  network	    : granada
-  contract	  : simple_nat
-  by		      : admin
-  send		    : 0 ꜩ
-  entrypoint	: default
+  network	  : granada
+  contract    : simple_nat
+  by		  : admin
+  send		  : 0 ꜩ
+  entrypoint  : default
   argument	  : 2
-  total cost	: 0.000532 ꜩ
+  total cost  : 0.000532 ꜩ
 ? Confirm settings Yes
 Forging operation...
 Waiting for ooGRwqf9GKYsvvggiyqYEF1xRqa9gnXcQDvJJjDt73M1yTrmyAV to be confirmed...
