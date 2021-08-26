@@ -37,30 +37,29 @@ The goal is to check whether the contract is in the right state after a series o
 
 ```js title="test.js"
 const assert     = require('assert');
-const Completium = require('@completium/completium-cli');
+const { deploy, getBalance } = require('@completium/completium-cli');
 
 const test = async () => {
-  const completium = new Completium ();
   // Scenario
-  const balance_before = (await completium.getBalance()).toNumber();
+  const balance_before = (await getBalance()).toNumber();
   var cost = 0;
-  var op = await completium.originate('state_machine.arl');
+  var [state_machine, op] = await deploy('state_machine.arl');
   cost += op.cost.toNumber();
   // send 5tz to contract
-  var op = await completium.call("state_machine", {
+  var op = await state_machine.init({
     entry : "init",
     amount: "5tz" });
   cost += op.cost.toNumber();
-  var op = await completium.call("state_machine", { entry : "inc_value" });
+  var op = await state_machine.inc_value();
   cost += op.cost.toNumber();
-  var op = await completium.call("state_machine", { entry : "inc_value" });
+  var op = await state_machine.inc_value();
   cost += op.cost.toNumber();
   // Should return the 5tz sent with `init`
-  var op = await completium.call("state_machine", { entry : "complete" });
+  var op = await state_machine.complete());
   cost += op.cost.toNumber();
   // Test final state and balance
-  const storage = await completium.getStorage("state_machine");
-  const balance   = (await completium.getBalance()).toNumber();
+  const storage = await state_machine.getStorage();
+  const balance   = (await getBalance()).toNumber();
   assert(storage._state == 3, "Invalid contract state");
   assert(balance == balance_before - cost, "Invalid caller balance");
 }
