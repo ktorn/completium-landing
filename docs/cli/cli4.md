@@ -72,7 +72,7 @@ Note that when there is only one entrypoint, the `call` function must be used.
 ```js
 const { deploy, call } = require('@completium/completium-cli');
 const [escrow, op] = await deploy('./escrow.arl');
-const op = await call({ amount: '50tz', as: 'admin' });
+const op = await call('escrow', { amount: '50tz', as: 'admin' });
 ```
 
 ## transfer
