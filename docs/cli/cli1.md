@@ -84,7 +84,7 @@ Check the container is running with the following docker command:
 ```
 $ docker container ls
 CONTAINER ID   IMAGE                       COMMAND          CREATED        STATUS        PORTS                      NAMES
-719c8f02f119   tqtezos/flextesa:20210316   "flobox start"   14 hours ago   Up 14 hours   0.0.0.0:20000->20000/tcp   my-sandbox
+719c8f02f119   tqtezos/flextesa:20210316   "granabox start"   14 hours ago   Up 14 hours   0.0.0.0:20000->20000/tcp   my-sandbox
 ```
 
 The following command stops the sandbox:
