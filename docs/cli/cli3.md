@@ -25,7 +25,7 @@ $ completium-cli (deploy <FILE.arl> | originate <FILE.tz>) \
 | -- | -- |
 | `--as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
 | `--name` | Names deployed contract with specified logical name. Logical name is used to refer to contract when calling or displaying contract. |
-| `--param` | Specifies archetype parameter values (see example below) |
+| `--parameters` | Specifies archetype parameter values (see example below) |
 | `--amount` | Amount of XTZ to sent when deploying contract.  |
 | `--metadata-storage` | Adds medatadata to contract from json file. |
 | `--metadata-uri` | Adds metadata to contract from uri. |
@@ -56,7 +56,7 @@ entry pay(seller : address) {
 
 The command to deploy:
 ```bash
-$ completium-cli deploy payment.arl --param '{ "fee" : 5 }'
+$ completium-cli deploy payment.arl --parameters '{ "fee" : 5 }'
 ```
 
 ### Metadata
