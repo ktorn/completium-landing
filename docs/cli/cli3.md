@@ -238,6 +238,7 @@ This section presents exemples of parameter and argument values to pass to `depl
 | `int` | `int` | 5, -10 |
 | `string` | `string` | "hello" |
 | `date` | `timestamp` |  "1629965551", "2022-01-01T12:00:00Z" |
+| `bool` | `bool` | true, false |
 | `duration` | `int` | -965551 |
 | `address` | `address` | "tz1..." |
 | `bytes` | `bytes` | "10abff" |
