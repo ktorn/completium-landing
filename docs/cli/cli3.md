@@ -200,6 +200,7 @@ $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
   [--as <ACCOUNT_ALIAS>] \
   [--entry <ENTRYPOINT>] \
   [--arg <ARG>] \
+  [--arg-michelson <MICHELSON_ARG>] \
   [--amount <AMOUNT>(tz|utz)] \
   [--force]
 ```
@@ -208,7 +209,8 @@ $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
 | -- | -- |
 | `--as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
 | `--entry` | Name of the entrypoint to call. May be omitted if the contract has only one entrypoint. |
-| `--arg` | Specifies entrypoints parameter values (see example below)) |
+| `--arg` | Specifies entrypoints parameter values (see example below). |
+| `--arg-michelson` | Specifies entrypoints parameter values in Michelson format. |
 | `--amount` | Amount of XTZ to sent when calling contract.  |
 | `--force` | Does not prompt for parameter validation. |
 
