@@ -34,16 +34,16 @@ const [mycontract, op] = await deploy('./mycontract.arl', {
 
 The second argument object may have the following entries:
 
-| Entry | Description |
-| -- | -- |
-| `as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
-| `name` | Names deployed contract with specified logical name. Logical name is used to refer to contract when calling or displaying contract. |
-| `parameters` | Specifies archetype parameter values (only with archetype contract) |
-| `amount` | Amount of XTZ to sent when deploying contract.  |
-| `metadata-storage` | Adds metadata to contract from json file (only with archetype contract). |
-| `metadata-uri` | Adds metadata to contract from uri (only with archetype contract). |
-| `init` | Overwrites contract initial storage with Michelson value. |
-| `test-mode` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
+| Entry | JS type | Description |
+| -- | -- | -- |
+| `as` | `string` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
+| `name` | `string` | Names deployed contract with specified logical name. Logical name is used to refer to contract when calling or displaying contract. |
+| `parameters` | `object` | Specifies archetype parameter values (only with archetype contract) |
+| `amount` | `string` | Amount of XTZ to sent when deploying contract.  |
+| `metadata-storage`| `string` | Adds metadata to contract from json file (only with archetype contract). |
+| `metadata-uri`| `string` | Adds metadata to contract from uri (only with archetype contract). |
+| `init`| `string` | Overwrites contract initial storage with Michelson value. |
+| `test-mode` | `bool` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
 
 ## transfer
 
