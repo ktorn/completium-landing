@@ -30,20 +30,5 @@ Once installed, run the `init` command:
 completium-cli init
 ```
 
-## Archetype
-
-`$completium-cli` can install (or update) <a href='https://archetype-lang.org/'>Archetype</a> compiler with the following command:
-
-```
-completium-cli install bin archetype
-```
-
-If Archetype binary is already installed, you can just set the path with:
-
-```
-completium-cli set bin archetype <PATH_TO_ARCHETYPE_BIN>
-```
-
-
 
 

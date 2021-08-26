@@ -31,8 +31,8 @@ For example:
 
 ```bash
 $ completium-cli show endpoint
-Current network: edo
-Current endpoint: https://edonet-tezos.giganode.io
+Current network: granada
+Current endpoint: https://granadanet-tezos.giganode.io
 ```
 ## Switch endpoint
 
@@ -106,8 +106,8 @@ Current endpoint: http://localhost:20000
   main       https://mainnet.smartpy.io
   main       https://rpc.tzbeta.net
   main       https://api.tez.ie/rpc/mainnet
-  edo        https://edonet-tezos.giganode.io
-  edo        https://edonet.smartpy.io
+  granada    https://granadanet-tezos.giganode.io
+  granada    https://granadanet.smartpy.io
   florence   https://florence-tezos.giganode.io
 ❯ sandbox    http://localhost:20000
 ```

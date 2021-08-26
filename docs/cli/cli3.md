@@ -8,14 +8,29 @@ import Link from '@docusaurus/Link';
 
 ## Deploy / originate
 
+`deploy` is the command to originate an archetype contract (with file extension `.arl`), and `originate` is the command to originate a michelson contract (with file extension `.tz`).
+
 ```
-$ completium-cli deploy <FILE.arl> \
+$ completium-cli (deploy <FILE.arl> | originate <FILE.tz>) \
     [--as <ACCOUNT_ALIAS>] \
     [--named <CONTRACT_ALIAS>] \
+    [--param <PARAM> ] \
     [--amount <AMOUNT>(tz|utz)] \
     [--metadata-storage <PATH_TO_JSON> | --metadata-uri <VALUE_URI>]
+    [--init <MICHELSON_DATA>]
     [--force]
 ```
+
+| Command | Description |
+| -- | -- |
+| `--as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
+| `--name` | Names deployed contract with specified logical name. Logical name is used to refer to contract when calling or displaying contract. |
+| `--param` | Specifies archetype parameter values (see example below)) |
+| `--amount` | Amount of XTZ to sent when deploying contract.  |
+| `--metadata-storage` | Adds medatadata to contract from json file. |
+| `--metadata-uri` | Adds metadata to contract from uri. |
+| `--init` | Overwrites contract initial storage with Michelson value. |
+| `--force` | Does not prompt for parameter validation. |
 
 For example:
 
@@ -24,6 +39,27 @@ $ completium-cli deploy mycontract.arl --amount 15.5tz
 ```
 
 This creates a contract alias `mycontract`.
+
+### Parameters
+
+The following archetype contract requires one parameter `fee` when deployed:
+
+```archetype title="payment.arl"
+archetype payment(fee : tez)
+
+variable amount : tez : 150tz
+
+entry pay(seller : address) {
+  transfer (amount - fee) to seller
+}
+```
+
+The command to deploy:
+```bash
+$ completium-cli deploy payment.arl --param '{ "fee" : 5 }'
+```
+
+### Metadata
 
 One way to set *metadata* is to provide a json file as the `--metadata-storage` argument.
 
@@ -105,9 +141,18 @@ completium-cli show entries KT1EFgRdrT4r6QLx2riZiPNHjo7gcQM8n7f7
 $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
   [--as <ACCOUNT_ALIAS>] \
   [--entry <ENTRYPOINT>] \
-  [--with <ARG>] \
-  [--amount <AMOUNT>(tz|utz)]
+  [--arg <ARG>] \
+  [--amount <AMOUNT>(tz|utz)] \
+  [--force]
 ```
+
+| Command | Description |
+| -- | -- |
+| `--as` | Deploys with specified account. Default account is the one returned by command `completium-cli show account`. |
+| `--entry` | Name of the entrypoint to call. May be omitted if the contract has only one entrypoint. |
+| `--arg` | Specifies entrypoints parameter values (see example below)) |
+| `--amount` | Amount of XTZ to sent when calling contract.  |
+| `--force` | Does not prompt for parameter validation. |
 
 For example, if `mycontract.arl` defines an entry point `payback`:
 
@@ -120,8 +165,21 @@ entry payback (n : int) {
 The command to call the entry is:
 
 ```
-$ completium-cli call mycontract --entry payback --with 5
+$ completium-cli call mycontract --entry payback --arg '{ "n" : 5 }'
 ```
+
+## Argument
+
+This section presents exemples of parameter and argument values to pass to `deploy --param` and `call --arg` commands.
+
+| Archetype type | Michelson type | Value examples |
+| -- | -- | -- |
+| `nat` | `nat` | 5 |
+| `int` | `int` | 5, -10 |
+| `string` | `string` | "hello" |
+| `date` | `timestamp` |  "1629965551" |
+| `duration` | `int` | 965551 |
+| `rational` | `Pair int nat` | [-5, 2] |
 
 ## Generate javascript
 
