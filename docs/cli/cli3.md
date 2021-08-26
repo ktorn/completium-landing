@@ -14,7 +14,7 @@ import Link from '@docusaurus/Link';
 $ completium-cli (deploy <FILE.arl> | originate <FILE.tz>) \
     [--as <ACCOUNT_ALIAS>] \
     [--named <CONTRACT_ALIAS>] \
-    [--param <PARAM> ] \
+    [--parameters <PARAM> ] \
     [--amount <AMOUNT>(tz|utz)] \
     [--metadata-storage <PATH_TO_JSON> | --metadata-uri <VALUE_URI>]
     [--init <MICHELSON_DATA>]
