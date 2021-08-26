@@ -214,7 +214,7 @@ $ completium-cli call <CONTRACT_ADDRESS|CONTRACT_ALIAS> \
 | `--amount` | Amount of XTZ to sent when calling contract.  |
 | `--force` | Does not prompt for parameter validation. |
 
-For example, if `mycontract.arl` defines an entry point `payback`:
+For example, if `mycontract.arl` defines a (non-unique) entry point `payback`:
 
 ```archetype
 entry payback (i : int, n : nat) {
@@ -237,8 +237,8 @@ This section presents exemples of parameter and argument values to pass to `depl
 | `nat` | `nat` | 5 |
 | `int` | `int` | 5, -10 |
 | `string` | `string` | "hello" |
-| `date` | `timestamp` |  "1629965551" |
-| `duration` | `int` | 965551 |
+| `date` | `timestamp` |  "1629965551", "2022-01-01T12:00:00Z" |
+| `duration` | `int` | -965551 |
 | `rational` | `Pair int nat` | [-5, 2] |
 
 ## Generate javascript
