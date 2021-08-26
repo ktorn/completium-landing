@@ -1,5 +1,4 @@
 module.exports = function DappPlugin(context, options) {
-  console.log("dappplugin");
     return {
       name: 'dapp',
       configureWebpack(config, isServer, utils) {
