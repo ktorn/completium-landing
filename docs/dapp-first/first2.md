@@ -84,7 +84,9 @@ Enter this command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Termi
 ```
 completium-cli deploy ./contract/ownership.arl --init 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw'
 ```
-(replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by any other valid address you own)
+
+Replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
+(run `completium-cli show account` to display the address - Public Key hash).
 
 It displays the main origination parameters and asks for confirmation. Enter `Y` and press enter.
 
@@ -106,7 +108,9 @@ In order to originate from the Michelson version (available in `contract` folder
 ```
 completium-cli originate ./contract/ownership.tz --init '(Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0 (Pair 1624952132 0)))))'
 ```
-(replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by any other valid address you own)
+
+Replace *twice* address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
+(run `completium-cli show account` to display the address - Public Key hash).
 
 ## Contract API
 

@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { Button, Typography } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { DAppProvider, useAccountPkh, useReady, useTezos } from './dappstate';
+import { DAppProvider, useAccountPkh, useReady, useTezos } from '../../src/components/dapp';
 import Snack from './components/Snack';
 import { SnackProvider, useSnackContext } from './snackstate';
 import WalletButton from './components/WalletButton';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useReady, useWallet, useConnect } from '../dappstate';
+import { useReady, useWallet, useConnect } from '../../../src/components/dapp';
 import { network } from '../settings';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
