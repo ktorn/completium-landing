@@ -36,7 +36,7 @@ Current endpoint: https://testnet-tezos.giganode.io
 ```
 ## Switch endpoint
 
-Select the current endpoint with the following command:
+Select the current endpoint from menu with the following command:
 
 ```
 completium-cli switch endpoint
@@ -52,14 +52,20 @@ Current endpoint: https://testnet-tezos.giganode.io
 ❯ main       https://mainnet-tezos.giganode.io
   granada    https://testnet-tezos.giganode.io
   florence   https://florence-tezos.giganode.io
-
 ```
+Use up/down arrows to select the required endpoint.
 
 ## Add endpoint
 
 ```bash
 completium-cli add endpoint (main|granada|florence) <ENDPOINT_URL>
 ```
+## Set endpoint
+
+```bash
+completium-cli set endpoint <ENDPOINT_URL>
+```
+The command fails if the endpoint is not registered (see `add endpoint` above).
 
 ## Remove endpoint
 
@@ -77,12 +83,12 @@ completium-cli mockup init
 This command makes all registered accounts available in the mockup mode and tansfers 1000 XTZ to each.
 
 To turn mockup mode on, use the following command:
-```
-compleitum-cli set endpoint mockup
+```bash
+completium-cli set endpoint mockup
 ```
 
 :::info
-The mockpup mode requires the Tezos client to be installed and executed with the command `tezos-client`. Please refer to [this page](https://assets.tqtezos.com/docs/setup/1-tezos-client/) for installation instructions.
+The mockup mode requires the Tezos client to be installed and executed with the command `tezos-client`. Please refer to [this page](https://assets.tqtezos.com/docs/setup/1-tezos-client/) for installation instructions.
 :::
 
 ## Sandbox
