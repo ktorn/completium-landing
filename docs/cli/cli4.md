@@ -8,7 +8,7 @@ import Link from '@docusaurus/Link';
 
 `$completium-cli` also comes as a Javascript library to implement test scenarios.
 
-It provides a subset of commands as programming fnuctions. The benefit is that you can use endpoints and accounts already configured with the CLI, which simplifies the writing of scenarios.
+It provides a subset of commands as programming functions. The benefit is that you can use endpoints and accounts already configured with the CLI, which simplifies the writing of scenarios.
 
 An example of test scenario is available <Link to='/docs/contract/test-scenario#example'>here</Link>.
 
@@ -190,7 +190,7 @@ const { packTyped } = require('@completium/completium-cli')
 Example:
 ```js
   const value = {"int": 42};
-  const type = {"prim": "init"};
+  const type = {"prim": "int"};
   const packedValue = packTyped(value, type);
   console.log(packedValue); // 0x05002a
 ```
