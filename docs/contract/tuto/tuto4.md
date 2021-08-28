@@ -63,17 +63,10 @@ completium-cli call 4-time_window
 
 If you try this command before valid timelapse of 5 minutes and 10 seconds, it returns an error displayed below:
 
-```
- completium-cli call 4-time_window
-? Confirm call to entrypoint default of contract 4-time_window by 'admin' with 0 ꜩ and argument {"prim":"Unit"} on edo? Yes
-Account 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw' is calling default of KT1GKryAWodQmVPQV4fMsW9FHBmWNgpEu7fF with 0 ꜩ...
-{
-  errors: '...',
-  name: 'TezosOperationError',
-  id: 'proto.008-PtEdo2Zk.michelson_v1.script_rejected',
-  kind: 'temporary',
-  message: 'InvalidCondition: r1'
-}
+```bash
+$ completium-cli call 4-time_window
+Error from contract KT1HEH4Hff6Dq53PsoaX18wnkx1bVaPKnZGH (4-time_window):
+failed at 41 with (Pair "InvalidCondition" "r1")
 ```
 ### Next
 

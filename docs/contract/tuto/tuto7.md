@@ -106,13 +106,13 @@ completium-cli deploy 7-assets.arl
 The following command adds a vehicle:
 
 ```
-completium-cli call 7-assets --entry addvehicle --with '"vin0012"'
+completium-cli call 7-assets --entry addvehicle --arg '{ "pvin" : "vin0012" }'
 ```
 
 The following command repairs vehicle with vin `vin0005`:
 
 ```
-completium-cli call 7-assets --entry repair --with '"vin0005"'
+completium-cli call 7-assets --entry repair --arg '{ "k" : "vin0005" }'
 ```
 
 The following repairs the 3 oldest vehicles:
@@ -124,7 +124,7 @@ completium-cli call 7-assets --entry repair_oldest
 Finally, repaint repaired vehicles in blue:
 
 ```
-completium-cli call 7-assets --entry repaint_repaired --with '3'
+completium-cli call 7-assets --entry repaint_repaired --arg '{ "c" : 3 }'
 ```
 
 Enums are implemented with integer values starting from 0.

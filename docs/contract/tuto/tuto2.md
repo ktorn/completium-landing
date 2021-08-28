@@ -56,9 +56,8 @@ completium-cli deploy 2-exec_condition.arl
 The following command calls the unique entry point with the argument `14` using the `--with` option:
 
 ```
-completium-cli call 2-exec-condition --with '14'
+completium-cli call 2-exec-condition --arg '{ "v" : 14 }'
 ```
-
 
 ## View contract
 
