@@ -68,6 +68,22 @@ completium-cli remove endpoint <ENDPOINT_URL>
 ```
 
 ## Mockup
+The mockup mode is used to run smart contracts locally without the need to interact with a network. It is used to speed up the development of smart contracts as it removes the network latency (injection, confirmation, ...).
+
+The following command initialises a new mockup (erases previous one) :
+```
+completium-cli mockup init
+```
+This command makes all registered accounts available in the mockup mode and tansfers 1000 XTZ to each.
+
+To turn mockup mode on, use the following command:
+```
+compleitum-cli set endpoint mockup
+```
+
+:::info
+The mockpup mode requires the Tezos client to be installed and executed with the command `tezos-client`. Please refer to [this page](https://assets.tqtezos.com/docs/setup/1-tezos-client/) for installation instructions.
+:::
 
 ## Sandbox
 
