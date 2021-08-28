@@ -65,7 +65,7 @@ The parameter object may have the following entries:
 | `amount` | `string` | Amount of XTZ to sent when calling contract.  |
 
 :::info
-Note that when there is only one entrypoint, it is named `default` function must be used.
+Note that when there is only one entrypoint, it is named `default`.
 :::
 
  For example:
