@@ -77,16 +77,88 @@ const op = await call('escrow', { amount: '50tz', as: 'admin' });
 
 ## transfer
 
+```js
+const { transfer } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+await transfer('alice', 'bob', '5tz');
+```
+
 ## getBalance
+```js
+const { getBalance } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+const balance_alice = await getBalance('alice');
+console.log(balance_alice.toNumber());
+```
+
+`balance_alice` is a <Link to="https://www.npmjs.com/package/bignumber.js">big number</Link>.
 
 ## getStorage
+
+```js
+const { getStorage } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+const storage = await getStorage('escrow');
+```
+
 ## getContract
+
+```js
+const { getContract } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+const escrow = await getContract('escrow');
+```
 
 ## setAccount
 
+```js
+const { setAccount } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+const escrow = await setAccount('alice');
+```
+
+Set default account.
+
 ## setEndpoint
+```js
+const { setEndpoint } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+await setEndpoint('https://testnet-tezos.giganode.io');
+```
+
+Set the endpoint rpc. Endpoint must be registered in completium.
 
 ## getAddress
+```js
+const { getAddress } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+const pkh_alice = await getAddress('alice');
+console.log(pkh_alice); // tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb
+
+const addr_escrow = await getAddress('escrow');
+console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
+```
 
 ## pack
 
