@@ -129,7 +129,7 @@ const { setAccount } = require('@completium/completium-cli')
 
 Example:
 ```js
-const escrow = await setAccount('alice');
+await setAccount('alice');
 ```
 
 Set default account.
@@ -144,7 +144,10 @@ Example:
 await setEndpoint('https://testnet-tezos.giganode.io');
 ```
 
-Set the endpoint rpc. Endpoint must be registered in completium.
+Set the endpoint rpc.
+:::info
+Note that endpoint must be registered in completium.
+:::
 
 ## getAddress
 ```js
@@ -155,14 +158,55 @@ Example:
 ```js
 const pkh_alice = await getAddress('alice');
 console.log(pkh_alice); // tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb
-
 const addr_escrow = await getAddress('escrow');
 console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
 ```
 
 ## pack
+```js
+const { pack } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  const valueInt = 42;
+  const packedInt = pack(valueInt);
+  console.log(packedInt); // 0x05002a
+  const valueString = "archetype";
+  const packedString = pack(valueString);
+  console.log(packedString); // 0x050100000009617263686574797065
+  const valueByte = "0x01abff";
+  const packedByte = pack(valueByte);
+  console.log(packedByte); // 0x050a0000000301abff
+```
+
+Returns a string which represents the packed value.
 
 ## packTyped
+```js
+const { packTyped } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  const value = {"int": 42};
+  const type = {"prim": "init"};
+  const packedValue = packTyped(value, type);
+  console.log(packedValue); // 0x05002a
+```
+
+Returns a string, which represents the packed value from michelson objects.
 
 ## blake2b
-## setNow
+```js
+const { blake2b } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  const value = "archetype";
+  const packed = pack(value);
+  const hash = blake2b(packed);
+  console.log(hash); // 0x7835e68df26e5f2c75a13fb03dd9a84a1d1f88729d4e26259793d1071a450168
+```
+Returns a string.
