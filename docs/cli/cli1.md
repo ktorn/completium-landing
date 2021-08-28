@@ -13,7 +13,7 @@ The Tezos blockchain provides serveral networks:
   * one(s) in the future main net version(s) (to test/preprare future version of smart contracts)
   * optionally several in older versions
 
-Each version of the blockchain is given a name (..., Carthage, Edo, Florence, ...).
+Each version of the blockchain is given a name (..., Florence, Granada, ...).
 
 An endpoint is an entry node to the network. You interact with the blockchain through an endpoint. You need to specify the endpoint's URL when interacting with the blockchain.
 
@@ -66,6 +66,8 @@ completium-cli add endpoint (main|granada|florence) <ENDPOINT_URL>
 ```bash
 completium-cli remove endpoint <ENDPOINT_URL>
 ```
+
+## Mockup
 
 ## Sandbox
 

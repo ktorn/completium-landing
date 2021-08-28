@@ -5,10 +5,13 @@ sidebar_label: Getting Started
 slug: /cli
 hide_title: true
 ---
-import Link from '@docusaurus/Link';
 import DappButton from '../DappButton';
+import DappFigure from '../DappFigure';
+import Link from '@docusaurus/Link';
 
-`$completium-cli` is a command line interface to interact (orginate, call, ...) with <a href='https://archetype-lang.org/'>Archetype</a> smart contracts on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain.
+<DappFigure img='cli.svg' width='30%'/>
+
+`$completium-cli` is a command line interface to interact (orginate, call, ...) with smart contracts on the <Link to='/docs/dapp-tools/tezos'>Tezos</Link> blockchain.
 
 The list of available commands is displayed with:
 
