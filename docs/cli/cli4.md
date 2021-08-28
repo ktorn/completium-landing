@@ -65,14 +65,14 @@ The parameter object may have the following entries:
 | `amount` | `string` | Amount of XTZ to sent when calling contract.  |
 
 :::info
-Note that when there is only one entrypoint, the `call` function must be used.
+Note that when there is only one entrypoint, it is named `default` function must be used.
 :::
 
  For example:
 ```js
 const { deploy, call } = require('@completium/completium-cli');
 const [escrow, op] = await deploy('./escrow.arl');
-const op = await call('escrow', { amount: '50tz', as: 'admin' });
+const op = await escrow.default({ amount: '50tz', as: 'admin' });
 ```
 
 ## transfer
