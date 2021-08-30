@@ -51,7 +51,7 @@ Suppose the `escrow.arl` has several entrypoints among wich the `deposit` entryp
 
 ```js
 const { deploy } = require('@completium/completium-cli');
-const [escrow, op] = await deploy('./escrow.arl');
+const [contract, op] = await deploy('./escrow.arl');
 const op = await escrow.deposit({ amount: '50tz', as: 'admin' });
 ```
 
