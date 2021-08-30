@@ -8,7 +8,7 @@ hide_title: false
 import Link from '@docusaurus/Link';
 
 
-Test scenario is the current industry standard to ensure a contract has the expected behavior. Basically a test is a program that originates the contract(s), calls them and checks the storage value(s) and account(s) balances.
+Test scenarios are the current industry standard to ensure a contract has the expected behavior. Basically a test is a program that originates the contract(s), calls them and checks the storage value(s) and account(s) balances.
 
 This article presents how to write and execute tests with Completium.
 

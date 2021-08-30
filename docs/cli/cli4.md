@@ -43,7 +43,7 @@ The second argument object may have the following entries:
 | `metadata-storage`| `string` | Adds metadata to contract from json file (only with archetype contract). |
 | `metadata-uri`| `string` | Adds metadata to contract from uri (only with archetype contract). |
 | `init`| `string` | Overwrites contract initial storage with Michelson value. |
-| `test-mode` | `bool` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
+| `test` | `bool` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
 
 ## call
 
@@ -63,6 +63,24 @@ The parameter object may have the following entries:
 | `arg` | `object` | Specifies entrypoints parameter values (see example below). |
 | `arg-michelson` | `string`| Specifies entrypoints parameter values in Michelson format. |
 | `amount` | `string` | Amount of XTZ to sent when calling contract.  |
+
+For example, if `mycontract.arl` defines a (non-unique) entry point `payback`:
+
+```archetype
+entry payback (i : int, n : nat) {
+  // ...
+}
+```
+
+The command to call the entry is:
+
+```js
+const { deploy, call } = require('@completium/completium-cli');
+const [escrow, op] = await deploy('./contract.arl');
+const op = await contract.payback({ arg : { i : -5, n : 8 },  as: 'admin' });
+```
+
+This <Link to="/docs/cli/contract#argument">Argument</Link> section presents examples of values for each type.
 
 :::info
 Note that when there is only one entrypoint, it is named `default`.

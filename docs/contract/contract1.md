@@ -10,7 +10,6 @@ import DappFigure from '../DappFigure';
 import DappButton from '../DappButton';
 import Link from '@docusaurus/Link';
 
-
 <DappFigure img='smart-contract.svg' width='30%'/>
 
 A smart contract is a program that is executed by the blockchain. It is similar to a stored procedure on a public distributed database. As such, it must ensure the consistency of the **business logic** it implements.
