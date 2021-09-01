@@ -187,7 +187,7 @@ function Service() {
             <Avatar portrait='br' name='Benoît Rognier' title='CEO edukera' url="benoitrognier"/>
           </Grid>
           <Grid item md={2} sm={12} xs={12}>
-            <Avatar portrait='gd' name='Guillaule Duhamel' title='CTO edukera' url="guillaumeduhamel"/>
+            <Avatar portrait='gd' name='Guillaume Duhamel' title='CTO edukera' url="guillaumeduhamel"/>
           </Grid>
         </Grid>
       </Grid>
