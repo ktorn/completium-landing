@@ -180,6 +180,25 @@ const addr_escrow = await getAddress('escrow');
 console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
 ```
 
+## getAccount
+
+Returns the account object from account alias or address. The account object has the following fields:
+* pkh : public key hash ("tz1...")
+*
+*
+
+```js
+const { getAccount } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+const alice = await getAccount('alice');
+console.log(alice.pkh); // tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb
+const addr_escrow = await getAddress('escrow');
+console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
+```
+
 ## pack
 
 Packs simple literal values (int, string).
