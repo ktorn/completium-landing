@@ -181,6 +181,9 @@ console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
 ```
 
 ## pack
+
+Packs simple literal values (int, string).
+
 ```js
 const { pack } = require('@completium/completium-cli')
 ```
@@ -201,6 +204,9 @@ Example:
 Returns a string which represents the packed value.
 
 ## packTyped
+
+Packs Micheline JSON object. The object's Michelson JSON type is required as second argument.
+
 ```js
 const { packTyped } = require('@completium/completium-cli')
 ```
@@ -228,3 +234,85 @@ Example:
   console.log(hash); // 0x7835e68df26e5f2c75a13fb03dd9a84a1d1f88729d4e26259793d1071a450168
 ```
 Returns a string.
+
+## sign
+
+Signs packed data. Returns an object with the following fields:
+*
+* prefixSig
+*
+
+```js
+const { sign } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  const packed = packTyped(data, datatype);
+  const signed = await sign(packed, { as: myaccounttz1 });
+  console.log(signed.prefixSig); // prints "siged..."
+```
+
+## expr_micheline_to_json
+
+Converts Micheline expression to JSON object.
+
+```js
+const { expr_micheline_to_json } = require('@completium/completium-cli')
+```
+
+Example:
+```
+
+```
+
+## json_micheline_to_expr
+
+Converts Micheline JSON object to Micheline expression.
+
+```js
+const { json_micheline_to_expr } = require('@completium/completium-cli')
+```
+
+Example:
+```
+```
+
+## setQuiet
+
+Expects boolean to turn on or off info traces.
+
+```js
+setQuiet = require('@completium/completium-cli')
+```
+
+## checkBalanceDelta
+
+Checks the delta of an account's balance. Arguments are:
+* account address
+* expected balance delta (balance after - balance before)
+* operation(s)
+
+Throws exception if actual delta is different from expected delta.
+
+```js
+const { checkBalanceDelta } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  await checkBalanceDelta(account.pkh, -50, async () => {
+    // call contract
+  })
+```
+
+It is possible to pass an explicit function to decide:
+```js
+  await checkBalanceDelta(account.pkh, d => { return (d == -50) }, async () => {
+    // call contract
+  })
+```
+
+## getValueFromBigMap
+
+## expectToThrow
