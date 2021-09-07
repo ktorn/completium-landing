@@ -175,17 +175,17 @@ const { getAddress } = require('@completium/completium-cli')
 Example:
 ```js
 const pkh_alice = await getAddress('alice');
-console.log(pkh_alice); // tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb
+console.log(pkh_alice); // "tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb"
 const addr_escrow = await getAddress('escrow');
-console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
+console.log(addr_escrow); // "KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2"
 ```
 
 ## getAccount
 
 Returns the account object from account alias or address. The account object has the following fields:
-* pkh : public key hash ("tz1...")
-*
-*
+* `name` : account alias
+* `pkh` : public key hash ("tz1...")
+* `pubk` : public key ("edpk...")
 
 ```js
 const { getAccount } = require('@completium/completium-cli')
@@ -194,9 +194,8 @@ const { getAccount } = require('@completium/completium-cli')
 Example:
 ```js
 const alice = await getAccount('alice');
-console.log(alice.pkh); // tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb
-const addr_escrow = await getAddress('escrow');
-console.log(addr_escrow); // KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2
+console.log(alice.name); // "alice"
+console.log(alice.pkh); // "tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb"
 ```
 
 ## pack
@@ -211,13 +210,13 @@ Example:
 ```js
   const valueInt = 42;
   const packedInt = pack(valueInt);
-  console.log(packedInt); // 0x05002a
+  console.log(packedInt); // "05002a"
   const valueString = "archetype";
   const packedString = pack(valueString);
-  console.log(packedString); // 0x050100000009617263686574797065
+  console.log(packedString); // "050100000009617263686574797065"
   const valueByte = "0x01abff";
   const packedByte = pack(valueByte);
-  console.log(packedByte); // 0x050a0000000301abff
+  console.log(packedByte); // "050a0000000301abff"
 ```
 
 Returns a string which represents the packed value.
@@ -235,7 +234,7 @@ Example:
   const value = {"int": 42};
   const type = {"prim": "int"};
   const packedValue = packTyped(value, type);
-  console.log(packedValue); // 0x05002a
+  console.log(packedValue); // "05002a"
 ```
 
 Returns a string, which represents the packed value from michelson objects.
@@ -250,16 +249,19 @@ Example:
   const value = "archetype";
   const packed = pack(value);
   const hash = blake2b(packed);
-  console.log(hash); // 0x7835e68df26e5f2c75a13fb03dd9a84a1d1f88729d4e26259793d1071a450168
+  console.log(hash); // "7835e68df26e5f2c75a13fb03dd9a84a1d1f88729d4e26259793d1071a450168"
 ```
 Returns a string.
 
 ## sign
 
 Signs packed data. Returns an object with the following fields:
-*
-* prefixSig
-*
+* `bytes`
+* `sig`
+* `prefixSig`
+* `sbytes`
+
+see [here](https://tezostaquito.io/docs/signing/)
 
 ```js
 const { sign } = require('@completium/completium-cli')
@@ -269,37 +271,40 @@ Example:
 ```js
   const packed = packTyped(data, datatype);
   const signed = await sign(packed, { as: myaccounttz1 });
-  console.log(signed.prefixSig); // prints "siged..."
+  console.log(signed.prefixSig); // prints "edsig..."
 ```
 
-## expr_micheline_to_json
+## exprMichelineToJson
 
 Converts Micheline expression to JSON object.
 
 ```js
-const { expr_micheline_to_json } = require('@completium/completium-cli')
+const { exprMichelineToJson } = require('@completium/completium-cli')
 ```
 
 Example:
+```js
+  const a = exprMichelineToJson('(Pair 0 "archetype")');
+  console.log(JSON.stringify(a)) // {"prim":"Pair","args":[{"int":"0"},{"string":"archetype"}]}
 ```
 
-```
-
-## json_micheline_to_expr
+## jsonMichelineToExpr
 
 Converts Micheline JSON object to Micheline expression.
 
 ```js
-const { json_micheline_to_expr } = require('@completium/completium-cli')
+const { jsonMichelineToExpr } = require('@completium/completium-cli')
 ```
 
 Example:
-```
+```js
+  const b = jsonMichelineToExpr({prim:"Pair",args:[{int:"0"},{string:"archetype"}]});
+  console.log(b); // '(Pair 0 "archetype")'
 ```
 
 ## setQuiet
 
-Expects boolean to turn on or off info traces.
+Expects boolean to turn on or off information traces.
 
 ```js
 setQuiet = require('@completium/completium-cli')
@@ -334,4 +339,39 @@ It is possible to pass an explicit function to decide:
 
 ## getValueFromBigMap
 
+```js
+const { getValueFromBigMap } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  const tbm = await getContract('test_big_map');
+  const storage = await tbm.getStorage();
+  const res = await getValueFromBigMap(storage, {"string" : "archetype"}, {prim : "string"});
+  console.log(JSON.stringify(res)); // {"int":"123"}
+```
+
+```archetype
+archetype test_big_map
+
+variable n : big_map<string, nat> = [("archetype", 123)]
+
+entry empty () {
+  ()
+}
+```
+
 ## expectToThrow
+
+Throws an exception if the argument operation does not throw an exception
+
+```js
+const { expectToThrow } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  await expectToThrow( async () => {
+    // execute something
+  })
+```
