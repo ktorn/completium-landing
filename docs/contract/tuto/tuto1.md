@@ -57,7 +57,7 @@ cd tutorial
 The following command calls the unique entry point:
 
 ```
-completium-cli call 1-hello
+completium-cli call 1-hello --entry main
 ```
 
 ### View contract

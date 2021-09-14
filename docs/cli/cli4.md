@@ -82,17 +82,6 @@ const op = await contract.payback({ arg : { i : -5, n : 8 },  as: 'admin' });
 
 This <Link to="/docs/cli/contract#argument">Argument</Link> section presents examples of values for each type.
 
-:::info
-Note that when there is only one entrypoint, it is named `default`.
-:::
-
- For example:
-```js
-const { deploy, call } = require('@completium/completium-cli');
-const [escrow, op] = await deploy('./escrow.arl');
-const op = await escrow.default({ amount: '50tz', as: 'admin' });
-```
-
 ## transfer
 
 ```js

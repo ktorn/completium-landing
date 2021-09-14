@@ -58,13 +58,13 @@ Note here that the contract's balance is intialized to 5tz.
 The following command calls the unique entry point:
 
 ```
-completium-cli call 4-time_window
+completium-cli call 4-time_window --entry payback_after_period
 ```
 
 If you try this command before valid timelapse of 5 minutes and 10 seconds, it returns an error displayed below:
 
 ```bash
-$ completium-cli call 4-time_window
+$ completium-cli call 4-time_window --entry payback_after_period
 Error from contract KT1HEH4Hff6Dq53PsoaX18wnkx1bVaPKnZGH (4-time_window):
 failed at 41 with (Pair "InvalidCondition" "r1")
 ```
