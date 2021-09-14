@@ -26,7 +26,7 @@ entry main(v : nat) {
   called by admin
   require {
       r1: 10 <= v < 20;
-      r2 otherwise "EXPECTED EVEN VALUE": value % 2 = 0
+      r2 otherwise "EXPECTED EVEN VALUE": v % 2 = 0
   }
   effect {
      value := v;
