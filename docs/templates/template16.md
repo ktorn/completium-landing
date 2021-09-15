@@ -143,7 +143,7 @@ entry updateTransferlist (
         ltransferlist.allowedTransferlists.remove(r)
       done;
       for a in lallowTransferlists do
-        ltransferlist.allowedTransferlists.add(la)
+        ltransferlist.allowedTransferlists.add(a)
       done;
       transferlists.put(transferlistId, ltransferlist)
       end
