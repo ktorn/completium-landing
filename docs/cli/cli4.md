@@ -378,3 +378,11 @@ Example:
     // execute something
   })
 ```
+
+In mockup mode, it is possible to check the error message: for example the following expects the call to fail with "InvalidCaller":
+```js
+  await expectToThrow( async () => {
+    // execute something
+  }, '"InvalidCaller"')
+```
+
