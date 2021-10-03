@@ -242,6 +242,20 @@ Example:
 ```
 Returns a string.
 
+## keccak
+```js
+const { keccak } = require('@completium/completium-cli')
+```
+
+Example:
+```js
+  const value = "archetype";
+  const packed = pack(value);
+  const hash = keccak(packed);
+  console.log(hash); // "3350e998289574faa196b4677e8f77fc74d67937e9059b987f69b542ef6587a0"
+```
+Returns a string.
+
 ## sign
 
 Signs packed data. Returns an object with the following fields:
