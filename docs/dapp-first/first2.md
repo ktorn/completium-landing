@@ -82,7 +82,7 @@ transition claim () {
 Enter this command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link>:
 
 ```
-completium-cli deploy ./contract/ownership.arl --init 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw'
+completium-cli deploy ./contract/ownership.arl --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }'
 ```
 
 Replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
@@ -93,10 +93,10 @@ It displays the main origination parameters and asks for confirmation. Enter `Y`
 The output should look like:
 ```bash
 $ gitpod /workspace/completium-dapp-first $ completium-cli deploy ownership.arl
-? Confirm contract ownership.arl origination by 'admin' with 0 ꜩ on edo? Yes
+? Confirm contract ownership.arl origination by 'admin' with 0 ꜩ on granada? Yes
 Waiting for confirmation of origination for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd ...
 Origination completed for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd named ownership.arl.
-https://better-call.dev/edo2net/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
+https://better-call.dev/granadanet/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
 ```
 
 Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer (it may take up to a dozen of seconds for BCD to synchronize with the blockchain). It shows the origination cost of 0.39ꜩ.
