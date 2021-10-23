@@ -189,7 +189,7 @@ Operation injected: https://granada.tzstats.com/ooGRwqf9GKYsvvggiyqYEF1xRqa9gnXc
 $ completium-cli show storage simple
 2
 
-$ completium-cli sjow storage simple --json
+$ completium-cli show storage simple --json
 { "int" : 2 }
 ```
 
