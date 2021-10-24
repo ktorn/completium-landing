@@ -82,7 +82,7 @@ transition claim () {
 Enter this command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link>:
 
 ```
-completium-cli deploy ./contract/ownership.arl --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }'
+completium-cli deploy ./contract/ownership.arl --as admin --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }'
 ```
 
 Replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
@@ -92,11 +92,17 @@ It displays the main origination parameters and asks for confirmation. Enter `Y`
 
 The output should look like:
 ```bash
-$ gitpod /workspace/completium-dapp-first $ completium-cli deploy ownership.arl
-? Confirm contract ownership.arl origination by 'admin' with 0 ꜩ on granada? Yes
-Waiting for confirmation of origination for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd ...
-Origination completed for KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd named ownership.arl.
-https://better-call.dev/granadanet/KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd
+$ completium-cli deploy ./contract/ownership.arl --as admin --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }' --force
+Originate settings:
+  network	: granada
+  contract	: ownership
+  as	    : admin
+  send		: 0 ꜩ
+  storage	: (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0 (Pair 1635064614 0)))))
+  total cost	: 0.42918 ꜩ
+Waiting for confirmation of origination for KT1PPMXvCQh2g3b4YP4ovha5ZwpbKhh5xNh5 ...
+Origination completed for KT1PPMXvCQh2g3b4YP4ovha5ZwpbKhh5xNh5 named ownership.
+https://better-call.dev/granadanet/KT1PPMXvCQh2g3b4YP4ovha5ZwpbKhh5xNh5
 ```
 
 Click on the generated link to display the contract in <Link to='/docs/dapp-tools/bcd'>Better Call Dev</Link> indexer (it may take up to a dozen of seconds for BCD to synchronize with the blockchain). It shows the origination cost of 0.39ꜩ.

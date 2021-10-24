@@ -77,8 +77,8 @@ completium-cli show contract ownership
 **Copy-paste** the contract address line 9 of `~/src/settings.js`, like for example:
 ```js {4}
 const [settings,setState] = useState({
-    network  : 'edo2net',
-    endpoint : 'https://edonet.smartpy.io',
+    network  : 'granadanet',
+    endpoint : 'https://testnet-tezos.giganode.io',
     contract : 'KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd',
     show     : false,
 });
