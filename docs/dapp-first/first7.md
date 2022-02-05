@@ -26,7 +26,7 @@ Another nice DApp would be an ownership contracts indexer, which notifies when a
 
 ## Smart Contracts
 
-Write your own smart contract with <a href='https://archetype-lang.org/'>Archetype</a>, a high-level domain-specific language with all Michelson features, plus exclusive features (new types, state machine design, ...) to ease development, tests and formal verification.
+Write your own smart contract with <a href='https://archetype-lang.org/'>Archetype</a>, a high-level generic purpose language for smart contracts on Tezos. It provides with all Michelson features, plus exclusive features (new types, state machine design, ...) to ease development, tests and formal verification.
 
 Archetype comes with a convenient set of <a href='https://github.com/edukera/try-archetype#smart-contracts-base' target='_blank'>contract examples</a> to start with. Scan it, select the one to start from, and adapt it to your needs. Learn the Archetype language with a eight steps online tutorial:
 

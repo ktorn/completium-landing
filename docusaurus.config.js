@@ -25,7 +25,6 @@ module.exports = {
     colorMode: {
       // "light" | "dark"
       defaultMode: 'dark',
-
       // Hides the switch in the navbar
       // Useful if you want to support a single color mode
       disableSwitch: true,
@@ -109,12 +108,6 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/edukera/completium-landing/tree/master',
-        },
-        'dapp-miles': {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         blog: {
           showReadingTime: true,

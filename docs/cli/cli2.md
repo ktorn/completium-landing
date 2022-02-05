@@ -30,6 +30,12 @@ completium-cli import faucet <FAUCET_FILE> as <ACCOUNT_ALIAS>
 completium-cli import privatekey <PRIVATE_KEY> as <ACCOUNT_ALIAS>
 ```
 
+## Generate account
+
+```bash
+completium-cli generate account as <ACCOUNT_ALIAS> [--force]
+```
+
 ## Show current account
 
 The following command displays the account `$completium-cli` is currently using:

@@ -12,9 +12,9 @@ import TabItem from '@theme/TabItem';
 
 This contract follows the Financial Asset 2 (FA 2) <a href='https://gitlab.com/tzip/tzip/-/blob/master/proposals/tzip-12/tzip-12.md'>TZIP 12</a> specification for non-fungible token on Tezos.
 
-You can observe the contract in action in the <Link to='/docs/dapp-nonfungible/'>Collectible cards</Link> DApp example.
-
-A <Link to='/docs/templates/auction'>contract template</Link> is available to transfer ownership of a FA 2 NFT based on an auction process.
+:::info
+The version presented below is a simple minimal version. A full-featured version (with mint, burn, feeless transfer, ...) is available [here](https://gitlab.com/tezos-paris-hub/rarible/rarible-nft-contracts). 
+:::
 
 ## API
 
@@ -57,8 +57,7 @@ completium-cli deploy nft.arl
 
 <TabItem value="archetype">
 
-```archetype title="nft.arl"
-archetype nft
+```archetype nft
 
 asset ledger identified by ltoken to big_map {
   ltoken     : nat;
@@ -90,10 +89,10 @@ entry update_operators (upl : list<or<operator_param, operator_param>>) {
   for up in upl do
     match up with
     | left(param)  -> (* add *)
-      dorequire(ledger[param.opp_token_id].lowner = source, "CALLER NOT OWNER");
+      dorequire(ledger[param.opp_token_id].lowner = caller, "CALLER NOT OWNER");
       operator.add({param.opp_operator; param.opp_token_id; param.opp_owner})
     | right(param) -> (* remove *)
-      dorequire(ledger[param.opp_token_id].lowner = source, "CALLER NOT OWNER");
+      dorequire(ledger[param.opp_token_id].lowner = caller, "CALLER NOT OWNER");
       operator.remove((param.opp_operator, param.opp_token_id, param.opp_owner))
     end;
   done;
@@ -105,14 +104,17 @@ record transfer_destination {
   token_amount_dest : nat
 } as ((to_, (token_id, amount)))
 
-entry %transfer (txs : list<address * list<transfer_destination>>) {
-  for tx in txs do
-    var %from = tx[0];
-    var tds = tx[1];
-    for td in tds do begin
-      if caller <> %from then begin
+record transfer_item {
+  from_: address;
+  txs: list<transfer_destination>;
+}
+
+entry %transfer (itxs : list<transfer_item>) {
+  for tx in itxs do
+    for td in tx.txs do begin
+      if caller <> tx.from_ then begin
         (* check operator *)
-        dorequire(operator.contains((caller,td.token_id_dest,%from)),"FA2_NOT_OPERATOR");
+        dorequire(operator.contains((caller,td.token_id_dest,tx.from_)),"FA2_NOT_OPERATOR");
       end;
       (* set token ownership *)
       ledger.addupdate(td.token_id_dest,{ lowner = td.to_dest });
@@ -152,78 +154,63 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
 
 
 ```js
-# (Pair {  } (Pair {  } {  }))
+# (Pair { } (Pair { } { }))
 {
   storage (pair (big_map %ledger nat address) (pair (set %operator (pair address (pair nat address))) (big_map %token_metadata nat (pair (nat %token_id) (pair (string %symbol) (pair (string %name) (pair (nat %decimals) (map %extras string string))))))));
-  parameter (or (pair %balance_of (list %requests (pair (address %owner) (nat %token_id))) (contract (list (pair (pair (address %owner) (nat %token_id)) (nat %balance))))) (or (list %update_operators (or (pair (address %owner) (pair (address %operator) (nat %token_id))) (pair (address %owner) (pair (address %operator) (nat %token_id))))) (or (list %transfer (pair address (list (pair (address %to_) (pair (nat %token_id) (nat %amount)))))) (contract %token_metadata_registry address))));
+  parameter (or (or (pair %balance_of (list %requests (pair (address %owner) (nat %token_id))) (contract (list (pair (pair %request (address %owner) (nat %token_id)) (nat %balance))))) (list %update_operators (or (pair %add_operator (address %owner) (pair (address %operator) (nat %token_id))) (pair %remove_operator (address %owner) (pair (address %operator) (nat %token_id)))))) (or (list %transfer (pair (address %from_) (list %txs (pair (address %to_) (pair (nat %token_id) (nat %amount)))))) (contract %token_metadata_registry address)));
   code { NIL operation;
          DIG 1;
          UNPAIR;
-         DIP { UNPAIR; SWAP; UNPAIR; SWAP };
+         DIP { UNPAIR 3 };
          IF_LEFT
-           { UNPAIR;
-             DIG 5;
-             DUP;
-             DUG 6;
-             DIG 2;
-             DUP;
-             DUG 3;
-             AMOUNT;
-             DIG 3;
-             DUP;
-             DUG 4;
-             MAP { DUP;
-                   CAR;
-                   DIG 9;
-                   DUP;
-                   DUG 10;
-                   DIG 2;
-                   DUP;
-                   DUG 3;
-                   CDR;
-                   GET;
-                   IF_NONE
-                     { PUSH string "GetNoneValue";
-                       FAILWITH }
-                     {  };
-                   COMPARE;
-                   EQ;
-                   IF
-                     { PUSH nat 1 }
-                     { PUSH nat 0 };
-                   DIG 1;
-                   DUP;
-                   DUG 2;
-                   PAIR;
-                   SWAP;
-                   DROP };
-             TRANSFER_TOKENS;
-             CONS;
-             DIP { DIG 5; DROP };
-             DUG 5;
-             DROP 2;
-             SWAP;
-             PAIR;
-             SWAP;
-             PAIR;
-             DIG 1;
-             PAIR }
            { IF_LEFT
+               { UNPAIR;
+                 DUP 6;
+                 DUP 3;
+                 AMOUNT;
+                 DUP 4;
+                 MAP { DUP;
+                       CAR;
+                       DUP 8;
+                       DUP 3;
+                       CDR;
+                       GET;
+                       IF_NONE
+                         { PUSH string "ledger";
+                           PUSH string "AssetNotFound";
+                           PAIR;
+                           FAILWITH }
+                         {  };
+                       COMPARE;
+                       EQ;
+                       IF
+                         { PUSH nat 1 }
+                         { PUSH nat 0 };
+                       DUP 2;
+                       PAIR;
+                       SWAP;
+                       DROP };
+                 TRANSFER_TOKENS;
+                 CONS;
+                 DIP { DIG 5; DROP };
+                 DUG 5;
+                 DROP 2;
+                 PAIR 3;
+                 DIG 1;
+                 PAIR }
                { DUP;
                  ITER { DUP;
                         IF_LEFT
-                          { SOURCE;
-                            DIG 6;
-                            DUP;
-                            DUG 7;
-                            DIG 2;
-                            DUP;
-                            DUG 3;
+                          { SENDER;
+                            DUP 5;
+                            DUP 3;
                             CDR;
                             CDR;
                             GET;
                             IF_NONE
-                              { PUSH string "GetNoneValue";
+                              { PUSH string "ledger";
+                                PUSH string "AssetNotFound";
+                                PAIR;
                                 FAILWITH }
                               {  };
                             COMPARE;
@@ -233,46 +220,32 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                               { PUSH string "CALLER NOT OWNER";
                                 FAILWITH }
                               {  };
-                            DIG 4;
-                            DUP;
-                            DUG 5;
-                            DIG 1;
-                            DUP;
-                            DUG 2;
+                            DUP 5;
+                            DUP 2;
                             CAR;
-                            DIG 2;
-                            DUP;
-                            DUG 3;
+                            DUP 3;
                             CDR;
                             CDR;
                             PAIR;
-                            DIG 2;
-                            DUP;
-                            DUG 3;
+                            DUP 3;
                             CDR;
                             CAR;
                             PAIR;
                             MEM;
                             IF
-                              { PUSH string "KeyAlreadyExists";
+                              { PUSH string "operator";
+                                PUSH string "KeyExists";
+                                PAIR;
                                 FAILWITH }
-                              { DIG 4;
-                                DUP;
-                                DUG 5;
+                              { DUP 5;
                                 PUSH bool True;
-                                DIG 2;
-                                DUP;
-                                DUG 3;
+                                DUP 3;
                                 CAR;
-                                DIG 3;
-                                DUP;
-                                DUG 4;
+                                DUP 4;
                                 CDR;
                                 CDR;
                                 PAIR;
-                                DIG 3;
-                                DUP;
-                                DUG 4;
+                                DUP 4;
                                 CDR;
                                 CAR;
                                 PAIR;
@@ -280,18 +253,16 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                                 DIP { DIG 4; DROP };
                                 DUG 4 };
                             DROP }
-                          { SOURCE;
-                            DIG 6;
-                            DUP;
-                            DUG 7;
-                            DIG 2;
-                            DUP;
-                            DUG 3;
+                          { SENDER;
+                            DUP 5;
+                            DUP 3;
                             CDR;
                             CDR;
                             GET;
                             IF_NONE
-                              { PUSH string "GetNoneValue";
+                              { PUSH string "ledger";
+                                PUSH string "AssetNotFound";
+                                PAIR;
                                 FAILWITH }
                               {  };
                             COMPARE;
@@ -301,23 +272,15 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                               { PUSH string "CALLER NOT OWNER";
                                 FAILWITH }
                               {  };
-                            DIG 4;
-                            DUP;
-                            DUG 5;
+                            DUP 5;
                             PUSH bool False;
-                            DIG 2;
-                            DUP;
-                            DUG 3;
+                            DUP 3;
                             CAR;
-                            DIG 3;
-                            DUP;
-                            DUG 4;
+                            DUP 4;
                             CDR;
                             CDR;
                             PAIR;
-                            DIG 3;
-                            DUP;
-                            DUG 4;
+                            DUP 4;
                             CDR;
                             CAR;
                             PAIR;
@@ -327,94 +290,89 @@ The <Link to='/docs/contract/programming-language#micheslon'>Michelson</Link> co
                             DROP };
                         DROP };
                  DROP;
-                 SWAP;
-                 PAIR;
-                 SWAP;
-                 PAIR;
+                 PAIR 3;
                  DIG 1;
-                 PAIR }
-               { IF_LEFT
-                   { DUP;
-                     ITER { DUP;
-                            CAR;
-                            DIG 1;
-                            DUP;
-                            DUG 2;
-                            CDR;
-                            DUP;
-                            ITER { DIG 2;
-                                   DUP;
-                                   DUG 3;
+                 PAIR } }
+           { IF_LEFT
+               { DUP;
+                 ITER { DUP;
+                        CDR;
+                        ITER { DUP 2;
+                               CAR;
+                               SENDER;
+                               COMPARE;
+                               NEQ;
+                               IF
+                                 { DUP 5;
+                                   DUP 3;
+                                   CAR;
+                                   DUP 3;
+                                   CDR;
+                                   CAR;
+                                   PAIR;
                                    SENDER;
-                                   COMPARE;
-                                   NEQ;
+                                   PAIR;
+                                   MEM;
+                                   NOT;
                                    IF
-                                     { DIG 6;
-                                       DUP;
-                                       DUG 7;
-                                       DIG 3;
-                                       DUP;
-                                       DUG 4;
-                                       DIG 2;
-                                       DUP;
-                                       DUG 3;
-                                       CDR;
-                                       CAR;
-                                       PAIR;
-                                       SENDER;
-                                       PAIR;
-                                       MEM;
-                                       NOT;
-                                       IF
-                                         { PUSH string "FA2_NOT_OPERATOR";
-                                           FAILWITH }
-                                         {  } }
-                                     {  };
-                                   DIG 7;
-                                   DUP;
-                                   DUG 8;
-                                   DIG 1;
-                                   DUP;
-                                   DUG 2;
+                                     { PUSH string "FA2_NOT_OPERATOR";
+                                       FAILWITH }
+                                     {  } }
+                                 {  };
+                               DUP 4;
+                               DUP 2;
+                               CDR;
+                               CAR;
+                               MEM;
+                               IF
+                                 { DUP 4;
+                                   DUP 2;
                                    CAR;
                                    SOME;
-                                   DIG 2;
-                                   DUP;
-                                   DUG 3;
+                                   DUP 3;
                                    CDR;
                                    CAR;
                                    UPDATE;
-                                   DIP { DIG 7; DROP };
-                                   DUG 7;
-                                   DROP };
-                            DROP 3 };
-                     DROP;
-                     SWAP;
-                     PAIR;
-                     SWAP;
-                     PAIR;
-                     DIG 1;
-                     PAIR }
-                   { DIG 4;
-                     DUP;
-                     DUG 5;
-                     DIG 1;
-                     DUP;
-                     DUG 2;
-                     PUSH mutez 0;
-                     SELF;
-                     ADDRESS;
-                     TRANSFER_TOKENS;
-                     CONS;
-                     DIP { DIG 4; DROP };
-                     DUG 4;
-                     DROP;
-                     SWAP;
-                     PAIR;
-                     SWAP;
-                     PAIR;
-                     DIG 1;
-                     PAIR } } } };
+                                   DIP { DIG 3; DROP };
+                                   DUG 3 }
+                                 { DUP 4;
+                                   DUP 2;
+                                   CDR;
+                                   CAR;
+                                   MEM;
+                                   IF
+                                     { PUSH string "ledger";
+                                       PUSH string "KeyExists";
+                                       PAIR;
+                                       FAILWITH }
+                                     { DUP 4;
+                                       DUP 2;
+                                       CAR;
+                                       SOME;
+                                       DUP 3;
+                                       CDR;
+                                       CAR;
+                                       UPDATE;
+                                       DIP { DIG 3; DROP };
+                                       DUG 3 } };
+                               DROP };
+                        DROP };
+                 DROP;
+                 PAIR 3;
+                 DIG 1;
+                 PAIR }
+               { DUP 5;
+                 DUP 2;
+                 PUSH mutez 0;
+                 SELF_ADDRESS;
+                 TRANSFER_TOKENS;
+                 CONS;
+                 DIP { DIG 4; DROP };
+                 DUG 4;
+                 DROP;
+                 PAIR 3;
+                 DIG 1;
+                 PAIR } } };
 }
 ```
 
