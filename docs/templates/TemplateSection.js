@@ -54,6 +54,7 @@ const sections = {
     subtitle: "Blockchain traceability and immutability makes it especially suitable for process whose goal is to establish a consensus.",
     image: "img/template_governance.svg",
     items: [
+      { name: "Multisig", desc: "Execute operations signed by a required number of operators.", to: '/docs/templates/multisig' },
       { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/templates/ideabox' },
       { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/templates/competition' },
       { name: "Auction", desc: "Auction process to transfer ownership of FA2 NFTs.", to: '/docs/templates/auction' },

@@ -25,7 +25,7 @@ A lambda value is an anonymous function that can be stored, passed as an argumen
 
 Passing a lambda value rather than a list of operations is necessary because in Michleson there is no literal for operations (for security reason); operations are only obtained with the *transfer* instruction.
 
-A proposal also has an expiration duration; it cannot be executed beyond the expiration date, which is the date of proposal plus the expiration duration.
+A proposal also has an validity duration; it cannot be executed beyond the expiration date, which is the date of proposal plus the validity duration.
 
 ### Calling one entrypoint
 
@@ -376,12 +376,12 @@ entry set_duration(min : duration, max : duration) {
 
 entry propose(
   actions_to_exec : lambda<unit, list<operation>>,
-  expiration_duration : duration,
+  validity : duration,
   approved_by_caller : bool) {
   called by manager
   state is Running
   require {
-    r3 : min_duration <= expiration_duration <= max_duration otherwise WRONG_DURATION
+    r3 : min_duration <= validity <= max_duration otherwise WRONG_DURATION
   }
   effect {
     var init_approvals : set<address> = [];
@@ -389,7 +389,7 @@ entry propose(
       init_approvals.add(caller);
     pending.add({
       id_count;
-      (now + expiration_duration);
+      (now + validity);
       init_approvals;
       actions_to_exec
     });
@@ -426,13 +426,13 @@ entry execute(proposal_id : nat) {
 
 entry propose_feeless(
   actions_to_exec : lambda<unit, list<operation>>,
-  expiration_duration : duration,
+  validity : duration,
   approved_by_caller : bool,
   manager_key : key,
   sig : signature) {
   state is Running
   require {
-    r8 : min_duration <= expiration_duration <= max_duration otherwise WRONG_DURATION
+    r8 : min_duration <= validity <= max_duration otherwise WRONG_DURATION
   }
   effect {
     var pkh = key_address(manager_key);
@@ -442,7 +442,7 @@ entry propose_feeless(
       init_approvals.add(caller);
     pending.add({
       id_count;
-      (now + expiration_duration);
+      (now + validity);
       init_approvals;
       actions_to_exec
     });
