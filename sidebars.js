@@ -38,6 +38,7 @@ module.exports = {
     { type: 'category',
       label: 'Governance',
       items: [
+        'templates/template17',
         'templates/template8',
         'templates/template9',
         'templates/template10',
