@@ -9,12 +9,12 @@ import Link from '@docusaurus/Link';
 
 The first step is to originate (deploy) the ownership <Link to='/docs/dapp-tools/tezos#smart-contract'>Smart Contract</Link> with <Link to='/docs/cli'>completium CLI</Link>.
 
-Before anything, follow these <Link to='/docs/dapp-tools/gitpod#check-admin-account'>instructions</Link> to import a new account :
-* copy paste (or upload to gitpod) in `faucet.json` file a test account retrieved from <Link to='https://faucet.tzalpha.net/'>faucet.tzalpha.net</Link>
+Before anything, follow these <Link to='/docs/dapp-tools/faucet#create-a-test-account'>instructions</Link> to import a new test account:
+* copy paste (or upload to gitpod) in `faucet.json` file a test account retrieved from <Link to='https://teztnets.xyz/hangzhounet-faucet'>teztnets.xyz</Link>
 * in order to import the faucet account with `completium-cli`, enter the following command in a VS code <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link> tab:
 
 ```
-completium-cli import faucet faucet.json as admin --force
+completium-cli import faucet faucet.json as owner
 ```
 
 ## Smart contract code
@@ -26,7 +26,7 @@ This section is for information only, no action is required.
 The contract is written in <Link to='http://archetype-lang.org/'>Archetype</Link> language. The source code is available in the `contract` folder.
 
 ```archetype
-archetype asset_ownership (owner : address)
+archetype asset_ownership(owner : address)
 
 variable assetid : bytes =
   0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2
@@ -51,22 +51,22 @@ transition upforsale (price : tez) {
 
 entry bid() {
    require {
-      r1 otherwise "Asset Not For Sale": state = ForSale;
-      r2: now < endofbid;
-      r3: caller <> bestbidder;
-      r4: transferred > bestbid;
+      r1: state = ForSale       otherwise "Asset Not For Sale";
+      r2: now < endofbid        otherwise "Bid Period Is Over";
+      r3: caller <> bestbidder  otherwise "Called By Best Bidder";
+      r4: transferred > bestbid otherwise "Invalid Transferred Amount";
    }
    effect {
      if balance <> transferred then
        transfer bestbid to bestbidder;
      bestbidder := caller;
      bestbid := transferred;
-     endofbid += 2m;
+     endofbid := now + 2m;
    }
 }
 
 transition claim () {
-  require { r5 otherwise "Bid Period Is Still On": now > endofbid }
+  require { r5: now > endofbid otherwise "Bid Period Is Still On" }
   from ForSale to Owned
   with effect {
      if balance > 0tz then
@@ -81,18 +81,20 @@ transition claim () {
 ### From Archetype
 Enter this command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link>:
 
-```
-completium-cli deploy ./contract/ownership.arl --as admin --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }'
+```bash
+completium-cli deploy ./contract/ownership.arl --as owner --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }'
 ```
 
+:::warning
 Replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
 (run `completium-cli show account` to display the address - Public Key hash).
+:::
 
 It displays the main origination parameters and asks for confirmation. Enter `Y` and press enter.
 
 The output should look like:
 ```bash
-$ completium-cli deploy ./contract/ownership.arl --as admin --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }' --force
+$ completium-cli deploy ./contract/ownership.arl --as owner --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }' --force
 Originate settings:
   network	: granada
   contract	: ownership
@@ -111,13 +113,14 @@ Click on the generated link to display the contract in <Link to='/docs/dapp-tool
 
 In order to originate from the Michelson version (available in `contract` folder), enter the following command :
 
-```
+```bash
 completium-cli originate ./contract/ownership.tz --init '(Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0 (Pair 1624952132 0)))))'
 ```
 
+:::warning
 Replace *twice* address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
 (run `completium-cli show account` to display the address - Public Key hash).
-
+:::
 ## Contract API
 
 :::note

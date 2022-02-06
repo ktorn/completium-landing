@@ -34,7 +34,6 @@ const BidButton = () => {
       hideSnack();
     } catch (error) {
       setErrorSnack(error.message);
-      setTimeout(hideSnack, 4000);
     }
   }
   return (
@@ -105,7 +104,7 @@ This section is for information only, no action is required.
 
 This section presents the code of `~/src/App.js` at the end of this step:
 
-```js {62-84,112-114,118-120}
+```js {62-83,111-113,117-119}
 import './App.css';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -174,7 +173,7 @@ const BidButton = () => {
   const { setInfoSnack, setErrorSnack, hideSnack } = useSnackContext();
   const bid = async () => {
     try {
-      const contract  = await tezos.wallet.at(contract);
+      const contract  = await tezos.wallet.at(settings.contract);
       const operation = await contract.methods.bid(UnitValue).send({ amount: 10 });
       const shorthash = operation.opHash.substring(0, 10) + "...";
       setInfoSnack(`waiting for ${ shorthash } to be confirmed ...`);
@@ -182,7 +181,6 @@ const BidButton = () => {
       hideSnack();
     } catch (error) {
       setErrorSnack(error.message);
-      setTimeout(hideSnack, 4000);
     }
   }
   return (

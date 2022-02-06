@@ -69,7 +69,7 @@ Say the owner requires a minimum price of 7 tezies.
 **Enter** the following <Link to='/docs/cli'>Completium CLI</Link> command to invoke the entrypoint `upforsale`:
 
 ```bash
-completium-cli call ownership --entry upforsale --with 7tz
+completium-cli call ownership --as owner --entry upforsale --arg '{ "price" : "7tz" }'
 ```
 
 Check and confirm the transaction parameter: type 'Y' and press enter.
@@ -102,6 +102,8 @@ Notes:
 * `endofbid` has been incremented by 2 minutes
 * transferred amount is 10 tezies
 
+### Bid period is over
+
 If the time window (5 minutes) to make a bid has expired, the error message below is displayed:
 
 <DappFigure img="make_bid2.png" width='30%' />
@@ -112,19 +114,17 @@ Id `r2` is defined in the <Link to='/docs/dapp-first/contract#copy-contract-code
 entry bid() {
    require {
      ...
-      r2: now < endofbid;
+      r2: now < endofbid otherwise "Bid Period is Over";
      ...
    }
-   effect {
-     ...
-   }
+  ...
 }
 ```
 
 The solution is to set back the contract state to `Owned` by calling the `claim` from `admin` account. This is done with the following command:
 
 ```
-completium-cli call ownership --entry claim
+completium-cli call ownership --entry claim --as owner
 ```
 
 Once confirmed, you may proceed to <Link to='/docs/dapp-first/make-bid#set-asset-up-for-sale'>Set asset up for sale</Link> step above.

@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 This generic-purpose multi-signature contract is used to execute operations (transfer, contract entrypoints) that have been approved by a required number of managers.
 
 The process is three steps:
-* ***propose*** : a manager propose a list of operations to execute
+* ***propose*** : a manager proposes a list of operations to execute
 * ***approve*** : managers may approve the proposal
 * ***execute*** : operations may be executed (by anyone) when the required number of approvals has been reached
 
@@ -23,13 +23,13 @@ A proposal is made of a list of operations materialised as a lambda value of typ
 
 A lambda value is an anonymous function that can be stored, passed as an argument to a function or an entry point, and executed programmatically.
 
-Passing a lambda value rather than a list of operations is necessary because in Michleson there is no literal for operations (for security reason); operations are only obtained with the *transfer* instruction.
+Passing a lambda value rather than a list of operations is necessary because, in Michleson, there is no literal for operations (for security reason); operations are only obtained with the *transfer* instruction.
 
-A proposal also has an validity duration; it cannot be executed beyond the expiration date, which is the date of proposal plus the validity duration.
+A proposal also has a *validity* duration; it cannot be executed beyond the expiration date, which is the date of proposal plus the validity duration.
 
 ### Calling one entrypoint
 
-The lambda value to returns a list of one operation that calls an entrypoint of a contract is presented here:
+The lambda value that returns the list of one operation which calls an entrypoint of a contract is presented here:
 
 ```bash
 {
