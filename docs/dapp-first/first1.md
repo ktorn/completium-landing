@@ -16,7 +16,7 @@ The environment provides the following elements:
 
 | Element | Description |
 | -- | :-- |
-| <a href='https://github.com/edukera/completium-dapp-first' target='_blank'>Completium project</a> | Skeleton project to start a new DApp project with <Link to='/docs/dapp-tools/react'>React JS</Link>. |
+| <a href='https://gitlab.com/completium/completium-dapp-first/' target='_blank'>Completium project</a> | Skeleton project used in this tutorial, to start any new DApp project with <Link to='/docs/dapp-tools/react'>React JS</Link>. |
 | <a href='https://archetype-lang.org/'>Archetype</a> | Smart Contract language. |
 | <Link to='/docs/cli'>Completium CLI</Link> | Command line interface to deploy and interact with archetype contracts. |
 
