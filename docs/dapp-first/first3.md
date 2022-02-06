@@ -9,6 +9,26 @@ import DappFigure from '../DappFigure';
 
 The goal is to display some data retrieved from the ownership contract storage.
 
+## Set contract address
+
+It is required to set the ownership contract address in `~/src/settings.js`.
+
+To display the contract address, **run** the command:
+
+```
+completium-cli show contract ownership
+```
+
+**Copy-paste** the contract address line 9 of `~/src/settings.js`, like for example:
+```js {4}
+const [settings,setState] = useState({
+    network  : 'granadanet',
+    endpoint : 'https://testnet-tezos.giganode.io',
+    contract : 'KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd',
+    show     : false,
+});
+```
+
 ## React pattern
 :::note
 This section is for information only, no action is required.
@@ -63,26 +83,6 @@ setData({
 The `endpoint` constant is the endpoint URL to the Tezos test network.
 
 The `contractAddress` constant is the address of the conctract that has been deployed in previous step.
-
-## Set contract address
-
-It is required to set the ownership contract address in `~/src/settings.js`.
-
-To display the contract address, **run** the command:
-
-```
-completium-cli show contract ownership
-```
-
-**Copy-paste** the contract address line 9 of `~/src/settings.js`, like for example:
-```js {4}
-const [settings,setState] = useState({
-    network  : 'granadanet',
-    endpoint : 'https://testnet-tezos.giganode.io',
-    contract : 'KT1BAVw4WhU7BAs2jiakDv4VrR9CNzQK32rd',
-    show     : false,
-});
-```
 
 ## Storage display code
 
