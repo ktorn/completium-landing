@@ -6,7 +6,7 @@ slug: /cli/account
 ---
 import Link from '@docusaurus/Link';
 
-Interacting with a contract requires a Tezos account to sign the transactions. An account is identified by an account address starting by `tz1`, like for example `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw`.
+Interacting with a contract requires a Tezos account to sign the transactions. An account is identified by an account address starting by `tz1`, like for example `tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P`.
 
 `$completium-cli` provides a convenient account management system to register, list and switch account. Each account is associated with an alias.
 

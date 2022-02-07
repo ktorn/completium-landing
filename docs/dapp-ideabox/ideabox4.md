@@ -13,7 +13,7 @@ import Link from '@docusaurus/Link';
 
 In order to vote for an idea, it is first required that the contract's admin account registers the voter address. Indeed the <Link to="/docs/dapp-ideabox/implementation#vote">vote</Link> entry point checks that the `caller` is registered, otherwise it fails.
 
-To do so, it is necessary to call the <Link to="/docs/dapp-ideabox/interface#register">register</Link> entry point of the smart contract. This entry point may only be called by the contract's admin account at address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw`. The section below presents how to import this account in the wallet.
+To do so, it is necessary to call the <Link to="/docs/dapp-ideabox/interface#register">register</Link> entry point of the smart contract. This entry point may only be called by the contract's admin account at address `tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P`. The section below presents how to import this account in the wallet.
 
 ## Import admin account
 
@@ -34,7 +34,7 @@ KT1QMowNVCUngertU7bAeoZmU7XYm3gphE69
 
 This section presents how to invoke the `register` entry point with the smart contract indexer <Link to="/docs/dapp-tools/bcd">Better Call Dev</Link>. Click the button blow to open the smart contract:
 
-<DappButton url="https://better-call.dev/delphinet/KT1QMowNVCUngertU7bAeoZmU7XYm3gphE69/operations" txt="open smart contract"/>
+<DappButton url="https://better-call.dev/hangzhounet/KT1QMowNVCUngertU7bAeoZmU7XYm3gphE69/operations" txt="open smart contract"/>
 
 Click on the "Interact" tab and enter the parameters as presented above.
 

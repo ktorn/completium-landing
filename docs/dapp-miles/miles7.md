@@ -22,7 +22,7 @@ The setup consists in deploying the contract and adding mile to the user account
 Open the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> and enter the following command line to originate (deploy) the smart contract is:
 
 ```bash
-completium-cli deploy ./contract/miles_with_expiration.arl --named miles
+completium-cli deploy ./contract/miles_with_expiration.arl --name miles --parameters '{ "admin" : "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" }'
 ```
 
 The <Link to="/docs/cli/contract#deploy--originate">originate command</Link> triggers two operations:
@@ -37,8 +37,6 @@ The address of the newly originated contract is visible in the command output, a
 
 <DappFigure img="miles-newcontract.png"/>
 
-A smart contract address starts with `KT1`. In the situation above, the new contract's address is `KT19TYkVxnUb1m9DoWbSASqY6XQdVLQFCK8F`.
-
 You may got to <Link to="/docs/dapp-tools/bcd">Better call dev</Link> contract explorer to check it:
 
 <DappButton url="https://better-call.dev/" txt="go to better call dev"/>
@@ -50,7 +48,7 @@ The new contract address needs to be set in the DApp's `src/settings.js` file:
 // FIX ME
 // set new contract address
 /////////////////////////////////////////////////////////////////////////////
-export const  contractAddress = "KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86"
+export const  contractAddress = "KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx"
 ```
 
 
@@ -78,8 +76,8 @@ Parameters are presented below:
 
 | Parameter | Value | Description |
 | ------------- |: -------------: | ---------: |
-| ow | USER_ADDRESS |  address of the miles' owner, for example '@tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw' |
-| newmile_id       | USER_ADDRESS + "_0" | a unique identifier for the created miles, for example 'tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw_0'  |
+| ow | USER_ADDRESS |  address of the miles' owner, for example '@tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P' |
+| newmile_id       | USER_ADDRESS + "_0" | a unique identifier for the created miles, for example 'tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P_0'  |
 | newmile_amount   | 20 | number of miles to create  |
 | newmile_expiration | TOMORROW | date beyond which miles are expired, for example '2021-06-28' |
 
@@ -90,19 +88,22 @@ where:
 In the <Link to="/docs/dapp-tools/gitpod#open-terminal">terminal</Link> enter the following command:
 
 ```bash
-completium-cli call miles --entry add
-        --with '(<USER_ADDRESS>, "mileid", 20, 2021-06-28)'
+completium-cli call miles --entry add --arg '{ "ow":"tz1hyc1CRQpjskJUUaGrh85UZXPi6kU4JuGd", "newmile_id":"id1", "newmile_expiration":"2022-12-25"  }'
 ```
+
+:::warning
+Replace `tz1hyc1CRQpjskJUUaGrh85UZXPi6kU4JuGd` in the command above with your user account address.
+:::
 
 ## Skip this step?
 
 It is possible to skip this phase and use the contract already deployed for the demo, and available at the following address:
 
 ```
-KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86
+KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx
 ```
 
-<DappButton url="https://better-call.dev/delphinet/KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86/operations" txt="open in better call dev"/>
+<DappButton url="https://better-call.dev/hangzhounet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open in better call dev"/>
 
 Go to the <Link to="/docs/dapp-miles/create-miles#miles-creation-transaction">use case</Link> section to know how to add miles for your user account.
 

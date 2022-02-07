@@ -50,12 +50,12 @@ This entry point may only be called by <u>the contract's admin account</u>. If y
 The smart contract is available at the following address:
 
 ```
-KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86
+KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx
 ```
 
 This section presents how to invoke the `add` entry point with the smart contract indexer <Link to="/docs/dapp-tools/bcd">Better Call Dev</Link>. Click the button blow to open the smart contract:
 
-<DappButton url="https://better-call.dev/delphinet/KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86/operations" txt="open smart contract"/>
+<DappButton url="https://better-call.dev/hangzhounet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open smart contract"/>
 
 Click on the "Interact" tab and enter the parameters as presented above.
 
@@ -73,7 +73,7 @@ You may check the transation parameters in the "Operations" section:
 [
     {
         "kind":"transaction",
-        "to":"KT1F5DqPwKJC9qeEjTgdEQKGGBZpcAv5DX86",
+        "to":"KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx",
         "amount":0,
         "mutez":true,
         "parameter":{

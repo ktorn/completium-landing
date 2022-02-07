@@ -12,7 +12,7 @@ import DappButton from '../DappButton';
 ## Storage
 
 ```archetype
-constant chairman : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+constant chairman : address = @tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P
 ```
 
 

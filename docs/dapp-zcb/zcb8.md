@@ -17,7 +17,7 @@ variable issuer     : address = @tz1bfVgcJC4ukaQSHUe1EbrUd5SekXeP9CWk
 ```
 
 ```archetype
-variable subscriber : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable subscriber : address = @tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P
 ```
 
 ```archetype

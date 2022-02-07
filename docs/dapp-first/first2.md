@@ -82,11 +82,11 @@ transition claim () {
 Enter this command in the <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link>:
 
 ```bash
-completium-cli deploy ./contract/ownership.arl --as owner --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }'
+completium-cli deploy ./contract/ownership.arl --as owner --parameters '{ "owner" : "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" }'
 ```
 
 :::warning
-Replace address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
+Replace address `tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P` by the faucet address you imported
 (run `completium-cli show account` to display the address - Public Key hash).
 :::
 
@@ -94,13 +94,13 @@ It displays the main origination parameters and asks for confirmation. Enter `Y`
 
 The output should look like:
 ```bash
-$ completium-cli deploy ./contract/ownership.arl --as owner --parameters '{ "owner" : "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" }' --force
+$ completium-cli deploy ./contract/ownership.arl --as owner --parameters '{ "owner" : "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" }' --force
 Originate settings:
   network	: granada
   contract	: ownership
   as	    : admin
   send		: 0 ꜩ
-  storage	: (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0 (Pair 1635064614 0)))))
+  storage	: (Pair "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" (Pair 0 (Pair 1635064614 0)))))
   total cost	: 0.42918 ꜩ
 Waiting for confirmation of origination for KT1PPMXvCQh2g3b4YP4ovha5ZwpbKhh5xNh5 ...
 Origination completed for KT1PPMXvCQh2g3b4YP4ovha5ZwpbKhh5xNh5 named ownership.
@@ -114,11 +114,11 @@ Click on the generated link to display the contract in <Link to='/docs/dapp-tool
 In order to originate from the Michelson version (available in `contract` folder), enter the following command :
 
 ```bash
-completium-cli originate ./contract/ownership.tz --init '(Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw" (Pair 0 (Pair 1624952132 0)))))'
+completium-cli originate ./contract/ownership.tz --init '(Pair "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" (Pair 0x68746ecbcd72793aefda48f1b67a3190fc380a7633055d2336fb90cd990582a2 (Pair "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P" (Pair 0 (Pair 1624952132 0)))))'
 ```
 
 :::warning
-Replace *twice* address `tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw` by the faucet address you imported
+Replace *twice* address `tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P` by the faucet address you imported
 (run `completium-cli show account` to display the address - Public Key hash).
 :::
 ## Contract API

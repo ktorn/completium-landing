@@ -20,7 +20,7 @@ archetype exec_condition
 
 variable value : nat = 0
 
-constant admin : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+constant admin : address = @tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P
 
 entry main(v : nat) {
   called by admin

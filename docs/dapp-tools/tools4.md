@@ -28,28 +28,28 @@ Below is a copy of the admin faucet file:
 
 ```json
 {
-  "mnemonic": [
-    "auto",
-    "hamster",
-    "ability",
-    "wall",
-    "betray",
-    "heavy",
-    "fortune",
-    "disorder",
-    "quantum",
-    "hawk",
-    "nothing",
-    "parrot",
-    "step",
-    "lobster",
-    "chimney"
-  ],
-  "secret": "fd93647b67ebc3acc81715ea51ef3dc42ad0441f",
-  "amount": "10764356903",
-  "pkh": "tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw",
-  "password": "pp8rpZEV2X",
-  "email": "bikgsgvf.gwfeefll@tezos.example.org"
+	"pkh": "tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P",
+	"mnemonic": [
+		"bike",
+		"museum",
+		"tourist",
+		"saddle",
+		"caught",
+		"spell",
+		"scrap",
+		"layer",
+		"task",
+		"blossom",
+		"shallow",
+		"express",
+		"emerge",
+		"camp",
+		"carry"
+	],
+	"email": "qfhbbfev.dpdgypeb@teztnets.xyz",
+	"password": "DnvGIoUo8S",
+	"amount": "181059715372",
+	"activation_code": "043703f8bc62d205a283e6c13ac04d289013dda1"
 }
 ```
 

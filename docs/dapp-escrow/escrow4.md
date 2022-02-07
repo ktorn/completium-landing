@@ -115,7 +115,7 @@ The <Link to='/docs/dapp-escrow/interface#complete'>complete</Link> entry point 
 
 <DappFigure img='escrow-transfer3.png' width='100%'/>
 
-<DappButton url='https://better-call.dev/delphinet/opg/ooBNEg5t2UeoHcBkC32GgNjUVvbracxnhGvD5nmyBuL1efFgDMQ/contents' txt="open in BCD" />
+<DappButton url='https://better-call.dev/hangzhounet/opg/ooBNEg5t2UeoHcBkC32GgNjUVvbracxnhGvD5nmyBuL1efFgDMQ/contents' txt="open in BCD" />
 
 
 

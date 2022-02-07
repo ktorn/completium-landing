@@ -14,7 +14,7 @@ The smart contract is developed with the <a href='https://archetype-lang.org/'>A
 Address of the contract owner only capable of collecting payments and setting parameters:
 
 ```archetype
-variable owner : address = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
+variable owner : address = @tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P
 ```
 
 Start date of service:
