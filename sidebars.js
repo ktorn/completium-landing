@@ -39,6 +39,7 @@ module.exports = {
       label: 'Governance',
       items: [
         'templates/template17',
+        'templates/template18',
         'templates/template8',
         'templates/template9',
         'templates/template10',

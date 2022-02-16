@@ -1,13 +1,13 @@
-import React from 'react';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
+import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Card from '@material-ui/core/Card';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Link from '@docusaurus/Link';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
 
 const sections = {
   fungible: {
@@ -55,6 +55,7 @@ const sections = {
     image: "img/template_governance.svg",
     items: [
       { name: "Multisig", desc: "Execute operations signed by a required number of operators.", to: '/docs/templates/multisig' },
+      { name: "Raffle", desc: "Canonical example of raffle contract using timelock feature.", to: '/docs/templates/raffle' },
       { name: "Idea Box", desc: "Collect and determine best ideas to improve a process.", to: '/docs/templates/ideabox' },
       { name: "Competition", desc: "Collect submissions and declare the best one.", to: '/docs/templates/competition' },
       { name: "Auction", desc: "Auction process to transfer ownership of FA2 NFTs.", to: '/docs/templates/auction' },
