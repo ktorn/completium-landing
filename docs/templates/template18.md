@@ -5,6 +5,8 @@ sidebar_label: Raffle
 slug: /templates/raffle
 ---
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
 
 A raffle is a gambling game, where players buy tickets; a winning ticket is _randomly_ picked and its owner gets the jackpot prize.
 
@@ -22,11 +24,11 @@ The constraint is that this raffle key must not be known by anyone, nor the play
 * the _raffle key_ cannot be simply stored in the contract.
 * the _raffle key_ cannot be a secret that only the admin knows (for the reason above), and that the admin would pass to the contract when it is time to announce the winner. Indeed, the admin could disappear, and no winner would ever be announced.
 
-For the admin not to be the only one to know the key, each player must possess a part of the key (called here _partial key_), such that the raffle key is the sum of each player's partial key. For the player's partial key not to be known by the other players, it must be encrpypted by the player. However, it must also be possible for anyone to know any player's partial key when it is time to declare the winning ticket. Otherwise one player could decide to block the game by not decrypting its key.
+For the admin not to be the only one to know the key, each player must possess a part of the key (called here _partial key_), such that the raffle key is the sum of each player's partial key. For the player's partial key not to be known by the other players, it must be _encrpypted_ by the player. When it comes to selecting the winning ticket, the user is required to _reveal_ its key for the contract to compute the raffle key.
+
+Moreover, the contract offers the possiblity for anyone to reveal a player's key. This feature may be required when the reveal operation is critical to the process: for example in a voting process, it is important to take all votes into account, even votes from users who didn't/couldn't reveal their key. A reward is sent to an account that reveals a key.
 
 The [timelock](https://tezos.gitlab.io/alpha/timelock.html?highlight=timelock) encryption feature of the Michelson `chest` data type provides the required property: a _timelocked_ value is encrypted strongly enough that even the most powerful computer will take more than a certain amount of time to crack it, but weakly enough that given a bit more time, any decent computer will manage to crack it. That is to say that, beyond a certain amount of time, the value may be considered public.
-
-This means that if a player doesn't reveal the value of its partial _raffle key_ when expected, someone else could run the necessary computation to unlock it. The current contract sends a reward for the work of revealing a player's key.
 
 ## Chest value
 In the [raffle test example](https://gitlab.com/completium/archetype-raffle/-/blob/main/tests/00-test.js), the _chest time_ parameter imposed by the contract is `10000000`.
@@ -65,26 +67,52 @@ The timelock encryption generates a chest value, and the key to unlock it.
 
 The contract is originated with the following parameters:
 * `owner` is the address of the contract administrator
-* `min_duration` is the minimum duration of the period during which players can buy a ticket
 * `jackpot` is the prize in tez
 * `ticket_price` speaks for itslef
 
 ```archetype
 archetype raffle(
   owner        : address,
-  min_duration : duration,
   jackpot      : tez,
   ticket_price : tez)
 ```
 
+### State
 The contract holds:
+* a state with 3 possible values:
+  * `Created` is the initial state during which tickets cannot be bought yet
+  * `Initialised` is the state when the administrator initialises the raffle
+  * `Transferred` is the state when prize has been transferred to the winner
+```archetype
+states =
+| Created initial
+| Initialised
+| Transferred
+```
+* the open date beyond which tickets can be bought, initialized to `none`:
+* the date beyond which tickets cannot be bought, initialized to `none`:
+* the date beyond which player's partial key cannot be revealed, initialized to `none`:
+```archetype
+variable open_buy     : option<date> = none
+variable close_buy    : option<date> = none
+variable close_reveal : option<date> = none
+```
+
+The schema below illustrates the periods defined by these dates, and the contract's states:
+<ThemedImage
+  alt="Raffle schema"
+  width="80%"
+  sources={{
+    light: useBaseUrl('img/schema.light.svg'),
+    dark: useBaseUrl('img/schema.dark.svg'),
+  }}
+/>
+
+### Other
+The contract also holds:
 * the reveal fee, initialized to `none`:
 ```archetype
 variable reveal_fee : option<rational> = none
-```
-* the date beyond which tickets cannot be bought, initialized to `none`:
-```archetype
-variable close_date : option<date> = none
 ```
 * the time used to generate the timelocked value of the raffle key (it should be high enough to be compliant with the close date), initialized to `none`:
 ```archetype
@@ -105,28 +133,14 @@ asset player {
 variable raffle_key  : nat = 0
 ```
 
-* the number of revealed players:
-```archetype
-variable nb_revealed : nat = 0
-```
-
-* a state with 3 possible values:
-  * `Created` is the initial state during which tickets cannot be bought yet
-  * `Running` is the state when the administrator opens the raffle for ticket selling
-  * `Transferred` is the state when prize has been transferred to the winner
-```archetype
-states =
-| Created initial
-| Running
-| Transferred
-```
-
 ## Entrypoints
 
-### `open`
+### `initialise`
 
-The `open` entrypoint is called by the contract admin (called "_owner_") to allow players to buy tickets. It sets the main raffle parameters:
-* _close date_ is the date beyond which players cannot buy ticket
+The `initialise` entrypoint is called by the contract admin (called "_owner_") to set the main raffle parameters:
+* _open buy_ is the date beyond which players can buy ticket
+* _close buy_ is the date beyond which players cannot buy ticket
+* _close reveal_ is the date beyond which players cannot reveal key
 * _chest time_ is the difficulty to break players' partial raffle key encryption
 * _reveal fee_ the pourcentage of ticket price transferred when revealing a player's raffle key
 
@@ -135,25 +149,27 @@ Currently you may count from a chest time of 500&nbsp;000 per second on a standa
 :::
 
 It requires that:
-* the minimum duration be respected by the close date
+* the reveal period duration be greater or equal to the buy period duration
 * th reveal fee be equal to or less than 1
 * the transferred amount of tez be equal to the `jackpot` storage value
 
-It transitions from `Created` state to `Running`, and sets the raffle parameters.
+It transitions from `Created` state to `Initialised`, and sets the raffle parameters.
 
 ```archetype
-transition open(cd : date, t : nat, rf : rational) {
+transition initialise(ob : date, cb : date, cr : date, t : nat, rf : rational) {
   called by owner
   require {
-    r0 : now + min_duration < cd   otherwise "INVALID_CLOSE_DATE";
-    r1 : rf <= 1                   otherwise "INVALID_REVEAL_FEE";
-    r2 : transferred = jackpot     otherwise "INVALID_AMOUNT"
+    r0 : now <= ob < cb and cb - ob <= cr - cb otherwise "INVALID_OPEN_CLOSE_BUY_REVEAL";
+    r1 : rf <= 1                               otherwise "INVALID_REVEAL_FEE";
+    r2 : transferred = jackpot                 otherwise "INVALID_AMOUNT"
   }
-  from Created to Running
+  from Created to Initialised
   with effect {
-    close_date := some(cd);
-    chest_time := some(t);
-    reveal_fee := some(rf)
+    open_buy     := some(ob);
+    close_buy    := some(cb);
+    close_reveal := some(cr);
+    chest_time   := some(t);
+    reveal_fee   := some(rf)
   }
 }
 ```
@@ -163,7 +179,7 @@ transition open(cd : date, t : nat, rf : rational) {
 The `buy` entrypoint may be called by anyone to buy a ticket. The player must transfer the encrypted value of the partial raffle key, so that the partial key value may be potentially publically known when it comes to declaring the winner ticket.
 
 It requires that:
-* the contract be in `Running` state
+* the contract be in `Initialised` state
 * the transferred amount of tez be equal to the ticket price
 * the close date not be reached
 
@@ -171,10 +187,10 @@ It records the caller's address in the `player` collection.
 
 ```archetype
 entry buy (lrk : chest) {
-  state is Running
+  state is Initialised
   require {
-    r2 : transferred = ticket_price otherwise "INVALID_TICKET_PRICE";
-    r3 : now < opt_get(close_date)  otherwise "RAFFLE_CLOSED"
+    r3 : transferred = ticket_price                     otherwise "INVALID_TICKET_PRICE";
+    r4 : opt_get(open_buy) < now < opt_get(close_buy)   otherwise "BUY_CLOSED"
   }
   effect { player.add({ id = caller; locked_raffle_key = lrk }) }
 }
@@ -188,38 +204,39 @@ Note that the `add` method _fails_ with `(Pair "KeyExists" "player")` if the cal
 The `reveal` entry point may be called by anyone to reveal a player's _partial_ key and contribute to the computation of the raffle key. The caller receives a percentage of the ticket price as a reward.
 
 It requires that:
-* the contract be in `Running` state
+* the contract be in `Initialised` state
 * the close date has been reached
 
 ```archetype
 entry reveal(addr : address, k : chest_key) {
-  state is Running
+  state is Initialised
   require {
-    r4 : now > opt_get(close_date) otherwise "RAFFLE_OPEN";
-    r5 : not player[addr].revealed otherwise "PLAYER_ALREADY_REVEALED"
+    r5 : opt_get(close_buy) < now < opt_get(close_reveal) otherwise "REVEAL_CLOSED";
+    r6 : not player[addr].revealed                        otherwise "PLAYER_ALREADY_REVEALED"
   }
   effect {
-    match open_chest(k, player[addr].locked_raffle_key, chest_time) with
+    match open_chest(k, player[addr].locked_raffle_key, opt_get(chest_time)) with
     | left (unlocked) -> raffle_key += opt_get(unpack<nat>(unlocked))
     | right(error)    -> fail("INVALID_TIMELOCK")
     end;
-    nb_revealed += 1;
     player[addr].revealed := true;
-    if nb_revealed = player.count() then
-      transfer 0tz to entry self.transfer_jackpot();
     transfer (opt_get(reveal_fee) * ticket_price) to caller;
   }
 }
 ```
 
-When all players have revealed their raffle key, the transition from `Running` state to `Transferred` is executed with `transfer_jackpot`:
+### `transfer`
+
+When the reveal period is over, anyone can call the `transfer` entrypoint to transfer the jackpot to the the winning ticket; not revealed players are ignored. It transitions to `Transferred` state:
 ```archetype
-transition transfer_jackpot() {
-  called by selfaddress
-  from Running to Transferred
+transition %transfer() {
+  require {
+    r7: opt_get(close_reveal) < now otherwise "TRANSFER_CLOSED"
+  }
+  from Initialised to Transferred
   with effect {
+    player.removeif(not the.revealed);
     transfer balance to player.nth(raffle_key % player.count());
-    player.clear()
   }
 }
 ```
