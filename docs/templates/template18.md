@@ -24,9 +24,9 @@ The constraint is that this raffle key must not be known by anyone, nor the play
 * the _raffle key_ cannot be simply stored in the contract.
 * the _raffle key_ cannot be a secret that only the admin knows (for the reason above), and that the admin would pass to the contract when it is time to announce the winner. Indeed, the admin could disappear, and no winner would ever be announced.
 
-For the admin not to be the only one to know the key, each player must possess a part of the key (called here _partial key_), such that the raffle key is the sum of each player's partial key. For the player's partial key not to be known by the other players, it must be _encrpypted_ by the player. When it comes to selecting the winning ticket, the user is required to _reveal_ its key for the contract to compute the raffle key.
+For the admin not to be the only one to know the key, each player must possess a part of the key (called here _partial key_), such that the raffle key is the sum of each player's partial key. For the player's partial key not to be known by the other players, it must be _cyphered_ by the player. When it comes to selecting the winning ticket, the user is required to _reveal_ its key for the contract to compute the raffle key.
 
-Moreover, the contract offers the possiblity for anyone to reveal a player's key. This feature may be required when the reveal operation is critical to the process: for example in a voting process, it is important to take all votes into account, even votes from users who didn't/couldn't reveal their key. A reward is sent to an account that reveals a key.
+However, a player could influence the outcome by not revealing the partial key. It is then necessary that the encrypted partial key can be _decrypted_ by anyone at some time. A reward is sent to the account that reveals a key.
 
 The [timelock](https://tezos.gitlab.io/alpha/timelock.html?highlight=timelock) encryption feature of the Michelson `chest` data type provides the required property: a _timelocked_ value is encrypted strongly enough that even the most powerful computer will take more than a certain amount of time to crack it, but weakly enough that given a bit more time, any decent computer will manage to crack it. That is to say that, beyond a certain amount of time, the value may be considered public.
 
@@ -62,13 +62,12 @@ $ timelock-utils --lock --data 050080890f --time 100000
 }
 ```
 The timelock encryption generates a chest value, and the key to unlock it.
-
 ## Raffle storage
 
 The contract is originated with the following parameters:
 * `owner` is the address of the contract administrator
 * `jackpot` is the prize in tez
-* `ticket_price` speaks for itslef
+* `ticket_price` is the price in tez of a ticket
 
 ```archetype
 archetype raffle(
@@ -89,13 +88,15 @@ states =
 | Initialised
 | Transferred
 ```
-* the open date beyond which tickets can be bought, initialized to `none`:
-* the date beyond which tickets cannot be bought, initialized to `none`:
-* the date beyond which player's partial key cannot be revealed, initialized to `none`:
+* the open date beyond which tickets can be bought, initialized to `none`
+* the date beyond which tickets cannot be bought, initialized to `none`
+* the date beyond which player's partial key cannot be revealed, initialized to `none`
+* the date beyond which the jackpot may be transferred, initialized to `none`
 ```archetype
-variable open_buy     : option<date> = none
-variable close_buy    : option<date> = none
-variable close_reveal : option<date> = none
+variable open_buy      : option<date> = none
+variable close_buy     : option<date> = none
+variable close_reveal  : option<date> = none
+variable open_transfer : option<date> = none
 ```
 
 The schema below illustrates the periods defined by these dates, and the contract's states:
@@ -141,6 +142,7 @@ The `initialise` entrypoint is called by the contract admin (called "_owner_") t
 * _open buy_ is the date beyond which players can buy ticket
 * _close buy_ is the date beyond which players cannot buy ticket
 * _close reveal_ is the date beyond which players cannot reveal key
+* _open transfer_ is the date beyond which anyone can transfer the jackpot
 * _chest time_ is the difficulty to break players' partial raffle key encryption
 * _reveal fee_ the pourcentage of ticket price transferred when revealing a player's raffle key
 
@@ -149,27 +151,29 @@ Currently you may count from a chest time of 500&nbsp;000 per second on a standa
 :::
 
 It requires that:
-* the reveal period duration be greater or equal to the buy period duration
+* the _decrypt_ period duration be greater or equal to the buy period duration
 * th reveal fee be equal to or less than 1
 * the transferred amount of tez be equal to the `jackpot` storage value
 
 It transitions from `Created` state to `Initialised`, and sets the raffle parameters.
 
 ```archetype
-transition initialise(ob : date, cb : date, cr : date, t : nat, rf : rational) {
+transition initialise(ob : date, cb : date, cr : date, ot : date, t : nat, rf : rational) {
   called by owner
   require {
-    r0 : now <= ob < cb and cb - ob <= cr - cb otherwise "INVALID_OPEN_CLOSE_BUY_REVEAL";
-    r1 : rf <= 1                               otherwise "INVALID_REVEAL_FEE";
-    r2 : transferred = jackpot                 otherwise "INVALID_AMOUNT"
+    r0 : now <= ob < cb < cr    otherwise "INVALID_OPEN_CLOSE_BUY_REVEAL";
+    r1 : cb - ob <= ot - cr     otherwise "INVALID_DECRYPT_DURATION";
+    r2 : rf <= 1                otherwise "INVALID_REVEAL_FEE";
+    r3 : transferred = jackpot  otherwise "INVALID_AMOUNT"
   }
   from Created to Initialised
   with effect {
-    open_buy     := some(ob);
-    close_buy    := some(cb);
-    close_reveal := some(cr);
-    chest_time   := some(t);
-    reveal_fee   := some(rf)
+    open_buy      := some(ob);
+    close_buy     := some(cb);
+    close_reveal  := some(cr);
+    open_transfer := some(ot);
+    chest_time    := some(t);
+    reveal_fee    := some(rf)
   }
 }
 ```
@@ -189,8 +193,8 @@ It records the caller's address in the `player` collection.
 entry buy (lrk : chest) {
   state is Initialised
   require {
-    r3 : transferred = ticket_price                     otherwise "INVALID_TICKET_PRICE";
-    r4 : opt_get(open_buy) < now < opt_get(close_buy)   otherwise "BUY_CLOSED"
+    r4 : transferred = ticket_price                     otherwise "INVALID_TICKET_PRICE";
+    r5 : opt_get(open_buy) < now < opt_get(close_buy)   otherwise "BUY_CLOSED"
   }
   effect { player.add({ id = caller; locked_raffle_key = lrk }) }
 }
@@ -211,8 +215,8 @@ It requires that:
 entry reveal(addr : address, k : chest_key) {
   state is Initialised
   require {
-    r5 : opt_get(close_buy) < now < opt_get(close_reveal) otherwise "REVEAL_CLOSED";
-    r6 : not player[addr].revealed                        otherwise "PLAYER_ALREADY_REVEALED"
+    r6 : is_valid_reveal_time(addr) otherwise "INVALID_REVEAL_TIME";
+    r7 : not player[addr].revealed  otherwise "PLAYER_ALREADY_REVEALED"
   }
   effect {
     match open_chest(k, player[addr].locked_raffle_key, opt_get(chest_time)) with
@@ -225,13 +229,25 @@ entry reveal(addr : address, k : chest_key) {
 }
 ```
 
+The `is_valid_reveal_time` function checks returns true if the player reveals during the reveal period or if anyone reveals a player's key during the decrypt period:
+```archetype
+function is_valid_reveal_time(addr : address) : bool {
+  return (
+    if caller = addr then
+      opt_get(close_buy) < now < opt_get(close_reveal)
+    else
+      opt_get(close_reveal) < now < opt_get(open_transfer)
+  )
+}
+```
+
 ### `transfer`
 
 When the reveal period is over, anyone can call the `transfer` entrypoint to transfer the jackpot to the the winning ticket; not revealed players are ignored. It transitions to `Transferred` state:
 ```archetype
 transition %transfer() {
   require {
-    r7: opt_get(close_reveal) < now otherwise "TRANSFER_CLOSED"
+    r8: opt_get(open_transfer) < now otherwise "TRANSFER_CLOSED"
   }
   from Initialised to Transferred
   with effect {
