@@ -62,6 +62,7 @@ $ timelock-utils --lock --data 050080890f --time 100000
 }
 ```
 The timelock encryption generates a chest value, and the key to unlock it.
+
 ## Raffle storage
 
 The contract is originated with the following parameters:
@@ -104,8 +105,8 @@ The schema below illustrates the periods defined by these dates, and the contrac
   alt="Raffle schema"
   width="80%"
   sources={{
-    light: useBaseUrl('img/schema.light.svg'),
-    dark: useBaseUrl('img/schema.dark.svg'),
+    light: useBaseUrl('img/archetype-raffle/schema.light.svg'),
+    dark: useBaseUrl('img/archetype-raffle/schema.dark.svg'),
   }}
 />
 
@@ -209,7 +210,7 @@ The `reveal` entry point may be called by anyone to reveal a player's _partial_ 
 
 It requires that:
 * the contract be in `Initialised` state
-* the close date has been reached
+* the date is valid (see `is_valid_reveal_time` below)
 
 ```archetype
 entry reveal(addr : address, k : chest_key) {
@@ -220,11 +221,23 @@ entry reveal(addr : address, k : chest_key) {
   }
   effect {
     match open_chest(k, player[addr].locked_raffle_key, opt_get(chest_time)) with
-    | left (unlocked) -> raffle_key += opt_get(unpack<nat>(unlocked))
-    | right(error)    -> fail("INVALID_TIMELOCK")
-    end;
-    player[addr].revealed := true;
-    transfer (opt_get(reveal_fee) * ticket_price) to caller;
+    | left (unlocked) -> begin
+        match unpack<nat>(unlocked) with
+        | some(partial_key) ->
+          raffle_key += partial_key;
+          player[addr].revealed := true
+        | none -> player.remove(addr)
+        end;
+        transfer (opt_get(reveal_fee) * ticket_price) to caller;
+      end
+    | right(chest_key_error) -> begin
+       if chest_key_error then
+        fail("INVALID_CHEST_KEY")
+       else
+        player.remove(addr);
+        transfer (opt_get(reveal_fee) * ticket_price) to caller
+      end
+    end
   }
 }
 ```
@@ -243,11 +256,12 @@ function is_valid_reveal_time(addr : address) : bool {
 
 ### `transfer`
 
-When the reveal period is over, anyone can call the `transfer` entrypoint to transfer the jackpot to the the winning ticket; not revealed players are ignored. It transitions to `Transferred` state:
+When the decrypt period is over or when all players have been revealed, anyone can call the `transfer` entrypoint to transfer the jackpot to the the winning ticket; not revealed players are ignored. It transitions to `Transferred` state:
 ```archetype
 transition %transfer() {
   require {
-    r8: opt_get(open_transfer) < now otherwise "TRANSFER_CLOSED"
+    r8: player.select(the.revealed).count() = player.count() or
+        opt_get(open_transfer) < now
   }
   from Initialised to Transferred
   with effect {
