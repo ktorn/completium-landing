@@ -229,7 +229,7 @@ entry reveal(addr : address, k : chest_key) {
 }
 ```
 
-The `is_valid_reveal_time` function checks returns true if the player reveals during the reveal period or if anyone reveals a player's key during the decrypt period:
+The `is_valid_reveal_time` function returns true if the player reveals during the reveal period or if anyone reveals a player's key during the decrypt period:
 ```archetype
 function is_valid_reveal_time(addr : address) : bool {
   return (
