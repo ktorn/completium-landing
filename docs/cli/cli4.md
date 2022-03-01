@@ -12,7 +12,9 @@ It provides a subset of commands as programming functions. The benefit is that y
 
 An example of test scenario is available <Link to='/docs/contract/test-scenario#example'>here</Link>.
 
-## deploy / originate
+## API
+
+### `deploy` / `originate`
 
 ```js
 const { deploy } = require('@completium/completium-cli')
@@ -45,7 +47,7 @@ The second argument object may have the following entries:
 | `init`| `string` | Overwrites contract initial storage with Michelson value. |
 | `test` | `bool` | Generates entrypoint `_set_now` to set `now` value (only with archetype contract, to be used only on testnet) |
 
-## call
+### `call`
 
 Suppose the `escrow.arl` has several entrypoints among wich the `deposit` entrypoint.
 
@@ -82,7 +84,7 @@ const op = await contract.payback({ arg : { i : -5, n : 8 },  as: 'admin' });
 
 This <Link to="/docs/cli/contract#argument">Argument</Link> section presents examples of values for each type.
 
-## transfer
+### `transfer`
 
 ```js
 const { transfer } = require('@completium/completium-cli')
@@ -93,7 +95,7 @@ Example:
 await transfer('alice', 'bob', '5tz');
 ```
 
-## getBalance
+### `getBalance`
 ```js
 const { getBalance } = require('@completium/completium-cli')
 ```
@@ -106,7 +108,7 @@ console.log(balance_alice.toNumber());
 
 `balance_alice` is a <Link to="https://www.npmjs.com/package/bignumber.js">big number</Link>.
 
-## getStorage
+### `getStorage`
 
 ```js
 const { getStorage } = require('@completium/completium-cli')
@@ -117,7 +119,7 @@ Example:
 const storage = await getStorage('escrow');
 ```
 
-## getContract
+### `getContract`
 
 ```js
 const { getContract } = require('@completium/completium-cli')
@@ -128,7 +130,7 @@ Example:
 const escrow = await getContract('escrow');
 ```
 
-## setAccount
+### `setAccount`
 
 ```js
 const { setAccount } = require('@completium/completium-cli')
@@ -141,7 +143,7 @@ await setAccount('alice');
 
 Set default account.
 
-## setEndpoint
+### `setEndpoint`
 ```js
 const { setEndpoint } = require('@completium/completium-cli')
 ```
@@ -156,7 +158,7 @@ Set the endpoint rpc.
 Note that endpoint must be registered in completium.
 :::
 
-## getAddress
+### `getAddress`
 ```js
 const { getAddress } = require('@completium/completium-cli')
 ```
@@ -169,7 +171,7 @@ const addr_escrow = await getAddress('escrow');
 console.log(addr_escrow); // "KT1Tt4d4Hq2wA6ZAo54KrSXtHnKsPZArixu2"
 ```
 
-## getAccount
+### `getAccount`
 
 Returns the account object from account alias or address. The account object has the following fields:
 * `name` : account alias
@@ -187,7 +189,7 @@ console.log(alice.name); // "alice"
 console.log(alice.pkh); // "tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb"
 ```
 
-## pack
+### `pack`
 
 Packs simple literal values (int, string).
 
@@ -210,7 +212,7 @@ Example:
 
 Returns a string which represents the packed value.
 
-## packTyped
+### `packTyped`
 
 Packs Micheline JSON object. The object's Michelson JSON type is required as second argument.
 
@@ -228,7 +230,7 @@ Example:
 
 Returns a string, which represents the packed value from michelson objects.
 
-## blake2b
+### `blake2b`
 ```js
 const { blake2b } = require('@completium/completium-cli')
 ```
@@ -242,7 +244,7 @@ Example:
 ```
 Returns a string.
 
-## keccak
+### `keccak`
 ```js
 const { keccak } = require('@completium/completium-cli')
 ```
@@ -256,7 +258,7 @@ Example:
 ```
 Returns a string.
 
-## sign
+### `sign`
 
 Signs packed data. Returns an object with the following fields:
 * `bytes`
@@ -277,7 +279,7 @@ Example:
   console.log(signed.prefixSig); // prints "edsig..."
 ```
 
-## exprMichelineToJson
+### `exprMichelineToJson`
 
 Converts Micheline expression to JSON object.
 
@@ -291,7 +293,7 @@ Example:
   console.log(JSON.stringify(a)) // {"prim":"Pair","args":[{"int":"0"},{"string":"archetype"}]}
 ```
 
-## jsonMichelineToExpr
+### `jsonMichelineToExpr`
 
 Converts Micheline JSON object to Micheline expression.
 
@@ -305,7 +307,7 @@ Example:
   console.log(b); // '(Pair 0 "archetype")'
 ```
 
-## setQuiet
+### `setQuiet`
 
 Expects boolean to turn on or off information traces.
 
@@ -313,7 +315,7 @@ Expects boolean to turn on or off information traces.
 setQuiet = require('@completium/completium-cli')
 ```
 
-## checkBalanceDelta
+### `checkBalanceDelta`
 
 Checks the delta of an account's balance. Arguments are:
 * account address
@@ -340,7 +342,7 @@ It is possible to pass an explicit function to decide:
   })
 ```
 
-## getValueFromBigMap
+### `getValueFromBigMap`
 
 ```js
 const { getValueFromBigMap } = require('@completium/completium-cli')
@@ -364,7 +366,7 @@ entry empty () {
 }
 ```
 
-## expectToThrow
+### `expectToThrow`
 
 Throws an exception if the argument operation does not throw an exception
 
@@ -372,12 +374,13 @@ Throws an exception if the argument operation does not throw an exception
 const { expectToThrow } = require('@completium/completium-cli')
 ```
 
-Example:
 ```js
   await expectToThrow( async () => {
     // execute something
   })
 ```
+
+Example:
 
 In mockup mode, it is possible to check the error message: for example the following expects the call to fail with "InvalidCaller":
 ```js
@@ -386,3 +389,91 @@ In mockup mode, it is possible to check the error message: for example the follo
   }, '"InvalidCaller"')
 ```
 
+### `setMockupNow`
+
+In [mockup mode](network#mockup), it is possible to set the value of the [`now`](https://docs.archetype-lang.org/archetype-language/dates-durations#now) contract constant with `setMockupNow`.
+
+For example:
+
+```javascript
+const now = Date.now() / 1000
+setMockupNow(now)
+```
+
+:::warning
+Do not forget to divide `Date.now()` by `1000` to work with timestamps in *seconds*.
+:::
+
+
+
+## Accessing Archetype assets
+
+[Archetype](https://archetype-lang.org/) provides a neat way to manage collections of [assets](https://docs.archetype-lang.org/archetype-language/data-model#asset) with a rich API. For example the following declaration creates a collection of `car` records in the contract.
+
+```archetype
+asset manager identified by vin {
+  vin    : string;
+  color  : Color;
+  year   : nat;
+  model  : string;
+  manufacturer : string
+}
+```
+
+### `get`
+
+In a JS test script, the `get` method is used to retrieve a data from its key.
+
+In the `car` asset example:
+
+```javascript
+let storage = await mycontract.getStorage()
+let mycar = storage.car.get("1G1AF1F57A7192174")
+console.log(Json.stringify(0, null, 2))
+```
+
+An example output would be:
+```json
+{
+  "color": "0",
+  "year": "2018",
+  "model": "Zoe",
+  "manufacturer": "Renault"
+}
+```
+
+:::info
+When dealing with big maps, use the dedicated [getValueFromBigMap](jslibrary#getvaluefrombigmap) function.
+:::
+
+
+### `forEach`
+
+The `forEach` method is used to iterate over an asset collection.
+
+In the `car` asset example:
+
+```javascript
+let storage = await mycontract.getStorage()
+storage.car.forEach((value, key) => {
+  console.log(`The value of the key ${key} is:\n${JSON.stringify(value, null, 2)}.\n`)
+});
+```
+
+An example output:
+```
+The value of the key 1G1AF1F57A7192174 is:
+{
+  "color": "0",
+  "year": "2018",
+  "model": "Zoe",
+  "manufacturer": "Renault"
+}
+The value of the key 47121G1AF1F57A719 is:
+{
+  "color": "1",
+  "year": "2020",
+  "model": "e-208",
+  "manufacturer": "Peugeot"
+}
+```
