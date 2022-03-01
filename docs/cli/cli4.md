@@ -411,7 +411,7 @@ Do not forget to divide `Date.now()` by `1000` to work with timestamps in *secon
 [Archetype](https://archetype-lang.org/) provides a neat way to manage collections of [assets](https://docs.archetype-lang.org/archetype-language/data-model#asset) with a rich API. For example the following declaration creates a collection of `car` records in the contract.
 
 ```archetype
-asset manager identified by vin {
+asset car identified by vin {
   vin    : string;
   color  : Color;
   year   : nat;
