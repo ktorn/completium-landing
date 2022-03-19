@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 This contract follows the Financial Asset 2 (FA 2) <a href='https://gitlab.com/tzip/tzip/-/blob/master/proposals/tzip-12/tzip-12.md'>TZIP 12</a> specification for non-fungible token on Tezos.
 
 :::info
-The version presented below is a simple minimal version. A full-featured version (with mint, burn, feeless transfer, ...) is available [here](https://gitlab.com/tezos-paris-hub/rarible/rarible-nft-contracts). 
+The version presented below is a simple minimal version. A full-featured version (with mint, burn, feeless transfer, royalties, ...) is available [here](https://github.com/rarible/tezos-protocol-contracts/tree/main/tokens).
 :::
 
 ## API

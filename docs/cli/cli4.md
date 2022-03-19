@@ -404,6 +404,28 @@ setMockupNow(now)
 Do not forget to divide `Date.now()` by `1000` to work with timestamps in *seconds*.
 :::
 
+### `runGetter`
+
+Calls [TZIP4-view](https://tzip.tezosagora.org/proposal/tzip-4/#view-entrypoints) (aka. Archetype `getter`).
+
+For example, consider the following *getter*:
+```archetype
+getter get_count(k : address) : nat {
+  return (if count.contains(k) then count[k] else 0)
+}
+```
+
+Call `get_count` with `runGetter`:
+
+```js
+const count = await runGetter(c, "get_count", { argMichelson: `"${$pkh}"`, as : pkh})
+console.log(count.int)
+```
+where:
+* `c` is the completium contract object providing the TZIP4-view/getter
+* `pkh` is the address calling the entrypoint `get_count`
+
+Returns Micheline (Michelson JSON) object.
 
 
 ## Accessing Archetype assets
