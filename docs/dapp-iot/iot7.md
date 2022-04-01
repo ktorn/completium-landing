@@ -79,7 +79,7 @@ async function loadSwitchContent () {
 The code blow reads the contract storage:
 
 ```js {2,6}
-    const Tezos = new TezosToolkit('https://hangzhounet-tezos.giganode.io');
+    const Tezos = new TezosToolkit('https://testnet-tezos.giganode.io');
     var contract  = await Tezos.contract.at(contractAddress);
     var cstorage   = await contract.storage();
     var dateofstart = new Date(cstorage.dateofstart);

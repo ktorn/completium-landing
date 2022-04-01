@@ -34,7 +34,7 @@ KT1QMowNVCUngertU7bAeoZmU7XYm3gphE69
 
 This section presents how to invoke the `register` entry point with the smart contract indexer <Link to="/docs/dapp-tools/bcd">Better Call Dev</Link>. Click the button blow to open the smart contract:
 
-<DappButton url="https://better-call.dev/hangzhounet/KT1QMowNVCUngertU7bAeoZmU7XYm3gphE69/operations" txt="open smart contract"/>
+<DappButton url="https://better-call.dev/ithacanet/KT1QMowNVCUngertU7bAeoZmU7XYm3gphE69/operations" txt="open smart contract"/>
 
 Click on the "Interact" tab and enter the parameters as presented above.
 

@@ -67,7 +67,7 @@ Follow the instructions below to donwload a new test account file:
 * click the "open faucet" button above to open the faucet web page
 * on the faucet page:
     * solve the CAPTCHA
-    * click on the "Get Hagzhounet Tz" button
+    * click on the "Get Ithacanet Tz" button
     * click the "Copy to clipboard" button
 * Create a file `faucet.json` and paste the faucet data in this file
 * Run the following command to use the account with Completium-cli :

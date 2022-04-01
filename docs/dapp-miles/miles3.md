@@ -55,7 +55,7 @@ KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx
 
 This section presents how to invoke the `add` entry point with the smart contract indexer <Link to="/docs/dapp-tools/bcd">Better Call Dev</Link>. Click the button blow to open the smart contract:
 
-<DappButton url="https://better-call.dev/hangzhounet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open smart contract"/>
+<DappButton url="https://better-call.dev/ithacanet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open smart contract"/>
 
 Click on the "Interact" tab and enter the parameters as presented above.
 
