@@ -56,4 +56,4 @@ entry interrupt () {
 ```
 
 
-<DappButton url="https://better-call.dev/hangzhounet/KT1CxHBiCSvmXn9kXCbhPfdGDAggGG9ktQEX/operations" txt="open contract"/>
+<DappButton url="https://better-call.dev/ithacanet/KT1CxHBiCSvmXn9kXCbhPfdGDAggGG9ktQEX/operations" txt="open contract"/>

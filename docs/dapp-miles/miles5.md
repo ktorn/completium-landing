@@ -55,6 +55,6 @@ You may check the transaction parameters in the "Operations" section:
 
 Once the transaction is confirmed, you can verify the transaction online with the "Better Call Dev" indexer:
 
-<DappButton url="https://better-call.dev/hangzhounet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open smart contract"/>
+<DappButton url="https://better-call.dev/ithacanet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open smart contract"/>
 
 

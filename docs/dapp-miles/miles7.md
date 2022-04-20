@@ -103,7 +103,7 @@ It is possible to skip this phase and use the contract already deployed for the 
 KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx
 ```
 
-<DappButton url="https://better-call.dev/hangzhounet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open in better call dev"/>
+<DappButton url="https://better-call.dev/ithacanet/KT1XpM1f6cq8cy8m8WV9xSsE5nBix2DzTYmx/operations" txt="open in better call dev"/>
 
 Go to the <Link to="/docs/dapp-miles/create-miles#miles-creation-transaction">use case</Link> section to know how to add miles for your user account.
 

@@ -41,7 +41,7 @@ Player Alice's partial key is `123456`, Player Jack's is `234567`, and Player Bo
 
 To get the timelocked value, the value is first packed (turned into bytes) with the following tezos client command `hash data`:
 ```bash
-$ tezos-client -E https://hangzhounet.smartpy.io hash data '123456' of type nat
+$ tezos-client -E https://mainnet.api.tez.ie hash data '123456' of type nat
 Warning:
 
                  This is NOT the Tezos Mainnet.

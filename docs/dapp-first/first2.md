@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 The first step is to originate (deploy) the ownership <Link to='/docs/dapp-tools/tezos#smart-contract'>Smart Contract</Link> with <Link to='/docs/cli'>completium CLI</Link>.
 
 Before anything, follow these <Link to='/docs/dapp-tools/faucet#create-a-test-account'>instructions</Link> to import a new test account:
-* copy paste (or upload to gitpod) in `faucet.json` file a test account retrieved from <Link to='https://teztnets.xyz/hangzhounet-faucet'>teztnets.xyz</Link>
+* copy paste (or upload to gitpod) in `faucet.json` file a test account retrieved from <Link to='https://teztnets.xyz/ithacanet-faucet'>teztnets.xyz</Link>
 * in order to import the faucet account with `completium-cli`, enter the following command in a VS code <Link to='/docs/dapp-tools/gitpod#open-terminal'>Terminal</Link> tab:
 
 ```

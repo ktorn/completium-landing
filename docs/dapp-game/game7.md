@@ -25,7 +25,7 @@ async function loadRecords() {
 ```
 
 ```js
-const Tezos = new TezosToolkit('https://hangzhounet-tezos.giganode.io');
+const Tezos = new TezosToolkit('https://testnet-tezos.giganode.io');
 console.log(contractAddress);
 var contract  = await Tezos.contract.at(contractAddress);
 var cstorage  = await contract.storage();
@@ -61,7 +61,7 @@ var oracle = new InMemorySigner('edsk3eFocAKYDy2GfkFXFnj19ocDFwJ4M4cvrPURgaeyWp1
 var nonce = new Uint8Array(8);
 window.crypto.getRandomValues(nonce);
 console.log(`score: ${props.score.score}`);
-const Tezos = new TezosToolkit('https://hangzhounet-tezos.giganode.io');
+const Tezos = new TezosToolkit('https://testnet-tezos.giganode.io');
 Tezos.rpc.packData({
   data: {
     prim: "Pair",

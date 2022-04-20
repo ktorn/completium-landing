@@ -35,7 +35,7 @@ async function loadIdeaxBoxContent () {
 ```
 
 ```js {5,7,19}
-const Tezos = new TezosToolkit('https://hangzhounet-tezos.giganode.io');
+const Tezos = new TezosToolkit('https://testnet-tezos.giganode.io');
 var contract  = await Tezos.contract.at(contractAddress);
 var cstorage   = await contract.storage();
 var winners = [];
